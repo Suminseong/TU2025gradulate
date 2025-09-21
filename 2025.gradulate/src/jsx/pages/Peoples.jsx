@@ -14,7 +14,6 @@ function PageContainer({ children }) {
         paddingRight: PAGE_SIDE, 
         display: 'flex', 
         flexDirection: 'column', 
-        justifyContent: 'center' 
         }}>
           {children}
       </div>
@@ -27,7 +26,7 @@ function PeoplesList(){
         <div style={{
             display: 'flex',
             flexWrap: 'wrap',
-            justifyContent: 'flex-start',
+            justifyContent: 'center',
             marginTop: '100px',
             marginBottom: '120px',
             rowGap: '32px',

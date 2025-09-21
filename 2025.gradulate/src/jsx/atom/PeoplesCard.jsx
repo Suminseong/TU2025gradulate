@@ -19,7 +19,7 @@ export default function PeoplesCard({
         // 시안 수치
         fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
         letterSpacing: '0.02em',
-        color: 'inherit',
+        color: '#202020',
         textDecoration: 'none',
         display: 'flex',
         flexDirection: 'row',
