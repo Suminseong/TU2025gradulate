@@ -4,27 +4,35 @@ import React from 'react';
 import Footer from '../molecule/Footer';
 import PeoplesCard from '../atom/PeoplesCard';
 
-// 공통 타이포/레이아웃 수치
-const FONT = `'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif`;
-const PAGE_SIDE = 350;
+const PAGE_SIDE = 40;
 
 function PageContainer({ children }) {
   return (
     <div style={{ position: 'relative', background: '#fff' }}>
-      <div style={{ paddingLeft: PAGE_SIDE, paddingRight: PAGE_SIDE }}>{children}</div>
+      <div style={{ 
+        paddingLeft: PAGE_SIDE, 
+        paddingRight: PAGE_SIDE, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        justifyContent: 'center' 
+        }}>
+          {children}
+      </div>
     </div>
   );
 }
 
-function PoeplesList(){
+function PeoplesList(){
     return (
         <div style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '32px',
             justifyContent: 'flex-start',
             marginTop: '100px',
             marginBottom: '120px',
+            rowGap: '32px',
+            columnGap: '20px',
+            width: '100%',
         }}>
            {/* peples card 컴포넌트를 임시로 30개 만들어서 넣음 */}
               {Array.from({ length: 30 }).map((_, index) => (
@@ -35,25 +43,27 @@ function PoeplesList(){
                   role="DESIGNER"
                   sns={{ instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }}
                   eMail="hong.gil.dong@example.com"
+                  imgSrc="../public/김예준.jpg"
                 />
               ))}
         </div>
 
 )};
 
-return (
+export default function Peoples() {
+    return (
     <div style={{ position: 'relative' }}>
       {/* 상단 전역 네비가 있다면 여기 삽입 */}
 
-      <PageContainer>
-        <HeroHeader />
+      {/* <PageContainer>
         <IntroNote text={introText} />
-      </PageContainer>
+      </PageContainer> */}
 
-      <PageContainer>
-        <PoeplesList />
-      </PageContainer>
+        <PageContainer>
+          <PeoplesList /> 
+        </PageContainer>
 
       <Footer />
     </div>
   );
+}

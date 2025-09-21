@@ -8,6 +8,7 @@ import Footer from './jsx/molecule/Footer';
 
 // 페이지
 import Credit from './jsx/pages/Credits';
+import Peoples from './jsx/pages/Peoples';
 
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
@@ -120,7 +121,7 @@ export default function App() {
           <Route index element={<PageShell title="HOME" />} />
 
           <Route path="projects" element={<PageShell title="PROJECTS" />} />
-          <Route path="peoples" element={<PageShell title="PEOPLES" />} />
+          <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
           <Route path="guestbook" element={<PageShell title="GUESTBOOK" />} />
 
@@ -150,6 +151,15 @@ function CreditsWithHeaderMode({ setHeaderMode }) {
   }, [setHeaderMode]);
 
   return <Credit />;
+}
+
+function PeoplesWithHeaderMode({ setHeaderMode }) {
+  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <Peoples />;
 }
 
 // If this file is used as the entry, mount the app into #root so index.html shows something.
