@@ -100,7 +100,7 @@ export default function NavHeader({
     display: 'flex',
     flexDirection: 'column',
     gap: 13,
-    margin: '0 auto',
+    margin: '0',
     maxWidth: maxWidth || 'none',
   };
 
