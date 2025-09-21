@@ -3,6 +3,8 @@
 import React from 'react';
 import Footer from '../molecule/Footer';
 import PeoplesCard from '../atom/PeoplesCard';
+import CategoryNav from '../molecule/CategoryNav';
+
 
 const PAGE_SIDE = 40;
 
@@ -57,6 +59,8 @@ export default function Peoples() {
       {/* <PageContainer>
         <IntroNote text={introText} />
       </PageContainer> */}
+
+        <CategoryNav />
 
         <PageContainer>
           <PeoplesList /> 

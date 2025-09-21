@@ -335,8 +335,6 @@ export default function Credit() {
           ))}
         </div>
       </PageContainer>
-
-      <Footer />
     </div>
   );
 }
