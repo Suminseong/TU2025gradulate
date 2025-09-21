@@ -68,7 +68,6 @@ export default function PeoplesCard({
     const cardContentStyle = {
         // 프로필 콘텐츠
         width: '45%',
-        padding: '16px',
         display: 'flex',
         position: 'relative',
         flexDirection: 'column',
@@ -108,8 +107,8 @@ export default function PeoplesCard({
             </div>
             <div style={{...contentTextStyle}}>
                 <p style={{margin: '0'}}>{role}</p>
-                <p style={{margin: '0'}}>{eMail ? (<a style={{textDecoration: 'none', color: 'inherit'}} href={`mailto:${eMail}`}>{eMail}</a>) : null}</p> {/* GPT: 이메일 클릭 및 null 가드 */}
                 <p style={{margin: '0'}}>{sns.linkedin}</p>
+                <p style={{margin: '0'}}>{eMail ? (<a style={{textDecoration: 'none', color: 'inherit'}} href={`mailto:${eMail}`}>{eMail}</a>) : null}</p> {/* GPT: 이메일 클릭 및 null 가드 */}
             </div>
         </div>
     </div>
