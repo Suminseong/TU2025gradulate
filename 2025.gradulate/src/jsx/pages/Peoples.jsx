@@ -32,7 +32,7 @@ function PeoplesList(){
             marginTop: '100px',
             marginBottom: '120px',
             rowGap: '32px',
-            columnGap: '20px',
+            columnGap: '14px',
             width: '100%',
         }}>
            {/* peples card 컴포넌트를 임시로 30개 만들어서 넣음 */}
