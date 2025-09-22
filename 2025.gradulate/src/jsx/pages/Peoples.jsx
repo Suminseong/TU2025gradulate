@@ -66,7 +66,6 @@ export default function Peoples() {
           <PeoplesList /> 
         </PageContainer>
 
-      <Footer />
     </div>
   );
 }
