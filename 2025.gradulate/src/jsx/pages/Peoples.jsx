@@ -31,19 +31,6 @@ const normalizeDepartment = (dep) => {
 const students = studentsData;
 const professors = professorsData;
 
-// 데이터 모델 제안 
-
-// Student
-// id: string
-// nameKor: string
-// nameEng: string
-// role: 'DESIGNER'
-// department: 'IND' | 'MED' // 화면에서는 ‘산업디자인공학’, ‘미디어디자인공학’으로 표시
-// professorId: string // 외래키
-// sns: Array<{ platform: string; url: string }>
-// email: string
-// imgUrl: string
-
 // Professor
 // id: string
 // nameKor: string
