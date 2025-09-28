@@ -1,0 +1,16 @@
+ㄴ셩둣
+0 산디
+1 미디
+
+sns 받아야 함
+role 받아야 함
+imageURL 손대기 금지
+projectURL 우선은 넣어둠
+
+team0 개인작
+team1 팀작
+
+팀작에서 leader가 0이면 팀원, 1이면 팀장
+
+category는 도록 순으로 c0~c5
+
