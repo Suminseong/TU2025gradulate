@@ -4,80 +4,24 @@ import React from 'react';
 import PeoplesCard from '../atom/PeoplesCard';
 import CategoryNav from '../molecule/CategoryNav';
 import ProfProfile from '../atom/ProfProfile';
+import studentsData from '../../data/students.json';
+import professorsData from '../../data/professors.json';
 
 
 const PAGE_SIDE = 40;
 
-// 학과(부서) 배열 (상수)
+// 학과(부서) 배열 (상수) - UI 라벨
 const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
-const professorCategories = ['장영주', '권오재', '김 억', '김한종', '조남주', '한민섭', '홍성수', '김태균'];
 
-// 임시 더미 데이터
-const students = [
-  {
-    nameKor: '고명현',
-    nameEng: 'GO MYUNGHYUN',
-    role: 'UI/UX DESIGNER',
-    department: '미디어디자인공학',
-    professor: '김한종',
-    sns: [
-      { platform: 'instagram', url: 'https://instagram.com' },
-    ],
-    eMail: 'go.myunghyun@example.com',
-    imgSrc: '../image/1/portrait.jpg',
-    imgAlt: 'Go Myunghyun profile',
-  },
-  {
-    nameKor: '김예준',
-    nameEng: 'KIM YEAHJUN',
-    role: 'UI/UX DESIGNER',
-    department: '미디어디자인공학',
-    professor: '권오재',
-    sns: [{ platform: 'instagram', url: 'https://instagram.com' }],
-    eMail: 'kim.yeahjun@example.com',
-    imgSrc: '../image/15/portrait.jpg',
-    imgAlt: 'Kim Yeahjun profile',
-  },
-];
+// 학과 라벨 → 코드 매핑 (실제 데이터는 코드값 사용: IND/MED)
+const departmentLabelToCode = {
+  '산업디자인공학': 'IND',
+  '미디어디자인공학': 'MED',
+};
 
-const professors = [
-  {
-    nameKor: '장영주',
-    nameEng: 'JANG YOUNGJOO',
-    role: 'PROFESSOR',
-    professor: '장영주',
-    education: 'Ph.D. in Design, XYZ University',
-    field: 'UX/UI Design',
-    sns: [],
-    eMail: 'jang.youngjoo@example.com',
-    imgSrc: '../public/김예준.jpg',
-    imgAlt: 'Professor Jang profile',
-  },
-  {
-    nameKor: '권오재',
-    nameEng: 'KWON OHJAE',
-    role: 'PROFESSOR',
-    professor: '권오재',
-    education: 'Ph.D. in Design, XYZ University',
-    field: 'Industrial Design',
-    sns: [],
-    eMail: 'kwon.ohjae@example.com',
-    imgSrc: '../public/김예준.jpg',
-    imgAlt: 'Professor Kwon profile',
-  },
-  {
-    nameKor: '김한종',
-    nameEng: 'KIM HANJONG',
-    role: 'PROFESSOR',
-    professor: '김한종',
-    education: 'Ph.D. in Design, XYZ University',
-    field: 'Industrial Design',
-    sns: [],
-    eMail: 'kim.hanjong@example.com',
-    imgSrc: '../public/김예준.jpg',
-    imgAlt: 'Professor Kim profile',
-  },
-];
+// 실제 데이터(JSON)
+const students = studentsData;
+const professors = professorsData;
 
 // 데이터 모델 제안 
 
@@ -131,14 +75,14 @@ function PeoplesList({ people }) {
     }}>
       {people.map((p, index) => (
         <PeoplesCard
-          key={`${p.nameKor}-${index}`}
+          key={p.id ?? `${p.nameKor}-${index}`}
           nameKor={p.nameKor}
           nameEng={p.nameEng}
           role={p.role}
           sns={p.sns}
-          eMail={p.eMail}
-          imgSrc={p.imgSrc}
-          imgAlt={p.imgAlt}
+          eMail={p.email}
+          imgSrc={p.imgUrl}
+          imgAlt={`${p.nameKor} profile`}
         />
       ))}
     </div>
@@ -156,7 +100,8 @@ export default function Peoples() {
   // 토글 상태에 따라 activeCategory 초기화
   React.useEffect(() => {
     if (isToggleActive) {
-      setActiveCategory(professorCategories[0]); // 예: '장영주'
+      // 교수 모드: 첫 번째 교수 id로 설정
+      setActiveCategory(professors[0]?.id || '');
     } else {
       setActiveCategory(studentCategories[0]); // '전체'
     }
@@ -165,18 +110,24 @@ export default function Peoples() {
   // 현재 표시할 학생 리스트 계산 (교수 모드에서도 학생을 기준으로 필터링)
   const filtered = React.useMemo(() => {
     if (!isToggleActive) {
-      // 학생 모드: 전체면 전부, 아니면 department로 필터
+      // 학생 모드: 전체면 전부, 아니면 department 코드로 필터 (라벨/코드 호환)
       if (activeCategory === '전체') return students;
-      return students.filter((p) => p.department === activeCategory);
+      const depCode = departmentLabelToCode[activeCategory] || activeCategory;
+      return students.filter((p) => p.department === depCode);
     }
-    // 교수 모드: 선택한 교수 이름에 속한 학생만 필터
-    return students.filter((p) => p.professor === activeCategory);
+    // 교수 모드: activeCategory가 교수 id 또는 이름일 수 있으므로 id로 정규화
+    const activeProfId = professors.some((pr) => pr.id === activeCategory)
+      ? activeCategory
+      : (professors.find((pr) => pr.nameKor === activeCategory)?.id || '');
+    return students.filter((p) => p.professorId === activeProfId);
   }, [activeCategory, isToggleActive]);
 
-  // 교수 모드일 때 선택된 교수 프로필
+  // 교수 모드일 때 선택된 교수 프로필 (id 기준)
   const selectedProfessor = React.useMemo(() => {
     if (!isToggleActive) return null;
-    return professors.find((p) => p.professor === activeCategory) || null;
+    const prof = professors.find((pr) => pr.id === activeCategory) ||
+                 professors.find((pr) => pr.nameKor === activeCategory) || null;
+    return prof;
   }, [isToggleActive, activeCategory]);
 
   return (
@@ -191,12 +142,12 @@ export default function Peoples() {
         {isToggleActive && selectedProfessor && (
           <ProfProfile
             nameKor={selectedProfessor.nameKor}
-            rank={selectedProfessor.role === 'PROFESSOR' ? '교수' : selectedProfessor.role}
-            eMail={selectedProfessor.eMail}
+            rank={selectedProfessor.rank || '교수'}
+            eMail={selectedProfessor.email}
             education={selectedProfessor.education}
             field={selectedProfessor.field}
-            imgSrc={selectedProfessor.imgSrc}
-            imgAlt={selectedProfessor.imgAlt}
+            imgSrc={selectedProfessor.imgUrl}
+            imgAlt={`${selectedProfessor.nameKor} profile`}
           />
         )}
         <PeoplesList people={filtered} />
