@@ -1,10 +1,8 @@
 // CategoryNav.jsx
 import React from 'react';
-import PropTypes from 'prop-types';
 import ToggleBtn from '../atom/ToggleBtn';
 import CategoryNavBtn from '../atom/CategoryNavBtn';
 import { useEffect } from 'react';
-import { useState } from 'react';
 
 /**
  * 카테고리 네비게이션

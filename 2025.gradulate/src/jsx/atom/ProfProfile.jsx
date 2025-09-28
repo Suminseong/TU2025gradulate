@@ -1,5 +1,4 @@
 // ProfProfile.jsx
-import React from 'react';
 import PropTypes from 'prop-types';
 
 // 교수 프로필 카드

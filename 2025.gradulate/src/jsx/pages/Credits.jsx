@@ -1,7 +1,5 @@
 //credits.jsx
 //졸준 페이지// Credit.jsx
-import React from 'react';
-import Footer from '../molecule/Footer';
 
 // 공통 타이포/레이아웃 수치
 const FONT = `'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif`;

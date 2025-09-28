@@ -1,6 +1,5 @@
 // Footer.jsx
 // 수정 금지. fix 된 형태
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const FONT_STACK =
