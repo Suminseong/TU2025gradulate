@@ -4,14 +4,22 @@ import PropTypes from 'prop-types';
 import ToggleBtn from '../atom/ToggleBtn';
 import CategoryNavBtn from '../atom/CategoryNavBtn';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 /**
  * 카테고리 네비게이션
  */
 
-export default function CategoryNav() {
+export default function CategoryNav({ onCategoryChange, onToggleChange }) {
     const [isToggleActive, setIsToggleActive] = React.useState(false);
-    const handleToggle = () => setIsToggleActive((prev) => !prev);
+    const handleToggle = () =>
+        setIsToggleActive((prev) => {
+            const next = !prev;
+            if (onToggleChange) {
+                onToggleChange(next); // 부모에게 상태 변경 알림
+            }
+            return next;
+        });
     const [activeCategory, setActiveCategory] = React.useState('전체');
 
     const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
@@ -51,7 +59,10 @@ export default function CategoryNav() {
                             key={label}
                             label={label}
                             active={activeCategory === label}
-                            onClick={() => setActiveCategory(label)}
+                            onClick={() => {
+                                setActiveCategory(label);
+                                if (onCategoryChange) onCategoryChange(label); // 부모에 알림
+                            }}
                         />
                     ))}
                 </div>
@@ -73,7 +84,10 @@ export default function CategoryNav() {
                         key={label}
                         label={label}
                         active={activeCategory === label}
-                        onClick={() => setActiveCategory(label)}
+                        onClick={() => {
+                            setActiveCategory(label);
+                            if (onCategoryChange) onCategoryChange(label); // 부모에 알림
+                        }}
                     />
                 ))}
             </div>
