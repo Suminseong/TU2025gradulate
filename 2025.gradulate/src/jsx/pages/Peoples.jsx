@@ -7,6 +7,9 @@ import ProfProfile from '../atom/ProfProfile';
 import studentsData from '../../data/students.json';
 import professorsData from '../../data/professors.json';
 
+// 남은 일
+// 사진 클릭했을때 다이렉트로 연결되는 기능
+// 우선 프로젝트 페이지가 만들어져야 뭘 어떻게 하든 할 수 있을 듯
 
 const PAGE_SIDE = 40;
 
