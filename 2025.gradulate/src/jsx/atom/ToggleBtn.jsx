@@ -38,7 +38,7 @@ export default function ToggleBtn({
         borderRadius: '18px',
         backgroundColor: '#0e0e0e',
         zIndex: 1,
-        left: isActive ? '2px' : '62px',
+        left: isActive ? '4px' : '64px',
 
     };
 
