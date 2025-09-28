@@ -8,7 +8,7 @@ import ProfProfile from '../atom/ProfProfile';
 
 const PAGE_SIDE = 40;
 
-// 카테고리 배열 (상수)
+// 학과(부서) 배열 (상수)
 const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
 const professorCategories = ['장영주', '권오재', '김 억', '김한종', '조남주', '한민섭', '홍성수', '김태균'];
 
@@ -18,7 +18,7 @@ const students = [
     nameKor: '고명현',
     nameEng: 'GO MYUNGHYUN',
     role: 'UI/UX DESIGNER',
-    category: '미디어디자인공학',
+    department: '미디어디자인공학',
     professor: '김한종',
     sns: [
       { platform: 'instagram', url: 'https://instagram.com' },
@@ -31,7 +31,7 @@ const students = [
     nameKor: '김예준',
     nameEng: 'KIM YEAHJUN',
     role: 'UI/UX DESIGNER',
-    category: '미디어디자인공학',
+    department: '미디어디자인공학',
     professor: '권오재',
     sns: [{ platform: 'instagram', url: 'https://instagram.com' }],
     eMail: 'kim.yeahjun@example.com',
@@ -165,9 +165,9 @@ export default function Peoples() {
   // 현재 표시할 학생 리스트 계산 (교수 모드에서도 학생을 기준으로 필터링)
   const filtered = React.useMemo(() => {
     if (!isToggleActive) {
-      // 학생 모드: 전체면 전부, 아니면 category로 필터
+      // 학생 모드: 전체면 전부, 아니면 department로 필터
       if (activeCategory === '전체') return students;
-      return students.filter((p) => p.category === activeCategory);
+      return students.filter((p) => p.department === activeCategory);
     }
     // 교수 모드: 선택한 교수 이름에 속한 학생만 필터
     return students.filter((p) => p.professor === activeCategory);
