@@ -15,27 +15,27 @@ const professorCategories = ['장영주', '권오재', '김 억', '김한종', '
 // 임시 더미 데이터
 const students = [
   {
-    nameKor: '홍길동',
-    nameEng: 'HONG GILDONG',
-    role: 'DESIGNER',
-    category: '산업디자인공학',
-    professor: '장영주',
+    nameKor: '고명현',
+    nameEng: 'GO MYUNGHYUN',
+    role: 'UI/UX DESIGNER',
+    category: '미디어디자인공학',
+    professor: '김한종',
     sns: [
       { platform: 'instagram', url: 'https://instagram.com' },
     ],
-    eMail: 'hong.gil.dong@example.com',
-    imgSrc: '../public/김예준.jpg',
-    imgAlt: 'Hong Gildong profile',
+    eMail: 'go.myunghyun@example.com',
+    imgSrc: '../image/1/portrait.jpg',
+    imgAlt: 'Go Myunghyun profile',
   },
   {
     nameKor: '김예준',
     nameEng: 'KIM YEAHJUN',
-    role: 'DESIGNER',
+    role: 'UI/UX DESIGNER',
     category: '미디어디자인공학',
     professor: '권오재',
     sns: [{ platform: 'instagram', url: 'https://instagram.com' }],
     eMail: 'kim.yeahjun@example.com',
-    imgSrc: '../public/김예준.jpg',
+    imgSrc: '../image/15/portrait.jpg',
     imgAlt: 'Kim Yeahjun profile',
   },
 ];
@@ -64,6 +64,18 @@ const professors = [
     eMail: 'kwon.ohjae@example.com',
     imgSrc: '../public/김예준.jpg',
     imgAlt: 'Professor Kwon profile',
+  },
+  {
+    nameKor: '김한종',
+    nameEng: 'KIM HANJONG',
+    role: 'PROFESSOR',
+    professor: '김한종',
+    education: 'Ph.D. in Design, XYZ University',
+    field: 'Industrial Design',
+    sns: [],
+    eMail: 'kim.hanjong@example.com',
+    imgSrc: '../public/김예준.jpg',
+    imgAlt: 'Professor Kim profile',
   },
 ];
 
