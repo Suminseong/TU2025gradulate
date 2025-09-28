@@ -22,7 +22,6 @@ const students = [
     professor: '장영주',
     sns: [
       { platform: 'instagram', url: 'https://instagram.com' },
-      { platform: 'linkedin', url: 'https://linkedin.com' },
     ],
     eMail: 'hong.gil.dong@example.com',
     imgSrc: '../public/김예준.jpg',

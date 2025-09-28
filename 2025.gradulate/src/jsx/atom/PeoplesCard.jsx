@@ -106,7 +106,22 @@ export default function PeoplesCard({
             </div>
             <div style={{...contentTextStyle}}>
                 <p style={{margin: '0'}}>{role}</p>
-                <p style={{margin: '0'}}>{sns.linkedin}</p>
+                {Array.isArray(sns) && sns.length > 0 ? (
+                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '4px 0 0 0' }}>
+                        {sns.map((item, idx) => (
+                            <a
+                                key={`${item.platform}-${idx}`}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ textDecoration: 'none', color: 'inherit', wordBreak: 'break-all' }}
+                                aria-label={`${nameKor} ${item.platform}`}
+                            >
+                                {item.url}
+                            </a>
+                        ))}
+                    </div>
+                ) : null}
                 <p style={{margin: '0'}}>{eMail ? (<a style={{textDecoration: 'none', color: 'inherit'}} href={`mailto:${eMail}`}>{eMail}</a>) : null}</p> {/* GPT: 이메일 클릭 및 null 가드 */}
             </div>
         </div>
