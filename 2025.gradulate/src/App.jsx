@@ -9,6 +9,7 @@ import Footer from './jsx/molecule/Footer';
 // 페이지
 import Credit from './jsx/pages/Credits';
 import Peoples from './jsx/pages/Peoples';
+import Projects from './jsx/pages/Projects';
 
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
@@ -32,10 +33,10 @@ function Layout({ headerMode, setHeaderMode }) {
   const NAV_ITEMS = useMemo(
     () => [
       { key: 'projects', label: 'PROJECTS', href: '/projects' },
-      { key: 'peoples',  label: 'PEOPLES',  href: '/peoples'  },
+      { key: 'peoples', label: 'PEOPLES', href: '/peoples' },
       { key: 'showroom', label: 'SHOWROOM', href: '/showroom' },
-      { key: 'guestbook',label: 'GUESTBOOK',href: '/guestbook'},
-      { key: 'credits',  label: 'CREDITS',  href: '/credits'  },
+      { key: 'guestbook', label: 'GUESTBOOK', href: '/guestbook' },
+      { key: 'credits', label: 'CREDITS', href: '/credits' },
     ],
     []
   );
@@ -46,7 +47,7 @@ function Layout({ headerMode, setHeaderMode }) {
     const p = location.pathname.replace(/^\/+/, '');
     if (!p) return undefined;
     const head = p.split('/')[0];
-    return ['projects','peoples','showroom','guestbook','credits'].includes(head) ? head : undefined;
+    return ['projects', 'peoples', 'showroom', 'guestbook', 'credits'].includes(head) ? head : undefined;
   }, [location.pathname]);
 
   return (
@@ -82,7 +83,7 @@ function Layout({ headerMode, setHeaderMode }) {
         ]}
         social={{
           youtube: { href: 'https://youtube.com/', label: 'YouTube' },
-          instagram:{ href: 'https://instagram.com/', label: 'Instagram' },
+          instagram: { href: 'https://instagram.com/', label: 'Instagram' },
         }}
         sidePadding={350}
         maxWidth={1220}
@@ -120,7 +121,7 @@ export default function App() {
           {/* 개별 페이지 — 필요 시 라우트 진입 시 헤더 모드를 고정하고 싶다면, 각 컴포넌트에서 setHeaderMode 호출 */}
           <Route index element={<PageShell title="HOME" />} />
 
-          <Route path="projects" element={<PageShell title="PROJECTS" />} />
+          <Route path="projects" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
           <Route path="guestbook" element={<PageShell title="GUESTBOOK" />} />
@@ -160,6 +161,15 @@ function PeoplesWithHeaderMode({ setHeaderMode }) {
   }, [setHeaderMode]);
 
   return <Peoples />;
+}
+
+function ProjectsWithHeaderMode({ setHeaderMode }) {
+  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <Projects />;
 }
 
 // If this file is used as the entry, mount the app into #root so index.html shows something.
