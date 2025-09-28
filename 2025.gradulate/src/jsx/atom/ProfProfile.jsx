@@ -97,6 +97,27 @@ export default function ProfProfile({ nameKor, rank, eMail, education, field, im
         color: '#000000'
     };
 
+    // 교육/전문분야 값을 숫자 목록으로 혹은 단일 텍스트로 렌더링
+    const renderNumbered = (val) => {
+        if (Array.isArray(val)) {
+            return (
+                <div style={{ ...profileTextNomalWrapperStyle }}>
+                    {val.map((item, idx) => (
+                        <p key={idx} style={{ ...profileTextNormalStyle }}>{item}</p>
+                    ))}
+                </div>
+            );
+        }
+        if (typeof val === 'string' && val) {
+            return (
+                <div style={{ ...profileTextNomalWrapperStyle }}>
+                    <p style={{ ...profileTextNormalStyle }}>{val}</p>
+                </div>
+            );
+        }
+        return null;
+    };
+
     return (
         <div style={{ ...wrapperStyle }}>
             <div style={{ ...profileWrapperStyle }}>
@@ -113,19 +134,11 @@ export default function ProfProfile({ nameKor, rank, eMail, education, field, im
                     </div>
                     <div style={{ ...profileTextStyle }}>
                         <p style={{ ...profileTextBoldStyle }}>학력</p>
-                        <div style={{ ...profileTextNomalWrapperStyle }}>
-                            <p style={{ ...profileTextNormalStyle }}>{education}</p>
-                            <p style={{ ...profileTextNormalStyle }}>{education}</p>
-                            <p style={{ ...profileTextNormalStyle }}>{education}</p>
-                        </div>
+                        {renderNumbered(education)}
                     </div>
                     <div style={{ ...profileTextStyle }}>
                         <p style={{ ...profileTextBoldStyle }}>전문 분야</p>
-                        <div style={{ ...profileTextNomalWrapperStyle }}>
-                            <p style={{ ...profileTextNormalStyle }}>{field}</p>
-                            <p style={{ ...profileTextNormalStyle }}>{field}</p>
-                            <p style={{ ...profileTextNormalStyle }}>{field}</p>
-                        </div>
+                        {renderNumbered(field)}
                     </div>
                 </div>
             </div>
@@ -137,8 +150,14 @@ ProfProfile.propTypes = {
     nameKor: PropTypes.string.isRequired,
     rank: PropTypes.string.isRequired,
     eMail: PropTypes.string.isRequired,
-    education: PropTypes.string.isRequired,
-    field: PropTypes.string.isRequired,
+    education: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+    ]),
+    field: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.arrayOf(PropTypes.string),
+    ]),
     imgSrc: PropTypes.string.isRequired,
     imgAlt: PropTypes.string.isRequired,
 };
@@ -147,8 +166,8 @@ ProfProfile.defaultProps = {
     nameKor: '홍길동',
     rank: '교수',
     eMail: 'honggildong@example.com',
-    education: '서울대학교 컴퓨터공학과',
-    field: '인공지능',
+    education: [],
+    field: [],
     imgSrc: 'https://via.placeholder.com/240x332.png?text=Profile+Image',
     imgAlt: '홍길동 교수의 프로필 이미지',
 };

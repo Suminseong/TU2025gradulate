@@ -5,8 +5,18 @@
         "nameEng": "Jang Youngjoo",
         "rank": "교수",
         "email": "jangyoungjoo@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     },
     {
@@ -15,8 +25,18 @@
         "nameEng": "Kwon Ojae",
         "rank": "교수",
         "email": "kwonojae@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     },
     {
@@ -25,8 +45,18 @@
         "nameEng": "Kim Eok",
         "rank": "교수",
         "email": "kimeok@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     },
     {
@@ -35,8 +65,18 @@
         "nameEng": "Kim Hanjong",
         "rank": "교수",
         "email": "kimhanjong@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     },
     {
@@ -45,8 +85,18 @@
         "nameEng": "Jo Namjoo",
         "rank": "교수",
         "email": "jonamjoo@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     },
     {
@@ -55,8 +105,18 @@
         "nameEng": "Han Minseop",
         "rank": "교수",
         "email": "hanminseop@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     },
     {
@@ -65,8 +125,18 @@
         "nameEng": "Hong Seongsu",
         "rank": "교수",
         "email": "hongseongsu@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     },{
         "id": "p07",
@@ -74,8 +144,18 @@
         "nameEng": "Kim Taekyun",
         "rank": "교수",
         "email": "kimtaekyun@example.com",
-        "education": "",
-        "field": "",
+        "education": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
+        "field": [
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터",
+            "임시 데이터"
+        ],
         "imgUrl": "/image/0/portrait.jpg"
     }
 ]
