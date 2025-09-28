@@ -5,7 +5,7 @@
     "nameEng": "Kang Yujin",
     "role": "DESIGNER",
     "department": "MED",
-    "professorId": "p01",
+    "professorId": "p04",
     "sns": [
       { "platform": "instagram", "url": "https://instagram.com/example" }
     ],
@@ -18,7 +18,7 @@
     "nameEng": "Ko Myeonghyeon",
     "role": "DESIGNER",
     "department": "MED",
-    "professorId": "p02",
+    "professorId": "p03",
     "sns": [
       { "platform": "instagram", "url": "https://instagram.com/example" }
     ],
@@ -37,5 +37,18 @@
     ],
     "email": "koseoyoung@example.com",
     "imgUrl": "/image/2/portrait.jpg"
+  },
+  {
+    "id": "3",
+    "nameKor": "고은솔",
+    "nameEng": "Ko Eunsol",
+    "role": "DESIGNER",
+    "department": "MED",
+    "professorId": "p01",
+    "sns": [
+      { "platform": "instagram", "url": "https://instagram.com/example" }
+    ],
+    "email": "koeunsol@example.com",
+    "imgUrl": "/image/3/portrait.jpg"
   }
 ]

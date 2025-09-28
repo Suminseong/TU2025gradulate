@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 /**
  * 인물 카드 컴포넌트
- * 
+ * 토글 버튼 qhd로 볼때 이상함 고쳐야할듯
+ * 아니다 그냥 이상함 고쳐야함
  */
 
 export default function ToggleBtn({
