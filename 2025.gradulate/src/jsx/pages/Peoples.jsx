@@ -13,10 +13,18 @@ const PAGE_SIDE = 40;
 // 학과(부서) 배열 (상수) - UI 라벨
 const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
 
-// 학과 라벨 → 코드 매핑 (실제 데이터는 코드값 사용: IND/MED)
+// 학과 라벨 → 코드 매핑 (실제 데이터는 코드값 사용: IND/MED 또는 0/1)
+// 최신 스키마: IND=0, MED=1
 const departmentLabelToCode = {
-  '산업디자인공학': 'IND',
-  '미디어디자인공학': 'MED',
+  '산업디자인공학': 0,
+  '미디어디자인공학': 1,
+};
+
+// 호환성: 문자열 코드(IND/MED)나 숫자(0/1) 모두 지원하도록 정규화
+const normalizeDepartment = (dep) => {
+  if (dep === 'IND' || dep === 0 || dep === '0') return 0;
+  if (dep === 'MED' || dep === 1 || dep === '1') return 1;
+  return dep;
 };
 
 // 실제 데이터(JSON)
@@ -80,7 +88,7 @@ function PeoplesList({ people }) {
           nameEng={p.nameEng}
           role={p.role}
           sns={p.sns}
-          eMail={p.email}
+          eMail={p.eMail}
           imgSrc={p.imgUrl}
           imgAlt={`${p.nameKor} profile`}
         />
@@ -112,8 +120,8 @@ export default function Peoples() {
     if (!isToggleActive) {
       // 학생 모드: 전체면 전부, 아니면 department 코드로 필터 (라벨/코드 호환)
       if (activeCategory === '전체') return students;
-      const depCode = departmentLabelToCode[activeCategory] || activeCategory;
-      return students.filter((p) => p.department === depCode);
+  const depCode = departmentLabelToCode[activeCategory]; // 0 또는 1
+  return students.filter((p) => normalizeDepartment(p.department) === depCode);
     }
     // 교수 모드: activeCategory가 교수 id 또는 이름일 수 있으므로 id로 정규화
     const activeProfId = professors.some((pr) => pr.id === activeCategory)
