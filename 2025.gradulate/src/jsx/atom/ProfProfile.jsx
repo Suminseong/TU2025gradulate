@@ -10,7 +10,7 @@ export default function ProfProfile({ nameKor, rank, eMail, education, field, im
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        width: '100vw',
+        width: '100%',
         height: 'auto',
         marginTop: '100px',
     };
