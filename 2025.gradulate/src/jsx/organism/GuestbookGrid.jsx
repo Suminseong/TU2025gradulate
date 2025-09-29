@@ -12,11 +12,27 @@ const PAD_R = 60;
 
 const toFlatWithPhoto = (items) => {
   const flat = [{ type: 'add', id: 'add' }, ...items];
-  const minI = 6, maxI = 10;
-  if (flat.length > minI) {
-    const idx = Math.min(Math.floor(Math.random() * (maxI - minI + 1)) + minI, flat.length);
-    flat.splice(idx, 0, { type: 'photo', id: `ph-${Date.now()}`, src: 'https://placehold.co/662x405' });
-  }
+  // 여러 범위에 대해 각각 랜덤 인덱스에 PhotoCard 삽입
+  const ranges = [
+    { min: 6, max: 10 },
+    { min: 16, max: 20 },
+    { min: 26, max: 30 },
+  ];
+  let offset = 0;
+  ranges.forEach((range, i) => {
+    if (flat.length > range.min + offset) {
+      const idx = Math.min(
+        Math.floor(Math.random() * (range.max - range.min + 1)) + range.min,
+        flat.length
+      ) + offset;
+      flat.splice(idx, 0, {
+        type: 'photo',
+        id: `ph-${Date.now()}-${i}`,
+        src: 'https://placehold.co/662x405',
+      });
+      offset++;
+    }
+  });
   return flat;
 };
 const toColumns = (flat) => {
@@ -25,16 +41,20 @@ const toColumns = (flat) => {
   return cols;
 };
 
+
 export default function GuestbookGrid({ onOpenModal, items }) {
   const railRef = useRef(null);
 
   // 진행바 상태: width(채워지는 길이), trackW(전체 트랙 너비)
   const [prog, setProg] = useState({ width: 0, trackW: 0 });
 
-  const columns = useMemo(() => {
-    const flat = toFlatWithPhoto(items);
-    return toColumns(flat);
-  }, [items]);
+  // 최초 마운트 시 한 번만 랜덤 삽입 flat 생성
+  const [flat, setFlat] = useState(() => toFlatWithPhoto(items));
+  useEffect(() => {
+    setFlat(toFlatWithPhoto(items));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]); // items가 바뀔 때만 새로 생성
+  const columns = toColumns(flat);
 
   // 수직 휠 → 가로 스크롤
   useEffect(() => {

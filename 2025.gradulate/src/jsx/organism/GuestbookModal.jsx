@@ -35,6 +35,7 @@ const s = {
   labelTo:   { fontFamily: 'Pretendard, system-ui', fontWeight: 600, fontSize: 32, color: '#555' },
   toInput: {
     border: 'none', outline: 'none',
+    borderBottom: '1px solid rgba(0,0,0,.18)',
     background: 'transparent',
     fontFamily: 'Pretendard, system-ui',
     fontSize: 28, color: '#303030',
@@ -58,6 +59,7 @@ const s = {
   labelFrom: { fontFamily: 'Pretendard, system-ui', fontWeight: 600, fontSize: 32, color: '#555' },
   fromInput: {
     border: 'none', outline: 'none',
+    borderBottom: '1px solid rgba(0,0,0,.18)',
     background: 'transparent',
     fontFamily: 'Pretendard, system-ui', fontSize: 20, color: '#303030',
     padding: '2px 4px 4px',
