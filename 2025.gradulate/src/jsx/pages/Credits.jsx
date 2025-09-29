@@ -274,6 +274,7 @@ export default function Credit() {
       title: '디자인',
       rows: [
         { ko: '구인회', en: 'Gu Inhoe' },
+        { ko: '김기윤', en: 'Kim Giyun' },
         { ko: '박혜성', en: 'Bak Hyeseong' },
         { ko: '석동현', en: 'Seok Donghyoen' },
       ],
