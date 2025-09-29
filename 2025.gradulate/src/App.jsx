@@ -10,6 +10,7 @@ import Footer from './jsx/molecule/Footer';
 import Credit from './jsx/pages/Credits';
 import Peoples from './jsx/pages/Peoples';
 import Projects from './jsx/pages/Projects';
+import MainPage from './jsx/pages/Main';
 
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
@@ -119,7 +120,7 @@ export default function App() {
         {/* 공통 레이아웃 */}
         <Route element={<Layout headerMode={headerMode} setHeaderMode={setHeaderMode} />}>
           {/* 개별 페이지 — 필요 시 라우트 진입 시 헤더 모드를 고정하고 싶다면, 각 컴포넌트에서 setHeaderMode 호출 */}
-          <Route index element={<PageShell title="HOME" />} />
+          <Route index element={<MainWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
           <Route path="projects" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
@@ -170,6 +171,14 @@ function ProjectsWithHeaderMode({ setHeaderMode }) {
   }, [setHeaderMode]);
 
   return <Projects />;
+}
+
+function MainWithHeaderMode({ setHeaderMode }) {
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <MainPage />;
 }
 
 // If this file is used as the entry, mount the app into #root so index.html shows something.
