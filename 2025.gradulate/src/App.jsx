@@ -11,6 +11,7 @@ import Credit from './jsx/pages/Credits';
 import Peoples from './jsx/pages/Peoples';
 import Projects from './jsx/pages/Projects';
 import MainPage from './jsx/pages/Main';
+import Guestbook from './jsx/pages/Guestbook';
 
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
@@ -125,7 +126,7 @@ export default function App() {
           <Route path="projects" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
-          <Route path="guestbook" element={<PageShell title="GUESTBOOK" />} />
+          <Route path="guestbook" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
           {/* 크레딧 페이지: 스크롤 상단에서는 그라데이션 유지 */}
           <Route
@@ -179,6 +180,14 @@ function MainWithHeaderMode({ setHeaderMode }) {
   }, [setHeaderMode]);
 
   return <MainPage />;
+}
+
+function GuestbookWithHeaderMode({ setHeaderMode }) {
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <Guestbook />;
 }
 
 // If this file is used as the entry, mount the app into #root so index.html shows something.
