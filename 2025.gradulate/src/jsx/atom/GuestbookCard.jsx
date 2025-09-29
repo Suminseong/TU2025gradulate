@@ -66,7 +66,7 @@ export default function GuestbookCard({ to, from, message }) {
           fontWeight: 300,
           fontSize: 18,
           lineHeight: '27px',
-          color: '#303',
+          color: '#333',
         }}
       >
         {message}

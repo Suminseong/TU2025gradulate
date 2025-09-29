@@ -32,7 +32,7 @@ export default function Guestbook() {
 
   return (
     <div style={{ background:'#121212', minHeight:'100vh' }}>
-      <NavHeader />
+     
 
       <main style={{ padding:'80px 40px 120px 40px' }}>
         <h1 style={{ fontFamily:font, fontWeight:700, fontSize:32, color:'#FFFFFF', textAlign:'center', margin:'20px 0 40px' }}>
@@ -49,7 +49,7 @@ export default function Guestbook() {
         </section>
       </main>
 
-      <Footer />
+     
 
       <GuestbookModal
         open={open}

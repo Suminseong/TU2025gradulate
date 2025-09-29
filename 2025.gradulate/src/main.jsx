@@ -112,6 +112,35 @@ export default function App() {
   // 헤더 배경 모드 전역 상태
   const [headerMode, setHeaderMode] = useState(NAV_HEADER_MODES.GRADIENT);
 
+  // -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
+function CreditsWithHeaderMode({ setHeaderMode }) {
+  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <Credit />;
+}
+
+// -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
+function PeoplesWithHeaderMode({ setHeaderMode }) {
+  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <Peoples />;
+}
+
+function GuestbookWithHeaderMode({ setHeaderMode }) {
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <Guestbook />;
+}
+
+
   return (
     <BrowserRouter>
       <ScrollAndFocusRestore />
@@ -154,33 +183,6 @@ export default function App() {
   );
 }
 
-// -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
-function CreditsWithHeaderMode({ setHeaderMode }) {
-  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
-  React.useEffect(() => {
-    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
-  }, [setHeaderMode]);
-
-  return <Credit />;
-}
-
-// -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
-function PeoplesWithHeaderMode({ setHeaderMode }) {
-  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
-  React.useEffect(() => {
-    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
-  }, [setHeaderMode]);
-
-  return <Peoples />;
-}
-
-function GuestbookWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
-    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
-  }, [setHeaderMode]);
-
-  return <Guestbook />;
-}
 
 // If this file is used as the entry, mount the app into #root so index.html shows something.
 import { createRoot } from 'react-dom/client';

@@ -13,6 +13,7 @@ const PAD_R = 60;
 const toFlatWithPhoto = (items) => {
   const flat = [{ type: 'add', id: 'add' }, ...items];
   // 여러 범위에 대해 각각 랜덤 인덱스에 PhotoCard 삽입
+  // 이미지 랜덤하게 나올 수 있게 + 나중에 숫자도 자동화
   const ranges = [
     { min: 6, max: 10 },
     { min: 16, max: 20 },
@@ -188,10 +189,10 @@ export default function GuestbookGrid({ onOpenModal, items }) {
             top: 0,
             height: 3,
             width: prog.width,
-            minWidth: 100,
+            minWidth: 25,
             background: '#7a7a7a',
             borderRadius: 2,
-            transition: 'width 60ms linear'
+            transition: 'width 350ms easeIn'
           }}/>
         </div>
       </div>
