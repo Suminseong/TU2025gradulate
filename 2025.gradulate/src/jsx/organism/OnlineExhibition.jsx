@@ -16,7 +16,7 @@ export default function OnlineExhibition() {
         <div style={s.title} id="online-title">Online Exhibition</div>
         <div style={s.bg}><img src="https://placehold.co/1840x905" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
         <div style={s.card} aria-hidden />
-        <div style={s.h1}>온라인 쇼룸을 통해 작품을 감상해보세요</div>
+        <div style={s.h1}>온라인 쇼룸이겠냐에요 이거 새로 구성할거심 ^ㅗㅗ^</div>
         <div style={{ position:'absolute', left:860, top:935 }}>
           <OutlineButton label="View More" />
         </div>
