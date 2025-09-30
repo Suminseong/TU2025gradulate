@@ -2,6 +2,7 @@
 import React from 'react';
 import ToggleBtn from '../atom/ToggleBtn';
 import CategoryNavBtn from '../atom/CategoryNavBtn';
+import Dropdown from '../molecule/Dropdown';
 import { useEffect } from 'react';
 
 /**
@@ -69,12 +70,7 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type }) 
                         />
                     ))}
                 </div>
-                {/* 이 부분은 atom에서 드롭다운 버튼 만들어서 교체해야함 */}
-                <ToggleBtn
-                    path={isToggleActive ? 'professor' : 'student'}
-                    isActive={isToggleActive}
-                    onClick={handleToggle}
-                />
+                <Dropdown label={"이름순"} onSelect={setActiveProjectCategory} />
             </div>
         );
     }
@@ -131,5 +127,5 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type }) 
         );
     }
 
-    
+
 }

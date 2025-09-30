@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 // 프로젝트 카드 컴포넌트
-export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) {
+export default function ProjectCard({ titleKor, titleEng, nameEng, view, like }) {
     const cardWrapperStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -37,10 +37,42 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
         background: 'linear-gradient(180deg, rgba(102, 102, 102, 0) 0%, rgba(0, 0, 0, 0.6) 100%)',
         position: 'absolute',
         // 백그라운드 블러 강도 8px
-        backdropFilter: 'blur(8px)',
+        backdropFilter: 'blur(4px)',
         opacity: 0,
         transition: 'opacity 0.3s ease-in-out',
         cursor: 'pointer',
+    };
+
+    const cardTitleWrapperStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: '22px',
+        left: '20px',
+        width: 'auto',
+        height: '46px'
+    };
+
+    const cardMainTitleStyle = {
+        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
+        fontSize: '24px',
+        fontWeight: '700',
+        margin: '0',
+        padding: '0',
+        width: 'auto',
+        color: '#FFFFFF'
+    };
+
+    const cardSubTitleStyle = {
+        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
+        fontSize: '12px',
+        fontWeight: '400',
+        margin: '0',
+        padding: '0',
+        width: 'auto',
+        color: '#FFFFFF'
     };
 
     const cardTextWrapperStyle = {
@@ -121,27 +153,43 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
         color: '#121212'
     };
 
+        // 호버 시 opacity 1
+    const handleMouseEnter = (e) => {
+        const hoverDiv = e.currentTarget.querySelector('.card-hover');
+        hoverDiv.style.opacity = 1;
+    };
+    const handleMouseLeave = (e) => {
+        const hoverDiv = e.currentTarget.querySelector('.card-hover');
+        hoverDiv.style.opacity = 0;
+    }
+
     return (
-        <div style={{...cardWrapperStyle}}>
-            <div style={{ ...cardImageWrapperStyle}}>
-                <img style={{...cardImageStyle}} src="../public/thumbnailExample.png" alt="Project" />
-            </div>
-            <div style={{...cardTextWrapperStyle}}>
-                <div style={{...cardProfileWrapperStyle}}>
-                    <div style={{...cardProfileImageWrapperStyle}}>
-                        <img style={{...cardProfileImageStyle}} src="../public/김예준.jpg" alt="Profile1" />
-                        <img style={{...cardProfileImageStyle, ...secondProfileStyle}} src="../public/김예준.jpg" alt="Profile2" />
+        <div style={{ ...cardWrapperStyle }}>
+            <div style={{ ...cardImageWrapperStyle }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <div className="card-hover" style={{ ...cardImageHoverStyle }}>
+                    <div style={{ ...cardTitleWrapperStyle }}>
+                        <p style={{ ...cardSubTitleStyle }}>{titleKor}</p>
+                        <p style={{ ...cardMainTitleStyle }}>{titleEng}</p>
                     </div>
-                    <p style={{...cardNameTextStyle}}>{nameEng}</p>
                 </div>
-                <div style={{...cardIconWrapperStyle}}>
-                    <div style={{...cardIconStyle}}>
-                        <img src="../public/icons/viewIcon.svg" alt="ViewIcon" />
-                        <p style={{...cardIconTextStyle}}>{view}</p>
+                <img style={{ ...cardImageStyle }} src="../public/thumbnailExample.png" alt="Project" />
+            </div>
+            <div style={{ ...cardTextWrapperStyle }}>
+                <div style={{ ...cardProfileWrapperStyle }}>
+                    <div style={{ ...cardProfileImageWrapperStyle }}>
+                        <img style={{ ...cardProfileImageStyle }} src="../public/김예준.jpg" alt="Profile1" />
+                        <img style={{ ...cardProfileImageStyle, ...secondProfileStyle }} src="../public/김예준.jpg" alt="Profile2" />
                     </div>
-                    <div style={{...cardIconStyle}}>
+                    <p style={{ ...cardNameTextStyle }}>{nameEng}</p>
+                </div>
+                <div style={{ ...cardIconWrapperStyle }}>
+                    <div style={{ ...cardIconStyle }}>
                         <img src="../public/icons/likeIcon.svg" alt="LikeIcon" />
-                        <p style={{...cardIconTextStyle}}>{like}</p>
+                        <p style={{ ...cardIconTextStyle }}>{like}</p>
+                    </div>
+                    <div style={{ ...cardIconStyle }}>
+                        <img src="../public/icons/viewIcon.svg" alt="ViewIcon" />
+                        <p style={{ ...cardIconTextStyle }}>{view}</p>
                     </div>
                 </div>
             </div>

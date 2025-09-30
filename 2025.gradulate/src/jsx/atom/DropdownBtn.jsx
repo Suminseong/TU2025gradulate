@@ -19,7 +19,7 @@ export default function DropdownBtn({
         width: '120px',
         height: '40px',
         flexDirection: 'row',
-        justifyContetn: 'flex-end',
+        justifyContent: 'flex-end',
         alignItems: 'center',
 
     }
@@ -42,7 +42,12 @@ export default function DropdownBtn({
     }
 
     return (
-        
+        <div style={{ ...dropdownWrapperStyle, ...style }}>
+            <p style={{ ...dropdownTextStyle }}>{label}</p>
+            <div style={{ ...dropdownIconStyle }}>
+                <img src="../icons/arrowDropdownIcon.svg" alt="dropdownIcon" />
+            </div>
+        </div>
     )
 }
 
