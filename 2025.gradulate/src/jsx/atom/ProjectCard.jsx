@@ -74,7 +74,7 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
         display: 'flex',
         position: 'relative',
         width: 'auto',
-        height: '20px',
+        height: '30px',
         gap: '-12px'
     };
 
