@@ -36,15 +36,21 @@ export default function NavHeader({
     switch (mode) {
       case NAV_HEADER_MODES.LIGHT:
         return {
-          background: '#FFFFFF',
+          // background: '#FFFFFF',
+          // textColor: '#000000',
+          // boxShadow: '0 1px 0 rgba(0,0,0,0.06)', // 살짝 구분선
+
+          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
           textColor: '#000000',
-          boxShadow: '0 1px 0 rgba(0,0,0,0.06)', // 살짝 구분선
         };
       case NAV_HEADER_MODES.DARK:
         return {
+          // background: '#121212',
+          // textColor: '#FFFFFF',
+          // boxShadow: '0 1px 0 rgba(255,255,255,0.06)',
+
           background: '#121212',
           textColor: '#FFFFFF',
-          boxShadow: '0 1px 0 rgba(255,255,255,0.06)',
         };
       case NAV_HEADER_MODES.GRADIENT:
       default:

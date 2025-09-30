@@ -176,7 +176,7 @@ function ProjectsWithHeaderMode({ setHeaderMode }) {
 
 function MainWithHeaderMode({ setHeaderMode }) {
   React.useEffect(() => {
-    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+    setHeaderMode(NAV_HEADER_MODES.DARK);
   }, [setHeaderMode]);
 
   return <MainPage />;
@@ -184,7 +184,7 @@ function MainWithHeaderMode({ setHeaderMode }) {
 
 function GuestbookWithHeaderMode({ setHeaderMode }) {
   React.useEffect(() => {
-    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+    setHeaderMode(NAV_HEADER_MODES.DARK);
   }, [setHeaderMode]);
 
   return <Guestbook />;
