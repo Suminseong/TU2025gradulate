@@ -46,7 +46,7 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
     const cardTextWrapperStyle = {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'flex-start',
+        alignItems: 'flex-end',
         justifyContent: 'space-between',
         width: '445px',
         height: '32px',
@@ -55,7 +55,7 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
     const cardProfileWrapperStyle = {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'flex-start',
         gap: '4px',
         width: 'auto',
@@ -72,6 +72,7 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
 
     const cardProfileImageWrapperStyle = {
         display: 'flex',
+        position: 'relative',
         width: 'auto',
         height: '20px',
         gap: '-12px'
@@ -81,10 +82,16 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
         display: 'flex',
         width: '20px',
         height: '20px',
-        borderRadius: '10px',
+        borderRadius: '50px',
         objectFit: 'cover',
         border: '1px solid #FFFFFF',
+        zIndex: 3,
     };
+
+    const secondProfileStyle = {
+        marginLeft: '-12px',
+        zIndex: 1,
+    }
 
     const cardIconWrapperStyle = {
         display: 'flex',
@@ -117,23 +124,23 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like}) 
     return (
         <div style={{...cardWrapperStyle}}>
             <div style={{ ...cardImageWrapperStyle}}>
-                <img style={{...cardImageStyle}} src="" alt="Project" />
+                <img style={{...cardImageStyle}} src="../public/thumbnailExample.png" alt="Project" />
             </div>
             <div style={{...cardTextWrapperStyle}}>
                 <div style={{...cardProfileWrapperStyle}}>
                     <div style={{...cardProfileImageWrapperStyle}}>
-                        <img style={{...cardProfileImageStyle}} src="" alt="Profile1" />
-                        <img style={{...cardProfileImageStyle}} src="" alt="Profile2" />
+                        <img style={{...cardProfileImageStyle}} src="../public/김예준.jpg" alt="Profile1" />
+                        <img style={{...cardProfileImageStyle, ...secondProfileStyle}} src="../public/김예준.jpg" alt="Profile2" />
                     </div>
                     <p style={{...cardNameTextStyle}}>{nameEng}</p>
                 </div>
                 <div style={{...cardIconWrapperStyle}}>
                     <div style={{...cardIconStyle}}>
-                        <img src="" alt="ViewIcon" />
+                        <img src="../public/icons/viewIcon.svg" alt="ViewIcon" />
                         <p style={{...cardIconTextStyle}}>{view}</p>
                     </div>
                     <div style={{...cardIconStyle}}>
-                        <img src="" alt="LikeIcon" />
+                        <img src="../public/icons/likeIcon.svg" alt="LikeIcon" />
                         <p style={{...cardIconTextStyle}}>{like}</p>
                     </div>
                 </div>

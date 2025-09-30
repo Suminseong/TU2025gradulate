@@ -39,7 +39,7 @@ function ProjectsList({ project }) {
             width: '100%',
         }}>
             {/* 프로젝트 카드 임의로 60개 */}
-            {/* {Array.from({ length: 60 }, (_, index) => (
+            {Array.from({ length: 60 }, (_, index) => (
                 <ProjectCard
                     key={`project-${index}`}
                     titleKor={`프로젝트 ${index + 1}`}
@@ -48,7 +48,7 @@ function ProjectsList({ project }) {
                     view={Math.floor(Math.random() * 1000)}
                     like={Math.floor(Math.random() * 100)}
                 />
-            ))} */}
+            ))}
         </div>
     );
 };
