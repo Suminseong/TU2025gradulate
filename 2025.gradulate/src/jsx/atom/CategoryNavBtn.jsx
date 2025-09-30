@@ -28,6 +28,7 @@ export default function NavBtn({
         justifyContent: 'center',
         whiteSpace: 'nowrap',
         padding: 0,
+        margin: 0,
         cursor: 'pointer',
         // 미세 인터랙션
         outline: 'none',

@@ -57,10 +57,7 @@ export default function Projects() {
     
     return (
         <div style={{ position: 'relative' }}>
-            <CategoryNav
-                // onCategoryChange={setActiveCategory}
-                // onToggleChange={setIsToggleActive}
-            />
+            <CategoryNav type="project"/>
 
             <PageContainer>
                 <ProjectsList />

@@ -8,7 +8,8 @@ import { useEffect } from 'react';
  * 카테고리 네비게이션
  */
 
-export default function CategoryNav({ onCategoryChange, onToggleChange }) {
+export default function CategoryNav({ onCategoryChange, onToggleChange, type }) {
+    const Props = { onCategoryChange, onToggleChange, type };
     const [isToggleActive, setIsToggleActive] = React.useState(false);
     const handleToggle = () =>
         setIsToggleActive((prev) => {
@@ -19,9 +20,11 @@ export default function CategoryNav({ onCategoryChange, onToggleChange }) {
             return next;
         });
     const [activeCategory, setActiveCategory] = React.useState('전체');
+    const [activeProjectCategory, setActiveProjectCategory] = React.useState('All Projects');
 
     const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
     const professorCategories = ['장영주', '권오재', '김 억', '김한종', '조남주', '한민섭', '홍성수', '김태균'];
+    const projectCategories = ['All Projects', 'AI & Robot', 'Edu & Kids', 'Health Care', 'IT & Tech', 'Living', 'Mobility']
 
     useEffect(() => {
         // 토글 상태에 따라 activeCategory 초기화
@@ -46,6 +49,35 @@ export default function CategoryNav({ onCategoryChange, onToggleChange }) {
         justifyContent: 'center',
         gap: '60px',
     };
+
+    // 프로젝트 카테고리 네비게이션
+    // (css 문제로 카테고리를 선택할 때 살짝씩 밀리는 경향이 있음. 나중에 디테일 작업때 수정할 것)
+    if (Props.type === "project") {
+        return (
+            <div style={{ ...CategoryNavContainerStyle }}>
+                <div style={{ width: '120px', height: '100%' }}></div>
+                <div style={{ ...CategoryNavStyle }}>
+                    {projectCategories.map((label) => (
+                        <CategoryNavBtn
+                            key={label}
+                            label={label}
+                            active={activeProjectCategory === label}
+                            onClick={() => {
+                                setActiveProjectCategory(label);
+                                if (onCategoryChange) onCategoryChange(label); // 부모에 알림
+                            }}
+                        />
+                    ))}
+                </div>
+                {/* 이 부분은 atom에서 드롭다운 버튼 만들어서 교체해야함 */}
+                <ToggleBtn
+                    path={isToggleActive ? 'professor' : 'student'}
+                    isActive={isToggleActive}
+                    onClick={handleToggle}
+                />
+            </div>
+        );
+    }
 
     if (!isToggleActive) {
         return (
@@ -73,27 +105,31 @@ export default function CategoryNav({ onCategoryChange, onToggleChange }) {
         );
     }
 
-    return (
-        <div style={{ ...CategoryNavContainerStyle }}>
-            <div style={{ width: '120px', height: '100%' }}></div>
-            <div style={{ ...CategoryNavStyle }}>
-                {professorCategories.map((label) => (
-                    <CategoryNavBtn
-                        key={label}
-                        label={label}
-                        active={activeCategory === label}
-                        onClick={() => {
-                            setActiveCategory(label);
-                            if (onCategoryChange) onCategoryChange(label); // 부모에 알림
-                        }}
-                    />
-                ))}
+    else if (isToggleActive) {
+        return (
+            <div style={{ ...CategoryNavContainerStyle }}>
+                <div style={{ width: '120px', height: '100%' }}></div>
+                <div style={{ ...CategoryNavStyle }}>
+                    {professorCategories.map((label) => (
+                        <CategoryNavBtn
+                            key={label}
+                            label={label}
+                            active={activeCategory === label}
+                            onClick={() => {
+                                setActiveCategory(label);
+                                if (onCategoryChange) onCategoryChange(label); // 부모에 알림
+                            }}
+                        />
+                    ))}
+                </div>
+                <ToggleBtn
+                    path={isToggleActive ? 'professor' : 'student'}
+                    isActive={isToggleActive}
+                    onClick={handleToggle}
+                />
             </div>
-            <ToggleBtn
-                path={isToggleActive ? 'professor' : 'student'}
-                isActive={isToggleActive}
-                onClick={handleToggle}
-            />
-        </div>
-    );
+        );
+    }
+
+    
 }
