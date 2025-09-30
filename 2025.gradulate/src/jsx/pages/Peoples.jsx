@@ -122,6 +122,7 @@ export default function Peoples() {
   }, [activeCategory, isToggleActive]);
 
   // 교수 모드일 때 선택된 교수 프로필 (id 기준)
+  // 교수 모드일 떄, 학생들의 이미지가 작품 썸네일로 변경되게 제작 해야함
   const selectedProfessor = React.useMemo(() => {
     if (!isToggleActive) return null;
     const prof = professors.find((pr) => pr.id === activeCategory) ||
