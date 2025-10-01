@@ -39,6 +39,7 @@ function ProjectsList({ project }) {
             width: '100%',
         }}>
             {/* 프로젝트 카드 임의로 60개 */}
+            {/* 프로젝트 링크 URL 결정 필요, 우선 임의로 /#으로 진행 */}
             {Array.from({ length: 60 }, (_, index) => (
                 <ProjectCard
                     key={`project-${index}`}
@@ -47,6 +48,7 @@ function ProjectsList({ project }) {
                     nameEng={`Designer ${index + 1}`}
                     view={Math.floor(Math.random() * 1000)}
                     like={Math.floor(Math.random() * 100)}
+                    href='projects/404' // 나중에 상세 페이지 링크로 변경
                 />
             ))}
         </div>

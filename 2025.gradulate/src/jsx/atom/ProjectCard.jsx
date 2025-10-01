@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 // 프로젝트 카드 컴포넌트
-export default function ProjectCard({ titleKor, titleEng, nameEng, view, like }) {
+export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , href }) {
     const cardWrapperStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -153,7 +153,7 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like })
         color: '#121212'
     };
 
-        // 호버 시 opacity 1
+    // 호버 시 opacity 1
     const handleMouseEnter = (e) => {
         const hoverDiv = e.currentTarget.querySelector('.card-hover');
         hoverDiv.style.opacity = 1;
@@ -163,8 +163,13 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like })
         hoverDiv.style.opacity = 0;
     }
 
+    // 이 컴포넌트를 클릭 했을 때, 상세 페이지로 이동 (임시로 404로 링크)
+    const handleClick = () => {
+        window.location.href = href;
+    };
+
     return (
-        <div style={{ ...cardWrapperStyle }}>
+        <div style={{ ...cardWrapperStyle }} onClick={handleClick}>
             <div style={{ ...cardImageWrapperStyle }} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 <div className="card-hover" style={{ ...cardImageHoverStyle }}>
                     <div style={{ ...cardTitleWrapperStyle }}>
