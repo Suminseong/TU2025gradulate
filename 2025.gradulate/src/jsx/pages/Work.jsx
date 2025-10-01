@@ -16,6 +16,7 @@ function PageContainer({ children }) {
                 paddingRight: PAGE_SIDE,
                 display: 'flex',
                 flexDirection: 'column',
+                minHeight: '100vh'
             }}>
                 {children}
             </div>
