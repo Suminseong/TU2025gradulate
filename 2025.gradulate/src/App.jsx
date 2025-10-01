@@ -109,43 +109,6 @@ function PageShell({ title }) {
   );
 }
 
-// -------- 루트(App) --------
-export default function App() {
-  // 헤더 배경 모드 전역 상태
-  const [headerMode, setHeaderMode] = useState(NAV_HEADER_MODES.GRADIENT);
-
-  return (
-    <BrowserRouter>
-      <ScrollAndFocusRestore />
-      <Routes>
-        {/* 공통 레이아웃 */}
-        <Route element={<Layout headerMode={headerMode} setHeaderMode={setHeaderMode} />}>
-          {/* 개별 페이지 — 필요 시 라우트 진입 시 헤더 모드를 고정하고 싶다면, 각 컴포넌트에서 setHeaderMode 호출 */}
-          <Route index element={<MainWithHeaderMode setHeaderMode={setHeaderMode} />} />
-
-          <Route path="projects" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
-          <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
-          <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
-          <Route path="guestbook" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
-
-          {/* 크레딧 페이지: 스크롤 상단에서는 그라데이션 유지 */}
-          <Route
-            path="credits"
-            element={
-              <CreditsWithHeaderMode
-                setHeaderMode={setHeaderMode}
-              />
-            }
-          />
-
-          {/* 404 */}
-          <Route path="*" element={<PageShell title="404 NOT FOUND" />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
 // -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
 function CreditsWithHeaderMode({ setHeaderMode }) {
   // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
@@ -188,6 +151,43 @@ function GuestbookWithHeaderMode({ setHeaderMode }) {
   }, [setHeaderMode]);
 
   return <Guestbook />;
+}
+
+// -------- 루트(App) --------
+export default function App() {
+  // 헤더 배경 모드 전역 상태
+  const [headerMode, setHeaderMode] = useState(NAV_HEADER_MODES.GRADIENT);
+
+  return (
+    <BrowserRouter>
+      <ScrollAndFocusRestore />
+      <Routes>
+        {/* 공통 레이아웃 */}
+        <Route element={<Layout headerMode={headerMode} setHeaderMode={setHeaderMode} />}>
+          {/* 개별 페이지 — 필요 시 라우트 진입 시 헤더 모드를 고정하고 싶다면, 각 컴포넌트에서 setHeaderMode 호출 */}
+          <Route index element={<MainWithHeaderMode setHeaderMode={setHeaderMode} />} />
+
+          <Route path="projects" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
+          <Route path="guestbook" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
+
+          {/* 크레딧 페이지: 스크롤 상단에서는 그라데이션 유지 */}
+          <Route
+            path="credits"
+            element={
+              <CreditsWithHeaderMode
+                setHeaderMode={setHeaderMode}
+              />
+            }
+          />
+
+          {/* 404 */}
+          <Route path="*" element={<PageShell title="404 NOT FOUND" />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 // If this file is used as the entry, mount the app into #root so index.html shows something.
