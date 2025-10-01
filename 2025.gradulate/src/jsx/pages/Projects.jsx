@@ -48,7 +48,7 @@ function ProjectsList({ project }) {
                     nameEng={`Designer ${index + 1}`}
                     view={Math.floor(Math.random() * 1000)}
                     like={Math.floor(Math.random() * 100)}
-                    href='projects/404' // 나중에 상세 페이지 링크로 변경
+                    href='work/404' // 나중에 상세 페이지 링크로 변경
                 />
             ))}
         </div>
