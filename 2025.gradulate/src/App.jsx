@@ -153,7 +153,7 @@ function GuestbookWithHeaderMode({ setHeaderMode }) {
 
 function WorkWithHeaderMode({ setHeaderMode }) {
   React.useEffect(() => {
-    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+    setHeaderMode(NAV_HEADER_MODES.LIGHT);
   }, [setHeaderMode]);
 
   return <Work />;

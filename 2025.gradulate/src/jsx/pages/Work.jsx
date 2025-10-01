@@ -26,6 +26,8 @@ function PageContainer({ children }) {
 
 
 export default function Work() {
+    // 워크 페이지 헤더가 그라데이션이 아닌 흰색 배경으로 고정되어야 함
+    // → NavHeaderMode를 변경해서 적용해야하는데 지금 적용이 안되는 상태임 나중에 Nav 손봐야함
     return (
         <div style={{ position: 'relative' }}>
             <PageContainer>
