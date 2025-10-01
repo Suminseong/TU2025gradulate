@@ -85,7 +85,6 @@ function PeoplesList({ people }) {
         />
       ))}
     </div>
-
   )
 };
 
@@ -106,19 +105,26 @@ export default function Peoples() {
     }
   }, [isToggleActive]);
 
-  // 현재 표시할 학생 리스트 계산 (교수 모드에서도 학생을 기준으로 필터링)
+  // 현재 표시할 학생 리스트 계산 (교수 모드에서 학생을 기준으로 필터링 + 썸네일 교체)
   const filtered = React.useMemo(() => {
     if (!isToggleActive) {
       // 학생 모드: 전체면 전부, 아니면 department 코드로 필터 (라벨/코드 호환)
       if (activeCategory === '전체') return students;
-  const depCode = departmentLabelToCode[activeCategory]; // 0 또는 1
-  return students.filter((p) => normalizeDepartment(p.department) === depCode);
+      const depCode = departmentLabelToCode[activeCategory]; // 0 또는 1
+      return students.filter((p) => normalizeDepartment(p.department) === depCode);
     }
     // 교수 모드: activeCategory가 교수 id 또는 이름일 수 있으므로 id로 정규화
     const activeProfId = professors.some((pr) => pr.id === activeCategory)
       ? activeCategory
       : (professors.find((pr) => pr.nameKor === activeCategory)?.id || '');
-    return students.filter((p) => p.professorId === activeProfId);
+
+    return students
+    .filter((p) => p.professorId === activeProfId)
+    .map((p) => ({
+      ...p,
+      imgUrl: "../public/thumbnailExample.png", // 교수 모드면 썸네일로 교체 
+      // 썸네일을 추가하면 p.thumbnailUrl로 변경
+    }));
   }, [activeCategory, isToggleActive]);
 
   // 교수 모드일 때 선택된 교수 프로필 (id 기준)
@@ -126,7 +132,7 @@ export default function Peoples() {
   const selectedProfessor = React.useMemo(() => {
     if (!isToggleActive) return null;
     const prof = professors.find((pr) => pr.id === activeCategory) ||
-                 professors.find((pr) => pr.nameKor === activeCategory) || null;
+      professors.find((pr) => pr.nameKor === activeCategory) || null;
     return prof;
   }, [isToggleActive, activeCategory]);
 
@@ -150,6 +156,7 @@ export default function Peoples() {
             imgAlt={`${selectedProfessor.nameKor} profile`}
           />
         )}
+        {/* 교수 프로필이 나왔을때 학생 리스트의 썸네일 변경 */}
         <PeoplesList people={filtered} />
       </PageContainer>
 
