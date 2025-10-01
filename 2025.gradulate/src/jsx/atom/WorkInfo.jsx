@@ -10,7 +10,10 @@ export default function WorkInfo({
 }) {
     const containerStyle = {
         display: 'flex',
-        width: '350px',
+        position: 'fixed',
+        top: '80px',
+        left: 0,
+        width: '270px',
         height: '100%',
         backgroundColor: '#121212',
         padding: '60px 40px'
@@ -19,7 +22,7 @@ export default function WorkInfo({
     const contentWrapperStyle = {
         display: 'flex',
         flexDirection: 'column',
-        width: '100%',
+        width: '270px',
         height: 'auto',
         gap: '48px'
     };
@@ -69,14 +72,14 @@ export default function WorkInfo({
     };
 
     const likeIconWrapperStyle = {
-        
+
     }
 
     return (
         <div style={containerStyle}>
             <div style={contentWrapperStyle}>
                 <div style={closeIconStyle} onClick={() => { /* 닫기 기능 추후 구현 */ }}>
-                    <img src="../public/closeIcon.svg" alt="Close Icon" />
+                    <img src="../icons/closeIcon.svg" alt="Close Icon" />
                 </div>
                 <div style={contentStyle}>
                     <h1 style={titleStyle}>{titleKor}</h1>

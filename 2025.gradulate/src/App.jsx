@@ -12,6 +12,7 @@ import Peoples from './jsx/pages/Peoples';
 import Projects from './jsx/pages/Projects';
 import MainPage from './jsx/pages/Main';
 import Guestbook from './jsx/pages/Guestbook';
+import Work from './jsx/pages/Work';
 
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
@@ -111,7 +112,6 @@ function PageShell({ title }) {
 
 // -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
 function CreditsWithHeaderMode({ setHeaderMode }) {
-  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
   React.useEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.GRADIENT);
   }, [setHeaderMode]);
@@ -120,7 +120,6 @@ function CreditsWithHeaderMode({ setHeaderMode }) {
 }
 
 function PeoplesWithHeaderMode({ setHeaderMode }) {
-  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
   React.useEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.GRADIENT);
   }, [setHeaderMode]);
@@ -129,7 +128,6 @@ function PeoplesWithHeaderMode({ setHeaderMode }) {
 }
 
 function ProjectsWithHeaderMode({ setHeaderMode }) {
-  // 진입 시 gradient로(스크롤 반응), 이탈 시 원복할 필요는 없음(다음 라우트가 자체 제어)
   React.useEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.GRADIENT);
   }, [setHeaderMode]);
@@ -153,6 +151,14 @@ function GuestbookWithHeaderMode({ setHeaderMode }) {
   return <Guestbook />;
 }
 
+function WorkWithHeaderMode({ setHeaderMode }) {
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT);
+  }, [setHeaderMode]);
+
+  return <Work />;
+}
+
 // -------- 루트(App) --------
 export default function App() {
   // 헤더 배경 모드 전역 상태
@@ -171,6 +177,7 @@ export default function App() {
           <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
           <Route path="guestbook" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="work" element={<WorkWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
           {/* 크레딧 페이지: 스크롤 상단에서는 그라데이션 유지 */}
           <Route
