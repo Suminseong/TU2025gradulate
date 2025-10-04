@@ -9,6 +9,10 @@ import { useEffect } from 'react';
  * 카테고리 네비게이션
  */
 
+// 노트북 화면으로 볼때 폰트가 많이 크다고 느껴짐
+// 특히 프로젝트 페이지
+// 나중에 디테일 작업때 조정할 것
+
 export default function CategoryNav({ onCategoryChange, onToggleChange, type }) {
     const Props = { onCategoryChange, onToggleChange, type };
     const [isToggleActive, setIsToggleActive] = React.useState(false);
