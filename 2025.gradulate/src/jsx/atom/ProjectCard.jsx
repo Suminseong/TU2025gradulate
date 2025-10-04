@@ -177,7 +177,7 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , 
                         <p style={{ ...cardMainTitleStyle }}>{titleEng}</p>
                     </div>
                 </div>
-                <img style={{ ...cardImageStyle }} src="../public/thumbnailExample.png" alt="Project" />
+                <img style={{ ...cardImageStyle }} src="../thumbnailExample.png" alt="Project" />
             </div>
             <div style={{ ...cardTextWrapperStyle }}>
                 <div style={{ ...cardProfileWrapperStyle }}>
@@ -189,11 +189,11 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , 
                 </div>
                 <div style={{ ...cardIconWrapperStyle }}>
                     <div style={{ ...cardIconStyle }}>
-                        <img src="../public/icons/likeIcon.svg" alt="LikeIcon" />
+                        <img src="../icons/likeIcon.svg" alt="LikeIcon" />
                         <p style={{ ...cardIconTextStyle }}>{like}</p>
                     </div>
                     <div style={{ ...cardIconStyle }}>
-                        <img src="../public/icons/viewIcon.svg" alt="ViewIcon" />
+                        <img src="../icons/viewIcon.svg" alt="ViewIcon" />
                         <p style={{ ...cardIconTextStyle }}>{view}</p>
                     </div>
                 </div>
