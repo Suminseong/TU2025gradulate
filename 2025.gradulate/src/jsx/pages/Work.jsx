@@ -88,8 +88,7 @@ export default function Work() {
 
     const basePath = `../public/projects/${project.projectNum}`
     const galleryCount = Number(project.galleryCount || 0);
-    const galleryImages = Array.from({ length: galleryCount }, (_, idx) => `${basePath}/${idx + 1}.jpg`);
-    
+    const galleryImages = Array.from({ length: galleryCount }, (_, idx) => `${basePath}/gallery/${idx}.jpg`);
     return (
         <div style={{ position : 'relative' }}>
             <PageContainer>
