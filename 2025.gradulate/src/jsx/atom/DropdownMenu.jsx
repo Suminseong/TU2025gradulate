@@ -11,13 +11,12 @@ export default function DropdownMenu({
     onSelect,
     style,
     isOpen,
-    position
+    position,
+    selected
 }) {
 
     const dropdownMenuStyle = {
-        // display: isOpen ? 'flex' : 'none',
-        // 기능 확정되면 위 부분 주석 해제
-        display: 'flex',
+        display: isOpen ? 'flex' : 'none',
         flexDirection: 'column',
         position: 'absolute',
         top: 'calc(100% + 8px)',
@@ -66,13 +65,13 @@ export default function DropdownMenu({
 
     return (
         <div style={{ ...dropdownMenuStyle}}>
-            {/* {options.map((option, index) => (
+            {options.map((option, index) => (
                 <div key={index} style={{ ...dropdownItemStyle }} onClick={() => onSelect(option)}>
-                    <p style={{ ...itemTextStyle }}>{option}</p>
+                    <p style={{ ...itemTextStyle, ...(option === selected ? {} : itemTextNoneSelectStyle) }}>{option}</p>
                 </div>
-            ))} */}
+            ))}
             {/* 기능 확정되면 위 부분 주석 해제 or 새로운 기능 추가 */}
-            <div style={{ ...dropdownItemStyle }} onClick={() => onSelect('이름순')}>
+            {/* <div style={{ ...dropdownItemStyle }} onClick={() => onSelect('이름순')}>
                 <p style={{ ...itemTextStyle }}>이름순</p>
             </div>
             <div style={{ ...dropdownItemStyle }} onClick={() => onSelect('좋아요순')}>
@@ -86,7 +85,7 @@ export default function DropdownMenu({
             </div>
             <div style={{ ...dropdownItemStyle }} onClick={() => onSelect('개인작우선')}>
                 <p style={{ ...itemTextStyle, ...itemTextNoneSelectStyle }}>개인작우선</p>
-            </div>
+            </div> */}
         </div>
     );
 }

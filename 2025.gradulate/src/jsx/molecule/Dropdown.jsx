@@ -46,6 +46,7 @@ export default function Dropdown({
                     style={{}}
                     isOpen={isOpen}
                     position={position}
+                    selected={label}
                 />
             )}
         </div>
