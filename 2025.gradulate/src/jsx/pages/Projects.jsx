@@ -81,6 +81,7 @@ function ProjectsList({ list }) {
                         key={index}
                         titleKor={project.titleKor}
                         titleEng={project.titleEng}
+                        src={`../public/projects/${project.projectNum}/thumb.jpg`}
                         nameEng={designerName}
                         view={project.view}
                         like={project.like}

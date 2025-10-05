@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 // 프로젝트 카드 컴포넌트
-export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , href }) {
+export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , href, src }) {
     const cardWrapperStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -177,7 +177,7 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , 
                         <p style={{ ...cardMainTitleStyle }}>{titleEng}</p>
                     </div>
                 </div>
-                <img style={{ ...cardImageStyle }} src="../thumbnailExample.png" alt="Project" />
+                <img style={{ ...cardImageStyle }} src={src} alt="Project" />
             </div>
             <div style={{ ...cardTextWrapperStyle }}>
                 <div style={{ ...cardProfileWrapperStyle }}>
@@ -208,6 +208,8 @@ ProjectCard.propTypes = {
     nameEng: PropTypes.string.isRequired,
     view: PropTypes.number.isRequired,
     like: PropTypes.number.isRequired,
+    src: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
 };
 
 ProjectCard.defaultProps = {
