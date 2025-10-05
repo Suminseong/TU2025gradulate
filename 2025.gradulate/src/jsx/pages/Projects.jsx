@@ -1,13 +1,11 @@
 //Projects.jsx
 //프로젝트 리스트페이지
 
-// 필요 컴포넌트
-// 정렬 컴포넌트
-// 프로젝트 카드 컴포넌트
-
 import React from 'react';
 import CategoryNav from '../molecule/CategoryNav';
 import ProjectCard from '../atom/ProjectCard';
+import projectsData from '../../data/projects.json';
+import studentsData from '../../data/students.json';
 
 const PAGE_SIDE = 40;
 
@@ -26,7 +24,23 @@ function PageContainer({ children }) {
     );
 }
 
-function ProjectsList({ project }) {
+// 프로젝트 데이터
+const projects = projectsData;
+const students = studentsData;
+
+// [GPT] 프로젝트 카테고리 라벨 ↔ 코드 매핑
+const PROJECT_CATEGORY_MAP = {
+    'All Projects': null,
+    'AI & Robot': 'c0',
+    'Edu & Kids': 'c1',
+    'Health Care': 'c2',
+    'IT & Tech': 'c3',
+    'Living': 'c4',
+    'Mobility': 'c5',
+};
+
+
+function ProjectsList({ list }) {
     return (
         <div style={{
             display: 'flex',
@@ -38,31 +52,50 @@ function ProjectsList({ project }) {
             columnGap: '14px',
             width: '100%',
         }}>
-            {/* 프로젝트 카드 임의로 60개 */}
-            {/* 프로젝트 링크 URL 결정 필요, 우선 임의로 /#으로 진행 */}
-            {Array.from({ length: 60 }, (_, index) => (
-                <ProjectCard
-                    key={`project-${index}`}
-                    titleKor={`프로젝트 ${index + 1}`}
-                    titleEng={`Project ${index + 1}`}
-                    nameEng={`Designer ${index + 1}`}
-                    view={Math.floor(Math.random() * 1000)}
-                    like={Math.floor(Math.random() * 100)}
-                    href='work' // 나중에 상세 페이지 링크로 변경
-                />
-            ))}
+            {list.map((project, index) => {
+                // 프로젝트의 멤버로 학생 데이터에서 이름 찾기
+                const members = project.members.map(memberId => {
+                    const student = students.find(student => student.num === memberId);
+                    return student ? student.nameKor : 'null';
+                });
+
+                const designerName = members.join(', '); // 멤버 이름들을 쉼표로 구분하여 연결
+
+                return (
+                    <ProjectCard
+                        key={index}
+                        titleKor={project.titleKor}
+                        titleEng={project.titleEng}
+                        nameEng={designerName}
+                        view={project.view}
+                        like={project.like}
+                        href='work' // 나중에 상세 페이지 링크로 변경
+                    />
+                );
+            })}
         </div>
     );
 };
 
 export default function Projects() {
-    
+    const [selectedCategoryLabel, setSelectedCategoryLabel] = React.useState('All Projects');
+
+    // 라벨을 코드로 변환하여 필터링
+    const filteredProjects = React.useMemo(() => {
+        const code = PROJECT_CATEGORY_MAP[selectedCategoryLabel] || null;
+        if (!code) return projects; // 'All Projects'인 경우 전체 반환
+        return projects.filter(project => project.category === code);
+    }, [selectedCategoryLabel]);
+
     return (
         <div style={{ position: 'relative' }}>
-            <CategoryNav type="project"/>
+            <CategoryNav
+                type="project"
+                onCategoryChange={setSelectedCategoryLabel}
+            />
 
             <PageContainer>
-                <ProjectsList />
+                <ProjectsList list={filteredProjects} />
             </PageContainer>
         </div>
     );
