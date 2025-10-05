@@ -49,6 +49,16 @@ function getMemebersNameText(project) {
 }
 
 function ProjectsList({ list }) {
+    const CAT_CODE_TO_LETTER = {
+        'c0': 'A',
+        'c1': 'E',
+        'c2': 'H',
+        'c3': 'I',
+        'c4': 'L',
+        'c5': 'M',
+    }
+
+
     return (
         <div style={{
             display: 'flex',
@@ -62,6 +72,9 @@ function ProjectsList({ list }) {
         }}>
             {list.map((project, index) => {
                 const designerName = getMemebersNameText(project);
+                const num3 = String(project.projectNum + 1 ?? project.num).padStart(3, '0');
+                const catLetter = CAT_CODE_TO_LETTER[project.category] || 'A'   
+                const slug = `${catLetter}${num3}`; // ex: A001, E023
 
                 return (
                     <ProjectCard
@@ -71,7 +84,7 @@ function ProjectsList({ list }) {
                         nameEng={designerName}
                         view={project.view}
                         like={project.like}
-                        href='work' // 나중에 상세 페이지 링크로 변경
+                        href={`work/${slug}`} // 나중에 상세 페이지 링크로 변경
                     />
                 );
             })}
