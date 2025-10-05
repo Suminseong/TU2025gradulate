@@ -177,7 +177,7 @@ export default function App() {
           <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
           <Route path="guestbook" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
-          <Route path="work" element={<WorkWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="work/:pid" element={<WorkWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
           {/* 크레딧 페이지: 스크롤 상단에서는 그라데이션 유지 */}
           <Route

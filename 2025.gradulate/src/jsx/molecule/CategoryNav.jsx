@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 // 특히 프로젝트 페이지
 // 나중에 디테일 작업때 조정할 것
 
-export default function CategoryNav({ onCategoryChange, onToggleChange, type }) {
+export default function CategoryNav({ onCategoryChange, onToggleChange, type, onSortChange, sortLabel }) {
     const Props = { onCategoryChange, onToggleChange, type };
     const [isToggleActive, setIsToggleActive] = React.useState(false);
     const handleToggle = () =>
@@ -30,6 +30,19 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type }) 
     const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
     const professorCategories = ['장영주', '권오재', '김 억', '김한종', '조남주', '한민섭', '홍성수', '김태균'];
     const projectCategories = ['All Projects', 'AI & Robot', 'Edu & Kids', 'Health Care', 'IT & Tech', 'Living', 'Mobility']
+
+    // 드롭다운 정렬 상태
+    const SORT_OPTIONS = ['이름순', '좋아요순', '조회수순', '팀작우선', '개인작우선'];
+    const [internalSortLabel, setInternalSortLabel] = React.useState('이름순');
+    const currentSortLabel = sortLabel || internalSortLabel;
+    const hadleSortSelect = (label) => {
+        setInternalSortLabel(label);
+        if (onSortChange) onSortChange(label);
+    }
+
+
+
+
 
     useEffect(() => {
         // 토글 상태에 따라 activeCategory 초기화
@@ -74,7 +87,10 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type }) 
                         />
                     ))}
                 </div>
-                <Dropdown label={"이름순"} onSelect={setActiveProjectCategory} />
+                <Dropdown
+                    label={currentSortLabel}
+                    options={SORT_OPTIONS}
+                    onSelect={hadleSortSelect} />
             </div>
         );
     }

@@ -8,10 +8,7 @@ import PropTypes from 'prop-types';
 
 export default function DropdownBtn({
     label,
-    options,
-    onSelect,
     style,
-    filter
 }) {
 
     const dropdownWrapperStyle = {
