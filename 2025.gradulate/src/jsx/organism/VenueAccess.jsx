@@ -85,7 +85,7 @@ export default function VenueAccess() {
 
           <KVRow k="Hours">
             <div style={{ fontFamily: FONT, fontSize: 16, fontWeight: 300, color:'#CCCCCC' }}>
-              12 : 34 - 12 : 34
+              13 : 00 - 17 : 00
             </div>
             <div style={{ fontFamily: FONT, fontSize: 16, fontWeight: 300, color:'#CCCCCC' }}>
               Last Entry 22:22
