@@ -135,32 +135,16 @@ export default function NavHeader({
     justifyContent: 'center',
   };
 
-  const redSquareOuter = {
+  const logoOuter = {
     width: 38.33,
     height: 32,
     position: 'relative',
-    overflow: 'hidden',
+    // overflow: 'hidden',Z
   };
 
-  const redSquare = {
-    width: 32,
-    height: 32,
-    position: 'absolute',
-    left: 3.16,
-    top: 0,
-    background: '#E50914', // 선명한 레드
-    borderRadius: 2,
-  };
-
-  const redDot = {
-    width: 5.35,
-    height: 5.35,
-    position: 'absolute',
-    left: 0,
-    top: 24.82,
-    background: '#E50914',
-    borderRadius: 2,
-  };
+  const isDarkMode = mode === NAV_HEADER_MODES.DARK;
+  const logoSrc = isDarkMode ? '../public/icons/logoLight.svg' : '../public/icons/logoDark.svg';
+  const logoAlt = isDarkMode ? 'LogoLight' : 'LogoDark';
 
   return (
     <header style={wrapperStyle} role="banner">
@@ -173,9 +157,8 @@ export default function NavHeader({
             style={{ color: 'inherit', textDecoration: 'none' }}
           >
             <div style={logoBoxStyle} aria-hidden>
-              <div style={redSquareOuter}>
-                <div style={redSquare} />
-                <div style={redDot} />
+              <div style={logoOuter}>
+                <img src={logoSrc} alt={logoAlt} />
               </div>
             </div>
           </a>
