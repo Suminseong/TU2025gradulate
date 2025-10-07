@@ -6,12 +6,21 @@ import CategoryNav from '../molecule/CategoryNav';
 import ProfProfile from '../atom/ProfProfile';
 import studentsData from '../../data/students.json';
 import professorsData from '../../data/professors.json';
+import projectsData from '../../data/projects.json';
 
-// 남은 일
-// 사진 클릭했을때 다이렉트로 연결되는 기능
-// 우선 프로젝트 페이지가 만들어져야 뭘 어떻게 하든 할 수 있을 듯
+import { useNavigate } from 'react-router-dom';
 
 const PAGE_SIDE = 40;
+
+const CAT_CODE_TO_LETTER = {
+  'c0': 'A',
+  'c1': 'E',
+  'c2': 'H',
+  'c3': 'I',
+  'c4': 'L',
+  'c5': 'M',
+};
+
 
 // 학과(부서) 배열 (상수) - UI 라벨
 const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
@@ -33,6 +42,7 @@ const normalizeDepartment = (dep) => {
 // 실제 데이터(JSON)
 const students = studentsData;
 const professors = professorsData;
+
 
 // Professor
 // id: string
@@ -61,6 +71,7 @@ function PageContainer({ children }) {
 }
 
 function PeoplesList({ people }) {
+  const navigate = useNavigate();
   return (
     <div style={{
       display: 'flex',
@@ -72,18 +83,46 @@ function PeoplesList({ people }) {
       columnGap: '14px',
       width: '100%',
     }}>
-      {people.map((p, index) => (
-        <PeoplesCard
-          key={p.id ?? `${p.nameKor}-${index}`}
-          nameKor={p.nameKor}
-          nameEng={p.nameEng}
-          role={p.role}
-          sns={p.sns}
-          eMail={p.eMail}
-          imgSrc={p.imgUrl}
-          imgAlt={`${p.nameKor} profile`}
-        />
-      ))}
+      {people.map((p, index) => {
+        const key = p.id ?? p.studentId ?? `${p.nameKor}-${index}`;
+        const hasProjectInfo = typeof p.projectNum === 'number' && p.category;
+        const pidIndex = hasProjectInfo ? (p.projectNum + 1) : null; // 0-based to 1-based
+        const pid = hasProjectInfo
+          ? `${(CAT_CODE_TO_LETTER[p.category] || 'A')}${String(pidIndex).padStart(3, '0')}`
+          : null;
+
+        const card = (
+          <PeoplesCard
+            key={key}
+            nameKor={p.nameKor}
+            nameEng={p.nameEng}
+            role={p.role}
+            sns={p.sns || '-'} // sns가 없을 때 '-'로 표시
+            eMail={p.eMail}
+            imgSrc={p.imgUrl}
+            imgAlt={`${p.nameKor} profile`}
+          />
+        );
+
+        // 링크로 이동 가능한 경우에만 Link로 감쌉니다.
+        return hasProjectInfo ? (
+          <div
+            key={`link-${key}`}
+            role="link"
+            tabIndex={0}
+            onClick={() => navigate(`/work/${pid}`)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') navigate(`/work/${pid}`);
+            }}
+            style={{ textDecoration: 'none', cursor: 'pointer' }}
+            aria-label={`${p.nameKor} 작품 보기 (${pid})`}
+          >
+            {card}
+          </div>
+        ) : (
+          card
+        );
+      })}
     </div>
   )
 };
@@ -94,6 +133,16 @@ export default function Peoples() {
 
   // 현재 선택된 카테고리
   const [activeCategory, setActiveCategory] = React.useState(studentCategories[0]);
+
+  const memberToProject = React.useMemo(() => {
+    const map = new Map();
+    (projectsData || []).forEach((prj) => {
+      (prj.members || []).forEach((memberId) => {
+        if (!map.has(memberId)) map.set(memberId, prj);
+      });
+    });
+    return map;
+  }, []);
 
   // 토글 상태에 따라 activeCategory 초기화
   React.useEffect(() => {
@@ -119,13 +168,23 @@ export default function Peoples() {
       : (professors.find((pr) => pr.nameKor === activeCategory)?.id || '');
 
     return students
-    .filter((p) => p.professorId === activeProfId)
-    .map((p) => ({
-      ...p,
-      imgUrl: "../public/thumbnailExample.png", // 교수 모드면 썸네일로 교체 
-      // 썸네일을 추가하면 p.thumbnailUrl로 변경
-    }));
-  }, [activeCategory, isToggleActive]);
+      .filter((p) => p.professorId === activeProfId)
+      .map((p) => {
+        let prj = memberToProject.get(p.num);
+        if (!prj) {
+          prj = (projectsData || []).find((x) => x.category === p.category && x.projectNum === p.projectNum) || null;
+        }
+
+        const thumbPath = prj ? `/projects/${prj.projectNum}/thumb.jpg` : "/thumbnailExample.png";
+        return {
+          ...p,
+          imgUrl: thumbPath, // 교수 모드면 썸네일로 교체
+        };
+      });
+    // ...p,
+    // imgUrl: "../public/thumbnailExample.png", // 교수 모드면 썸네일로 교체 
+    // // 썸네일을 추가하면 p.thumbnailUrl로 변경
+  }, [activeCategory, isToggleActive, memberToProject]);
 
   // 교수 모드일 때 선택된 교수 프로필 (id 기준)
   // 교수 모드일 떄, 학생들의 이미지가 작품 썸네일로 변경되게 제작 해야함
