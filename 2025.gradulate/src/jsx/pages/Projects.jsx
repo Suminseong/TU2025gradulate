@@ -1,6 +1,8 @@
 //Projects.jsx
 //프로젝트 리스트페이지
 
+// 프로젝트 카드 프로필 -> 카테고리 이미지로 변경 고려
+
 import React from 'react';
 import CategoryNav from '../molecule/CategoryNav';
 import ProjectCard from '../atom/ProjectCard';

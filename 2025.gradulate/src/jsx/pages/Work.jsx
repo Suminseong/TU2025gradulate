@@ -120,10 +120,10 @@ export default function Work() {
 
                 {galleryImages.length > 0 ? (
                     galleryImages.map((src, i) => (
-                        <Img style={{minHeight : '100vh'}} key={i} src={src} alt={`project-${catLetter}${num3}-img-${i + 1}`} />
+                        <Img style={{ minHeight: '100vh' }} key={i} src={src} alt={`project-${catLetter}${num3}-img-${i + 1}`} />
                     ))
                 ) : (
-                    <Img src="../public/thumbnailExample.png" alt={`project-${catLetter}${num3}-placeholder`} />
+                    <Img style={{ minHeight: '100vh' }} src="../public/thumbnailExample.png" alt={`project-${catLetter}${num3}-placeholder`} />
                 )}
 
                 <DesignerInfo
