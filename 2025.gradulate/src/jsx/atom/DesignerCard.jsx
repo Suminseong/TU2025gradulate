@@ -10,7 +10,7 @@ export default function DesignerCard({
     part,
     sns,
     eMail,
-    imgSrc,
+    imgUrl,
     imgAlt,
 }) {
     const cardStyle = {
@@ -132,7 +132,7 @@ export default function DesignerCard({
     return (
         <div style={{ ...cardStyle }}>
             <div style={{ ...cardImageContainterStyle }}>
-                <img style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }} src={imgSrc} alt={imgAlt} />
+                <img style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }} src={imgUrl} alt={imgAlt} />
             </div>
             <div style={{ ...cardContentWrapperStyle }}>
                 <div style={{ ...cardProfileNameWapperStyle }}>

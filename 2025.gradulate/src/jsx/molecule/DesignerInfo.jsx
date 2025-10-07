@@ -38,36 +38,17 @@ export default function DesignerInfo({ designers }) {
         <div style={{ ...containerStyle }}>
             <h1 style={{ ...titleStyle }}>Designer</h1>
             <div style={{ ...contentWrapperStyle }}>
-                {/* {designers.map((designer, index) => (
+                {designers.map((designer, index) => (
                     <DesignerCard
                         key={index}
                         nameKor={designer.nameKor}
                         nameEn={designer.nameEn}
-                        role={designer.role}
-                        email={designer.email}
-                        phone={designer.phone}
-                        profileImage={designer.profileImage}
+                        part={designer.role}
+                        sns={designer.sns}
+                        eMail={designer.eMail}
+                        imgUrl={designer.imgUrl}
                     />
-                ))} */}
-                {/* 디자이너카드 임의 2개 제작, 데이터 들어오면 다시 제작 */}
-                <DesignerCard
-                    nameKor="김예준"
-                    nameEng="Yejun Kim"
-                    part="UI/UX Designer"
-                    sns="@yejun_kim"
-                    eMail="yejun.kim@example.com"
-                    imgSrc="../public/김예준.jpg"
-                    imgAlt="김예준 프로필 이미지"
-                />
-                <DesignerCard
-                    nameKor="성수민"
-                    nameEng="Sung Sumin"
-                    part="Frontend Developer"
-                    sns="@sung_sumin"
-                    eMail="sung.sumin@example.com"
-                    imgSrc="../public/김예준.jpg"
-                    imgAlt="성수민 프로필 이미지"
-                />
+                ))}
             </div>
         </div>
     );

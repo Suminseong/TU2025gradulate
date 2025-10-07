@@ -6,6 +6,7 @@ import WorkInfo from '../atom/WorkInfo';
 import DesignerInfo from '../molecule/DesignerInfo';
 import { useParams } from 'react-router-dom';
 import projectsData from '../../data/projects.json';
+import studentsData from '../../data/students.json';
 
 const PAGE_SIDE = 40;
 
@@ -75,6 +76,25 @@ export default function Work() {
         );
     }
 
+    // 프로젝트에 참여한 디자이너 목록
+    // 개인작일때는 1명, 팀작일 때는 2명
+    // students.json에서 정보를 찾아서 이름, role, sns, email, imgUrl을 전달
+    const designers = (project.members || []).map(memberId => {
+        const student = studentsData.find(s => s.num === memberId);
+        return student ? {
+            nameKor: student.nameKor,
+            nameEng: student.nameEng,
+            role: student.role || 'Designer',
+            sns: student.sns || '-',
+            eMail: student.eMail || '',
+            imgUrl: student.imgUrl || '../public/김예준.jpg', // 기본 이미지
+        } : null;
+    }).filter(Boolean);
+
+    // 프로젝트 대표 디자이너 이름 (프로젝트 카드에 표시하기 위함)
+    const designerName = designers.length > 0 ? designers[0].nameEng : 'Unknown Designer';
+
+
     const CAT_CODE_TO_LETTER = {
         'c0': 'A',
         'c1': 'E',
@@ -90,7 +110,7 @@ export default function Work() {
     const galleryCount = Number(project.galleryCount || 0);
     const galleryImages = Array.from({ length: galleryCount }, (_, idx) => `${basePath}/gallery/${idx}.jpg`);
     return (
-        <div style={{ position : 'relative' }}>
+        <div style={{ position: 'relative' }}>
             <PageContainer>
                 <WorkInfo
                     titleKor={project.titleKor}
@@ -106,9 +126,10 @@ export default function Work() {
                     <Img src="../public/thumbnailExample.png" alt={`project-${catLetter}${num3}-placeholder`} />
                 )}
 
-                {/* DesignerInfo에 members 정보를 연결하여 전달하는 과정 필요 */}
-                <DesignerInfo>  </DesignerInfo>
-                </PageContainer>
+                <DesignerInfo
+                    designers={designers}
+                />
+            </PageContainer>
         </div>
     );
 }
