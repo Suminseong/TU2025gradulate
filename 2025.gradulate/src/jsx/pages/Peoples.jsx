@@ -175,15 +175,12 @@ export default function Peoples() {
           prj = (projectsData || []).find((x) => x.category === p.category && x.projectNum === p.projectNum) || null;
         }
 
-        const thumbPath = prj ? `/projects/${prj.projectNum}/thumb.jpg` : "/thumbnailExample.png";
+        const thumbPath = prj ? `/projects/${prj.projectNum}/thumb.jpg` : "/thumbnailExample.png"; // 추후 절대 경로 바뀔 시 수정
         return {
           ...p,
           imgUrl: thumbPath, // 교수 모드면 썸네일로 교체
         };
       });
-    // ...p,
-    // imgUrl: "../public/thumbnailExample.png", // 교수 모드면 썸네일로 교체 
-    // // 썸네일을 추가하면 p.thumbnailUrl로 변경
   }, [activeCategory, isToggleActive, memberToProject]);
 
   // 교수 모드일 때 선택된 교수 프로필 (id 기준)

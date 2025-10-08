@@ -74,7 +74,7 @@ function ProjectsList({ list }) {
         }}>
             {list.map((project, index) => {
                 const designerName = getMemebersNameText(project);
-                const num3 = String(project.projectNum + 1 ?? project.num).padStart(3, '0');
+                const num3 = String(project.projectNum + 1).padStart(3, '0');
                 const catLetter = CAT_CODE_TO_LETTER[project.category] || 'A'   
                 const slug = `${catLetter}${num3}`; // ex: A001, E023
 
@@ -83,11 +83,11 @@ function ProjectsList({ list }) {
                         key={index}
                         titleKor={project.titleKor}
                         titleEng={project.titleEng}
-                        src={`../public/projects/${project.projectNum}/thumb.jpg`}
+                        src={`/projects/${project.projectNum}/thumb.jpg`} // 추후 절대 경로 바뀔시 수정
                         nameEng={designerName}
-                        view={project.view}
-                        like={project.like}
-                        href={`work/${slug}`} // 나중에 상세 페이지 링크로 변경
+                        view={"0"} // 나중에 데이터 베이스 연결
+                        like={"0"} // 나중에 데이터 베이스 연결
+                        href={`work/${slug}`}
                     />
                 );
             })}

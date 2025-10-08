@@ -87,7 +87,7 @@ export default function Work() {
             role: student.role || 'Designer',
             sns: student.sns || '-',
             eMail: student.eMail || '',
-            imgUrl: student.imgUrl || '../public/김예준.jpg', // 기본 이미지
+            imgUrl: student.imgUrl || '/김예준.jpg', // 기본 이미지
         } : null;
     }).filter(Boolean);
 
@@ -106,7 +106,7 @@ export default function Work() {
     const catLetter = CAT_CODE_TO_LETTER[project.category] || 'A'
     const num3 = String(project.projectNum ?? project.num).padStart(3, '0');
 
-    const basePath = `../public/projects/${project.projectNum}`
+    const basePath = `/projects/${project.projectNum}` // 추후 절대 경로 바뀔 시 수정
     const galleryCount = Number(project.galleryCount || 0);
     const galleryImages = Array.from({ length: galleryCount }, (_, idx) => `${basePath}/gallery/${idx}.jpg`);
     return (
@@ -123,7 +123,7 @@ export default function Work() {
                         <Img style={{ minHeight: '100vh' }} key={i} src={src} alt={`project-${catLetter}${num3}-img-${i + 1}`} />
                     ))
                 ) : (
-                    <Img style={{ minHeight: '100vh' }} src="../public/thumbnailExample.png" alt={`project-${catLetter}${num3}-placeholder`} />
+                    <Img style={{ minHeight: '100vh' }} src="/thumbnailExample.png" alt={`project-${catLetter}${num3}-placeholder`} /> // 추후 절대 경로 바뀔 시 수정
                 )}
 
                 <DesignerInfo
