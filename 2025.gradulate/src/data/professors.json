@@ -3,28 +3,29 @@
         "id": "p00",
         "nameKor": "장영주",
         "nameEng": "Jang Youngjoo",
-        "rank": "교수",
-        "email": "jangyoungjoo@example.com",
+        "rank": "학부장, 교수",
+        "email": "jyj@tukorea.ac.kr",
         "education": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "㈜LG 전자 디자인 연구소",
+            "㈜인터디자인 디자인 기획실장",
+            "한국디지털디자인학회 이사",
+            "경기도 시흥시 정책기획단 정책위원",
+            "제품디자인·브랜드 개발센터 [EH]책임교수",
+            "디자인비지니스혁신 센터장"
         ],
         "field": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "제품디자인·브랜드 개발",
+            "디자인 조직과 협동적 Process",
+            "제품디자인과 산업기술의 통합적 시스템 구축"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1711524695988100.jpg"
     },
     {
         "id": "p01",
         "nameKor": "권오재",
         "nameEng": "Kwon Ojae",
         "rank": "교수",
-        "email": "kwonojae@example.com",
+        "email": "kwsokw@tukorea.ac.kr",
         "education": [
             "임시 데이터",
             "임시 데이터",
@@ -37,54 +38,53 @@
             "임시 데이터",
             "임시 데이터"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1711524642556100.jpg"
     },
     {
         "id": "p02",
         "nameKor": "김 억",
         "nameEng": "Kim Eok",
-        "rank": "교수",
-        "email": "kimeok@example.com",
+        "rank": "교수, 학생처장",
+        "email": "kimeok@tukorea.ac.kr",
         "education": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "㈜LG전자 디자인경영센터 선임연구원",
+            "KAIST 총동문회 이사",
+            "한국산업디자이너협회 이사 / 한국서비스디자인학회 이사",
+            "한국디자인기초조형학회 / 한국디자인학회 이사",
+            "디자인융합전문대학원 사업단장"
         ],
         "field": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "디자인 전략 및 기획",
+            "서비스디자인 및 PSS(Product-Service System) 개발",
+            "도시 공공 디자인"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1711524658322100.jpg"
     },
     {
         "id": "p03",
         "nameKor": "김한종",
         "nameEng": "Kim Hanjong",
-        "rank": "교수",
-        "email": "kimhanjong@example.com",
+        "rank": "조교수, PD교수",
+        "email": "hanjongkim@tukorea.ac.kr",
         "education": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "AR 기반의 인터랙티브 제품 프로토타이핑 도구 개발",
+            "이동형음압병동의 디자인 요구사항 수립 연구",
+            "이동형음압병동 설계를 위한 디자인 도구 개발",
+            "한국기계연구원 산업용 SW UX/UI 가이드라인 개발"
         ],
         "field": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "Web 기반 3D 그래픽스",
+            "SW 시스템 디자인 / 프론트엔드 개발",
+            "디자인 지원 도구 개발"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1711524669896100.jpg"
     },
     {
         "id": "p04",
         "nameKor": "조남주",
         "nameEng": "Jo Namjoo",
-        "rank": "교수",
-        "email": "jonamjoo@example.com",
+        "rank": "교수,특별보좌역",
+        "email": "njjoh@tukorea.ac.kr",
         "education": [
             "임시 데이터",
             "임시 데이터",
@@ -92,70 +92,66 @@
             "임시 데이터"
         ],
         "field": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "가구 디자인 엔지니어링",
+            "지속가능한 공공디자인",
+            "제품디자인 엔지니어링"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1711524711232100.jpg"
     },
     {
         "id": "p05",
         "nameKor": "한민섭",
         "nameEng": "Han Minseop",
-        "rank": "교수",
-        "email": "hanminseop@example.com",
+        "rank": "부교수",
+        "email": "mshan@tukorea.ac.kr",
         "education": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "CISD정보저장기기 연구센터 전문연구원",
+            "㈜코닝 정밀소재 책임연구원",
+            "㈜삼성전자 생산기술연구소 책임연구원"
         ],
         "field": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "나노/마이크로 초정밀 미세 가공 공정",
+            "Equipment H/W 설계 및 시뮬레이션",
+            "융복합 가공 시스템 설계"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1711524614469100.jpg"
     },
     {
         "id": "p06",
         "nameKor": "홍성수",
         "nameEng": "Hong Seongsu",
-        "rank": "교수",
-        "email": "hongseongsu@example.com",
+        "rank": "교수, 국제처장",
+        "email": "hss@tukorea.ac.kr",
         "education": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "3차원 의료영상시스템(MRI) 제품설계 및 디자인",
+            "다족형견마로봇 / 헬스케어로봇 / 재활보조로봇",
+            "식사보조로봇/ 수중로봇/ 청소로봇 / 웨어러블 로봇",
+            "협동로봇/ 자율주행로봇/ 순찰로봇/ 공항안내로봇 등 90여종 로봇 개발"
         ],
         "field": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "로봇 시스템 개발/ 로봇디자인/ HRI 디자인",
+            "로봇 문화콘텐츠 기술개발",
+            "신기술 전시기획/ 전시시스템개발"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1711524724386100.jpg"
     },{
         "id": "p07",
         "nameKor": "김태균",
         "nameEng": "Kim Taekyun",
-        "rank": "교수",
-        "email": "kimtaekyun@example.com",
+        "rank": "조교수, 진로취업지도교수",
+        "email": "tgkim1design@tukorea.ac.kr",
         "education": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "영국, 영국 국제디자인박람회전시 ‘London 100% Design‘ 초청 출품",
+            "중국, SUPER DESIGNERS: Exploration of Creative Forms, The Boundaries of Design Forms 초청 출품",
+            "INNOCHINA 대상",
+            "나는글로벌벤처다 동상",
+            "Spark Awards-Silver"
         ],
         "field": [
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터",
-            "임시 데이터"
+            "AI 기반 제품·공공시설물 디자인 실무·방법론",
+            "UX 중심 디자인 전략·개발",
+            "지식 주도 디자인 아이디에이션 기반 실무 디자인 설계 및 교수법"
         ],
-        "imgUrl": "/image/0/portrait.jpg"
+        "imgUrl": "https://design.tukorea.ac.kr/sites/design/atchmnfl/profl/211/temp_1724738930608100.jpg"
     }
 ]
