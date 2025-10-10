@@ -33,6 +33,7 @@ export default function NavBtn({
         // 미세 인터랙션
         outline: 'none',
         transition: 'opacity 120ms ease',
+        
     };
 
     const handleKeyDown = (e) => {
