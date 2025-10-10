@@ -1,5 +1,4 @@
 // src/jsx/organism/GuestbookModal.jsx
-// GPT-5 Thinking: converted inline styles to styled-components (values unchanged)
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 

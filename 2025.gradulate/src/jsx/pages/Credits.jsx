@@ -1,6 +1,5 @@
 //credits.jsx
 //졸준 페이지// Credit.jsx
-// GPT-5 Thinking: inline styles → styled-components (values unchanged)
 
 import React from 'react';
 import styled from 'styled-components';

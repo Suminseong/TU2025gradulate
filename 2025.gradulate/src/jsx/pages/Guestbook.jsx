@@ -1,6 +1,5 @@
 //Guestbook.jsx
 //방명록 페이지
-// GPT: styled-components 변환 (스타일 값/로직 불변)
 import React from 'react';
 import styled from 'styled-components';
 import NavHeader from '../molecule/NavHeader';

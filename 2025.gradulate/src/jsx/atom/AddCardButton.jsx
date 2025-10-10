@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { CARD_W, CARD_H } from '../organism/GuestbookGrid';
 
-// [GPT] styled-components migration (no CSS value changes)
 const Button = styled.button`
   width: ${(p) => p.$w}px;
   height: ${(p) => p.$h}px;

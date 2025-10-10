@@ -1,6 +1,5 @@
 //Peoples.jsx
 //졸업생 페이지
-// GPT-5 Thinking: inline styles → styled-components (values unchanged)
 import React from 'react';
 import styled from 'styled-components';
 import PeoplesCard from '../atom/PeoplesCard';

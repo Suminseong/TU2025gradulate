@@ -1,13 +1,11 @@
 // Footer.jsx
 // 수정 금지. fix 된 형태
-// [GPT] styled-components migration (values identical, no media queries)
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const FONT_STACK =
   "Pretendard, system-ui, -apple-system, Segoe UI, Roboto, 'Noto Sans KR', Arial, sans-serif";
 
-// Styled components (CSS values copied 1:1 from previous inline styles)
 const FooterWrap = styled.footer`
   width: 100%;
   background: #0E0E0E;

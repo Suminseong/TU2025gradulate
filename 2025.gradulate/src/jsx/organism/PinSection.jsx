@@ -5,7 +5,6 @@ import styled from 'styled-components';
 섹션 전체 높이를 `durationVh`(기본 300vh)로 잡고,
 내부 stage를 sticky(top:0, height:100vh)로 고정합니다.
 progress(0~1)를 계산해 자식 render prop으로 내려줍니다.
-GPT가 생성한 각주 설띵
 */
 
 const SectionWrap = styled.section`
