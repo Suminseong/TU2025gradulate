@@ -1,6 +1,7 @@
 // NavHeader.jsx
 import { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import NavBtn from '../atom/NavBtn';
 
 /**
@@ -15,6 +16,59 @@ export const NAV_HEADER_MODES = Object.freeze({
   LIGHT: 'light',
   DARK: 'dark',
 });
+
+const Wrapper = styled.header`
+  position: ${(p) => (p.$sticky ? 'sticky' : 'relative')};
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background 180ms ease, box-shadow 180ms ease, color 180ms ease;
+  background: ${(p) => p.$background};
+  color: ${(p) => p.$textColor};
+  box-shadow: ${(p) => p.$boxShadow || 'none'};
+`;
+
+const Inner = styled.div`
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 0;
+  max-width: ${(p) => (p.$maxWidth ? p.$maxWidth : 'none')};
+`;
+
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 60px;
+  width: 100%;
+`;
+
+const NavRow = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+`;
+
+const LogoBox = styled.div`
+  width: 49.48px;
+  height: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LogoOuter = styled.div`
+  width: 38.33px;
+  height: 32px;
+  position: relative;
+`;
 
 export default function NavHeader({
   items = [],
@@ -36,19 +90,11 @@ export default function NavHeader({
     switch (mode) {
       case NAV_HEADER_MODES.LIGHT:
         return {
-          // background: '#FFFFFF',
-          // textColor: '#000000',
-          // boxShadow: '0 1px 0 rgba(0,0,0,0.06)', // 살짝 구분선
-
           background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
           textColor: '#000000',
         };
       case NAV_HEADER_MODES.DARK:
         return {
-          // background: '#121212',
-          // textColor: '#FFFFFF',
-          // boxShadow: '0 1px 0 rgba(255,255,255,0.06)',
-
           background: '#121212',
           textColor: '#FFFFFF',
         };
@@ -83,100 +129,32 @@ export default function NavHeader({
     return () => window.removeEventListener('scroll', handler);
   }, [autoOnScroll, isControlled, onModeChange, scrollThreshold]);
 
-  // 레이아웃 스타일(시안 수치 반영)
-  const wrapperStyle = {
-    position: sticky ? 'sticky' : 'relative',
-    top: 0,
-    width: '100%',
-    zIndex: 1000,
-    // 배경 전환 부드럽게
-    transition: 'background 180ms ease, box-shadow 180ms ease, color 180ms ease',
-    background,
-    color: textColor,
-    boxShadow,
-    // 그라데이션이 투명해도 안의 영역 클릭 보장
-    // (gradient일 때는 투명 하단까지 영역을 충분히 둠)
-  };
-
-  const innerStyle = {
-    paddingLeft: 40,
-    paddingRight: 40,
-    paddingTop: 18,
-    paddingBottom: 18,
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 13,
-    margin: '0',
-    maxWidth: maxWidth || 'none',
-  };
-
-  const rowStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    gap: 60,
-    width: '100%',
-  };
-
-  const navStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    gap: 30,
-  };
-
-  // 로고(빨간 네모)
-  const logoBoxStyle = {
-    width: 49.48,
-    height: 44,
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
-
-  const logoOuter = {
-    width: 38.33,
-    height: 32,
-    position: 'relative',
-    // overflow: 'hidden',Z
-  };
-
   const isDarkMode = mode === NAV_HEADER_MODES.DARK;
   const logoSrc = isDarkMode ? '../public/icons/logoLight.svg' : '../public/icons/logoDark.svg';
   const logoAlt = isDarkMode ? 'LogoLight' : 'LogoDark';
 
   return (
-    <header style={wrapperStyle} role="banner">
-      <div style={innerStyle}>
-        <div style={rowStyle}>
+    <Wrapper role="banner" $sticky={sticky} $background={background} $textColor={textColor} $boxShadow={boxShadow}>
+      <Inner $maxWidth={maxWidth}>
+        <Row>
           {/* Logo */}
-          <a
-            href="/"
-            aria-label="홈으로"
-            style={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <div style={logoBoxStyle} aria-hidden>
-              <div style={logoOuter}>
+          <a href="/" aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
+            <LogoBox aria-hidden>
+              <LogoOuter>
                 <img src={logoSrc} alt={logoAlt} />
-              </div>
-            </div>
+              </LogoOuter>
+            </LogoBox>
           </a>
 
           {/* Nav */}
-          <nav aria-label="주 메뉴" style={navStyle}>
+          <NavRow aria-label="주 메뉴">
             {items.map((item) => (
-              <NavBtn
-                key={item.key}
-                label={item.label}
-                href={item.href}
-                active={item.key === activeKey}
-              />
+              <NavBtn key={item.key} label={item.label} href={item.href} active={item.key === activeKey} />
             ))}
-          </nav>
-        </div>
-      </div>
-    </header>
+          </NavRow>
+        </Row>
+      </Inner>
+    </Wrapper>
   );
 }
 
