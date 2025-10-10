@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useEffect, useState, useCallback } from 'react';
+import styled from 'styled-components';
 import GuestbookCard from '../atom/GuestbookCard';
 import PhotoCard from '../atom/PhotoCard';
 import AddCardButton from '../atom/AddCardButton';
@@ -10,10 +11,61 @@ const ROW_GAP  = 20;
 const PAD_L = 210;
 const PAD_R = 60;
 
+const ProgressOuter = styled.div`
+  padding: 0 0 12px 0;
+`;
+const ProgressTrack = styled.div`
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background: #171717;
+  border-radius: 2px;
+  overflow: hidden;
+`;
+const ProgressFill = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 3px;
+  width: ${(p)=>p.$w}px;
+  min-width: 25px;
+  background: #7a7a7a;
+  border-radius: 2px;
+  transition: width 350ms ease-in;
+`;
+
+const Rail = styled.div`
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  cursor: grab;
+  padding: 0 ${PAD_R}px 0 ${PAD_L}px;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+`;
+
+const RailInner = styled.div`
+  display: flex;
+  gap: ${RAIL_GAP}px;
+  align-items: flex-start;
+  min-height: ${CARD_H * 2 + ROW_GAP}px;
+`;
+
+const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${ROW_GAP}px;
+`;
+
+const Placeholder = styled.div`
+  width: ${CARD_W}px;
+  height: ${CARD_H}px;
+`;
+
 const toFlatWithPhoto = (items) => {
   const flat = [{ type: 'add', id: 'add' }, ...items];
-  // 여러 범위에 대해 각각 랜덤 인덱스에 PhotoCard 삽입
-  // 이미지 랜덤하게 나올 수 있게 + 나중에 숫자도 자동화
   const ranges = [
     { min: 6, max: 10 },
     { min: 16, max: 20 },
@@ -42,28 +94,22 @@ const toColumns = (flat) => {
   return cols;
 };
 
-
 export default function GuestbookGrid({ onOpenModal, items }) {
   const railRef = useRef(null);
-
-  // 진행바 상태: width(채워지는 길이), trackW(전체 트랙 너비)
   const [prog, setProg] = useState({ width: 0, trackW: 0 });
-
-  // 최초 마운트 시 한 번만 랜덤 삽입 flat 생성
   const [flat, setFlat] = useState(() => toFlatWithPhoto(items));
   useEffect(() => {
     setFlat(toFlatWithPhoto(items));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items]); // items가 바뀔 때만 새로 생성
+  }, [items]);
   const columns = toColumns(flat);
 
-  // 수직 휠 → 가로 스크롤
+  // vertical wheel → horizontal scroll
   useEffect(() => {
     const el = railRef.current;
     if (!el) return;
     const onWheel = (e) => {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        el.scrollLeft += e.deltaY; // 연속 스크롤
+        el.scrollLeft += e.deltaY;
         e.preventDefault();
       }
     };
@@ -71,44 +117,36 @@ export default function GuestbookGrid({ onOpenModal, items }) {
     return () => el.removeEventListener('wheel', onWheel);
   }, []);
 
-  // 드래그 스크롤
+  // drag to scroll
   const dragRef = useRef({ on: false, moved: false, startX: 0, startScroll: 0 });
-
   const isInteractive = (el) =>
     !!el?.closest?.('button, a, input, textarea, select, label, [role="button"], [data-nodrag]');
-
   useEffect(() => {
     const el = railRef.current;
     if (!el) return;
 
     const onPointerDown = (e) => {
-      if (e.button !== 0) return; // left button only
-      if (isInteractive(e.target)) return; // don't start drag on interactive controls
-
+      if (e.button !== 0) return;
+      if (isInteractive(e.target)) return;
       dragRef.current.on = true;
       dragRef.current.moved = false;
       dragRef.current.startX = e.clientX;
       dragRef.current.startScroll = el.scrollLeft;
-
       el.setPointerCapture?.(e.pointerId);
       document.body.style.userSelect = 'none';
       el.style.cursor = 'grabbing';
     };
-
     const onPointerMove = (e) => {
       if (!dragRef.current.on) return;
       const dx = e.clientX - dragRef.current.startX;
-      if (Math.abs(dx) > 2) dragRef.current.moved = true; // small threshold to preserve clicks
+      if (Math.abs(dx) > 2) dragRef.current.moved = true;
       el.scrollLeft = dragRef.current.startScroll - dx;
     };
-
     const onPointerUp = (e) => {
       if (!dragRef.current.on) return;
       el.releasePointerCapture?.(e.pointerId);
       document.body.style.userSelect = '';
       el.style.cursor = 'grab';
-
-      // If this was a real drag (moved), cancel the click
       if (dragRef.current.moved) {
         e.preventDefault();
         e.stopPropagation();
@@ -120,7 +158,6 @@ export default function GuestbookGrid({ onOpenModal, items }) {
     window.addEventListener('pointermove', onPointerMove);
     window.addEventListener('pointerup', onPointerUp);
     el.addEventListener('pointercancel', onPointerUp);
-
     return () => {
       el.removeEventListener('pointerdown', onPointerDown);
       window.removeEventListener('pointermove', onPointerMove);
@@ -129,25 +166,18 @@ export default function GuestbookGrid({ onOpenModal, items }) {
     };
   }, []);
 
-  // === 진행바: 채워지는 방식으로 계산 ===
+  // progress update
   const updateProgress = useCallback(() => {
     const el = railRef.current;
     if (!el) return;
-
     const viewportW = el.clientWidth;
     const contentW  = el.scrollWidth;
     const scrollL   = el.scrollLeft;
-
-    // 트랙은 레일 컨테이너(상위 래퍼)의 전체 너비(100%) 기준
-    const wrapper = el.parentElement; // progress bar container sits above the rail
+    const wrapper = el.parentElement;
     const trackW  = wrapper?.clientWidth || viewportW;
-
     const maxScroll = Math.max(1, contentW - viewportW);
     const ratio     = Math.min(1, Math.max(0, scrollL / maxScroll));
-
-    // 왼쪽에서부터 채워지는 길이
     const filled = Math.round(trackW * ratio);
-
     setProg({ width: filled, trackW });
   }, []);
 
@@ -167,71 +197,28 @@ export default function GuestbookGrid({ onOpenModal, items }) {
 
   return (
     <>
-      {/* 스크롤바 숨김 + 커서 */}
-      <style>{`
-        .gb-rail { scrollbar-width: none; -ms-overflow-style: none; cursor: grab; }
-        .gb-rail::-webkit-scrollbar { display: none; }
-      `}</style>
+      <ProgressOuter>
+        <ProgressTrack>
+          <ProgressFill $w={prog.width} />
+        </ProgressTrack>
+      </ProgressOuter>
 
-      {/* 진행바: 너비 100%의 트랙(3px,#7A7A7A) + 왼쪽에서 채워지는 흰색 바 */}
-      <div style={{ padding: '0 0 12px 0' }}>
-        <div style={{
-          position: 'relative',
-          width: '100%',
-          height: 3,
-          background: '#171717',
-          borderRadius: 2,
-          overflow: 'hidden',
-        }}>
-          <div style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            height: 3,
-            width: prog.width,
-            minWidth: 25,
-            background: '#7a7a7a',
-            borderRadius: 2,
-            transition: 'width 350ms easeIn'
-          }}/>
-        </div>
-      </div>
-
-      {/* 레일: scroll-snap 완전 제거 → 연속 스크롤 */}
-      <div
-        ref={railRef}
-        className="gb-rail"
-        style={{
-          overflowX: 'auto',
-          overflowY: 'hidden',
-          WebkitOverflowScrolling: 'touch',
-          touchAction: 'pan-y',    // ← allow vertical touch scrolling; horizontal handled by pointer drag
-          cursor: 'grab',
-          padding: `0 ${PAD_R}px 0 ${PAD_L}px`,
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            gap: RAIL_GAP,
-            alignItems: 'flex-start',
-            minHeight: CARD_H * 2 + ROW_GAP,
-          }}
-        >
+      <Rail ref={railRef}>
+        <RailInner>
           {columns.map((pair, i) => (
-            <div key={`col-${i}`} style={{ display: 'flex', flexDirection: 'column', gap: ROW_GAP }}>
+            <Col key={`col-${i}`}>
               <CardSwitch data={pair[0]} onOpenModal={onOpenModal} />
-              {pair[1] ? <CardSwitch data={pair[1]} onOpenModal={onOpenModal} /> : <div style={{ width: CARD_W, height: CARD_H }} />}
-            </div>
+              {pair[1] ? <CardSwitch data={pair[1]} onOpenModal={onOpenModal} /> : <Placeholder />}
+            </Col>
           ))}
-        </div>
-      </div>
+        </RailInner>
+      </Rail>
     </>
   );
 }
 
 function CardSwitch({ data, onOpenModal }) {
-  if (!data) return <div style={{ width: CARD_W, height: CARD_H }} />;
+  if (!data) return <Placeholder />;
   if (data.type === 'add') return <AddCardButton onClick={onOpenModal} style={{ pointerEvents: 'auto' }} />;
   if (data.type === 'photo') return <PhotoCard src={data.src} />;
   return <GuestbookCard to={data.to} from={data.from} message={data.message} />;

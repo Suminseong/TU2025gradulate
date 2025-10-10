@@ -1,101 +1,103 @@
 // src/jsx/organism/GuestbookModal.jsx
+// GPT-5 Thinking: converted inline styles to styled-components (values unchanged)
 import React, { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
 
-const s = {
-  overlay: {
-    position: 'fixed', inset: 0, zIndex: 1000,
-    display: 'grid', placeItems: 'center',
-    background: 'rgba(0,0,0,.45)',
-  },
-
-  wrapper: { position: 'relative', display: 'inline-flex', alignItems: 'flex-end', gap: 17 },
-
-  glass: {
-    padding: 40, borderRadius: 16,
-    background: 'rgba(160,160,160,.80)',
-    backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)',
-    display: 'inline-flex', gap: 20, alignItems: 'center',
-  },
-
-  row: { width: 520, display: 'inline-flex', gap: 20, alignItems: 'center' },
-
-  card: {
-    width: 450, height: 560, position: 'relative', overflow: 'hidden',
-    borderRadius: 16,
-    background: 'linear-gradient(225deg, #F2F0FF 0%, #FFFFFF 100%)',
-    boxShadow: '0 20px 60px rgba(0,0,0,.25)',
-  },
-
-  // 장식
-  decoBig:  { position: 'absolute', left: 66.53, top: 314.67, width: 248.47, height: 245.33, borderRadius: 9999, background: '#EDECF2' },
-  decoDot:  { position: 'absolute', left: 13.33, top: 504.92, width: 42.14, height: 41.05, borderRadius: 9999, background: '#EDECF2' },
-
-  // To. 입력 (시안 좌표)
-  titleRow: { position: 'absolute', left: 32, top: 50, display: 'inline-flex', alignItems: 'center', gap: 8 },
-  labelTo:   { fontFamily: 'Pretendard, system-ui', fontWeight: 600, fontSize: 32, color: '#555' },
-  toInput: {
-    border: 'none', outline: 'none',
-    borderBottom: '1px solid rgba(0,0,0,.18)',
-    background: 'transparent',
-    fontFamily: 'Pretendard, system-ui',
-    fontSize: 28, color: '#303030',
-    padding: '2px 4px 4px',
-    minWidth: 120, maxWidth: 220,
-  },
-
-  // 내용 입력
-  contentWrap: { position: 'absolute', left: 32, top: 104, width: 381 },
-  textarea: {
-    width: '100%', minHeight: 220, resize: 'none',
-    border: 'none', outline: 'none',
-    borderRadius: 12, padding: '14px 16px',
-    fontFamily: 'Pretendard, system-ui', fontSize: 18, lineHeight: '27px', color: '#303030',
-    background: 'rgba(255,255,255,.6)',
-    boxShadow: 'inset 0 0 0 1px rgba(255,255,255,.5)',
-  },
-
-  // From. 입력 (시안 좌표)
-  fromRow: { position: 'absolute', left: 181, top: 472, display: 'inline-flex', alignItems: 'center', gap: 8 },
-  labelFrom: { fontFamily: 'Pretendard, system-ui', fontWeight: 600, fontSize: 32, color: '#555' },
-  fromInput: {
-    border: 'none', outline: 'none',
-    borderBottom: '1px solid rgba(0,0,0,.18)',
-    background: 'transparent',
-    fontFamily: 'Pretendard, system-ui', fontSize: 20, color: '#303030',
-    padding: '2px 4px 4px',
-    minWidth: 120, maxWidth: 180,
-  },
-
-  // 우측 전송 버튼
-  sideCol: { width: 50, height: 560, display: 'inline-flex', flexDirection: 'column', justifyContent: 'flex-end' },
-  sendBtn: {
-    width: 50, height: 50, borderRadius: 25,
-    background: '#202020', cursor: 'pointer',
-    display: 'grid', placeItems: 'center', border: 'none',
-  },
-  sendInner: { width: 20, height: 17, background: '#fff', clipPath: 'polygon(0 0,100% 50%,0 100%)' },
-
-  // 닫기 레일(시안: 가로 60, 세로 충분히 길게)
-  closeRail: { width: 60, height: 640, position: 'relative' }, // 560 + pad(40*2) 대략
-  closeBox: {
-    width: 60, height: 60, position: 'absolute', left: 0, top: 0,
-    display: 'grid', placeItems: 'center', cursor: 'pointer',
-    background: 'transparent', border: 'none',
-  },
-  // 안쪽 32x32 영역(마진 포함) + X 아이콘(흰색)
-  closeInner: {
-    width: 32, height: 32, position: 'relative',
-  },
-  closeX: {
-    position: 'absolute', inset: 0,
-    display: 'block',
-    width: 32, height: 32,
-  },
-  closeStroke: (deg) => ({
-    position: 'absolute', left: 15, top: 4, width: 2, height: 24,
-    background: '#FFFFFF', transform: `rotate(${deg}deg)`,
-  }),
-};
+const Overlay = styled.div`
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; place-items: center;
+  background: rgba(0,0,0,.45);
+`;
+const Wrapper = styled.div`
+  position: relative; display: inline-flex; align-items: flex-end; gap: 17px;
+`;
+const Glass = styled.div`
+  padding: 40px; border-radius: 16px;
+  background: rgba(160,160,160,.80);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  display: inline-flex; gap: 20px; align-items: center;
+`;
+const Row = styled.div`
+  width: 520px; display: inline-flex; gap: 20px; align-items: center;
+`;
+const Card = styled.div`
+  width: 450px; height: 560px; position: relative; overflow: hidden;
+  border-radius: 16px;
+  background: linear-gradient(225deg, #F2F0FF 0%, #FFFFFF 100%);
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+`;
+const DecoBig = styled.div`
+  position: absolute; left: 66.53px; top: 314.67px; width: 248.47px; height: 245.33px; border-radius: 9999px; background: #EDECF2;
+`;
+const DecoDot = styled.div`
+  position: absolute; left: 13.33px; top: 504.92px; width: 42.14px; height: 41.05px; border-radius: 9999px; background: #EDECF2;
+`;
+const TitleRow = styled.div`
+  position: absolute; left: 32px; top: 50px; display: inline-flex; align-items: center; gap: 8px;
+`;
+const LabelTo = styled.div`
+  font-family: Pretendard, system-ui; font-weight: 600; font-size: 32px; color: #555;
+`;
+const ToInput = styled.input`
+  border: none; outline: none;
+  border-bottom: 1px solid rgba(0,0,0,.18);
+  background: transparent;
+  font-family: Pretendard, system-ui;
+  font-size: 28px; color: #303030;
+  padding: 2px 4px 4px;
+  min-width: 120px; max-width: 220px;
+`;
+const ContentWrap = styled.div`
+  position: absolute; left: 32px; top: 104px; width: 381px;
+`;
+const Textarea = styled.textarea`
+  width: 100%; min-height: 220px; resize: none;
+  border: none; outline: none;
+  border-radius: 12px; padding: 14px 16px;
+  font-family: Pretendard, system-ui; font-size: 18px; line-height: 27px; color: #303030;
+  background: rgba(255,255,255,.6);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.5);
+`;
+const FromRow = styled.div`
+  position: absolute; left: 181px; top: 472px; display: inline-flex; align-items: center; gap: 8px;
+`;
+const LabelFrom = styled.div`
+  font-family: Pretendard, system-ui; font-weight: 600; font-size: 32px; color: #555;
+`;
+const FromInput = styled.input`
+  border: none; outline: none;
+  border-bottom: 1px solid rgba(0,0,0,.18);
+  background: transparent;
+  font-family: Pretendard, system-ui; font-size: 20px; color: #303030;
+  padding: 2px 4px 4px;
+  min-width: 120px; max-width: 180px;
+`;
+const SideCol = styled.div`
+  width: 50px; height: 560px; display: inline-flex; flex-direction: column; justify-content: flex-end;
+`;
+const SendBtn = styled.button`
+  width: 50px; height: 50px; border-radius: 25px;
+  background: #202020; cursor: pointer;
+  display: grid; place-items: center; border: none;
+`;
+const SendInner = styled.div`
+  width: 20px; height: 17px; background: #fff; clip-path: polygon(0 0,100% 50%,0 100%);
+`;
+const CloseRail = styled.div`
+  width: 60px; height: 640px; position: relative;
+`;
+const CloseBox = styled.button`
+  width: 60px; height: 60px; position: absolute; left: 0; top: 0;
+  display: grid; place-items: center; cursor: pointer;
+  background: transparent; border: none;
+`;
+const CloseInner = styled.div`
+  width: 32px; height: 32px; position: relative;
+`;
+const CloseStroke = styled.span`
+  position: absolute; left: 15px; top: 4px; width: 2px; height: 24px;
+  background: #FFFFFF; transform: rotate(${props => props.$deg}deg);
+`;
 
 export default function GuestbookModal({
   open,
@@ -128,68 +130,53 @@ export default function GuestbookModal({
   };
 
   return (
-    <div style={s.overlay} ref={overlayRef} onMouseDown={handleOverlayClick}>
-      <div style={s.wrapper} onMouseDown={(e) => e.stopPropagation()}>
-        {/* 카드 주변에만 blur가 걸린 유리 패널 */}
-        <div style={s.glass}>
-          <div style={s.row}>
-            <div style={s.card}>
-              {/* 장식 */}
-              <div style={s.decoBig} />
-              <div style={s.decoDot} />
-
-              {/* To. + 입력 */}
-              <div style={s.titleRow}>
-                <div style={s.labelTo}>To.</div>
-                <input
-                  style={s.toInput}
+    <Overlay ref={overlayRef} onMouseDown={handleOverlayClick}>
+      <Wrapper onMouseDown={(e) => e.stopPropagation()}>
+        <Glass>
+          <Row>
+            <Card>
+              <DecoBig />
+              <DecoDot />
+              <TitleRow>
+                <LabelTo>To.</LabelTo>
+                <ToInput
                   value={toName}
                   onChange={(e) => setToName(e.target.value)}
                   placeholder="받는 사람"
                 />
-              </div>
-
-              {/* 내용 */}
-              <div style={s.contentWrap}>
-                <textarea
-                  style={s.textarea}
+              </TitleRow>
+              <ContentWrap>
+                <Textarea
                   placeholder="내용을 입력해 주세요."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                 />
-              </div>
-
-              {/* From. + 입력 */}
-              <div style={s.fromRow}>
-                <div style={s.labelFrom}>From.</div>
-                <input
-                  style={s.fromInput}
+              </ContentWrap>
+              <FromRow>
+                <LabelFrom>From.</LabelFrom>
+                <FromInput
                   value={fromName}
                   onChange={(e) => setFromName(e.target.value)}
                   placeholder="보내는 사람"
                 />
-              </div>
-            </div>
-
-            {/* 전송 버튼 */}
-            <div style={s.sideCol}>
-              <button type="button" style={s.sendBtn} onClick={submit} aria-label="send">
-                <div style={s.sendInner} />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* 닫기 버튼(60x60, 내부 32x32 + 흰색 X) — 카드 ‘외부’ 우상단 */}
-        <div style={s.closeRail}>
-          <button type="button" style={s.closeBox} onClick={onClose} aria-label="close">
-            <div style={s.closeInner}>
-              <span style={s.closeStroke(45)} />
-              <span style={s.closeStroke(-45)} />
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
+              </FromRow>
+            </Card>
+            <SideCol>
+              <SendBtn type="button" onClick={submit} aria-label="send">
+                <SendInner />
+              </SendBtn>
+            </SideCol>
+          </Row>
+        </Glass>
+        <CloseRail>
+          <CloseBox type="button" onClick={onClose} aria-label="close">
+            <CloseInner>
+              <CloseStroke $deg={45} />
+              <CloseStroke $deg={-45} />
+            </CloseInner>
+          </CloseBox>
+        </CloseRail>
+      </Wrapper>
+    </Overlay>
   );
 }

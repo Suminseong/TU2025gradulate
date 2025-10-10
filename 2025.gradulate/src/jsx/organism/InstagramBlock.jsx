@@ -1,28 +1,42 @@
 import React from 'react';
+import styled from 'styled-components';
 import OutlineButton from '../atom/OutlineButton';
 
-const s = {
-  wrap: { position: 'relative', height: 555 },
-  head: { position: 'absolute', left: 0, right: 0, top: 0, height: 154, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 28 },
-  icon: { width: 48, height: 48, background: '#FFFFFF' },
-  handle: { display: 'flex', alignItems: 'center', height: 49, paddingBottom: 21, color: '#FFFFFF', fontFamily: 'Pretendard, system-ui', fontSize: 40, fontWeight: 700, lineHeight: '38.4px' },
-  tileWrap: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 80, marginTop: 154 },
-  tile: { width: 272, height: 272, background: '#121212', borderRadius: 14.5, overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' },
-};
+const Wrap = styled.section`
+  padding: 0;
+`;
+const Inner = styled.div`
+  position: relative; height: 555px;
+`;
+const Head = styled.div`
+  position: absolute; left: 0; right: 0; top: 0; height: 154px; display: flex; flex-direction: column; align-items: center; gap: 28px;
+`;
+const Icon = styled.div`
+  width: 48px; height: 48px; background: #FFFFFF;
+`;
+const Handle = styled.div`
+  display: flex; align-items: center; height: 49px; padding-bottom: 21px; color: #FFFFFF; font-family: Pretendard, system-ui; font-size: 40px; font-weight: 700; line-height: 38.4px;
+`;
+const TileWrap = styled.div`
+  display: flex; flex-direction: column; align-items: center; gap: 80px; margin-top: 154px;
+`;
+const Tile = styled.div`
+  width: 272px; height: 272px; background: #121212; border-radius: 14.5px; overflow: hidden; display: flex; align-items: center; justify-content: center;
+`;
 
 export default function InstagramBlock() {
   return (
-    <section aria-labelledby="insta-title" style={{ padding: 0 }}>
-      <div style={s.wrap}>
-        <div style={s.head}>
-          <div style={s.icon} aria-hidden />
-          <div id="insta-title" style={s.handle}>@tukd_grad</div>
-          <div style={s.tileWrap}>
-            <div style={s.tile}><img src="https://placehold.co/226x226?text=QR" alt="Instagram preview" /></div>
+    <Wrap aria-labelledby="insta-title">
+      <Inner>
+        <Head>
+          <Icon aria-hidden />
+          <Handle id="insta-title">@tukd_grad</Handle>
+          <TileWrap>
+            <Tile><img src="https://placehold.co/226x226?text=QR" alt="Instagram preview" /></Tile>
             <OutlineButton as="a" href="#" label="View Instagram" size="sm" />
-          </div>
-        </div>
-      </div>
-    </section>
+          </TileWrap>
+        </Head>
+      </Inner>
+    </Wrap>
   );
 }

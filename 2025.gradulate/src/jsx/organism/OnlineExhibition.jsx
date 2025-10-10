@@ -1,26 +1,55 @@
 import React from 'react';
+import styled from 'styled-components';
 import OutlineButton from '../atom/OutlineButton';
 
-const s = {
-  wrap: { position: 'relative', height: 1045, overflow: 'hidden' },
-  bg: { position: 'absolute', left: 40, right: 40, top: 140, height: 905, borderRadius: 4, overflow: 'hidden' },
-  title: { position: 'absolute', left: 0, right: 0, top: 0, textAlign: 'center', color: '#FFFFFF', fontFamily: 'Pretendard, system-ui', fontWeight: 700, fontSize: 40, lineHeight: '64px' },
-  card: { position: 'absolute', left: 732, top: 327, width: 787, height: 492, background: '#FFFCFD' },
-  h1: { position: 'absolute', left: 610, top: 496, width: 700, textAlign: 'center', color: '#000', fontFamily: 'Pretendard, system-ui', fontWeight: 600, fontSize: 48, lineHeight: '76.8px' },
-};
+const Section = styled.section`
+  padding: 0;
+`;
+
+const Wrap = styled.div`
+  position: relative; height: 1045px; overflow: hidden;
+`;
+
+const Title = styled.div`
+  position: absolute; left: 0; right: 0; top: 0; text-align: center;
+  color: #FFFFFF; font-family: Pretendard, system-ui; font-weight: 700; font-size: 40px; line-height: 64px;
+`;
+
+const Bg = styled.div`
+  position: absolute; left: 40px; right: 40px; top: 140px; height: 905px; border-radius: 4px; overflow: hidden;
+`;
+
+const BgImg = styled.img`
+  width: 100%; height: 100%; object-fit: cover;
+`;
+
+const Card = styled.div`
+  position: absolute; left: 732px; top: 327px; width: 787px; height: 492px; background: #FFFCFD;
+`;
+
+const H1 = styled.div`
+  position: absolute; left: 610px; top: 496px; width: 700px; text-align: center;
+  color: #000; font-family: Pretendard, system-ui; font-weight: 600; font-size: 48px; line-height: 76.8px;
+`;
+
+const BtnBox = styled.div`
+  position: absolute; left: 860px; top: 935px;
+`;
 
 export default function OnlineExhibition() {
   return (
-    <section aria-labelledby="online-title" style={{ padding: 0 }}>
-      <div style={s.wrap}>
-        <div style={s.title} id="online-title">Online Exhibition</div>
-        <div style={s.bg}><img src="https://placehold.co/1840x905" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>
-        <div style={s.card} aria-hidden />
-        <div style={s.h1}>온라인 쇼룸이겠냐에요 이거 새로 구성할거심 ^ㅗㅗ^</div>
-        <div style={{ position:'absolute', left:860, top:935 }}>
+    <Section aria-labelledby="online-title">
+      <Wrap>
+        <Title id="online-title">Online Exhibition</Title>
+        <Bg>
+          <BgImg src="https://placehold.co/1840x905" alt="Online Exhibition background" />
+        </Bg>
+        <Card aria-hidden />
+        <H1>온라인 쇼룸이겠냐에요 이거 새로 구성할거심 ^ㅗㅗ^</H1>
+        <BtnBox>
           <OutlineButton label="View More" />
-        </div>
-      </div>
-    </section>
+        </BtnBox>
+      </Wrap>
+    </Section>
   );
 }
