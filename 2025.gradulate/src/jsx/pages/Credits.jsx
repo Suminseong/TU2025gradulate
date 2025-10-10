@@ -1,5 +1,9 @@
 //credits.jsx
 //졸준 페이지// Credit.jsx
+// GPT-5 Thinking: inline styles → styled-components (values unchanged)
+
+import React from 'react';
+import styled from 'styled-components';
 
 // 공통 타이포/레이아웃 수치
 const FONT = `'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif`;
@@ -8,11 +12,17 @@ const PAGE_SIDE = 350;
 const PAGE_SIDE_VW = `${(PAGE_SIDE / 1920) * 100}vw`;
 const PAGE_SIDE_VW_IMG = `${((PAGE_SIDE + 414) / 1920) * 100}vw`; // 이미지 포함 시
 
+const PageOuter = styled.div`
+  position: relative; background: #fff;
+`;
+const PageInner = styled.div`
+  padding-left: ${PAGE_SIDE_VW}; padding-right: ${PAGE_SIDE_VW};
+`;
 function PageContainer({ children }) {
   return (
-    <div style={{ position: 'relative', background: '#fff' }}>
-      <div style={{ paddingLeft: PAGE_SIDE_VW, paddingRight: PAGE_SIDE_VW }}>{children}</div>
-    </div>
+    <PageOuter>
+      <PageInner>{children}</PageInner>
+    </PageOuter>
   );
 }
 
@@ -20,224 +30,138 @@ function PageContainer({ children }) {
 // 재사용할 일 없는 컴포넌트들이 너무 많은지라 그냥 파일 내에서 작성함
 // (사실상 이 페이지 전용 컴포넌트들)
 
+const HeaderBig = styled.div`
+  position: relative; height: 120px; display: flex; align-items: flex-end; justify-content: center;
+  font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 80px;
+`;
+const SubTitle = styled.div`
+  font-family: ${FONT}; font-size: 32px; font-weight: 600; line-height: 56px; color: #000; margin-top: 18px;
+`;
 function HeroHeader() {
   return (
     <>
       {/* 상단 큰 타이틀 */}
-      <div
-        style={{
-          position: 'relative',
-          height: 120,
-          display: 'flex',
-          alignItems: 'flex-end',
-          justifyContent: 'center',
-          fontFamily: FONT,
-          fontSize: 40,
-          fontWeight: 700,
-          color: '#101010',
-          lineHeight: '64px',
-          marginTop: 80,
-        }}
-      >
-        CREDITS
-      </div>
-
+      <HeaderBig>CREDITS</HeaderBig>
       {/* 좌측 서브타이틀 */}
-      <div
-        style={{
-          fontFamily: FONT,
-          fontSize: 32,
-          fontWeight: 600,
-          lineHeight: '56px',
-          color: '#000',
-          marginTop: 18,
-        }}
-      >
-        잔향 : 기억의 향기
-      </div>
+      <SubTitle>잔향 : 기억의 향기</SubTitle>
     </>
   );
 }
 
+const IntroNoteBox = styled.div`
+  max-width: 374px; font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 25.6px; color: #000; text-align: justify; margin-top: 5px;
+`;
 function IntroNote({ text }) {
   return (
-    <div
-      style={{
-        maxWidth: 374,
-        fontFamily: FONT,
-        fontSize: 16,
-        fontWeight: 300,
-        lineHeight: '25.6px',
-        color: '#000',
-        textAlign: 'justify',
-        marginTop: 5,
-      }}
-    >
-      {text}
-    </div>
+    <IntroNoteBox>{text}</IntroNoteBox>
   );
 }
 
+const HeroCardWrap = styled.div`
+  width: 806px; height: 375px; background: #FFF4ED; margin-top: 24px; margin-left: ${PAGE_SIDE_VW_IMG}; position: absolute;
+`;
+const HeroCardText = styled.div`
+  position: absolute; left: 136px; top: 140px; font-family: ${FONT}; font-size: 82.64px; font-weight: 500; line-height: 92.55px; color: #000;
+`;
 function HeroCard({ children }) {
   return (
-    <div
-      style={{
-        width: 806,
-        height: 375,
-        background: '#FFF4ED',
-        marginTop: 24,
-        marginLeft: PAGE_SIDE_VW_IMG, // 좌측 텍스트와 간격 맞추기(시안 비율에 준함)
-        position: 'absolute',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          left: 136,
-          top: 140,
-          fontFamily: FONT,
-          fontSize: 82.64,
-          fontWeight: 500,
-          lineHeight: '92.55px',
-          color: '#000',
-        }}
-      >
-        {children}
-      </div>
-    </div>
+    <HeroCardWrap>
+      <HeroCardText>{children}</HeroCardText>
+    </HeroCardWrap>
   );
 }
 
+const ThreeWrap = styled.div`
+  display: flex; gap: 40px; margin-top: 420px; width: 1220px;
+`;
+const SpeechCol = styled.div`
+  width: 374px; display: flex; flex-direction: column; gap: 20px;
+`;
+const SpeechTitle = styled.div`
+  font-family: ${FONT}; font-size: 28px; font-weight: 600; line-height: 49px; color: #000;
+`;
+const SpeechBody = styled.div`
+  font-family: ${FONT}; font-size: 16px; font-weight: 400; line-height: 21.6px; color: #000; text-align: justify;
+`;
 function ThreeSpeeches({ blocks }) {
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: 40,
-        marginTop: 420, // 히어로 카드 아래로
-        width: 1220,
-      }}
-    >
+    <ThreeWrap>
       {blocks.map((b) => (
-        <div
-          key={b.title}
-          style={{
-            width: 374,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20,
-          }}
-        >
-          <div
-            style={{
-              fontFamily: FONT,
-              fontSize: 28,
-              fontWeight: 600,
-              lineHeight: '49px',
-              color: '#000',
-            }}
-          >
-            {b.title}
-          </div>
-          <div
-            style={{
-              fontFamily: FONT,
-              fontSize: 16,
-              fontWeight: 400,
-              lineHeight: '21.6px',
-              color: '#000',
-              textAlign: 'justify',
-            }}
-          >
-            {b.body}
-          </div>
-        </div>
+        <SpeechCol key={b.title}>
+          <SpeechTitle>{b.title}</SpeechTitle>
+          <SpeechBody>{b.body}</SpeechBody>
+        </SpeechCol>
       ))}
-    </div>
+    </ThreeWrap>
   );
 }
 
+const CommitteeSectionWrap = styled.div`
+  border-bottom: ${props => (props.$last ? 'none' : '1px #E0E0E0 solid')}; display: flex; gap: 20px; padding-bottom: 10px; margin-top: 20px; align-items: flex-start;
+`;
+const CommitteeHeaderWrap = styled.div`
+  width: 289px; height: 45px; display: flex; align-items: flex-end;
+`;
+const CommitteeHeaderTitle = styled.div`
+  font-family: ${FONT}; font-size: 20px; font-weight: 500; line-height: 22.4px; color: #202020;
+`;
+const CommitteeRowsWrap = styled.div`
+  width: 900px; display: flex; flex-direction: column;
+`;
 function CommitteeSection({ title, rows, last = false }) {
   return (
-    <div
-      style={{
-        borderBottom: last ? 'none' : '1px #E0E0E0 solid',
-        display: 'flex',
-        gap: 20,
-        paddingBottom: 10,
-        marginTop: 20,
-        alignItems: 'flex-start',
-      }}
-    >
-      <div style={{ width: 289, height: 45, display: 'flex', alignItems: 'flex-end' }}>
-        <div
-          style={{
-            fontFamily: FONT,
-            fontSize: 20,
-            fontWeight: 500,
-            lineHeight: '22.4px',
-            color: '#202020',
-          }}
-        >
-          {title}
-        </div>
-      </div>
-
-      <div style={{ width: 900, display: 'flex', flexDirection: 'column' }}>
-            {rows.map((r, i) => (
-              <CommitteeRow
-                key={r.ko + r.en + i}
-                ko={r.ko}
-                en={r.en}
-                divider={rows.length > 1 && i !== rows.length - 1}
-              />
-            ))}
-      </div>
-    </div>
+    <CommitteeSectionWrap $last={last}>
+      <CommitteeHeaderWrap>
+        <CommitteeHeaderTitle>{title}</CommitteeHeaderTitle>
+      </CommitteeHeaderWrap>
+      <CommitteeRowsWrap>
+        {rows.map((r, i) => (
+          <CommitteeRow
+            key={r.ko + r.en + i}
+            ko={r.ko}
+            en={r.en}
+            divider={rows.length > 1 && i !== rows.length - 1}
+          />
+        ))}
+      </CommitteeRowsWrap>
+    </CommitteeSectionWrap>
   );
 }
 
+const CommitteeRowWrap = styled.div`
+  padding-top: 22px; padding-bottom: 40px; border-bottom: ${props => (props.$divider ? '1px #E0E0E0 solid' : 'none')}; display: flex; gap: 20px; align-items: flex-start;
+`;
+const KoCol = styled.div`
+  width: 135px;
+`;
+const Ko = styled.div`
+  font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 22.4px; color: #202020;
+`;
+const EnWrap = styled.div`
+  display: flex; align-items: center;
+`;
+const En = styled.div`
+  font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 22.4px; color: #404040;
+`;
 function CommitteeRow({ ko, en, divider = false }) {
   return (
-    <div
-      style={{
-        paddingTop: 22,
-        paddingBottom: 40,
-        borderBottom: divider ? '1px #E0E0E0 solid' : 'none',
-        display: 'flex',
-        gap: 20,
-        alignItems: 'flex-start',
-      }}
-    >
-      <div style={{ width: 135 }}>
-        <div
-          style={{
-            fontFamily: FONT,
-            fontSize: 16,
-            fontWeight: 300,
-            lineHeight: '22.4px',
-            color: '#202020',
-          }}
-        >
-          {ko}
-        </div>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div
-          style={{
-            fontFamily: FONT,
-            fontSize: 16,
-            fontWeight: 300,
-            lineHeight: '22.4px',
-            color: '#404040',
-          }}
-        >
-          {en}
-        </div>
-      </div>
-    </div>
+    <CommitteeRowWrap $divider={divider}>
+      <KoCol>
+        <Ko>{ko}</Ko>
+      </KoCol>
+      <EnWrap>
+        <En>{en}</En>
+      </EnWrap>
+    </CommitteeRowWrap>
   );
 }
+
+const TitleBlock = styled.div`
+  margin-top: 60px;
+`;
+const TitleBlockText = styled.div`
+  font-family: ${FONT}; font-size: 28px; font-weight: 600; color: #101010; margin-bottom: 24px;
+`;
 
 export default function Credit() {
   const introText =
@@ -319,18 +243,10 @@ export default function Credit() {
         <ThreeSpeeches blocks={speeches} />
 
         {/* 위원회 표 */}
-        <div style={{ marginTop: 60 }}>
-          <div
-            style={{
-              fontFamily: FONT,
-              fontSize: 28,
-              fontWeight: 600,
-              color: '#101010',
-              marginBottom: 24,
-            }}
-          >
+        <TitleBlock>
+          <TitleBlockText>
             2025 잔향<br />제 20대 졸업전시위원회
-          </div>
+          </TitleBlockText>
 
           {committee.map((sec) => (
             <CommitteeSection
@@ -340,7 +256,7 @@ export default function Credit() {
               last={!!sec.last}
             />
           ))}
-        </div>
+        </TitleBlock>
       </PageContainer>
     </div>
   );

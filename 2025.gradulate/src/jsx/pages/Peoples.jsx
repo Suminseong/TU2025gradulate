@@ -1,6 +1,8 @@
 //Peoples.jsx
 //졸업생 페이지
+// GPT-5 Thinking: inline styles → styled-components (values unchanged)
 import React from 'react';
+import styled from 'styled-components';
 import PeoplesCard from '../atom/PeoplesCard';
 import CategoryNav from '../molecule/CategoryNav';
 import ProfProfile from '../atom/ProfProfile';
@@ -20,7 +22,6 @@ const CAT_CODE_TO_LETTER = {
   'c4': 'L',
   'c5': 'M',
 };
-
 
 // 학과(부서) 배열 (상수) - UI 라벨
 const studentCategories = ['전체', '산업디자인공학', '미디어디자인공학'];
@@ -43,7 +44,6 @@ const normalizeDepartment = (dep) => {
 const students = studentsData;
 const professors = professorsData;
 
-
 // Professor
 // id: string
 // nameKor: string
@@ -54,35 +54,32 @@ const professors = professorsData;
 // field?: string
 // imgUrl: string
 
+const PageOuter = styled.div`
+  position: relative; background: #fff;
+`;
+const PageInner = styled.div`
+  padding-left: ${PAGE_SIDE}px; padding-right: ${PAGE_SIDE}px; display: flex; flex-direction: column; min-height: 100vh;
+`;
 function PageContainer({ children }) {
   return (
-    <div style={{ position: 'relative', background: '#fff' }}>
-      <div style={{
-        paddingLeft: PAGE_SIDE,
-        paddingRight: PAGE_SIDE,
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh'
-      }}>
-        {children}
-      </div>
-    </div>
+    <PageOuter>
+      <PageInner>{children}</PageInner>
+    </PageOuter>
   );
 }
+
+const Grid = styled.div`
+  display: flex; flex-wrap: wrap; justify-content: center; margin-top: 100px; margin-bottom: 120px; row-gap: 32px; column-gap: 14px; width: 100%;
+`;
+const LinkWrap = styled.div`
+  text-decoration: none; cursor: pointer;
+`;
+const Relative = styled.div`position: relative;`;
 
 function PeoplesList({ people }) {
   const navigate = useNavigate();
   return (
-    <div style={{
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'center',
-      marginTop: '100px',
-      marginBottom: '120px',
-      rowGap: '32px',
-      columnGap: '14px',
-      width: '100%',
-    }}>
+    <Grid>
       {people.map((p, index) => {
         const key = p.id ?? p.studentId ?? `${p.nameKor}-${index}`;
         const hasProjectInfo = typeof p.projectNum === 'number' && p.category;
@@ -106,7 +103,7 @@ function PeoplesList({ people }) {
 
         // 링크로 이동 가능한 경우에만 Link로 감쌉니다.
         return hasProjectInfo ? (
-          <div
+          <LinkWrap
             key={`link-${key}`}
             role="link"
             tabIndex={0}
@@ -114,16 +111,15 @@ function PeoplesList({ people }) {
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') navigate(`/work/${pid}`);
             }}
-            style={{ textDecoration: 'none', cursor: 'pointer' }}
             aria-label={`${p.nameKor} 작품 보기 (${pid})`}
           >
             {card}
-          </div>
+          </LinkWrap>
         ) : (
           card
         );
       })}
-    </div>
+    </Grid>
   )
 };
 
@@ -159,7 +155,8 @@ export default function Peoples() {
     if (!isToggleActive) {
       // 학생 모드: 전체면 전부, 아니면 department 코드로 필터 (라벨/코드 호환)
       if (activeCategory === '전체') return students;
-      const depCode = departmentLabelToCode[activeCategory]; // 0 또는 1
+      let depCode = departmentLabelToCode[activeCategory]; // 우선 라벨 시도
+      if (depCode === undefined) depCode = normalizeDepartment(activeCategory); // 코드(IND/MED/0/1)도 허용
       return students.filter((p) => normalizeDepartment(p.department) === depCode);
     }
     // 교수 모드: activeCategory가 교수 id 또는 이름일 수 있으므로 id로 정규화
@@ -193,9 +190,9 @@ export default function Peoples() {
   }, [isToggleActive, activeCategory]);
 
   return (
-    <div style={{ position: 'relative' }}>
-
+    <Relative>
       <CategoryNav
+        type="people"
         onCategoryChange={setActiveCategory}
         onToggleChange={setIsToggleActive}
       />
@@ -215,7 +212,6 @@ export default function Peoples() {
         {/* 교수 프로필이 나왔을때 학생 리스트의 썸네일 변경 */}
         <PeoplesList people={filtered} />
       </PageContainer>
-
-    </div>
+    </Relative>
   );
 }

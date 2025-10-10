@@ -1,6 +1,8 @@
 //Guestbook.jsx
 //방명록 페이지
+// GPT: styled-components 변환 (스타일 값/로직 불변)
 import React from 'react';
+import styled from 'styled-components';
 import NavHeader from '../molecule/NavHeader';
 import Footer from '../molecule/Footer';
 import GuestbookGrid from '../organism/GuestbookGrid';
@@ -8,6 +10,23 @@ import GuestbookModal from '../organism/GuestbookModal';
 import { GUESTBOOK_DATA } from '../../data/guestbook';
 
 const font = 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif';
+
+// page wrappers
+const Page = styled.div`
+  background: #121212; min-height: 100vh;
+`;
+const Main = styled.main`
+  padding: 80px 40px 120px 40px;
+`;
+const Title = styled.h1`
+  font-family: ${font}; font-weight: 700; font-size: 32px; color: #FFFFFF; text-align: center; margin: 20px 0 40px;
+`;
+const Section = styled.section`
+  display: flex; justify-content: center;
+`;
+const Wrap = styled.div`
+  width: 100%;
+`;
 
 export default function Guestbook() {
   const [open, setOpen] = React.useState(false);
@@ -31,31 +50,27 @@ export default function Guestbook() {
   `;
 
   return (
-    <div style={{ background:'#121212', minHeight:'100vh' }}>
-     
+    <Page>
+      {/* 상단/하단 네비는 페이지 컴포넌트 외부에서 통합될 수 있어, 여기선 기존 구조 유지 */}
 
-      <main style={{ padding:'80px 40px 120px 40px' }}>
-        <h1 style={{ fontFamily:font, fontWeight:700, fontSize:32, color:'#FFFFFF', textAlign:'center', margin:'20px 0 40px' }}>
-          Guest Book
-        </h1>
+      <Main>
+        <Title>Guest Book</Title>
 
-        <section style={{ display:'flex', justifyContent:'center' }}>
+        <Section>
           {/* Removed fixed-width container so the horizontal rail can span freely.
               Wrap the grid so we can scope CSS to descendants. */}
-          <div className="gb-wrap" style={{ width: '100%' }}>
+          <Wrap className="gb-wrap">
             <style>{css}</style>
             <GuestbookGrid onOpenModal={()=>setOpen(true)} items={items} />
-          </div>
-        </section>
-      </main>
-
-     
+          </Wrap>
+        </Section>
+      </Main>
 
       <GuestbookModal
         open={open}
         onClose={()=>setOpen(false)}
         onSubmit={handleSubmit}
       />
-    </div>
+    </Page>
   );
 }
