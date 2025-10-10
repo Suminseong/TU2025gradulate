@@ -161,7 +161,7 @@ export default function WorkInfo({
                     <div style={{ ...likeIconWrapperStyle }} onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
                         <div style={{ ...likeIconAlignStyle }}>
                             <img style={{ ...likeIconStyle }} src="../icons/likeIcon(white).svg" alt="Like Icon" />
-                            <p style={{ ...likeCountStyle }}>256</p>
+                            <p style={{ ...likeCountStyle }}>0</p> { /* 좋아요 수 추후 데이터베이스 연결 */ }
                         </div>
                     </div>
                     <div style={{ ...pageDownIconWrapperStyle }} onClick={() => { window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }}>

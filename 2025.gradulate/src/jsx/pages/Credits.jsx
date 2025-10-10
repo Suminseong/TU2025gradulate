@@ -4,11 +4,14 @@
 // 공통 타이포/레이아웃 수치
 const FONT = `'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif`;
 const PAGE_SIDE = 350;
+// vw 단위 변경 계산
+const PAGE_SIDE_VW = `${(PAGE_SIDE / 1920) * 100}vw`;
+const PAGE_SIDE_VW_IMG = `${((PAGE_SIDE + 414) / 1920) * 100}vw`; // 이미지 포함 시
 
 function PageContainer({ children }) {
   return (
     <div style={{ position: 'relative', background: '#fff' }}>
-      <div style={{ paddingLeft: PAGE_SIDE, paddingRight: PAGE_SIDE }}>{children}</div>
+      <div style={{ paddingLeft: PAGE_SIDE_VW, paddingRight: PAGE_SIDE_VW }}>{children}</div>
     </div>
   );
 }
@@ -83,7 +86,7 @@ function HeroCard({ children }) {
         height: 375,
         background: '#FFF4ED',
         marginTop: 24,
-        marginLeft: PAGE_SIDE + 414, // 좌측 텍스트와 간격 맞추기(시안 비율에 준함)
+        marginLeft: PAGE_SIDE_VW_IMG, // 좌측 텍스트와 간격 맞추기(시안 비율에 준함)
         position: 'absolute',
       }}
     >
@@ -181,9 +184,14 @@ function CommitteeSection({ title, rows, last = false }) {
       </div>
 
       <div style={{ width: 900, display: 'flex', flexDirection: 'column' }}>
-        {rows.map((r, i) => (
-          <CommitteeRow key={r.ko + r.en + i} ko={r.ko} en={r.en} divider={i === 0 && rows.length > 1} />
-        ))}
+            {rows.map((r, i) => (
+              <CommitteeRow
+                key={r.ko + r.en + i}
+                ko={r.ko}
+                en={r.en}
+                divider={rows.length > 1 && i !== rows.length - 1}
+              />
+            ))}
       </div>
     </div>
   );
