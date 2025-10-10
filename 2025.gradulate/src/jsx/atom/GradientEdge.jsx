@@ -15,7 +15,7 @@ const Edge = styled.div(({ height, from, to, position, z }) => ({
   height,
   pointerEvents: 'none',
   zIndex: z ?? 0,
-  background: `linear-gradient(${position === 'top' ? '180deg' : '180deg'}, ${from} 0%, ${to} 100%)`
+  background: `linear-gradient(180deg, ${from} 0%, ${to} 100%)`,
 }));
 
 export default function GradientEdge({ position = 'bottom', from, to, height = 240, z = 0, style }) {

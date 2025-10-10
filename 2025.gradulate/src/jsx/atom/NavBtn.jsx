@@ -1,11 +1,30 @@
-// NavBtn.jsx
+// NavBtn.jsx (styled-components, v6-safe)
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 /**
  * 단일 네비게이션 버튼
- * - 텍스트 컬러는 부모로부터 상속(inherit)하여 다크/라이트 테마에 자동 대응
+ * - 텍스트 컬러는 부모로부터 상속(inherit)
  * - active 시 굵게(700), aria-current="page"
  */
+const Base = styled.a`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 19.2px;
+  letter-spacing: 0.24px;
+  font-weight: ${(p) => (p.$active ? 700 : 400)};
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 120ms ease;
+`;
+
 export default function NavBtn({
   label,
   href = '#',
@@ -15,26 +34,6 @@ export default function NavBtn({
   target,
   rel,
 }) {
-  const baseStyle = {
-    // 시안 수치
-    fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-    fontSize: 16,
-    lineHeight: '19.2px',
-    letterSpacing: 0.24,
-    fontWeight: active ? 700 : 400,
-    color: 'inherit',
-    textDecoration: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    whiteSpace: 'nowrap',
-    padding: 0,
-    cursor: 'pointer',
-    // 미세 인터랙션
-    outline: 'none',
-    transition: 'opacity 120ms ease',
-  };
-
   const handleKeyDown = (e) => {
     if (onClick && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
@@ -42,23 +41,23 @@ export default function NavBtn({
     }
   };
 
-  // a 태그를 기본으로 사용하되 onClick-only도 허용
   const commonProps = {
     'aria-current': active ? 'page' : undefined,
     'data-active': active ? 'true' : 'false',
-    style: { ...baseStyle, ...style },
     onKeyDown: handleKeyDown,
     onClick,
+    style,
+    $active: active,
   };
 
   return href ? (
-    <a href={href} target={target} rel={rel} {...commonProps}>
+    <Base href={href} target={target} rel={rel} {...commonProps}>
       {label}
-    </a>
+    </Base>
   ) : (
-    <button type="button" {...commonProps} style={{ ...baseStyle, background: 'none', border: 0 }}>
+    <Base as="button" type="button" {...commonProps} style={{ background: 'none', border: 0, ...style }}>
       {label}
-    </button>
+    </Base>
   );
 }
 

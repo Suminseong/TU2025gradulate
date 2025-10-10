@@ -1,172 +1,170 @@
 // ProfProfile.jsx
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-// 교수 프로필 카드
-// atom으로 넣은 이유는 재사용성 때문
+// 교수 프로필 카드 (atom)
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin-top: 100px;
+`;
+
+const ProfileRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+  width: auto;
+  height: auto;
+  margin-top: 20px;
+`;
+
+const ProfileImg = styled.img`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 240px;
+  height: 332px;
+  border: 1px solid #d0d0d0;
+  object-fit: cover;
+`;
+
+const TextWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 20px;
+  width: 983px;
+  height: auto;
+`;
+
+const NameKor = styled.p`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: auto;
+  height: 32px;
+  color: #212121;
+  margin: 0 0 12px 0;
+`;
+
+const Row = styled.div`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  padding: 22px 0 40px 0;
+  margin: 0;
+  border-top: 1px solid #e0e0e0;
+`;
+
+const Label = styled.p`
+  font-weight: 500;
+  margin: 0;
+  font-size: 20px;
+  line-height: 22.4px;
+  color: #606060;
+  width: 135px;
+`;
+
+const ValueCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+`;
+
+const Value = styled.p`
+  font-weight: 300;
+  margin: 0;
+  font-size: 16px;
+  line-height: 22.4px;
+  color: #000000;
+`;
+
 export default function ProfProfile({ nameKor, rank, eMail, education, field, imgSrc, imgAlt }) {
-    const wrapperStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        width: '100%',
-        height: 'auto',
-        marginTop: '100px',
-    };
+  const renderNumbered = (val) => {
+    if (Array.isArray(val)) {
+      return (
+        <ValueCol>
+          {val.map((item, idx) => (
+            <Value key={idx}>{item}</Value>
+          ))}
+        </ValueCol>
+      );
+    }
+    if (typeof val === 'string' && val) {
+      return (
+        <ValueCol>
+          <Value>{val}</Value>
+        </ValueCol>
+      );
+    }
+    return null;
+  };
 
-    const profileWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        gap: '40px',
-        width: 'auto',
-        height: 'auto',
-        marginTop: '20px'
-    };
-
-    const profileImageStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        width: '240px',
-        height: '332px',
-        border: '1px solid #d0d0d0',
-        objectFit: 'cover',
-    };
-
-    const profileTextWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        margin: '0 20px',
-        width: '983px',
-        height: 'auto',
-    };
-
-    const profileNameKorStyle = {
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '28px',
-        fontWeight: '600',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        width: 'auto',
-        height: '32px',
-        color: '#212121',
-        // 마진 상단 0, 하단 12px
-        margin: '0 0 12px 0',
-    };
-
-    const profileTextStyle = {
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        width: '100%',
-        height: 'auto',
-        padding: '22px 0 40px 0',
-        margin: '0',
-        borderTop: '1px solid #e0e0e0',
-    };
-
-    const profileTextBoldStyle = {
-        fontWeight: '500',
-        margin: '0',
-        fontSize: '20px',
-        lineHeight: '22.4px',
-        color: '#606060',
-        width: '135px',
-    };
-
-    const profileTextNomalWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        margin: '0',
-    };
-
-    const profileTextNormalStyle = {
-        fontWeight: '300',
-        margin: '0',
-        fontSize: '16px',
-        lineHeight: '22.4px',
-        color: '#000000'
-    };
-
-    // 교육/전문분야 값을 숫자 목록으로 혹은 단일 텍스트로 렌더링
-    const renderNumbered = (val) => {
-        if (Array.isArray(val)) {
-            return (
-                <div style={{ ...profileTextNomalWrapperStyle }}>
-                    {val.map((item, idx) => (
-                        <p key={idx} style={{ ...profileTextNormalStyle }}>{item}</p>
-                    ))}
-                </div>
-            );
-        }
-        if (typeof val === 'string' && val) {
-            return (
-                <div style={{ ...profileTextNomalWrapperStyle }}>
-                    <p style={{ ...profileTextNormalStyle }}>{val}</p>
-                </div>
-            );
-        }
-        return null;
-    };
-
-    return (
-        <div style={{ ...wrapperStyle }}>
-            <div style={{ ...profileWrapperStyle }}>
-                <img src={imgSrc} alt={imgAlt} style={{ ...profileImageStyle }} />
-                <div style={{ ...profileTextWrapperStyle }}>
-                    <p style={{ ...profileNameKorStyle }}>{nameKor}</p>
-                    <div style={{ ...profileTextStyle }}>
-                        <p style={{ ...profileTextBoldStyle }}>직위(직급)</p>
-                        <p style={{ ...profileTextNormalStyle }}>{rank}</p>
-                    </div>
-                    <div style={{ ...profileTextStyle }}>
-                        <p style={{ ...profileTextBoldStyle }}>이메일</p>
-                        <p style={{ ...profileTextNormalStyle }}>{eMail}</p>
-                    </div>
-                    <div style={{ ...profileTextStyle }}>
-                        <p style={{ ...profileTextBoldStyle }}>학력</p>
-                        {renderNumbered(education)}
-                    </div>
-                    <div style={{ ...profileTextStyle }}>
-                        <p style={{ ...profileTextBoldStyle }}>전문 분야</p>
-                        {renderNumbered(field)}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <Wrapper>
+      <ProfileRow>
+        <ProfileImg src={imgSrc} alt={imgAlt} />
+        <TextWrap>
+          <NameKor>{nameKor}</NameKor>
+          <Row>
+            <Label>직위(직급)</Label>
+            <Value>{rank}</Value>
+          </Row>
+          <Row>
+            <Label>이메일</Label>
+            <Value>{eMail}</Value>
+          </Row>
+          <Row>
+            <Label>학력</Label>
+            {renderNumbered(education)}
+          </Row>
+          <Row>
+            <Label>전문 분야</Label>
+            {renderNumbered(field)}
+          </Row>
+        </TextWrap>
+      </ProfileRow>
+    </Wrapper>
+  );
 }
 
 ProfProfile.propTypes = {
-    nameKor: PropTypes.string.isRequired,
-    rank: PropTypes.string.isRequired,
-    eMail: PropTypes.string.isRequired,
-    education: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-    ]),
-    field: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.arrayOf(PropTypes.string),
-    ]),
-    imgSrc: PropTypes.string.isRequired,
-    imgAlt: PropTypes.string.isRequired,
+  nameKor: PropTypes.string.isRequired,
+  rank: PropTypes.string.isRequired,
+  eMail: PropTypes.string.isRequired,
+  education: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+  field: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
 };
 
 ProfProfile.defaultProps = {
-    nameKor: '홍길동',
-    rank: '교수',
-    eMail: 'honggildong@example.com',
-    education: [],
-    field: [],
-    imgSrc: 'https://via.placeholder.com/240x332.png?text=Profile+Image',
-    imgAlt: '홍길동 교수의 프로필 이미지',
+  nameKor: '홍길동',
+  rank: '교수',
+  eMail: 'honggildong@example.com',
+  education: [],
+  field: [],
+  imgSrc: 'https://via.placeholder.com/240x332.png?text=Profile+Image',
+  imgAlt: '홍길동 교수의 프로필 이미지',
 };

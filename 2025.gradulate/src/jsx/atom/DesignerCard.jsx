@@ -3,6 +3,125 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Card = styled.div`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  letter-spacing: 0.24px;
+  color: #202020;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  width: auto;
+  height: 387px;
+  gap: 40px;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  width: 290px;
+  height: 387px;
+  border-radius: 4px;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 8px);
+  width: auto;
+`;
+
+const NameWrapper = styled.div`
+  display: flex;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+  gap: 0px;
+`;
+
+const NameKor = styled.h1`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: auto;
+  color: #202020;
+  margin: 0;
+  padding: 0;
+`;
+
+const NameEng = styled.h2`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: auto;
+  color: #202020;
+  margin: 0;
+  padding: 0;
+`;
+
+const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 84px;
+`;
+
+const InfoTitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90px;
+  height: 84px;
+  margin: 0;
+  padding: 0;
+`;
+
+const InfoTitle = styled.h3`
+  display: flex;
+  height: 20px;
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 19.2px;
+  color: #404040;
+  margin: 0;
+  padding: 0;
+`;
+
+const InfoTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: auto;
+  height: 84px;
+  line-height: 19.2px;
+  margin: 0;
+  padding: 0;
+`;
+
+const InfoText = styled.p`
+  display: flex;
+  height: 20px;
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #202020;
+  margin: 0;
+  padding: 0;
+`;
 
 export default function DesignerCard({
     nameKor,
@@ -13,157 +132,40 @@ export default function DesignerCard({
     imgUrl,
     imgAlt,
 }) {
-    const cardStyle = {
-        // 시안 수치
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        letterSpacing: '0.24px',
-        color: '#202020',
-        textDecoration: 'none',
-        display: 'flex',
-        flexDirection: 'row',
-        padding: 0,
-        width: 'auto',
-        height: '387px',
-        gap: '40px'
-    }
-
-    const cardImageContainterStyle = {
-        // 이미지 컨테이너
-        display: 'flex',
-        width: '290px',
-        height: '387px',
-        borderRadius: '4px',
-    }
-
-    const cardContentWrapperStyle = {
-        // 텍스트 컨테이너
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: 'calc(100% - 8px)',
-        width: 'auto'
-    }
-
-    const cardProfileNameWapperStyle = {
-        // 이름 컨테이너
-        display: 'flex',
-        height: 'auto',
-        padding: '0',
-        margin: '0',
-        flexDirection: 'column',
-        gap: '0px'
-    }
-
-    const cardProfileNameKorStyle = {
-        // 이름 한글
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '42px',
-        fontWeight: '700',
-        lineHeight: 'auto',
-        color: '#202020',
-        margin: '0',
-        padding: '0',
-    }
-
-    const cardProfileNameEngStyle = {
-        // 이름 영문
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '20px',
-        fontWeight: '400',
-        lineHeight: 'auto',
-        color: '#202020',
-        margin: '0',
-        padding: '0',
-    }
-
-    const cardInfoWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-        height: '84px',
-    }
-
-    const cardInfoTitleWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: '90px',
-        height: '84px',
-        margin: '0',
-        padding: '0',
-    }
-
-    const cardInfoTitleStyle = {
-        display: 'flex',
-        height: '20px',
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '20px',
-        fontWeight: '300',
-        lineHeight: '19.2px',
-        color: '#404040',
-        margin: '0',
-        padding: '0',
-    }
-
-    const cardInfoTextWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: 'auto',
-        height: '84px',
-        lineHeight: '19.2px',
-        margin: '0',
-        padding: '0',
-    }
-
-    const cardInfoTextStyle = {
-        display: 'flex',
-        height: '20px',
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '20px',
-        fontWeight: '400',
-        color: '#202020',
-        margin: '0',
-        padding: '0',
-    }
-
     return (
-        <div style={{ ...cardStyle }}>
-            <div style={{ ...cardImageContainterStyle }}>
-                <img style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }} src={imgUrl} alt={imgAlt} />
-            </div>
-            <div style={{ ...cardContentWrapperStyle }}>
-                <div style={{ ...cardProfileNameWapperStyle }}>
-                    <h1 style={{ ...cardProfileNameKorStyle }}>{nameKor}</h1>
-                    <h2 style={{ ...cardProfileNameEngStyle }}>{nameEng}</h2>
-                </div>
-                <div style={{ ...cardInfoWrapperStyle }}>
-                    <div style={{ ...cardInfoTitleWrapperStyle }}>
-                        <h3 style={{ ...cardInfoTitleStyle }}>Part</h3>
-                        <h3 style={{ ...cardInfoTitleStyle }}>SNS</h3>
-                        <h3 style={{ ...cardInfoTitleStyle }}>E-mail</h3>
-                    </div>
-                    <div style={{ ...cardInfoTextWrapperStyle }}>
-                        <p style={{ ...cardInfoTextStyle }}>{part}</p>
-                        <p style={{ ...cardInfoTextStyle }}>{sns}</p>
-                        <p style={{ ...cardInfoTextStyle }}>{eMail}</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <Card>
+            <ImageContainer>
+                <Img src={imgUrl} alt={imgAlt} />
+            </ImageContainer>
+            <ContentWrapper>
+                <NameWrapper>
+                    <NameKor>{nameKor}</NameKor>
+                    <NameEng>{nameEng}</NameEng>
+                </NameWrapper>
+                <InfoWrapper>
+                    <InfoTitleWrapper>
+                        <InfoTitle>Part</InfoTitle>
+                        <InfoTitle>SNS</InfoTitle>
+                        <InfoTitle>E-mail</InfoTitle>
+                    </InfoTitleWrapper>
+                    <InfoTextWrapper>
+                        <InfoText>{part}</InfoText>
+                        <InfoText>{sns}</InfoText>
+                        <InfoText>{eMail}</InfoText>
+                    </InfoTextWrapper>
+                </InfoWrapper>
+            </ContentWrapper>
+        </Card>
     );
 }
 
 DesignerCard.propTypes = {
     nameKor: PropTypes.string.isRequired,
     nameEng: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
+    part: PropTypes.string,
     sns: PropTypes.string,
     eMail: PropTypes.string,
-    imgSrc: PropTypes.string.isRequired,
+    imgUrl: PropTypes.string.isRequired,
     imgAlt: PropTypes.string.isRequired,
 };
 

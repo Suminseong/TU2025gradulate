@@ -1,27 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
 import { CARD_W, CARD_H } from '../organism/GuestbookGrid';
+
+const Wrap = styled.div`
+  width: ${(p) => p.$w}px;
+  height: ${(p) => p.$h}px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`;
 
 export default function PhotoCard({ src }) {
   return (
-    <div
-      style={{
-        width: CARD_W,
-        height: CARD_H,
-        borderRadius: 8,
-        overflow: 'hidden',
-        background: '#fff',
-      }}
-    >
-      <img
-        src={src}
-        alt="포토 카드"
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: 'block',
-        }}
-      />
-    </div>
+    <Wrap $w={CARD_W} $h={CARD_H}>
+      <Img src={src} alt="포토 카드" />
+    </Wrap>
   );
 }

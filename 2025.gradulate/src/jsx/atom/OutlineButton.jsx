@@ -1,6 +1,37 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const FONT = 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif';
+
+const Base = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: ${(p) => (p.$size === 'sm' ? 40 : 52)}px;
+  padding: 0 ${(p) => (p.$size === 'sm' ? 16 : 24)}px;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  background: transparent;
+  font-family: ${FONT};
+  font-weight: 700;
+  font-size: ${(p) => (p.$size === 'sm' ? 13 : 14)}px;
+  letter-spacing: 0.2px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  width: ${(p) => (p.$full ? '100%' : 'auto')};
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+`;
+
+const Arrow = styled.span`
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: 8px;
+  border-top: 1px solid #FFFFFF;
+  border-right: 1px solid #FFFFFF;
+  transform: rotate(45deg);
+`;
 
 export default function OutlineButton({
   as = 'button',
@@ -14,46 +45,10 @@ export default function OutlineButton({
   onClick,
   style,
 }) {
-  const SIZES = { sm: { h: 40, padX: 16, fz: 13 }, md: { h: 52, padX: 24, fz: 14 } };
-  const sz = SIZES[size] ?? SIZES.md;
-
-  // 내부 상태 (부모가 showArrow를 제공하지 않을 때만 사용)
-  const [innerArrow, setInnerArrow] = React.useState(defaultShowArrow);
   const isControlled = typeof showArrow === 'boolean';
+  const [innerArrow, setInnerArrow] = React.useState(defaultShowArrow);
   const arrowVisible = isControlled ? showArrow : innerArrow;
 
-  const base = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: sz.h,
-    padding: `0 ${sz.padX}px`,
-    border: '1px solid #FFFFFF',
-    color: '#FFFFFF',
-    background: 'transparent',
-    fontFamily: FONT,
-    fontWeight: 700,
-    fontSize: sz.fz,
-    letterSpacing: .2,
-    borderRadius: 4,
-    cursor: 'pointer',
-    textDecoration: 'none',
-    width: fullWidth ? '100%' : 'auto',
-    transition: 'background .15s ease, color .15s ease, border-color .15s ease',
-    ...style,
-  };
-
-  const Arrow = arrowVisible ? (
-    <span aria-hidden
-      style={{
-        display: 'inline-block', width: 8, height: 8, marginLeft: 8,
-        borderTop: '1px solid #FFFFFF', borderRight: '1px solid #FFFFFF',
-        transform: 'rotate(45deg)'
-      }}
-    />
-  ) : null;
-
-  // 내부 토글 유틸 (필요 시 부모에게도 알림)
   const toggleArrow = React.useCallback(() => {
     if (isControlled) {
       onArrowChange && onArrowChange(!showArrow);
@@ -66,27 +61,22 @@ export default function OutlineButton({
     });
   }, [isControlled, onArrowChange, showArrow]);
 
-  // Expose data attribute for styling/tests; avoid changing API shape
   const commonProps = {
     onClick,
-    style: base,
+    style,
     'data-arrow-visible': arrowVisible,
-    // optional: users can bind toggleArrow to some event if desired
     'data-toggle-arrow-fn': undefined,
+    $size: size,
+    $full: fullWidth,
+    as,
+    href,
+    type: as === 'button' ? 'button' : undefined,
   };
 
-  if (as === 'a') {
-    return (
-      <a href={href} {...commonProps}>
-        {label}
-        {Arrow}
-      </a>
-    );
-  }
   return (
-    <button type="button" {...commonProps}>
+    <Base {...commonProps}>
       {label}
-      {Arrow}
-    </button>
+      {arrowVisible ? <Arrow aria-hidden /> : null}
+    </Base>
   );
 }

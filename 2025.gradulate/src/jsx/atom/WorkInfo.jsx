@@ -2,177 +2,177 @@
 // 작품 정보 컴포넌트
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  position: fixed;
+  top: 80px;
+  bottom: 0px;
+  left: 0;
+  width: 350px;
+  height: auto;
+  background-color: #121212;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  z-index: 1000;
+`;
+
+const GapCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+`;
+
+const ContentCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  height: auto;
+  gap: 48px;
+`;
+
+const CloseBox = styled.div`
+  display: flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
+const Content = styled.div`
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const Title = styled.h1`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+  line-height: 125%;
+`;
+
+const Context = styled.p`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #F0F0F0;
+  margin: 0;
+  padding: 0;
+  line-height: 150%;
+`;
+
+const IconRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  height: 75px;
+`;
+
+const LikeBtn = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: auto;
+  height: 32px;
+  cursor: pointer;
+`;
+
+const LikeAlign = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+`;
+
+const LikeIcon = styled.img`
+  width: 24px;
+  height: 24px;
+`;
+
+const LikeCount = styled.p`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+`;
+
+const PageDown = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 12px;
+  cursor: pointer;
+`;
+
+const PageDownText = styled.p`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  line-height: auto;
+  margin-bottom: 12px;
+`;
+
+const PageDownIconBox = styled.div`
+  display: flex;
+  width: 20px;
+  height: 75px;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default function WorkInfo({
     titleKor,
     titleEng,
     context
 }) {
-    const containerStyle = {
-        display: 'flex',
-        position: 'fixed',
-        top: '80px',
-        bottom: '0px',
-        left: 0,
-        width: '350px',
-        height: 'auto',
-        backgroundColor: '#121212',
-        padding: '60px 40px',
-        boxSizing: 'border-box',
-        zIndex: 1000,
-    };
-
-    const contentWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '270px',
-        height: 'auto',
-        gap: '48px'
-    };
-
-    const contentGapStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: '100%',
-        height: 'auto',
-    };
-
-    const closeIconStyle = {
-        display: 'flex',
-        width: '40px',
-        height: '40px',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer'
-    }
-
-    const contentStyle = {
-        display: 'flex',
-        width: '100%',
-        height: 'auto',
-        flexDirection: 'column',
-        gap: '16px'
-    };
-
-    const titleStyle = {
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '24px',
-        fontWeight: '600',
-        color: '#FFFFFF',
-        margin: 0,
-        padding: 0,
-        lineHeight: '125%'
-    };
-
-    const contextStyle = {
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '16px',
-        fontWeight: '300',
-        color: '#F0F0F0',
-        margin: 0,
-        padding: 0,
-        lineHeight: '150%'
-    };
-
-    const iconWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        justifyContent: 'space-between',
-        width: '100%',
-        height: '75px',
-    };
-
-    const likeIconWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        width: 'auto',
-        height: '32px',
-        cursor: 'pointer',
-    };
-
-    const likeIconAlignStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '4px',
-    };
-
-    const likeIconStyle = {
-        width: '24px',
-        height: '24px',
-    };
-
-    const likeCountStyle = {
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '20px',
-        fontWeight: '400',
-        color: '#e0e0e0',
-        margin: 0,
-        padding: 0,
-        // lineHeight: '13.8px',
-    }
-
-    const pageDownIconWrapperStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-end',
-        gap: '12px',
-        cursor: 'pointer',
-    };
-
-    const pageDownTextStyle = {
-        fontFamily: 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif',
-        fontSize: '18px',
-        fontWeight: '300',
-        color: '#e0e0e0',
-        margin: 0,
-        padding: 0,
-        lineHeight: 'auto',
-        marginBottom: '12px',
-    };
-
-    const pageDownIconStyle = {
-        display: 'flex',
-        width: '20px',
-        height: '75px',
-        alignItems: 'center',
-        justifyContent: 'center',
-    };
-
     return (
-        <div style={{ ...containerStyle }}>
-            <div style={{ ...contentGapStyle }}>
-                <div style={{ ...contentWrapperStyle }}>
-                    <div style={{ ...closeIconStyle }} onClick={() => { /* 닫기 기능 추후 구현 */ }}>
+        <Container>
+            <GapCol>
+                <ContentCol>
+                    <CloseBox onClick={() => { /* 닫기 기능 추후 구현 */ }}>
                         <img src="../icons/closeIcon.svg" alt="Close Icon" />
-                    </div>
-                    <div style={{ ...contentStyle }}>
-                        <h1 style={{ ...titleStyle }}>{titleKor}</h1>
-                        <p style={{ ...contextStyle }}>{context}</p>
-                    </div>
-                </div>
+                    </CloseBox>
+                    <Content>
+                        <Title>{titleKor}</Title>
+                        <Context>{context}</Context>
+                    </Content>
+                </ContentCol>
 
-                <div style={{ ...iconWrapperStyle }}>
-                    <div style={{ ...likeIconWrapperStyle }} onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
-                        <div style={{ ...likeIconAlignStyle }}>
-                            <img style={{ ...likeIconStyle }} src="../icons/likeIcon(white).svg" alt="Like Icon" />
-                            <p style={{ ...likeCountStyle }}>0</p> { /* 좋아요 수 추후 데이터베이스 연결 */ }
-                        </div>
-                    </div>
-                    <div style={{ ...pageDownIconWrapperStyle }} onClick={() => { window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }}>
-                        <p style={{ ...pageDownTextStyle }}>Designer Info</p>
-                        <div style={{ ...pageDownIconStyle }}>
+                <IconRow>
+                    <LikeBtn onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
+                        <LikeAlign>
+                            <LikeIcon src="../icons/likeIcon(white).svg" alt="Like Icon" />
+                            <LikeCount>0</LikeCount>
+                        </LikeAlign>
+                    </LikeBtn>
+                    <PageDown onClick={() => { window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }}>
+                        <PageDownText>Designer Info</PageDownText>
+                        <PageDownIconBox>
                             <img src="../icons/pageDownIcon.svg" alt="Page Down Icon" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </PageDownIconBox>
+                    </PageDown>
+                </IconRow>
+            </GapCol>
+        </Container>
     );
 }
 
