@@ -8,6 +8,7 @@ import DesignerInfo from '../molecule/DesignerInfo';
 import { useParams } from 'react-router-dom';
 import projectsData from '../../data/projects.json';
 import studentsData from '../../data/students.json';
+import WorkVideo from '../atom/WorkVideo';
 
 const PAGE_SIDE = 40;
 
@@ -155,6 +156,8 @@ export default function Work() {
             alt={`project-${catLetter}${num3}-placeholder`}
           />
         )}
+
+        <WorkVideo videoId={project.videoId} />
 
         <DesignerInfo designers={designers} />
       </PageContainer>
