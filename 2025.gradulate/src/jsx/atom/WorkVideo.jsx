@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const VideoWrapper = styled.div`
     width: '1600px'; // 임시값
     height: '100%'; // 임시값
+    margin-top: 50px;
 `
 
 const Iframe = styled.iframe`
@@ -23,7 +24,7 @@ export default function WorkVideo({ videoId }) {
     return (
         <VideoWrapper>
             <Iframe
-                src={`https://player.vimeo.com/video/1126266309?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`}
+                src={`https://player.vimeo.com/video/1126266309?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`} // 임시 링크, 추후 수정
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
