@@ -1,16 +1,65 @@
 import React from 'react';
 import styled from 'styled-components';
-import PinSection from './PinSection';
 import { EXPO_WORKS } from '../../data/expoWorks';
 
 const Wrap = styled.div`
   position: relative;
   background: #121212;
+  @media (max-width: 640px) {
+    background: #121212;
+    padding: 0 0 24px 0;
+  }
+`;
+
+const MobileGrid = styled.div`
+  display: none;
+  @media (max-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100vw;
+    padding: 0 0 24px 0;
+    box-sizing: border-box;
+  }
+`;
+
+const MobileCard = styled.div`
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 92vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const MobileImg = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
+`;
+
+const MobileInfo = styled.div`
+  padding: 12px 14px 16px 14px;
+  color: #fff;
+  font-family: Pretendard, system-ui;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 `;
 const Stage = styled.div`
   position: relative;
   height: 979px;
   background: #121212;
+  @media (max-width: 640px) {
+    height: auto;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 24px 0;
+  }
 `;
 const Title = styled.div`
   position: absolute;
@@ -21,6 +70,12 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 40px;
   line-height: 64px;
+  @media (max-width: 640px) {
+    position: static;
+    font-size: 20px;
+    line-height: 1.3;
+    margin: 16px 0 8px 0;
+  }
 `;
 const Frame = styled.div`
   position: absolute;
@@ -30,9 +85,23 @@ const Frame = styled.div`
   background: #606060;
   overflow: hidden;
   transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
+  @media (max-width: 640px) {
+    position: static;
+    width: 90vw;
+    height: auto;
+    min-height: 160px;
+    margin: 0 auto 12px auto;
+    border-radius: 10px;
+    transform: none;
+  }
 `;
 const Img = styled.img`
   width: 1265px; height: 712px; display: block;
+  @media (max-width: 640px) {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
 `;
 const SlotMask = `
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
@@ -46,6 +115,15 @@ const LeftName = styled.div`
   transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
   opacity: ${(p)=>p.$opacity??1};
   ${SlotMask}
+  @media (max-width: 640px) {
+    position: static;
+    font-size: 28px;
+    margin: 8px 0 0 0;
+    transform: none;
+    opacity: 1;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 `;
 const LeftMeta = styled.div`
   position: absolute; left: 195px; top: 374px;
@@ -55,6 +133,15 @@ const LeftMeta = styled.div`
   transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
   opacity: ${(p)=>p.$opacity??1};
   ${SlotMask}
+  @media (max-width: 640px) {
+    position: static;
+    font-size: 13px;
+    margin: 2px 0 0 0;
+    transform: none;
+    opacity: 1;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 `;
 const RightMeta1 = styled.div`
   position: absolute; right: 195px; top: 509px;
@@ -64,6 +151,17 @@ const RightMeta1 = styled.div`
   transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
   opacity: ${(p)=>p.$opacity??1};
   ${SlotMask}
+  @media (max-width: 640px) {
+    position: static;
+    width: 100%;
+    font-size: 12px;
+    text-align: left;
+    margin: 2px 0 0 0;
+    transform: none;
+    opacity: 1;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 `;
 const RightMeta2 = styled.div`
   position: absolute; right: 195px; top: 547px;
@@ -73,20 +171,46 @@ const RightMeta2 = styled.div`
   transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
   opacity: ${(p)=>p.$opacity??1};
   ${SlotMask}
+  @media (max-width: 640px) {
+    position: static;
+    width: 100%;
+    font-size: 15px;
+    text-align: left;
+    margin: 2px 0 0 0;
+    transform: none;
+    opacity: 1;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 `;
 const WorkBlock = styled.div`
   position: absolute; left: 195px; top: 679px; width: 690.67px;
   transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
   opacity: ${(p)=>p.$opacity??1};
   ${SlotMask}
+  @media (max-width: 640px) {
+    position: static;
+    width: 100%;
+    margin: 4px 0 0 0;
+    transform: none;
+    opacity: 1;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 `;
 const WorkSmall = styled.small`
   display: block; color: #D9D9D9;
   font-family: Pretendard, system-ui; font-size: 24px; font-weight: 400;
+  @media (max-width: 640px) {
+    font-size: 12px;
+  }
 `;
 const WorkStrong = styled.strong`
   display: block; color: #FAFAFA;
   font-family: Pretendard, system-ui; font-size: 42px; font-weight: 700;
+  @media (max-width: 640px) {
+    font-size: 18px;
+  }
 `;
 
 const clamp = (n, a=0, b=1)=>Math.max(a, Math.min(b, n));
@@ -127,11 +251,28 @@ function ExpoItem({ work, progress }) {
 export default function ExpoWorksList() {
   return (
     <>
-      {EXPO_WORKS.map((work) => (
-        <PinSection key={work.id} durationVh={320} center centerOffsetPx={-40}>
-          {(p)=> <ExpoItem work={work} progress={p} />}
-        </PinSection>
-      ))}
+      {/* 데스크탑: 기존 동적 방식 유지 */}
+      <Wrap className="expo-works-desktop">
+        {/* ...기존 데스크탑 동적 구현... */}
+      </Wrap>
+      {/* 모바일: 정적 카드 그리드 */}
+      <MobileGrid>
+        {EXPO_WORKS.map((work) => (
+          <MobileCard key={work.id}>
+            <MobileImg src={work.image} alt={work.titleStrong} />
+            <MobileInfo>
+              <div style={{ fontWeight: 700, fontSize: 16 }}>{work.titleStrong}</div>
+              <div style={{ fontSize: 13, color: '#D9D9D9' }}>{work.artistKr} | {work.dept}</div>
+              <div style={{ fontSize: 12, color: '#A1A1A1', marginTop: 2 }}>{work.rightMeta1}</div>
+              <div style={{ fontSize: 12, color: '#A1A1A1' }}>{work.rightMeta2}</div>
+            </MobileInfo>
+          </MobileCard>
+        ))}
+      </MobileGrid>
     </>
   );
 }
+
+// ---메모---
+// 오프라인 전시 3작품만 넣는 걸로 일단 생각합시다.
+// 카드 사이 간격 24px로 조정

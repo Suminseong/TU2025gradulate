@@ -67,7 +67,16 @@ function Layout({ headerMode, setHeaderMode }) {
       />
 
       {/* 본문: 키보드 포커스 목적의 main */}
-      <main id="main" tabIndex={-1} style={{ outline: 'none' }}>
+      <main
+        id="main"
+        tabIndex={-1}
+        style={{
+          outline: 'none',
+          width: '100vw',
+          boxSizing: 'border-box',
+          padding: 0,
+        }}
+      >
         <Outlet />
       </main>
 

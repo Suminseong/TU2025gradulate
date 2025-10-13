@@ -14,6 +14,12 @@ const PageOuter = styled.div`
 `;
 const PageInner = styled.div`
   padding-left: ${PAGE_SIDE}px; padding-right: ${PAGE_SIDE}px;
+  @media (max-width: 640px) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100vw;
+    box-sizing: border-box;
+  }
 `;
 const PageContainerDark = ({ children }) => (
   <PageOuter>
@@ -35,19 +41,41 @@ function SectionHeader({ title }) {
   );
 }
 
+const BlockWrap = styled.div`
+  border-bottom: ${props => (props.$last ? 'none' : '1px rgba(255,255,255,0.12) solid')};
+  display: flex; gap: 20px; align-items: flex-start;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+  }
+`;
+
 const RowWrap = styled.div`
-  padding-top: 22px; padding-bottom: 40px;
+  padding-top: 12px; padding-bottom: 12px;
   border-bottom: ${props => (props.$divider ? '1px rgba(255,255,255,0.12) solid' : 'none')};
   display: flex; gap: 20px; align-items: flex-start;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 0 8px 0;
+  }
 `;
 const KeyCol = styled.div`
   width: 135px;
+  @media (max-width: 640px) {
+    width: 100%;
+  }
 `;
 const KeyLabel = styled.div`
   font-family: ${FONT}; font-size: 16px; font-weight: 700; line-height: 22.4px; color: #FFFFFF;
 `;
 const ValCol = styled.div`
   width: 700px; display: flex; flex-direction: column; gap: 10px;
+  @media (max-width: 640px) {
+    width: 100%;
+    gap: 6px;
+  }
 `;
 function KVRow({ k, children, divider = true }) {
   return (
@@ -60,12 +88,13 @@ function KVRow({ k, children, divider = true }) {
   );
 }
 
-const BlockWrap = styled.div`
-  border-bottom: ${props => (props.$last ? 'none' : '1px rgba(255,255,255,0.12) solid')};
-  display: flex; gap: 20px; align-items: flex-start;
-`;
 const BlockInner = styled.div`
   width: 900px; display: flex; flex-direction: column;
+  @media (max-width: 640px) {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
 `;
 function Block({ title, children, last = false }) {
   return (
@@ -78,6 +107,11 @@ function Block({ title, children, last = false }) {
 
 const TitleLine = styled.div`
   width: 900px; padding-top: 22px; padding-bottom: 40px; border-bottom: 1px rgba(255,255,255,0.12) solid;
+  @media (max-width: 640px) {
+    width: 100vw;
+    padding: 12px 12px 20px 12px;
+    box-sizing: border-box;
+  }
 `;
 const TitleLineText = styled.div`
   font-family: ${FONT}; font-size: 16px; font-weight: 700; color: #FFFFFF;

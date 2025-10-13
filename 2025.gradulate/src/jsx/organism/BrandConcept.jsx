@@ -9,12 +9,21 @@ const Wrap = styled.section`
   background: #FFFFFF;
   padding-top: 120px;
   padding-bottom: 160px;
+  @media (max-width: 640px) {
+    padding-top: 32px;
+    padding-bottom: 48px;
+  }
 `;
 
 const Container = styled.div`
   width: 100%;
   max-width: 1220px;
   margin: 0 auto;
+  @media (max-width: 640px) {
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
 `;
 
 const Grid = styled.div`
@@ -22,6 +31,10 @@ const Grid = styled.div`
   gap: 94px;
   align-items: center;
   justify-content: center;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 32px;
+  }
 `;
 
 const Col = styled.div`
@@ -29,6 +42,10 @@ const Col = styled.div`
   flex-direction: column;
   gap: 72px;
   align-items: center;
+  @media (max-width: 640px) {
+    gap: 24px;
+    padding: 0px 12px;
+  }
 `;
 
 const Title = styled.h2`
@@ -38,6 +55,10 @@ const Title = styled.h2`
   color: #000;
   font-weight: 700;
   margin: 0;
+  @media (max-width: 640px) {
+    font-size: 22px;
+    line-height: 1.3;
+  }
 `;
 
 const Body = styled.div`
@@ -47,6 +68,13 @@ const Body = styled.div`
   font-size: 24px;
   font-weight: 300;
   line-height: 38.4px;
+  @media (max-width: 640px) {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 2px;
+    box-sizing: border-box;
+  }
 `;
 
 const DotWrap = styled.div`
@@ -56,6 +84,10 @@ const DotWrap = styled.div`
   overflow: hidden;
   border-radius: 9999px;
   background: #FFFFFF;
+  @media (max-width: 640px) {
+    width: 120px;
+    height: 120px;
+  }
 `;
 
 const Dot = styled.div`
@@ -77,36 +109,15 @@ const Formula = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 93.33px;
-  color: #666;
-`;
-
-const Arr = styled.span`
-  font-size: 34.84px;
-`;
-const Plus = styled.span`
-  font-size: 34.84px;
-`;
-const Eq = styled.span`
-  font-size: 34.84px;
-`;
-
-const C1 = styled.span`
-  width: 30.74px;
-  height: 30.74px;
-  border-radius: 9999px;
-  background: linear-gradient(180deg, #121212 0%, #787878 100%);
-`;
-const C2 = styled.span`
-  width: 24.59px;
-  height: 24.59px;
-  border-radius: 9999px;
-  background: linear-gradient(242deg, #121212 0%, #787878 100%);
+  @media (max-width: 640px) {
+    width: 100%;
+    max-width: 100%;
+    height: 80px;
+    margin: 32px auto 0;
+    padding: 0 8px;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
 `;
 
 export default function BrandConcept() {
@@ -132,14 +143,13 @@ export default function BrandConcept() {
           <DotWrap aria-hidden><Dot /></DotWrap>
         </Grid>
 
-        <Formula aria-hidden>
-          <Row>
-            <Arr>→</Arr>
-            <Plus>+</Plus>
-            <C1 />
-            <Eq>=&gt;</Eq>
-            <C2 />
-          </Row>
+        <Formula as="div" style={{background: 'none', height: 'auto', justifyContent: 'center', alignItems: 'center', display: 'flex', boxShadow: 'none', margin: '32px auto 0', padding: 0}}>
+          <img 
+            src="../public/brand-variation.png"
+            alt="브랜드 컨셉 공식 그래픽" 
+            style={{width: '100%', maxWidth: 480, height: 'auto', display: 'block', margin: '0 auto'}} 
+            draggable={false}
+          />
         </Formula>
       </Container>
 

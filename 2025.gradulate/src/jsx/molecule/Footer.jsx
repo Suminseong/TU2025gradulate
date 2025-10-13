@@ -7,9 +7,14 @@ const FONT_STACK =
   "Pretendard, system-ui, -apple-system, Segoe UI, Roboto, 'Noto Sans KR', Arial, sans-serif";
 
 const FooterWrap = styled.footer`
-  width: 100%;
+  width: 100vw;
   background: #0E0E0E;
   border-top: 1px #A1A1A1 solid;
+  @media (max-width: 640px) {
+    min-width: 0;
+    left: 0;
+    right: 0;
+  }
 `;
 
 const Container = styled.div`
@@ -21,6 +26,13 @@ const Container = styled.div`
   max-width: ${(p) => `calc(${p.$maxWidth}px + ${p.$sidePadding * 2}px)`};
   position: relative;
   box-sizing: border-box;
+  @media (max-width: 640px) {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    max-width: 100vw;
+  }
 `;
 
 const TitleBox = styled.div`
@@ -29,6 +41,10 @@ const TitleBox = styled.div`
   font-weight: 700;
   color: #FAFAFA;
   margin-bottom: 36px;
+  @media (max-width: 640px) {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
 `;
 
 const NavRow = styled.nav`
@@ -41,6 +57,13 @@ const NavRow = styled.nav`
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 36px;
+  @media (max-width: 640px) {
+    gap: 12px;
+    font-size: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 `;
 
 const NavLink = styled.a`
@@ -58,6 +81,11 @@ const CopyWrap = styled.div`
   font-size: 14px;
   font-weight: 300;
   max-width: 475px;
+  @media (max-width: 640px) {
+    font-size: 10px;
+    max-width: 100vw;
+    gap: 4px;
+  }
 `;
 
 const SocialWrap = styled.div`
@@ -66,6 +94,13 @@ const SocialWrap = styled.div`
   top: 164px; /* 52 + 112 */
   display: flex;
   gap: 20px;
+  @media (max-width: 640px) {
+    position: static;
+    right: 0;
+    top: auto;
+    gap: 10px;
+    margin-top: 12px;
+  }
 `;
 
 const IconBtn = styled.a`
@@ -78,6 +113,10 @@ const IconBtn = styled.a`
   justify-content: center;
   text-decoration: none;
   outline: none;
+  @media (max-width: 640px) {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export default function Footer({
