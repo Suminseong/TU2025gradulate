@@ -14,6 +14,15 @@ import { useState } from 'react';
 
 const PAGE_SIDE = 40;
 
+// public/ 경로 정규화 유틸 (BASE_URL 대응)
+function publicUrl(path) {
+  if (!path) return path;
+  const base = import.meta.env.BASE_URL || '/';
+  if (/^https?:\/\//i.test(path)) return path; // 외부 URL 그대로
+  const normalized = String(path).replace(/^\.\.\//, '').replace(/^\//, '');
+  return base + normalized;
+}
+
 // styled-components: 값 그대로 재현
 const ImgSC = styled.img`
   width: 100%;
@@ -129,7 +138,7 @@ export default function Work() {
           role: student.role || 'Designer',
           sns: student.sns || '-',
           eMail: student.eMail || '',
-          imgUrl: student.imgUrl || '/김예준.jpg', // 기본 이미지
+          imgUrl: publicUrl(student.imgUrl || '/김예준.jpg'), // 기본 이미지 포함 정규화
         }
         : null;
     })
@@ -153,7 +162,7 @@ export default function Work() {
   const galleryCount = Number(project.galleryCount || 0);
   const galleryImages = Array.from(
     { length: galleryCount },
-    (_, idx) => `${basePath}/gallery/${idx}.jpg`
+    (_, idx) => publicUrl(`${basePath}/gallery/${idx}.jpg`)
   );
 
   return (
@@ -183,7 +192,7 @@ export default function Work() {
           ) : (
             <Img
               style={{ minHeight: '100vh' }}
-              src="/thumbnailExample.png"
+              src={publicUrl('/thumbnailExample.png')}
               alt={`project-${catLetter}${num3}-placeholder`}
             />
           )}
