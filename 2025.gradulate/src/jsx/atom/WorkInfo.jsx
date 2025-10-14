@@ -149,12 +149,13 @@ export default function WorkInfo({
   isOpen = true,
   onClose,
 }) {
+  const base = import.meta.env.BASE_URL || '/';
   return (
     <Container $open={!!isOpen}>
       <GapCol>
         <ContentCol>
           <CloseBox onClick={() => { if (typeof onClose === 'function') { onClose(); } }}>
-            <img src="/icons/closeIcon.svg" alt="Close Icon" />
+            <img src={`${base}icons/closeIcon.svg`} alt="Close Icon" />
           </CloseBox>
           <Content>
             <Title>{titleKor}</Title>
@@ -165,7 +166,7 @@ export default function WorkInfo({
         <IconRow>
           <LikeBtn onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
             <LikeAlign>
-              <LikeIcon src="../icons/likeIcon(white).svg" alt="Like Icon" />
+              <LikeIcon src={`${base}icons/likeIcon(white).svg`} alt="Like Icon" />
               <LikeCount>0</LikeCount>
             </LikeAlign>
           </LikeBtn>
@@ -180,11 +181,10 @@ export default function WorkInfo({
               const targetTop = Math.max(0, maxScrollTop - offset);
               window.scrollTo({ top: targetTop, behavior: 'smooth' });
             }}
-          // designer 프로필 위로 스크롤하게 구조 변경 필요
           >
             <PageDownText>Designer Info</PageDownText>
             <PageDownIconBox>
-              <img src="../icons/pageDownIcon.svg" alt="Page Down Icon" />
+              <img src={`${base}icons/pageDownIcon.svg`} alt="Page Down Icon" />
             </PageDownIconBox>
           </PageDown>
         </IconRow>

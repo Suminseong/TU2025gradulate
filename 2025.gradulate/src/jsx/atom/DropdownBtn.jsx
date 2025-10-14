@@ -34,11 +34,12 @@ export default function DropdownBtn({
     label,
     style,
 }) {
+  const base = import.meta.env.BASE_URL || '/';
     return (
         <Wrapper style={style}>
             <Label>{label}</Label>
             <IconBox>
-                <img src="../icons/arrowDropdownIcon.svg" alt="dropdownIcon" />
+        <img src={`${base}icons/arrowDropdownIcon.svg`} alt="dropdownIcon" />
             </IconBox>
         </Wrapper>
     );

@@ -167,9 +167,9 @@ export default function Credit() {
     '안녕하세요. 제 20대 졸업준비위원회입니다. 그리고 이후에는 적당히 졸준위의 생각과 고생에 대한 감상을 종합해…';
 
   const speeches = [
-    { title: '학부장의 말씀', body: '아아 잠시 학부장의 말이 있겠습니다…' },
-    { title: '졸전담당교수 말씀', body: '아아 잠시 졸전 담당교수님의 말씀이 있겠습니다…' },
-    { title: '웹사이트팀 제작 후기', body: '이제 자러 갑니다 이제 자러 갑니다…' },
+    { title: '학부장의 말씀', body: '내용 작성' },
+    { title: '졸전담당교수 말씀', body: '내용 작성' },
+    { title: '웹사이트팀 제작 후기', body: '내용 작성' },
   ];
 
   // 위원회 데이터(예시)
@@ -221,7 +221,7 @@ export default function Credit() {
       title: 'Special Thanks',
       rows: [
         { ko: '김한종 교수', en: 'Prof. Kim Hanjong' },
-        { ko: '고명현', en: 'Go MyeongHyeon' },
+        // { ko: '고명현', en: 'Go MyeongHyeon' },
       ],
       last: true,
     },
@@ -236,7 +236,7 @@ export default function Credit() {
         <IntroNote text={introText} />
       </PageContainer>
 
-      <HeroCard>단체사진? 몰루?</HeroCard>
+      <HeroCard>단체사진 1장</HeroCard>
 
       <PageContainer>
         <ThreeSpeeches blocks={speeches} />
