@@ -181,8 +181,8 @@ export default function VenueAccess() {
           <KVRow k="Parking">
             <BodyText>B3F ~ B6F</BodyText>
             <BodyText>기본 30분 3,000원 / 이후 20분당 2,000원</BodyText>
-            <BodyText>방문객 50% 할인 주차권 제공 (주차권으로만 정산, 티켓정산 불가)</BodyText>
-            <BodyText>주차권 배부 장소: B2 갤러리 3, 전시장 입구 인포데스크</BodyText>
+            <BodyText>이용객 주차권 지참 시 50% 할인 및 1시간 무료이용권 제공 (주차권으로만 정산 가능, 티켓정산 불가)</BodyText>
+            <BodyText>주차권 배부 장소: 갤러리, 소극장 - 매표소 / 대극장 - 물품보관소, 객석 1층, 2층 메인데스크</BodyText>
           </KVRow>
 
           <KVRow k="By Subway">
