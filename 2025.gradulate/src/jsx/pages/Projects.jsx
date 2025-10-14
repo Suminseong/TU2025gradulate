@@ -12,6 +12,15 @@ import studentsData from '../../data/students.json';
 
 const PAGE_SIDE = 40;
 
+// public/ 경로 정규화 유틸 (BASE_URL 대응)
+function publicUrl(path) {
+  if (!path) return path;
+  const base = import.meta.env.BASE_URL || '/';
+  if (/^https?:\/\//i.test(path)) return path;
+  const normalized = path.replace(/^\.\.\//, '').replace(/^\//, '');
+  return base + normalized;
+}
+
 // === styled-components (값 동일) ===
 const PageOuter = styled.div`
   position: relative; background: #fff;
@@ -64,7 +73,7 @@ function getMemebersImgUrls(project) {
   return project.members
     .map((memberId) => {
       const student = students.find((s) => s.num === memberId);
-      return student ? student.imgUrl : '';
+      return student ? publicUrl(student.imgUrl) : '';
     })
     .filter(Boolean);
 }
@@ -93,12 +102,12 @@ function ProjectsList({ list }) {
             key={index}
             titleKor={project.titleKor}
             titleEng={project.titleEng}
-            src={`/projects/${project.projectNum}/thumb.jpg`} // 추후 절대 경로 바뀔시 수정
+            src={publicUrl(`/projects/${project.projectNum}/thumb.jpg`)} // BASE_URL 대응
             nameKor={designerName}
             profileImgs={desingerImgUrls}
             view={"0"} // 나중에 데이터 베이스 연결
             like={"0"} // 나중에 데이터 베이스 연결
-            href={`work/${slug}`}
+            href={`/work/${slug}`}
           />
         );
       })}

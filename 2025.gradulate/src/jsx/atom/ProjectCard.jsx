@@ -1,6 +1,7 @@
 // ProjectCard.jsx
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Wrap = styled.div`
   display: flex;
@@ -156,12 +157,15 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like , 
     if (hoverDiv) hoverDiv.style.opacity = 0;
   }
 
-  const handleClick = () => {
-    window.location.href = href;
-  };
+  // public 아이콘 경로 정규화 (BASE_URL)
+  const base = import.meta.env.BASE_URL || '/';
+  const likeIcon = `${base}icons/likeIcon.svg`;
+  const viewIcon = `${base}icons/viewIcon.svg`;
 
-  return (
-    <Wrap onClick={handleClick}>
+  const isExternal = /^https?:\/\//i.test(href);
+
+  const CardInner = (
+    <>
       <div style={{ position: 'relative', width: '445px', height: '353px', borderRadius: '16px' }}>
         <ImageWrap onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <HoverLayer className="card-hover">
@@ -184,15 +188,25 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like , 
         </ProfileRow>
         <IconRow>
           <IconBox>
-            <img src="../icons/likeIcon.svg" alt="LikeIcon" />
+            <img src={likeIcon} alt="LikeIcon" />
             <IconText>{like}</IconText>
           </IconBox>
           <IconBox>
-            <img src="../icons/viewIcon.svg" alt="ViewIcon" />
+            <img src={viewIcon} alt="ViewIcon" />
             <IconText>{view}</IconText>
           </IconBox>
         </IconRow>
       </BottomRow>
+    </>
+  );
+
+  return isExternal ? (
+    <Wrap as="a" href={href} style={{ textDecoration: 'none' }}>
+      {CardInner}
+    </Wrap>
+  ) : (
+    <Wrap as={Link} to={href.startsWith('/') ? href : `/${href}` } style={{ textDecoration: 'none' }}>
+      {CardInner}
     </Wrap>
   );
 }
@@ -200,17 +214,18 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like , 
 ProjectCard.propTypes = {
   titleKor: PropTypes.string.isRequired,
   titleEng: PropTypes.string.isRequired,
-  nameEng: PropTypes.string.isRequired,
+  nameKor: PropTypes.string.isRequired,
   view: PropTypes.number.isRequired,
   like: PropTypes.number.isRequired,
   src: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
+  profileImgs: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 ProjectCard.defaultProps = {
   titleKor: '프로젝트 제목',
   titleEng: 'Project Title',
-  nameEng: 'Author Name',
+  nameKor: 'Author Name',
   view: 0,
   like: 0,
 };
