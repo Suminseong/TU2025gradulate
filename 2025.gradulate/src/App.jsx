@@ -104,20 +104,6 @@ function Layout({ headerMode, setHeaderMode }) {
   );
 }
 
-// -------- 라우트용 페이지 플레이스홀더(간단) --------
-function PageShell({ title }) {
-  return (
-    <div style={{ minHeight: '60vh', padding: '80px 350px' }}>
-      <h1 style={{ margin: 0, fontFamily: 'Pretendard, system-ui', fontWeight: 700, fontSize: 32 }}>{title}</h1>
-      <p style={{ marginTop: 16, color: '#555', fontFamily: 'Pretendard, system-ui' }}>
-        이 페이지는 플레이스홀더입니다.
-      </p>
-      <div style={{ marginTop: 24 }}>
-        <NavLink to="/credits">크레딧 페이지 보기 →</NavLink>
-      </div>
-    </div>
-  );
-}
 
 // -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
 function CreditsWithHeaderMode({ setHeaderMode }) {
@@ -153,7 +139,7 @@ function MainWithHeaderMode({ setHeaderMode }) {
 }
 
 function GuestbookWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useEffect(() => {``
     setHeaderMode(NAV_HEADER_MODES.DARK);
   }, [setHeaderMode]);
 
@@ -184,7 +170,6 @@ export default function App() {
 
           <Route path="projects" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
-          <Route path="showroom" element={<PageShell title="SHOWROOM" />} />
           <Route path="guestbook" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="work/:pid" element={<WorkWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
@@ -199,7 +184,7 @@ export default function App() {
           />
 
           {/* 404 */}
-          <Route path="*" element={<PageShell title="404 NOT FOUND" />} />
+          
         </Route>
       </Routes>
     </BrowserRouter>
