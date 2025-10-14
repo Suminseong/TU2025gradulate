@@ -165,7 +165,7 @@ ProfProfile.defaultProps = {
   eMail: 'honggildong@example.com',
   education: [],
   field: [],
-  imgSrc: 'https://via.placeholder.com/240x332.png?text=Profile+Image',
+  imgSrc: `${import.meta.env.BASE_URL}thumbnailExample.png`,
   imgAlt: '홍길동 교수의 프로필 이미지',
 };
 

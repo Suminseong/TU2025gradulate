@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import NavBtn from '../atom/NavBtn';
+import { Link } from 'react-router-dom';
 import HamburgerIcon from '../atom/HamburgerIcon';
 
 /**
@@ -230,13 +231,13 @@ export default function NavHeader({
       <Inner $maxWidth={maxWidth}>
         <Row>
           {/* Logo */}
-          <a href={import.meta.env.BASE_URL} aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
+          <Link to="/" aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
             <LogoBox aria-hidden>
               <LogoOuter>
                 <img src={logoSrc} alt={logoAlt} />
               </LogoOuter>
             </LogoBox>
-          </a>
+          </Link>
 
           {/* 데스크탑 Nav */}
           <NavRow aria-label="주 메뉴">

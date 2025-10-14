@@ -13,6 +13,17 @@ import { useNavigate } from 'react-router-dom';
 
 const PAGE_SIDE = 40;
 
+// public/ 경로용 유틸: '../image/0/portrait.jpg' 또는 '/image/0/portrait.jpg' 등을 BASE_URL을 고려하여 정규화
+function publicUrl(path) {
+  if (!path) return path;
+  const base = import.meta.env.BASE_URL || '/';
+  // 이미 절대 URL이면 그대로
+  if (/^https?:\/\//i.test(path)) return path;
+  // '../image/...' 같은 상대 경로 정리
+  const normalized = path.replace(/^\.\.\//, '').replace(/^\//, '');
+  return base + normalized;
+}
+
 const CAT_CODE_TO_LETTER = {
   'c0': 'A',
   'c1': 'E',
@@ -95,7 +106,7 @@ function PeoplesList({ people }) {
             role={p.role}
             sns={p.sns || '-'} // sns가 없을 때 '-'로 표시
             eMail={p.eMail}
-            imgSrc={p.imgUrl}
+            imgSrc={publicUrl(p.imgUrl)}
             imgAlt={`${p.nameKor} profile`}
           />
         );
@@ -204,7 +215,7 @@ export default function Peoples() {
             eMail={selectedProfessor.email}
             education={selectedProfessor.education}
             field={selectedProfessor.field}
-            imgSrc={selectedProfessor.imgUrl}
+            imgSrc={publicUrl(selectedProfessor.imgUrl)}
             imgAlt={`${selectedProfessor.nameKor} profile`}
           />
         )}

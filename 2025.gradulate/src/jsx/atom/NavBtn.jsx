@@ -1,6 +1,7 @@
 // NavBtn.jsx (styled-components, v6-safe)
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 /**
  * 단일 네비게이션 버튼
@@ -34,6 +35,27 @@ export default function NavBtn({
   target,
   rel,
 }) {
+  // 내부 라우터 링크 판별 및 변환
+  const base = import.meta.env.BASE_URL || '/';
+  const isExternal = /^https?:\/\//i.test(href) || href?.startsWith('mailto:') || href?.startsWith('tel:');
+  let to = undefined;
+  let isInternal = false;
+  if (!isExternal && href) {
+    if (base !== '/' && href.startsWith(base)) {
+      const rest = href.slice(base.length);
+      to = '/' + rest.replace(/^\/+/, '');
+      isInternal = true;
+    } else if (href.startsWith('/')) {
+      // base가 '/'인 dev 환경 등
+      to = href;
+      isInternal = true;
+    }
+    if (href === base) {
+      to = '/';
+      isInternal = true;
+    }
+  }
+
   const handleKeyDown = (e) => {
     if (onClick && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
@@ -50,7 +72,11 @@ export default function NavBtn({
     $active: active,
   };
 
-  return href ? (
+  return isInternal ? (
+    <Base as={Link} to={to} {...commonProps}>
+      {label}
+    </Base>
+  ) : href ? (
     <Base href={href} target={target} rel={rel} {...commonProps}>
       {label}
     </Base>

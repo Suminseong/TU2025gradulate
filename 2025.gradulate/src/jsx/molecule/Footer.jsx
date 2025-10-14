@@ -2,6 +2,7 @@
 // 수정 금지. fix 된 형태
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const FONT_STACK =
   "Pretendard, system-ui, -apple-system, Segoe UI, Roboto, 'Noto Sans KR', Arial, sans-serif";
@@ -147,11 +148,25 @@ export default function Footer({
 
         {/* 네비게이션 링크 */}
         <NavRow aria-label="푸터 메뉴">
-          {nav.map((it) => (
-            <NavLink key={it.label} href={it.href}>
-              {it.label}
-            </NavLink>
-          ))}
+          {nav.map((it) => {
+            const href = it.href || '#';
+            const isExternal = /^https?:\/\//i.test(href);
+            const base = import.meta.env.BASE_URL || '/';
+            let to = href;
+            if (!isExternal) {
+              if (href === base) to = '/';
+              else if (base !== '/' && href.startsWith(base)) to = '/' + href.slice(base.length).replace(/^\/+/, '');
+            }
+            return isExternal ? (
+              <NavLink key={it.label} href={href}>
+                {it.label}
+              </NavLink>
+            ) : (
+              <NavLink as={Link} key={it.label} to={to}>
+                {it.label}
+              </NavLink>
+            );
+          })}
         </NavRow>
 
         {/* 저작권 */}
