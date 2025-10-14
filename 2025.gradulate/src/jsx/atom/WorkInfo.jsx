@@ -6,16 +6,19 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  position: fixed;
+  position: sticky;
   top: 80px;
   bottom: 0px;
   left: 0;
   width: 350px;
-  height: auto;
+  height: 100%;
   background-color: #121212;
   padding: 60px 40px;
   box-sizing: border-box;
   z-index: 1000;
+  transform: translateX(${props => (props.$open ? '0' : '-350px')});
+  transition: transform 500ms ease-out;
+  pointer-events: ${props => (props.$open ? 'auto' : 'none')};
 `;
 
 const GapCol = styled.div`
@@ -140,50 +143,60 @@ const PageDownIconBox = styled.div`
 `;
 
 export default function WorkInfo({
-    titleKor,
-    titleEng,
-    context
+  titleKor,
+  titleEng,
+  context,
+  isOpen = true,
+  onClose,
 }) {
-    return (
-        <Container>
-            <GapCol>
-                <ContentCol>
-                    <CloseBox onClick={() => { /* 닫기 기능 추후 구현 */ }}>
-                        <img src="../icons/closeIcon.svg" alt="Close Icon" />
-                    </CloseBox>
-                    <Content>
-                        <Title>{titleKor}</Title>
-                        <Context>{context}</Context>
-                    </Content>
-                </ContentCol>
+  return (
+    <Container $open={!!isOpen}>
+      <GapCol>
+        <ContentCol>
+          <CloseBox onClick={() => { if (typeof onClose === 'function') { onClose(); } }}>
+            <img src="/icons/closeIcon.svg" alt="Close Icon" />
+          </CloseBox>
+          <Content>
+            <Title>{titleKor}</Title>
+            <Context>{context}</Context>
+          </Content>
+        </ContentCol>
 
-                <IconRow>
-                    <LikeBtn onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
-                        <LikeAlign>
-                            <LikeIcon src="../icons/likeIcon(white).svg" alt="Like Icon" />
-                            <LikeCount>0</LikeCount>
-                        </LikeAlign>
-                    </LikeBtn>
-                    <PageDown onClick={() => { window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); }}>
-                        <PageDownText>Designer Info</PageDownText>
-                        <PageDownIconBox>
-                            <img src="../icons/pageDownIcon.svg" alt="Page Down Icon" />
-                        </PageDownIconBox>
-                    </PageDown>
-                </IconRow>
-            </GapCol>
-        </Container>
-    );
+        <IconRow>
+          <LikeBtn onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
+            <LikeAlign>
+              <LikeIcon src="../icons/likeIcon(white).svg" alt="Like Icon" />
+              <LikeCount>0</LikeCount>
+            </LikeAlign>
+          </LikeBtn>
+          <PageDown
+            onClick={() => {
+              const scrollHeight = Math.max(
+                document.documentElement?.scrollHeight || 0,
+                document.body?.scrollHeight || 0
+              );
+              const maxScrollTop = scrollHeight - window.innerHeight;
+              const offset = 269; // bottom에서 위로 띄울 거리(px)
+              const targetTop = Math.max(0, maxScrollTop - offset);
+              window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            }}
+          // designer 프로필 위로 스크롤하게 구조 변경 필요
+          >
+            <PageDownText>Designer Info</PageDownText>
+            <PageDownIconBox>
+              <img src="../icons/pageDownIcon.svg" alt="Page Down Icon" />
+            </PageDownIconBox>
+          </PageDown>
+        </IconRow>
+      </GapCol>
+    </Container>
+  );
 }
 
 WorkInfo.propTypes = {
-    titleKor: PropTypes.string.isRequired,
-    titleEng: PropTypes.string.isRequired,
-    context: PropTypes.string.isRequired,
-};
-
-WorkInfo.defaultProps = {
-    titleKor: '작품 제목(한글)',
-    titleEng: 'Work Title (English)',
-    context: '이곳에 작품 설명이 들어갑니다. 작품에 대한 간단한 설명이나 소개를 작성해주세요. 최대 3줄 정도로 요약하는 것이 좋습니다.',
+  titleKor: PropTypes.string.isRequired,
+  titleEng: PropTypes.string.isRequired,
+  context: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
 };
