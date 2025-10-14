@@ -207,7 +207,9 @@ export default function NavHeader({
   }, [autoOnScroll, isControlled, onModeChange, scrollThreshold]);
 
   const isDarkMode = mode === NAV_HEADER_MODES.DARK;
-  const logoSrc = isDarkMode ? '../public/icons/logoLight.svg' : '../public/icons/logoDark.svg';
+  const logoSrc = isDarkMode
+    ? `${import.meta.env.BASE_URL}icons/logoLight.svg`
+    : `${import.meta.env.BASE_URL}icons/logoDark.svg`;
   const logoAlt = isDarkMode ? 'LogoLight' : 'LogoDark';
 
   // 모바일 메뉴에서 쇼룸 제외
@@ -228,7 +230,7 @@ export default function NavHeader({
       <Inner $maxWidth={maxWidth}>
         <Row>
           {/* Logo */}
-          <a href="/" aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
+          <a href={import.meta.env.BASE_URL} aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
             <LogoBox aria-hidden>
               <LogoOuter>
                 <img src={logoSrc} alt={logoAlt} />

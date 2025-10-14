@@ -1,6 +1,6 @@
 // App.jsx
 import React, { useMemo, useState } from 'react';
-import { BrowserRouter, Routes, Route, NavLink, Outlet, useLocation, useNavigationType } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet, useLocation, useNavigationType, Navigate } from 'react-router-dom';
 
 // 전역 컴포넌트
 import NavHeader, { NAV_HEADER_MODES } from './jsx/molecule/NavHeader';
@@ -35,11 +35,11 @@ function Layout({ headerMode, setHeaderMode }) {
   // 네비 항목
   const NAV_ITEMS = useMemo(
     () => [
-      { key: 'projects', label: 'PROJECTS', href: '/projects' },
-      { key: 'peoples', label: 'PEOPLES', href: '/peoples' },
-      { key: 'showroom', label: 'SHOWROOM', href: '/showroom' },
-      { key: 'guestbook', label: 'GUESTBOOK', href: '/guestbook' },
-      { key: 'credits', label: 'CREDITS', href: '/credits' },
+      { key: 'projects', label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects` },
+      { key: 'peoples', label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples` },
+      { key: 'showroom', label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom` },
+      { key: 'guestbook', label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook` },
+      { key: 'credits', label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits` },
     ],
     []
   );
@@ -83,11 +83,11 @@ function Layout({ headerMode, setHeaderMode }) {
       <Footer
         title="잔향 : 기억의 향기"
         nav={[
-          { label: 'PROJECTS', href: '/projects' },
-          { label: 'PEOPLES', href: '/peoples' },
-          { label: 'SHOWROOM', href: '/showroom' },
-          { label: 'GUESTBOOK', href: '/guestbook' },
-          { label: 'CREDITS', href: '/credits' },
+          { label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects` },
+          { label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples` },
+          { label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom` },
+          { label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook` },
+          { label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits` },
         ]}
         copyright={[
           'ⓒ 2025 TECH UNIV KOREA. ALL RIGHTS RESERVED.',
@@ -139,7 +139,7 @@ function MainWithHeaderMode({ setHeaderMode }) {
 }
 
 function GuestbookWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {``
+  React.useEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.DARK);
   }, [setHeaderMode]);
 
@@ -160,7 +160,7 @@ export default function App() {
   const [headerMode, setHeaderMode] = useState(NAV_HEADER_MODES.GRADIENT);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollAndFocusRestore />
       <Routes>
         {/* 공통 레이아웃 */}
@@ -183,8 +183,8 @@ export default function App() {
             }
           />
 
-          {/* 404 */}
-          
+          {/* 404: 알 수 없는 경로는 홈으로 리다이렉트 */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
