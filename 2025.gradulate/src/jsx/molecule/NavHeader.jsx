@@ -67,6 +67,13 @@ const Row = styled.div`
   }
 `;
 
+// 데스크탑: 로고와 네비를 좌측에 묶어서 배치하기 위한 그룹
+const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+`;
+
 const NavRow = styled.nav`
   display: flex;
   align-items: center;
@@ -230,21 +237,23 @@ export default function NavHeader({
     <Wrapper role="banner" $sticky={sticky} $background={background} $textColor={textColor} $boxShadow={boxShadow}>
       <Inner $maxWidth={maxWidth}>
         <Row>
-          {/* Logo */}
-          <Link to="/" aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
-            <LogoBox aria-hidden>
-              <LogoOuter>
-                <img src={logoSrc} alt={logoAlt} />
-              </LogoOuter>
-            </LogoBox>
-          </Link>
+          <LeftGroup>
+            {/* Logo */}
+            <Link to="/" aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <LogoBox aria-hidden>
+                <LogoOuter>
+                  <img src={logoSrc} alt={logoAlt} />
+                </LogoOuter>
+              </LogoBox>
+            </Link>
 
-          {/* 데스크탑 Nav */}
-          <NavRow aria-label="주 메뉴">
-            {items.map((item) => (
-              <NavBtn key={item.key} label={item.label} href={item.href} active={item.key === activeKey} />
-            ))}
-          </NavRow>
+            {/* 데스크탑 Nav */}
+            <NavRow aria-label="주 메뉴">
+              {items.map((item) => (
+                <NavBtn key={item.key} label={item.label} href={item.href} active={item.key === activeKey} />
+              ))}
+            </NavRow>
+          </LeftGroup>
 
           {/* 모바일 햄버거 버튼 */}
           <HamburgerBtn
