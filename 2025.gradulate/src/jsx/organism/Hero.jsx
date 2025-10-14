@@ -80,3 +80,6 @@ export default function Hero() {
     </Wrap>
   );
 }
+
+
+// 영상 일단 vimeo로 깔아보고 안되면 유튜브
