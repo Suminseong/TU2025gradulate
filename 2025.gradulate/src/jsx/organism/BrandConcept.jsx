@@ -145,7 +145,7 @@ export default function BrandConcept() {
 
         <Formula as="div" style={{background: 'none', height: 'auto', justifyContent: 'center', alignItems: 'center', display: 'flex', boxShadow: 'none', margin: '32px auto 0', padding: 0}}>
           <img 
-            src="../public/brand-variation.png"
+            src="brand-variation.png"
             alt="브랜드 컨셉 공식 그래픽" 
             style={{width: '100%', maxWidth: 480, height: 'auto', display: 'block', margin: '0 auto'}} 
             draggable={false}

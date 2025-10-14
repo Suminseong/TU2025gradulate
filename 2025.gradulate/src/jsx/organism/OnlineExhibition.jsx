@@ -45,7 +45,7 @@ export default function OnlineExhibition() {
           <BgImg src="https://placehold.co/1840x905" alt="Online Exhibition background" />
         </Bg>
         <Card aria-hidden />
-        <H1>온라인 쇼룸이겠냐에요 이거 새로 구성할거심 ^ㅗㅗ^</H1>
+        <H1>오브제 활용 인터렉티브 세션으로 교체중</H1>
         <BtnBox>
           <OutlineButton label="View More" />
         </BtnBox>
