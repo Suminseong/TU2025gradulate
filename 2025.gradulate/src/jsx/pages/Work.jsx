@@ -9,6 +9,8 @@ import { useParams } from 'react-router-dom';
 import projectsData from '../../data/projects.json';
 import studentsData from '../../data/students.json';
 import WorkVideo from '../atom/WorkVideo';
+import WorkInfoOpen from '../atom/WorkInfoOpen';
+import { useState } from 'react';
 
 const PAGE_SIDE = 40;
 
@@ -23,23 +25,28 @@ const ImgSC = styled.img`
 const Img = (props) => <ImgSC loading="lazy" {...props} />;
 
 const PageOuter = styled.div`
+  display: flex;
   position: relative;
   background: #fff;
 `;
 const PageInner = styled.div`
-  padding-left: 350px;
   padding-right: ${PAGE_SIDE}px;
+  padding-left: ${props => (props.$isInfoOpen ? 0 : PAGE_SIDE)}px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* transition: all 500ms ease; */
 `;
-function PageContainer({ children }) {
-  return (
-    <PageOuter>
-      <PageInner>{children}</PageInner>
-    </PageOuter>
-  );
-}
+
+const PageInfo = styled.div`
+  display: ${props => (props.$visible ? 'flex' : 'none')};
+  position: sticky;
+  /* transform: translateX(-350px); */
+  top: 80px;
+  left: 0;
+  width: 350px;
+  height: calc(100vh - 80px);
+`;
 
 const Relative = styled.div`
   position: relative;
@@ -62,6 +69,22 @@ export default function Work() {
   // → NavHeaderMode를 변경해서 적용해야하는데 지금 적용이 안되는 상태임 나중에 Nav 손봐야함
   const { pid } = useParams();
   const match = (pid || '').toUpperCase().match(/^([A-Z])(\d{3})$/);
+  const [isInfoOpen, setIsInfoOpen] = useState(true);
+  const [isInfoVisible, setIsInfoVisible] = useState(true); // 추후 필요시 사용
+
+  const handleClose = () => {
+    setIsInfoOpen(false);
+    setTimeout(() => {
+      setIsInfoVisible(false);
+    }, 500); // 애니메이션 시간과 동일하게 설정
+  }
+
+  const handleOpen = () => {
+    setIsInfoVisible(true);
+    setTimeout(() => {
+      setIsInfoOpen(true);
+    }, 0); // 다음 이벤트 루프에서 열기
+  }
 
   let project = null;
   if (match) {
@@ -83,6 +106,8 @@ export default function Work() {
             titleKor="작품 제목(한글)"
             titleEng="Work Title (English)"
             context="이곳은 작품 설명이 들어가는 영역입니다. 작품에 대한 상세한 설명이나 배경, 제작 과정 등을 기술할 수 있습니다. 이 텍스트는 예시로 작성된 내용이며, 실제 작품 설명으로 대체되어야 합니다."
+            isOpen={isInfoOpen}
+            onClose={() => setIsInfoOpen(false)}
           />
           <Img src="https://placehold.co/1530x4000" alt="featured" />
           <DesignerInfo>  </DesignerInfo>
@@ -99,13 +124,13 @@ export default function Work() {
       const student = studentsData.find((s) => s.num === memberId);
       return student
         ? {
-            nameKor: student.nameKor,
-            nameEng: student.nameEng,
-            role: student.role || 'Designer',
-            sns: student.sns || '-',
-            eMail: student.eMail || '',
-            imgUrl: student.imgUrl || '/김예준.jpg', // 기본 이미지
-          }
+          nameKor: student.nameKor,
+          nameEng: student.nameEng,
+          role: student.role || 'Designer',
+          sns: student.sns || '-',
+          eMail: student.eMail || '',
+          imgUrl: student.imgUrl || '/김예준.jpg', // 기본 이미지
+        }
         : null;
     })
     .filter(Boolean);
@@ -133,34 +158,41 @@ export default function Work() {
 
   return (
     <Relative>
-      <PageContainer>
-        <WorkInfo
-          titleKor={project.titleKor}
-          titleEng={project.titleEng}
-          context={project.description || 'null'}
-        />
+      <PageOuter>
+        <WorkInfoOpen isOpen={isInfoOpen} onClick={handleOpen} />
+        <PageInfo $visible={isInfoVisible}>
+          <WorkInfo
+            titleKor={project.titleKor}
+            titleEng={project.titleEng}
+            context={project.description || 'null'}
+            isOpen={isInfoOpen}
+            onClose={handleClose}
+          />
+        </PageInfo>
 
-        {galleryImages.length > 0 ? (
-          galleryImages.map((src, i) => (
+        <PageInner $isInfoOpen={isInfoOpen}>
+          {galleryImages.length > 0 ? (
+            galleryImages.map((src, i) => (
+              <Img
+                style={{ minHeight: '100vh' }}
+                key={i}
+                src={src}
+                alt={`project-${catLetter}${num3}-img-${i + 1}`}
+              />
+            ))
+          ) : (
             <Img
               style={{ minHeight: '100vh' }}
-              key={i}
-              src={src}
-              alt={`project-${catLetter}${num3}-img-${i + 1}`}
+              src="/thumbnailExample.png"
+              alt={`project-${catLetter}${num3}-placeholder`}
             />
-          ))
-        ) : (
-          <Img
-            style={{ minHeight: '100vh' }}
-            src="/thumbnailExample.png"
-            alt={`project-${catLetter}${num3}-placeholder`}
-          />
-        )}
+          )}
 
-        <WorkVideo videoId={project.videoId} />
+          <WorkVideo videoId={project.videoId} />
 
-        <DesignerInfo designers={designers} />
-      </PageContainer>
+          <DesignerInfo designers={designers} />
+        </PageInner>
+      </PageOuter>
     </Relative>
   );
 }

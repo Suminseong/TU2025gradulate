@@ -146,7 +146,7 @@ const IconText = styled.p`
   color: #121212;
 `;
 
-export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , href, src }) {
+export default function ProjectCard({ titleKor, titleEng, nameKor, view, like , href, src, profileImgs }) {
   const handleMouseEnter = (e) => {
     const hoverDiv = e.currentTarget.querySelector('.card-hover');
     if (hoverDiv) hoverDiv.style.opacity = 1;
@@ -176,10 +176,11 @@ export default function ProjectCard({ titleKor, titleEng, nameEng, view, like , 
       <BottomRow>
         <ProfileRow>
           <ProfileImgs>
-            <ProfileImg src="../public/김예준.jpg" alt="Profile1" $z={3} />
-            <ProfileImg src="../public/김예준.jpg" alt="Profile2" $z={1} $ml />
+            {profileImgs.map((imgUrl, index) => (
+              <ProfileImg key={index} src={imgUrl} alt={`Profile${index + 1}`} $z={3 - index} $ml={index > 0} />
+            ))}
           </ProfileImgs>
-          <Name>{nameEng}</Name>
+          <Name>{nameKor}</Name>
         </ProfileRow>
         <IconRow>
           <IconBox>

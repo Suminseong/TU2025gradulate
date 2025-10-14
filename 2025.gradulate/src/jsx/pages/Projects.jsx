@@ -60,6 +60,15 @@ function getMemebersNameText(project) {
     .join(', ');
 }
 
+function getMemebersImgUrls(project) {
+  return project.members
+    .map((memberId) => {
+      const student = students.find((s) => s.num === memberId);
+      return student ? student.imgUrl : '';
+    })
+    .filter(Boolean);
+}
+
 function ProjectsList({ list }) {
   const CAT_CODE_TO_LETTER = {
     'c0': 'A',
@@ -74,6 +83,7 @@ function ProjectsList({ list }) {
     <Grid>
       {list.map((project, index) => {
         const designerName = getMemebersNameText(project);
+        const desingerImgUrls = getMemebersImgUrls(project);
         const num3 = String(project.projectNum + 1).padStart(3, '0');
         const catLetter = CAT_CODE_TO_LETTER[project.category] || 'A';
         const slug = `${catLetter}${num3}`; // ex: A001, E023
@@ -84,7 +94,8 @@ function ProjectsList({ list }) {
             titleKor={project.titleKor}
             titleEng={project.titleEng}
             src={`/projects/${project.projectNum}/thumb.jpg`} // 추후 절대 경로 바뀔시 수정
-            nameEng={designerName}
+            nameKor={designerName}
+            profileImgs={desingerImgUrls}
             view={"0"} // 나중에 데이터 베이스 연결
             like={"0"} // 나중에 데이터 베이스 연결
             href={`work/${slug}`}
