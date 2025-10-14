@@ -170,7 +170,7 @@ export default function VenueAccess() {
 
             <BodyTextMT24>Address in local language</BodyTextMT24>
             <BodyText>
-              홍대 아트센터 지하 2층 전시관<br/>서울시 종로구 대학로 57
+              홍대 아트센터 지하 2층 전시관<br />서울시 종로구 대학로 57
             </BodyText>
 
             <div style={{ marginTop: 24 }}>
@@ -181,8 +181,8 @@ export default function VenueAccess() {
           <KVRow k="Parking">
             <BodyText>B3F ~ B6F</BodyText>
             <BodyText>기본 30분 3,000원 / 이후 20분당 2,000원</BodyText>
-            <BodyText>이용객 주차권 지참 시 50% 할인 및 1시간 무료이용권 제공 (주차권으로만 정산 가능, 티켓정산 불가)</BodyText>
-            <BodyText>주차권 배부 장소: 갤러리, 소극장 - 매표소 / 대극장 - 물품보관소, 객석 1층, 2층 메인데스크</BodyText>
+            <BodyText>방문객 50% 할인 주차권 제공 (주차권으로만 정산, 티켓정산 불가)</BodyText>
+            <BodyText>주차권 배부 장소: B2 갤러리 3, 전시장 입구 인포데스크</BodyText>
           </KVRow>
 
           <KVRow k="By Subway">
@@ -195,7 +195,7 @@ export default function VenueAccess() {
           <KVRow k="By Bus" divider={false}>
             <BodyText>[이화사거리(01-572) 하차]</BodyText>
             <BodyText>마을버스 종로 08번</BodyText>
-            <BodyText><br/>[현대그룹빌딩(01-218) 하차]</BodyText>
+            <BodyText><br />[현대그룹빌딩(01-218) 하차]</BodyText>
             <BodyText>102, 107, 108, 109, 162, 301, 7025</BodyText>
             <BodyText>[이화장(01-223) 하차]</BodyText>
             <BodyText>109, 273, 601, 2112, 7025</BodyText>
