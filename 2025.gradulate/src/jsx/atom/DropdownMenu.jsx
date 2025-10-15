@@ -10,7 +10,6 @@ const Menu = styled.div`
   top: calc(100% + 8px);
   right: 0;
   width: auto;
-  min-width: px;
   height: auto;
   padding: 10px 25px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -19,6 +18,9 @@ const Menu = styled.div`
   border-radius: 16px;
   gap: 10px;
   z-index: 10;
+  @media (max-width: 640px) {
+     padding: 10px 16px;
+ }
 `;
 
 const Item = styled.div`
@@ -28,6 +30,9 @@ const Item = styled.div`
   margin: 0;
   padding: 0;
   cursor: pointer;
+  @media (max-width: 640px) {
+    width: 52px;  
+ }
 `;
 
 const ItemText = styled.p`
@@ -37,6 +42,9 @@ const ItemText = styled.p`
   color: ${(p) => (p.$selected ? '#191919' : '#bababa')};
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    font-size: 12px;  
+ }
 `;
 
 export default function DropdownMenu({

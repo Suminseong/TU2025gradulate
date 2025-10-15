@@ -15,6 +15,11 @@ const Card = styled.div`
   height: 393px;
   border-radius: 16px;
   overflow: hidden;
+  @media (max-width: 640px) {
+    width: 173px;
+    height: 137px;
+    border-radius: 4px;
+ }
 `;
 
 const ImgBox = styled.div`
@@ -61,6 +66,10 @@ const Content = styled.div`
   background: #f6f6f6;
   right: 0;
   padding: 50px 0 50px 15px;
+  @media (max-width: 640px) {
+    padding: 16px 0 16px 18px;   
+    font-size: 8px;
+ }
 `;
 
 const TextCol = styled.div`
@@ -73,6 +82,27 @@ const TextCol = styled.div`
   justify-content: center;
 `;
 
+const H1Text = styled.h1`
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+ @media (max-width: 640px) {
+    font-size: 16px;
+ }
+`;
+
+const PText = styled.p`
+    margin: 0;
+@media (max-width: 640px) {
+    font-size: 6px;
+ }
+`;
+
+const EmailText = styled(PText)`
+ @media (max-width: 640px) {
+    display: none;
+ }`;
+
 export default function PeoplesCard({
     nameKor,
     nameEng,
@@ -83,39 +113,39 @@ export default function PeoplesCard({
     imgAlt,
 }) {
     return (
-    <Card>
-        <ImgBox>
-            <Img src={imgSrc} alt={imgAlt} />
-            <Gradient />
-        </ImgBox>
-        <Content>
-            <TextCol style={{ top: '50px' }}>
-                <h1 style={{fontSize: '28px', fontWeight: '700', margin: '0'}}>{nameKor}</h1>
-                <p style={{margin: '0'}}>{nameEng}</p>
-            </TextCol>
-            <TextCol>
-                <p style={{margin: '0'}}>{role}</p>
-                {Array.isArray(sns) && sns.length > 0 ? (
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '4px 0 0 0' }}>
-                        {sns.map((item, idx) => (
-                            <a
-                                key={`${item.platform}-${idx}`}
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ textDecoration: 'none', color: 'inherit', wordBreak: 'break-all' }}
-                                aria-label={`${nameKor} ${item.platform}`}
-                            >
-                                {item.url}
-                            </a>
-                        ))}
-                    </div>
-                ) : null}
-                <p style={{margin: '0'}}>{eMail ? (<a style={{textDecoration: 'none', color: 'inherit'}} href={`mailto:${eMail}`}>{eMail}</a>) : null}</p>
-            </TextCol>
-        </Content>
-    </Card>
-  );
+        <Card>
+            <ImgBox>
+                <Img src={imgSrc} alt={imgAlt} />
+                <Gradient />
+            </ImgBox>
+            <Content>
+                <TextCol style={{ top: '50px' }}>
+                    <H1Text>{nameKor}</H1Text>
+                    <PText>{nameEng}</PText>
+                </TextCol>
+                <TextCol>
+                    <PText>{role}</PText>
+                    {Array.isArray(sns) && sns.length > 0 ? (
+                        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '4px 0 0 0' }}>
+                            {sns.map((item, idx) => (
+                                <a
+                                    key={`${item.platform}-${idx}`}
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ textDecoration: 'none', color: 'inherit', wordBreak: 'break-all' }}
+                                    aria-label={`${nameKor} ${item.platform}`}
+                                >
+                                    {item.url}
+                                </a>
+                            ))}
+                        </div>
+                    ) : null}
+                    <EmailText>{eMail ? (<a style={{ textDecoration: 'none', color: 'inherit' }} href={`mailto:${eMail}`}>{eMail}</a>) : null}</EmailText>
+                </TextCol>
+            </Content>
+        </Card>
+    );
 }
 
 PeoplesCard.defaultProps = {

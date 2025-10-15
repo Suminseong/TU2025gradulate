@@ -77,8 +77,9 @@ const LeftGroup = styled.div`
 const NavRow = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 16px;
+  justify-content: space-between;
+  /* gap: 24px; */
+  width: 510px;
   @media (max-width: 640px) {
     display: none;
   }
@@ -152,6 +153,10 @@ const LogoOuter = styled.div`
   width: 38.33px;
   height: 32px;
   position: relative;
+  @media (max-width: 640px) {
+    width: 28px;
+    height: 24px;  
+ }
 `;
 
 export default function NavHeader({
@@ -242,7 +247,7 @@ export default function NavHeader({
             <Link to="/" aria-label="홈으로" style={{ color: 'inherit', textDecoration: 'none' }}>
               <LogoBox aria-hidden>
                 <LogoOuter>
-                  <img src={logoSrc} alt={logoAlt} />
+                  <div style={{ backgroundImage: `url(${logoSrc})`, width: '100%', height: '100%', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }} />
                 </LogoOuter>
               </LogoBox>
             </Link>
@@ -260,7 +265,10 @@ export default function NavHeader({
             aria-label={mobileNavOpen ? '메뉴 닫기' : '메뉴 열기'}
             onClick={() => setMobileNavOpen((v) => !v)}
           >
-            <HamburgerIcon size={28} color="#fff" />
+            <HamburgerIcon
+              size={24}
+              color={mode === NAV_HEADER_MODES.DARK ? '#fff' : '#000'}
+            />
           </HamburgerBtn>
         </Row>
       </Inner>

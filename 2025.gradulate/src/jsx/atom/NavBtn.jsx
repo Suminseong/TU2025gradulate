@@ -24,7 +24,7 @@ const Base = styled.a`
   cursor: pointer;
   outline: none;
   transition: opacity 120ms ease;
-`;
+`
 
 export default function NavBtn({
   label,

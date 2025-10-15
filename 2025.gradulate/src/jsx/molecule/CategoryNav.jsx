@@ -19,17 +19,37 @@ const Container = styled.div`
   padding-left: 40px;
   padding-right: 40px;
   padding-top: 88px;
+  @media (max-width: 640px) {
+    height: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+  }
 `;
 
 const Spacer = styled.div`
   width: 120px;
   height: 100%;
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const NavRow = styled.div`
   display: flex;
   justify-content: center;
   gap: 60px;
+  @media (max-width: 640px) {
+    display: none;
+  }
+`;
+
+const NavRowMobile = styled.div`
+  display: none;
+  @media (max-width: 640px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export default function CategoryNav({ onCategoryChange, onToggleChange, type, onSortChange, sortLabel }) {
@@ -88,6 +108,8 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
             />
           ))}
         </NavRow>
+        {/* 모바일 네비게이션 */}
+        <NavRowMobile></NavRowMobile>
         <Dropdown label={currentSortLabel} options={SORT_OPTIONS} onSelect={hadleSortSelect} />
       </Container>
     );
@@ -110,6 +132,8 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
             />
           ))}
         </NavRow>
+        {/* 모바일 네비게이션 */}
+        <NavRowMobile></NavRowMobile>
         <ToggleBtn path={isToggleActive ? 'professor' : 'student'} isActive={isToggleActive} onClick={handleToggle} />
       </Container>
     );
@@ -131,6 +155,8 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
           />
         ))}
       </NavRow>
+      {/* 모바일 네비게이션 */}
+      <NavRowMobile></NavRowMobile>
       <ToggleBtn path={isToggleActive ? 'professor' : 'student'} isActive={isToggleActive} onClick={handleToggle} />
     </Container>
   );

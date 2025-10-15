@@ -27,6 +27,10 @@ const PageOuter = styled.div`
 `;
 const PageInner = styled.div`
   padding-left: ${PAGE_SIDE}px; padding-right: ${PAGE_SIDE}px; display: flex; flex-direction: column;
+  @media (max-width: 640px) {
+    padding-left: 16px;
+    padding-right: 16px;  
+ }
 `;
 function PageContainer({ children }) {
   return (
@@ -41,9 +45,37 @@ const Relative = styled.div`
 `;
 
 const Grid = styled.div`
-  display: flex; flex-wrap: wrap; justify-content: center; margin-top: 100px; margin-bottom: 120px; row-gap: 32px; column-gap: 14px; width: 100%;
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  margin-top: 100px; 
+  margin-bottom: 120px; 
+  row-gap: 32px; 
+  column-gap: 14px; 
+  width: 100%;
+  @media (max-width: 640px) {
+    margin-top: 20px;
+    margin-bottom: 60px;
+    row-gap: 18px;  
+ }
 `;
 
+const PageInfo = styled.div`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 21px;
+  font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.6px;
+  color: #000000;
+  margin-top: 4px;
+  @media (max-width: 640px) {
+    display: flex;
+  }
+`;
 // 프로젝트 데이터
 const projects = projectsData;
 const students = studentsData;
@@ -153,6 +185,7 @@ export default function Projects() {
 
   return (
     <Relative>
+      <PageInfo>Projects</PageInfo>
       <CategoryNav
         type="project"
         onCategoryChange={setSelectedCategoryLabel}

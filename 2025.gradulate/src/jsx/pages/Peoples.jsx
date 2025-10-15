@@ -79,8 +79,38 @@ function PageContainer({ children }) {
 }
 
 const Grid = styled.div`
-  display: flex; flex-wrap: wrap; justify-content: center; margin-top: 100px; margin-bottom: 120px; row-gap: 32px; column-gap: 14px; width: 100%;
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  margin-top: 100px; 
+  margin-bottom: 120px; 
+  row-gap: 32px; 
+  column-gap: 14px; 
+  width: 100%;
+  @media (max-width: 640px) {
+    margin-top: 20px;
+    margin-bottom: 60px;
+    row-gap: 18px;  
+ }
 `;
+
+const PageInfo = styled.div`
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 21px;
+  font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21.6px;
+  color: #000000;
+  margin-top: 4px;
+  @media (max-width: 640px) {
+    display: flex;
+  }
+`;
+
 const LinkWrap = styled.div`
   text-decoration: none; cursor: pointer;
 `;
@@ -201,6 +231,7 @@ export default function Peoples() {
 
   return (
     <Relative>
+      <PageInfo>Peoples</PageInfo>
       <CategoryNav
         type="people"
         onCategoryChange={setActiveCategory}
