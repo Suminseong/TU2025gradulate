@@ -33,6 +33,10 @@ const Container = styled.div`
     padding-top: 24px;
     padding-bottom: 24px;
     max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 `;
 
@@ -59,11 +63,12 @@ const NavRow = styled.nav`
   font-weight: 400;
   margin-bottom: 36px;
   @media (max-width: 640px) {
-    gap: 12px;
+    gap: 16px;
     font-size: 12px;
     margin-bottom: 16px;
     flex-wrap: wrap;
     justify-content: flex-start;
+    flex-direction: column;
   }
 `;
 
@@ -86,6 +91,7 @@ const CopyWrap = styled.div`
     font-size: 10px;
     max-width: 100vw;
     gap: 4px;
+    align-items: center;
   }
 `;
 

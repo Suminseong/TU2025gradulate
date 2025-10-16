@@ -1,5 +1,5 @@
 // NavHeader.jsx
-import { useEffect, useMemo, useState } from 'react';
+import { use, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import NavBtn from '../atom/NavBtn';
@@ -221,10 +221,13 @@ export default function NavHeader({
   }, [autoOnScroll, isControlled, onModeChange, scrollThreshold]);
 
   const isDarkMode = mode === NAV_HEADER_MODES.DARK;
-  const logoSrc = isDarkMode
+  const forceDarkAssets = mobileNavOpen
+  const useDarkAssets = isDarkMode || forceDarkAssets;
+
+  const logoSrc = useDarkAssets
     ? `${import.meta.env.BASE_URL}icons/logoLight.svg`
     : `${import.meta.env.BASE_URL}icons/logoDark.svg`;
-  const logoAlt = isDarkMode ? 'LogoLight' : 'LogoDark';
+  const logoAlt = useDarkAssets ? 'LogoLight' : 'LogoDark';
 
   // 모바일 메뉴에서 쇼룸 제외
   const mobileMenu = items.filter((item) => item.label !== 'SHOWROOM');
@@ -267,8 +270,9 @@ export default function NavHeader({
             onClick={() => setMobileNavOpen((v) => !v)}
           >
             <HamburgerIcon
+              isOpen={mobileNavOpen}
               size={24}
-              color={mode === NAV_HEADER_MODES.DARK ? '#fff' : '#000'}
+              color={useDarkAssets ? '#fff' : '#000'}
             />
           </HamburgerBtn>
         </Row>
