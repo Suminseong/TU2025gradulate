@@ -5,6 +5,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { db } from '../../lib/firebase';
+import { doc, updateDoc, increment, setDoc, getDoc } from 'firebase/firestore';
 
 import WorkInfo from '../atom/WorkInfo';
 import DesignerInfo from '../molecule/DesignerInfo';
@@ -144,6 +147,7 @@ export default function Work() {
             context="이곳은 작품 설명이 들어가는 영역입니다. 작품에 대한 상세한 설명이나 배경, 제작 과정 등을 기술할 수 있습니다. 이 텍스트는 예시로 작성된 내용이며, 실제 작품 설명으로 대체되어야 합니다."
             isOpen={isInfoOpen}
             onClose={() => setIsInfoOpen(false)}
+            docId={0}
           />
           <Img src="https://placehold.co/1530x4000" alt="featured" />
           <DesignerInfo>  </DesignerInfo>
@@ -180,14 +184,43 @@ export default function Work() {
     c5: 'M',
   };
   const catLetter = CAT_CODE_TO_LETTER[project.category] || 'A';
-  const num3 = String(project.projectNum ?? project.num).padStart(3, '0');
+  const resolvedProjectId = project.projectNum ?? project.num;
+  const num3 = String(resolvedProjectId).padStart(3, '0');
 
-  const basePath = `/projects/${project.projectNum}`; // 추후 절대 경로 바뀔 시 수정
+  const basePath = `/projects/${resolvedProjectId}`; // 추후 절대 경로 바뀔 시 수정
   const galleryCount = Number(project.galleryCount || 0);
   const galleryImages = Array.from(
     { length: galleryCount },
     (_, idx) => publicUrl(`${basePath}/gallery/${idx}.jpg`)
   );
+
+  // Increment view count on page load
+  useEffect(() => {
+    const id = project?.projectNum ?? project?.num;
+    if (id === undefined || id === null) return;
+    const collection = 'works';
+    const ref = doc(db, collection, String(id));
+    (async () => {
+      try {
+        await updateDoc(ref, { view: increment(1) });
+      } catch (e) {
+        if (e.code === 'not-found' || /No document/i.test(String(e))) {
+          try {
+            const snap = await getDoc(ref);
+            if (!snap.exists()) {
+              await setDoc(ref, { view: 1 }, { merge: true });
+            } else {
+              await updateDoc(ref, { view: increment(1) });
+            }
+          } catch (e2) {
+            console.error('Firestore view fallback error:', e2);
+          }
+        } else {
+          console.error('Firestore view error:', e);
+        }
+      }
+    })();
+  }, [project?.projectNum, project?.num]);
 
   return (
     <Relative>
@@ -200,7 +233,8 @@ export default function Work() {
             context={project.description || 'null'}
             isOpen={isInfoOpen}
             onClose={handleClose}
-            src={publicUrl(`/projects/${project.projectNum}/thumb.jpg`)}
+            src={publicUrl(`/projects/${resolvedProjectId}/thumb.jpg`)}
+            docId={resolvedProjectId}
           />
         </PageInfo>
 

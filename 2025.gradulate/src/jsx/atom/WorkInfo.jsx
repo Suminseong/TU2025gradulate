@@ -1,8 +1,10 @@
 // WorkInfo.jsx
 // 작품 정보 컴포넌트
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { db } from '../../lib/firebase'; // 프로젝트 구조에 맞게 수정
+import { doc, updateDoc, increment, setDoc, getDoc } from 'firebase/firestore';
 
 const base = import.meta.env.BASE_URL || '/';
 
@@ -222,7 +224,81 @@ export default function WorkInfo({
   isOpen = true,
   onClose,
   src,
+  docId,            // ← Firestore 문서 ID (예: 0, 1, 2 … 문자열/숫자)
+  collection = 'works', // ← 기본 컬렉션명
 }) {
+  const [likeCount, setLikeCount] = useState(0);
+  const [pending, setPending] = useState(false);
+
+  // 초기 1회 읽기 (새로고침/라우팅 진입 시)
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      if (docId === undefined || docId === null) return;
+      try {
+        const ref = doc(db, collection, String(docId));
+        const snap = await getDoc(ref);
+        if (!alive) return;
+        if (snap.exists()) {
+          const data = snap.data();
+          setLikeCount(typeof data.like === 'number' ? data.like : 0);
+        } else {
+          setLikeCount(0);
+        }
+      } catch (err) {
+        console.error('Firestore getDoc error:', err);
+        if (alive) setLikeCount(0);
+      }
+    })();
+    return () => { alive = false; };
+  }, [docId, collection]);
+
+  const refreshLike = async () => {
+    try {
+      const ref = doc(db, collection, String(docId));
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        const data = snap.data();
+        setLikeCount(typeof data.like === 'number' ? data.like : 0);
+      }
+    } catch (e) {
+      console.error('Firestore refresh error:', e);
+    }
+  };
+
+   const handleLike = async () => {
+     if (pending) return; 
+     if (docId === undefined || docId === null) {
+       console.warn('handleLike called without a valid docId');
+       return;
+     }
+     setPending(true);
+     const ref = doc(db, collection, String(docId));
+     try {
+      await updateDoc(ref, { like: increment(1) });
+      setLikeCount((n) => n + 1);
+      await refreshLike();
+     } catch (e) {
+       // 문서가 없을 가능성 등 예외 처리(최초 1회 생성 허용 시)
+       if (e.code === 'not-found' || /No document/i.test(String(e))) {
+         try {
+           const snap = await getDoc(ref);
+           if (!snap.exists()) {
+             await setDoc(ref, { like: 1 }, { merge: true });
+           } else {
+             await updateDoc(ref, { like: increment(1) });
+           }
+           await refreshLike();
+         } catch (e2) {
+           console.error('Firestore like fallback error:', e2);
+         }
+       } else {
+         console.error('Firestore like error:', e);
+       }
+     } finally {
+       setPending(false);
+     }
+   };
 
   return (
     <Container $open={!!isOpen}>
@@ -239,10 +315,10 @@ export default function WorkInfo({
         </ContentCol>
 
         <IconRow>
-          <LikeBtn onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
+          <LikeBtn onClick={handleLike} aria-disabled={pending} title={pending ? '처리 중' : '좋아요'}>
             <LikeAlign>
               <LikeIcon $src={`${base}icons/likeIcon(white).svg`} aria-label="Like icon" />
-              <LikeCount>0</LikeCount>
+              <LikeCount>{likeCount}</LikeCount>
             </LikeAlign>
           </LikeBtn>
           <PageDown
@@ -272,4 +348,6 @@ WorkInfo.propTypes = {
   context: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
+  docId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  collection: PropTypes.string,
 };
