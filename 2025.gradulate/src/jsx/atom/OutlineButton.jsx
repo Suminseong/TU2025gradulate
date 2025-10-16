@@ -74,7 +74,7 @@ export default function OutlineButton({
   };
 
   return (
-    <Base {...commonProps}>
+    <Base {...commonProps} target="_blank" rel="noopener noreferrer">
       {label}
       {arrowVisible ? <Arrow aria-hidden /> : null}
     </Base>

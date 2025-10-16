@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import GradientEdge from '../atom/GradientEdge';
 import { G } from '../atom/gradients';
 
+const base = import.meta.env.BASE_URL || '/';
+
 const Wrap = styled.section`
   position: relative;
   z-index: 1;
@@ -17,7 +19,7 @@ const Wrap = styled.section`
 
 const Container = styled.div`
   width: 100%;
-  max-width: 1220px;
+  max-width: calc(100vw - 80px);
   margin: 0 auto;
   @media (max-width: 640px) {
     max-width: 100%;
@@ -29,22 +31,25 @@ const Container = styled.div`
 const Grid = styled.div`
   display: flex;
   gap: 94px;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   @media (max-width: 640px) {
-    flex-direction: column;
     gap: 32px;
   }
 `;
 
 const Col = styled.div`
+  width: 1220px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 72px;
   align-items: center;
   @media (max-width: 640px) {
+    flex-direction: column;
     gap: 24px;
     padding: 0px 12px;
+    width: calc(100vw - 24px);
   }
 `;
 
@@ -70,34 +75,24 @@ const Body = styled.div`
   line-height: 38.4px;
   @media (max-width: 640px) {
     width: 100%;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 1.6;
     padding: 0 2px;
     box-sizing: border-box;
+    text-align: center;
   }
 `;
 
-const DotWrap = styled.div`
+const BrandLogo = styled.div`
+  display: flex;
   width: 285px;
   height: 285px;
   position: relative;
   overflow: hidden;
-  border-radius: 9999px;
   background: #FFFFFF;
   @media (max-width: 640px) {
-    width: 120px;
-    height: 120px;
+    display: none;
   }
-`;
-
-const Dot = styled.div`
-  position: absolute;
-  left: 66px;
-  top: 171px;
-  width: 19.28px;
-  height: 19.28px;
-  border-radius: 9999px;
-  background: linear-gradient(237deg, #000 0%, #666 100%);
 `;
 
 const Formula = styled.div`
@@ -110,7 +105,7 @@ const Formula = styled.div`
   align-items: center;
   justify-content: center;
   @media (max-width: 640px) {
-    width: 100%;
+    width: calc(100vw - 32px);
     max-width: 100%;
     height: 80px;
     margin: 32px auto 0;
@@ -125,8 +120,8 @@ export default function BrandConcept() {
     <Wrap aria-labelledby="brand-title">
       <Container>
         <Grid>
+          <Title id="brand-title">Brand Concept</Title>
           <Col>
-            <Title id="brand-title">Brand Concept</Title>
             <Body>
               우리는 살아가며 수많은 순간들을 스쳐 지나간다.<br />
               그 순간들은 이내 사라지는 듯하지만,<br />
@@ -139,15 +134,22 @@ export default function BrandConcept() {
               전시를 마주한 순간이 훗날, 불현듯 떠오르는 영감으로 다시 피어나기를.<br />
               그리하여 우리의 잔향이 누군가의 기억 속에서 오래도록 머물 수 있기를.
             </Body>
+            <BrandLogo>
+              <img
+                src={`${base}brand-logo.png`}
+                alt="2025 졸업전시 브랜드 로고"
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }}
+                draggable={false}
+              />
+            </BrandLogo>
           </Col>
-          <DotWrap aria-hidden><Dot /></DotWrap>
         </Grid>
 
-        <Formula as="div" style={{background: 'none', height: 'auto', justifyContent: 'center', alignItems: 'center', display: 'flex', boxShadow: 'none', margin: '32px auto 0', padding: 0}}>
-          <img 
-            src="brand-variation.png"
-            alt="브랜드 컨셉 공식 그래픽" 
-            style={{width: '100%', maxWidth: 480, height: 'auto', display: 'block', margin: '0 auto'}} 
+        <Formula as="div" style={{ background: 'none', height: 'auto', justifyContent: 'center', alignItems: 'center', display: 'flex', boxShadow: 'none', margin: '32px auto 0', padding: 0 }}>
+          <img
+            src={`${base}brand-variation.png`}
+            alt="브랜드 컨셉 공식 그래픽"
+            style={{ width: '100%', maxWidth: 480, height: 'auto', display: 'block', margin: '0 auto' }}
             draggable={false}
           />
         </Formula>
