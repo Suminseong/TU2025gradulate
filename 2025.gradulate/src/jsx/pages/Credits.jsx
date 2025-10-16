@@ -15,7 +15,6 @@ const PageOuter = styled.div`
   position: relative; background: #fff;
 `;
 const PageInner = styled.div`
-  /* padding-left: ${PAGE_SIDE_VW}; padding-right: ${PAGE_SIDE_VW}; */
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -36,6 +35,12 @@ function PageContainer({ children }) {
 const HeaderBig = styled.div`
   position: relative; height: 120px; display: flex; align-items: flex-end; justify-content: center;
   font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 98px;
+  @media (max-width: 640px) {
+    height: 21px;
+    line-height: 21px;
+    margin-top: 4px;
+    font-size: 18px;
+  }
 `;
 const SubTitle = styled.div`
   font-family: ${FONT}; font-size: 32px; font-weight: 600; line-height: 56px; color: #000; margin-top: 72px;
@@ -43,6 +48,12 @@ const SubTitle = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 1220px;
+  @media (max-width: 640px) {
+    font-size: 16px;
+    line-height: 11px;
+    margin-top: 24px;
+    width: calc(100vw - 32px);
+  }
 `;
 function HeroHeader() {
   return (
@@ -56,7 +67,20 @@ function HeroHeader() {
 }
 
 const IntroNoteBox = styled.p`
-  max-width: 374px; font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 140%; color: #000; text-align: justify; top: 0; margin: 0;
+  max-width: 374px;
+  font-family: ${FONT};
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 140%;
+  color: #000;
+  text-align: justify;
+  top: 0;
+  margin: 0;
+  @media (max-width: 640px) {
+    font-size: 10px;
+    max-width: calc(100vw - 32px);
+    margin-top: 16px;
+  }
 `;
 function IntroNote({ text }) {
   return (
@@ -69,13 +93,33 @@ const IntroWrap = styled.div`
   flex-direction: row;
   align-items: flex-start;
   gap: 46px;
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
 `
 
 const HeroCardWrap = styled.div`
   width: 800px; height: 450px; background: #FFF4ED; position: relative;
+  @media (max-width: 640px) {
+    width: 100vw;
+    height: calc(100vw * 0.5625); /* 16:9 비율 유지 */
+  }
 `;
 const HeroCardText = styled.div`
-  position: absolute; left: 136px; top: 140px; font-family: ${FONT}; font-size: 82.64px; font-weight: 400; line-height: 92.55px; color: #000;
+  position: absolute;
+  left: 136px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: ${FONT};
+  font-size: 82.64px;
+  font-weight: 400;
+  line-height: 92.55px;
+  color: #000;
+  @media (max-width: 640px) {
+    font-size: 36px;
+  }
 `;
 function HeroCard({ children }) {
   return (
@@ -87,15 +131,34 @@ function HeroCard({ children }) {
 
 const ThreeWrap = styled.div`
   display: flex; gap: 40px; margin-top: 44px; width: 1220px;
+  @media (max-width: 640px) {
+    // flex 위쪽에 2개, 아래에 1개 배치되게 해주고, 아래 배치된거는 위쪽 2개의 길이만큼 맞춰주게 해주세요
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 24px;
+  }
 `;
 const SpeechCol = styled.div`
   width: 374px; display: flex; flex-direction: column; gap: 40px;
+    @media (max-width: 640px) {
+      width: 100%;
+      gap: 16px;
+      padding: 0px 16px;
+  }
 `;
 const SpeechTitle = styled.div`
   font-family: ${FONT}; font-size: 28px; font-weight: 600; line-height: 20px; color: #000; margin: 0;
+  @media (max-width: 640px) {
+    font-size: 14px;
+    line-height: 10px;
+  }
 `;
 const SpeechBody = styled.p`
   font-family: ${FONT}; font-size: 16px; font-weight: 400; line-height: 150%; color: #404040; text-align: justify; margin: 0;
+  @media (max-width: 640px) {
+    font-size: 10px;
+  }
 `;
 function ThreeSpeeches({ blocks }) {
   return (
@@ -111,16 +174,46 @@ function ThreeSpeeches({ blocks }) {
 }
 
 const CommitteeSectionWrap = styled.div`
-  border-bottom: ${props => (props.$last ? 'none' : '1px #E0E0E0 solid')}; display: flex; gap: 20px; padding-bottom: 10px; margin-top: 20px; align-items: flex-start;
+  border-bottom: ${props => (props.$last ? 'none' : '1px #E0E0E0 solid')};
+  display: flex;
+  gap: 20px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  align-items: flex-start;
+  @media (max-width: 640px) {
+    margin-top: 0px;
+    gap: 18px;
+    padding-bottom: 0px;
+  }
 `;
 const CommitteeHeaderWrap = styled.div`
-  width: 289px; height: 45px; display: flex; align-items: flex-end;
+  width: 289px;
+  height: 45px;
+  display: flex;
+  align-items: flex-end;
+  @media (max-width: 640px) {
+    height: auto;
+    width: 88px;
+    margin-top: 12px;
+  }
 `;
 const CommitteeHeaderTitle = styled.div`
-  font-family: ${FONT}; font-size: 20px; font-weight: 500; line-height: 22.4px; color: #202020;
+  font-family: ${FONT}; font-size: 20px;
+  font-weight: 500;
+  line-height: 22.4px;
+  color: #202020;
+  @media (max-width: 640px) {
+    font-size: 14px;
+    line-height: 14px;
+  }
 `;
 const CommitteeRowsWrap = styled.div`
-  width: 900px; display: flex; flex-direction: column;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 640px) {
+    width: 100%;
+  }
 `;
 function CommitteeSection({ title, rows, last = false }) {
   return (
@@ -143,20 +236,50 @@ function CommitteeSection({ title, rows, last = false }) {
 }
 
 const CommitteeRowWrap = styled.div`
-  padding-top: 22px; padding-bottom: 40px; border-bottom: ${props => (props.$divider ? '1px #E0E0E0 solid' : 'none')}; display: flex; gap: 20px; align-items: flex-start;
+  padding-top: 22px;
+  padding-bottom: 40px;
+  border-bottom: ${props => (props.$divider ? '1px #E0E0E0 solid' : 'none')};
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  @media (max-width: 640px) {
+    padding-top: 12px;
+    padding-bottom: 18px;
+    gap: 0px;
+  }
 `;
 const KoCol = styled.div`
   width: 135px;
+  @media (max-width: 640px) {
+    width: 66px;
+  }
 `;
 const Ko = styled.div`
-  font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 22.4px; color: #202020;
+  font-family: ${FONT};
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22.4px; 
+  color: #202020;
+  @media (max-width: 640px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `;
 const EnWrap = styled.div`
   display: flex; align-items: center;
 `;
 const En = styled.div`
-  font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 22.4px; color: #404040;
+  font-family: ${FONT};
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 22.4px;
+  color: #404040;
+  @media (max-width: 640px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `;
+
 function CommitteeRow({ ko, en, divider = false }) {
   return (
     <CommitteeRowWrap $divider={divider}>
@@ -172,9 +295,26 @@ function CommitteeRow({ ko, en, divider = false }) {
 
 const TitleBlock = styled.div`
   margin-top: 60px;
+  margin-bottom: 100px;
+  @media (max-width: 640px) {
+    margin-top: 80px;
+    margin-bottom: 40px;
+    width: calc(100vw - 32px);
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const TitleBlockText = styled.div`
-  font-family: ${FONT}; font-size: 28px; font-weight: 600; color: #101010; margin-bottom: 24px;
+  font-family: ${FONT};
+  font-size: 28px;
+  font-weight: 600;
+  color: #101010;
+  margin-bottom: 24px;
+  @media (max-width: 640px) {
+    font-size: 16px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+  }
 `;
 
 export default function Credit() {
