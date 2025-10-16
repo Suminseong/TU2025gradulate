@@ -10,7 +10,7 @@ import GuestbookModal from '../organism/GuestbookModal';
 import { db } from '../../../firebase';
 import {
   collection,
-  onSnapshot,
+  getDocs,
   orderBy,
   query,
   setDoc,
@@ -52,25 +52,31 @@ export default function Guestbook() {
   const [open, setOpen] = React.useState(false);
   const [items, setItems] = React.useState([]);
 
-  // Firestore에서 게스트북 데이터 구독
+  // Firestore에서 게스트북 데이터 가져오기 (한 번만 읽음)
   React.useEffect(() => {
-    const q = query(collection(db, 'guest'), orderBy('time', 'desc'));
-    const unsub = onSnapshot(q, (snap) => {
-      const next = [];
-      snap.forEach((d) => {
-        const data = d.data();
-        // 스키마: { to, from, message, time(id와 동일, string) }
-        next.push({
-          id: d.id,
-          to: data.to || '',
-          from: data.from || '',
-          message: data.message || '',
-          type: 'text',
+    let alive = true;
+    (async () => {
+      try {
+        const q = query(collection(db, 'guest'), orderBy('time', 'desc'));
+        const snap = await getDocs(q);
+        if (!alive) return;
+        const next = [];
+        snap.forEach((d) => {
+          const data = d.data();
+          next.push({
+            id: d.id,
+            to: data.to || '',
+            from: data.from || '',
+            message: data.message || '',
+            type: 'text',
+          });
         });
-      });
-      setItems(next);
-    });
-    return () => unsub();
+        setItems(next);
+      } catch (e) {
+        console.error('Failed to load guestbook items:', e);
+      }
+    })();
+    return () => { alive = false; };
   }, []);
 
   const handleSubmit = async ({ to, from, message }) => {
@@ -83,6 +89,25 @@ export default function Guestbook() {
         message: message || '',
         time: id,
       });
+      // 한 번 더 읽어서 최신화 (onSnapshot 대신)
+      try {
+        const q = query(collection(db, 'guest'), orderBy('time', 'desc'));
+        const snap = await getDocs(q);
+        const next = [];
+        snap.forEach((d) => {
+          const data = d.data();
+          next.push({
+            id: d.id,
+            to: data.to || '',
+            from: data.from || '',
+            message: data.message || '',
+            type: 'text',
+          });
+        });
+        setItems(next);
+      } catch (e) {
+        console.error('Failed to reload guestbook items after submit:', e);
+      }
       // onSnapshot을 통해 자동 갱신되므로 로컬 state 조작 불필요
       setOpen(false);
     } catch (e) {
