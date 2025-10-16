@@ -60,6 +60,9 @@ const BgInner = styled.div`
 `
 const CopyWrap = styled.div`
   position: absolute; left: 40px; bottom: 80px; max-width: 1029px; display: flex; flex-direction: column; gap: 8px;
+  opacity: ${(p) => (p.$visible ? 1 : 0)};
+  transition: opacity 400ms ease-in-out;
+  pointer-events: ${(p) => (p.$visible ? 'auto' : 'none')};
   @media (max-width: 640px) {
     left: 16px;
     bottom: 32px;
@@ -95,6 +98,16 @@ const Cta = styled.button`
 `;
 
 export default function Hero() {
+  const [copyVisible, setCopyVisible] = React.useState(false);
+  const timerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
+  }, []);
   return (
     <Wrap aria-label="Hero">
       <Bg>
@@ -105,14 +118,25 @@ export default function Hero() {
           </BgBlurVideo>
         </BgBlurWrap>
         <VideoBox aria-label="Hero background video">
-          <VideoEl autoPlay muted loop playsInline preload="metadata">
+          <VideoEl
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onLoadedData={() => {
+              // show copy after 15s from load
+              if (timerRef.current) clearTimeout(timerRef.current);
+              timerRef.current = setTimeout(() => setCopyVisible(true), 15000);
+            }}
+          >
             <source src={`${base}video/hero11.mp4`} type="video/mp4" />
             Your browser does not support the video tag.
           </VideoEl>
         </VideoBox>
         <BgInner />
       </Bg>
-      <CopyWrap>
+      <CopyWrap $visible={copyVisible}>
         <P>25. 10. 24. FRI~26. SUN<br />Hongdae Art Center B2</P>
         <P>Department of Design Engineering</P>
         <Title>Tech University of Korea<br />20th Grad Exhibition</Title>
