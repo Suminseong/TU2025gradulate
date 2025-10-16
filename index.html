@@ -1,20 +1,27 @@
 <!doctype html>
 <html lang="kr">
 
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/TU2025gradulate/assets/logoDark-Yf2D-6OR.svg"
-      media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/svg+xml" href="/TU2025gradulate/assets/logoLight-DZ7hZVpr.svg"
-      media="(prefers-color-scheme: dark)" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>잔향 : 기억의 향기</title>
-    <script type="module" crossorigin src="/TU2025gradulate/assets/index-DzxDPJkJ.js"></script>
-  </head>
-  <style>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var redirect = params.get('redirect');
+    if (redirect) window.history.replaceState({}, '', redirect);
+  })();
+</script>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/TU2025gradulate/assets/logoDark-Yf2D-6OR.svg" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/svg+xml" href="/TU2025gradulate/assets/logoLight-DZ7hZVpr.svg" media="(prefers-color-scheme: dark)" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>잔향 : 기억의 향기</title>
+  <script type="module" crossorigin src="/TU2025gradulate/assets/index-DzxDPJkJ.js"></script>
+</head>
+<style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 
-  html, body {
+  html,
+  body {
     width: 100vw;
     min-width: 0;
     margin: 0;
@@ -23,9 +30,12 @@
 
   * {
     /* f u scrollbar */
-    overflow: -moz-scrollbars-none; /* 구형 Firefox */ 
-    -ms-overflow-style: none;       /* IE, Edge(legacy) */
-    scrollbar-width: none;          /* Firefox */
+    overflow: -moz-scrollbars-none;
+    /* 구형 Firefox */
+    -ms-overflow-style: none;
+    /* IE, Edge(legacy) */
+    scrollbar-width: none;
+    /* Firefox */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -36,9 +46,8 @@
   }
 </style>
 
-  <body
-    style="margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif;">
-    <div id="root"></div>
-  </body>
+<body style="margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', sans-serif;">
+  <div id="root"></div>
+</body>
 
 </html>
