@@ -3,14 +3,17 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+
 import WorkInfo from '../atom/WorkInfo';
 import DesignerInfo from '../molecule/DesignerInfo';
-import { useParams } from 'react-router-dom';
-import projectsData from '../../data/projects.json';
-import studentsData from '../../data/students.json';
 import WorkVideo from '../atom/WorkVideo';
 import WorkInfoOpen from '../atom/WorkInfoOpen';
-import { useState } from 'react';
+
+import projectsData from '../../data/projects.json';
+import studentsData from '../../data/students.json';
+
 
 const PAGE_SIDE = 40;
 
@@ -26,9 +29,13 @@ function publicUrl(path) {
 // styled-components: 값 그대로 재현
 const ImgSC = styled.img`
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  @media (max-width: 640px) {
+    min-width: 100vw;
+}
 `;
 // 기존 사용처(<Img style={{ minHeight:'100vh' }} ... />) 대응 위해 동일한 컴포넌트명 유지
 const Img = (props) => <ImgSC loading="lazy" {...props} />;
@@ -37,14 +44,23 @@ const PageOuter = styled.div`
   display: flex;
   position: relative;
   background: #fff;
+  width: 100%;
+  @media (max-width: 640px) {
+    flex-direction: column;
+}
 `;
 const PageInner = styled.div`
   padding-right: ${PAGE_SIDE}px;
   padding-left: ${props => (props.$isInfoOpen ? 0 : PAGE_SIDE)}px;
+  flex: 1 1 auto;
+  width: auto;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   /* transition: all 500ms ease; */
+  @media (max-width: 640px) {
+    padding: 0
+}
 `;
 
 const PageInfo = styled.div`
@@ -55,10 +71,21 @@ const PageInfo = styled.div`
   left: 0;
   width: 350px;
   height: calc(100vh - 80px);
+  @media (max-width: 640px) {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: auto;
+    top: 0;
+    left: 0;
+    padding: 0;
+}
 `;
 
 const Relative = styled.div`
+  display: flex;
   position: relative;
+  width: 100%;
 `;
 
 const LETTER_TO_CAT = {
@@ -144,9 +171,6 @@ export default function Work() {
     })
     .filter(Boolean);
 
-  // 프로젝트 대표 디자이너 이름 (프로젝트 카드에 표시하기 위함)
-  const designerName = designers.length > 0 ? designers[0].nameEng : 'Unknown Designer';
-
   const CAT_CODE_TO_LETTER = {
     c0: 'A',
     c1: 'E',
@@ -176,6 +200,7 @@ export default function Work() {
             context={project.description || 'null'}
             isOpen={isInfoOpen}
             onClose={handleClose}
+            src={publicUrl(`/projects/${project.projectNum}/thumb.jpg`)}
           />
         </PageInfo>
 
@@ -183,7 +208,6 @@ export default function Work() {
           {galleryImages.length > 0 ? (
             galleryImages.map((src, i) => (
               <Img
-                style={{ minHeight: '100vh' }}
                 key={i}
                 src={src}
                 alt={`project-${catLetter}${num3}-img-${i + 1}`}
@@ -191,7 +215,6 @@ export default function Work() {
             ))
           ) : (
             <Img
-              style={{ minHeight: '100vh' }}
               src={publicUrl('/thumbnailExample.png')}
               alt={`project-${catLetter}${num3}-placeholder`}
             />

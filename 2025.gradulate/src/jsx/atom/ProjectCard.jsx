@@ -247,8 +247,6 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, h
 
   const isExternal = /^https?:\/\//i.test(href);
 
-  const iconSize = window.innerWidth <= 640 ? 8 : 16;
-
   const CardInner = (
     <>
       <CardWrap>

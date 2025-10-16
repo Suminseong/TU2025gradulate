@@ -19,7 +19,8 @@ export default function Dropdown({
   options,
   onSelect,
   style,
-  filter
+  filter,
+  mode
 }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [position, setPosition] = React.useState({ top: 0, left: 0 });
@@ -43,7 +44,7 @@ export default function Dropdown({
   return (
     <Root ref={dropdownRef} style={style}>
       <div onClick={handleButtonClick}>
-        <DropdownBtn label={label} options={options} onSelect={onSelect} style={{}} filter={filter} />
+        <DropdownBtn label={label} options={options} onSelect={onSelect} style={{}} filter={filter} mode={mode} />
       </div>
       {isOpen && (
         <DropdownMenu

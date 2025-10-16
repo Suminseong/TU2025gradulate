@@ -13,6 +13,11 @@ const Container = styled.div`
   height: 945px;
   gap: 20px;
   margin: 140px 0 120px 77px;
+  @media (max-width: 640px) {
+    width: calc(100vw - 32px);
+    height: auto;
+    margin: 100px 0px 100px 16px;
+}
 `;
 
 const ContentWrapper = styled.div`
@@ -21,6 +26,10 @@ const ContentWrapper = styled.div`
   width: 810px;
   height: auto;
   gap: 76px;
+  @media (max-width: 640px) {
+    width: 100%;
+    gap: 21px;
+}
 `;
 
 const Title = styled.h1`
@@ -32,6 +41,10 @@ const Title = styled.h1`
   padding: 0;
   height: 95px;
   width: auto;
+  @media (max-width: 640px) {
+    font-size: 32px;
+    height: 38px;
+}
 `;
 
 export default function DesignerInfo({ designers }) {

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ToggleBtn from '../atom/ToggleBtn';
 import CategoryNavBtn from '../atom/CategoryNavBtn';
 import Dropdown from '../molecule/Dropdown';
+import DropdownCate from '../molecule/DropdownCate';
 
 /**
  * 카테고리 네비게이션 (molecule)
@@ -49,6 +50,7 @@ const NavRowMobile = styled.div`
   @media (max-width: 640px) {
     display: flex;
     justify-content: center;
+    width: auto;
   }
 `;
 
@@ -109,7 +111,12 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
           ))}
         </NavRow>
         {/* 모바일 네비게이션 */}
-        <NavRowMobile></NavRowMobile>
+        <NavRowMobile>
+          <DropdownCate mode="category" label={activeProjectCategory} options={projectCategories} onSelect={(label) => {
+            setActiveProjectCategory(label);
+            if (onCategoryChange) onCategoryChange(label); // 부모에 알림
+          }} />
+        </NavRowMobile>
         <Dropdown label={currentSortLabel} options={SORT_OPTIONS} onSelect={hadleSortSelect} />
       </Container>
     );
@@ -133,7 +140,12 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
           ))}
         </NavRow>
         {/* 모바일 네비게이션 */}
-        <NavRowMobile></NavRowMobile>
+        <NavRowMobile>
+          <DropdownCate mode="category" label={activeCategory} options={studentCategories} onSelect={(label) => {
+            setActiveCategory(label);
+            if (onCategoryChange) onCategoryChange(label); // 부모에 알림
+          }} />
+        </NavRowMobile>
         <ToggleBtn path={isToggleActive ? 'professor' : 'student'} isActive={isToggleActive} onClick={handleToggle} />
       </Container>
     );
@@ -156,7 +168,12 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
         ))}
       </NavRow>
       {/* 모바일 네비게이션 */}
-      <NavRowMobile></NavRowMobile>
+      <NavRowMobile>
+        <DropdownCate mode="category" label={activeCategory} options={professorCategories} onSelect={(label) => {
+          setActiveCategory(label);
+          if (onCategoryChange) onCategoryChange(label); // 부모에 알림
+        }} />
+      </NavRowMobile>
       <ToggleBtn path={isToggleActive ? 'professor' : 'student'} isActive={isToggleActive} onClick={handleToggle} />
     </Container>
   );

@@ -6,30 +6,43 @@ import React from 'react';
 import styled from 'styled-components';
 
 const VideoWrapper = styled.div`
-    width: '1600px'; // 임시값
-    height: '100%'; // 임시값
+    width: 100%; // 임시값
     margin-top: 50px;
-`
+@media (max-width: 640px) {
+    margin-top: 20px;
+}
+`;
+
+const RatioBox = styled.div`
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    padding-top: 56.25%; // 16:9 비율
+`;
 
 const Iframe = styled.iframe`
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: 1080px;
+    height: 100%;
     border: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;   
+    overflow: hidden;
 `
 
 export default function WorkVideo({ videoId }) {
     return (
         <VideoWrapper>
-            <Iframe
-                src={`https://player.vimeo.com/video/1126266309?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479`} // 임시 링크, 추후 수정
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                title="Embedded Vimeo"
-            ></Iframe>
+            <RatioBox>
+                <Iframe
+                    src={`https://player.vimeo.com/video/1126266309?h=1f3e4f1f6e&title=0&byline=0&portrait=0`}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    title="Embedded Vimeo"
+                ></Iframe>
+            </RatioBox>
         </VideoWrapper>
     );
 }

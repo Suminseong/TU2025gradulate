@@ -37,13 +37,20 @@ const Label = styled.p`
   color: #191919;
   margin: 0;
   @media (max-width: 640px) {
-   font-size: 14px;  
+   font-size: 13px;  
  }
 `;
+
+const CateLabel = styled(Label)`
+  font-size: 13px;
+  font-weight: 600;
+`
+
 
 export default function DropdownBtn({
     label,
     style,
+    mode,
 }) {
   const base = import.meta.env.BASE_URL || '/';
     const isMobile = window.matchMedia('(max-width: 640px)').matches;
@@ -51,14 +58,26 @@ export default function DropdownBtn({
       ? `${base}icons/dropDownMobileIcon.svg`
       : `${base}icons/arrowDropdownIcon.svg`;
 
-    return (
-      <Wrapper style={style}>
-        <Label>{label}</Label>
-        <IconBox>
-          <img src={iconSrc} alt="dropdownIcon" />
-        </IconBox>
-      </Wrapper>
-    );
+    if ( mode === 'category' ) {
+      return (
+        <Wrapper style={style}>
+          <CateLabel>{label}</CateLabel>
+          <IconBox>
+            <img src={`${base}icons/arrowDropdownIcon.svg`} alt="dropdownIcon" />
+          </IconBox>
+        </Wrapper>
+      );
+    }
+    else {
+      return (
+        <Wrapper style={style}>
+          <Label>{label}</Label>
+          <IconBox>
+            <img src={iconSrc} alt="dropdownIcon" />
+          </IconBox>
+        </Wrapper>
+      );
+    }
 }
 
 DropdownBtn.propTypes = {

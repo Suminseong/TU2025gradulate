@@ -4,6 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const base = import.meta.env.BASE_URL || '/';
+
 const Container = styled.div`
   display: flex;
   position: sticky;
@@ -19,6 +21,14 @@ const Container = styled.div`
   transform: translateX(${props => (props.$open ? '0' : '-350px')});
   transition: transform 500ms ease-out;
   pointer-events: ${props => (props.$open ? 'auto' : 'none')};
+  @media (max-width: 640px) {
+    width: 100vw;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 40px 16px;
+}
 `;
 
 const GapCol = styled.div`
@@ -27,6 +37,9 @@ const GapCol = styled.div`
   justify-content: space-between;
   width: 100%;
   height: auto;
+  @media (max-width: 640px) {
+    gap: 40px;
+}
 `;
 
 const ContentCol = styled.div`
@@ -35,6 +48,13 @@ const ContentCol = styled.div`
   width: 270px;
   height: auto;
   gap: 48px;
+  @media (max-width: 640px) {
+    flex-direction: row;
+    width: auto;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
 `;
 
 const CloseBox = styled.div`
@@ -44,6 +64,9 @@ const CloseBox = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @media (max-width: 640px) {
+    display: none;
+}
 `;
 
 const Content = styled.div`
@@ -52,6 +75,9 @@ const Content = styled.div`
   height: auto;
   flex-direction: column;
   gap: 16px;
+  @media (max-width: 640px) {
+    width: auto;
+}
 `;
 
 const Title = styled.h1`
@@ -62,6 +88,9 @@ const Title = styled.h1`
   margin: 0;
   padding: 0;
   line-height: 125%;
+  @media (max-width: 640px) {
+    font-size: 20px;
+}
 `;
 
 const Context = styled.p`
@@ -72,7 +101,23 @@ const Context = styled.p`
   margin: 0;
   padding: 0;
   line-height: 150%;
+  @media (max-width: 640px) {
+    font-size: 13px;
+}
 `;
+
+const Thumbnail = styled.div`
+  display: none;
+  width: 172px;
+  height: 240px;
+  background-image: ${({ $src }) => `url("${$src}")`};
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  @media (max-width: 640px) {
+    display: flex;
+}
+`
 
 const IconRow = styled.div`
   display: flex;
@@ -81,6 +126,10 @@ const IconRow = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 75px;
+  @media (max-width: 640px) {
+    width: auto;
+    height: 38px;
+}
 `;
 
 const LikeBtn = styled.div`
@@ -91,6 +140,9 @@ const LikeBtn = styled.div`
   width: auto;
   height: 32px;
   cursor: pointer;
+  @media (max-width: 640px) {
+    height: 20px;
+}
 `;
 
 const LikeAlign = styled.div`
@@ -101,9 +153,16 @@ const LikeAlign = styled.div`
   gap: 4px;
 `;
 
-const LikeIcon = styled.img`
+const LikeIcon = styled.div`
   width: 24px;
   height: 24px;
+  background-image: ${({ $src }) => `url("${$src}")`};
+  background-size: contain;
+  background-repeat: no-repeat;
+  @media (max-width: 640px) {
+    width: 16px;
+    height: 16px;
+}
 `;
 
 const LikeCount = styled.p`
@@ -113,6 +172,9 @@ const LikeCount = styled.p`
   color: #e0e0e0;
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    font-size: 16px;
+}
 `;
 
 const PageDown = styled.div`
@@ -132,6 +194,10 @@ const PageDownText = styled.p`
   padding: 0;
   line-height: auto;
   margin-bottom: 12px;
+  @media (max-width: 640px) {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
 `;
 
 const PageDownIconBox = styled.div`
@@ -140,6 +206,13 @@ const PageDownIconBox = styled.div`
   height: 75px;
   align-items: center;
   justify-content: center;
+  background-image: url('${base}icons/pageDownIcon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  @media (max-width: 640px) {
+    width: 10px;
+    height: 38px;
+}
 `;
 
 export default function WorkInfo({
@@ -148,8 +221,9 @@ export default function WorkInfo({
   context,
   isOpen = true,
   onClose,
+  src,
 }) {
-  const base = import.meta.env.BASE_URL || '/';
+
   return (
     <Container $open={!!isOpen}>
       <GapCol>
@@ -161,12 +235,13 @@ export default function WorkInfo({
             <Title>{titleKor}</Title>
             <Context>{context}</Context>
           </Content>
+          <Thumbnail $src={src} />
         </ContentCol>
 
         <IconRow>
           <LikeBtn onClick={() => { /* 좋아요 기능 추후 구현 */ }}>
             <LikeAlign>
-              <LikeIcon src={`${base}icons/likeIcon(white).svg`} alt="Like Icon" />
+              <LikeIcon $src={`${base}icons/likeIcon(white).svg`} aria-label="Like icon" />
               <LikeCount>0</LikeCount>
             </LikeAlign>
           </LikeBtn>
@@ -183,9 +258,7 @@ export default function WorkInfo({
             }}
           >
             <PageDownText>Designer Info</PageDownText>
-            <PageDownIconBox>
-              <img src={`${base}icons/pageDownIcon.svg`} alt="Page Down Icon" />
-            </PageDownIconBox>
+            <PageDownIconBox></PageDownIconBox>
           </PageDown>
         </IconRow>
       </GapCol>

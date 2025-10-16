@@ -96,7 +96,7 @@ const HamburgerBtn = styled.button`
     padding: 6px;
     margin-right: 2px;
     cursor: pointer;
-    z-index: 1201;
+    z-index: 1300;
   }
 `;
 
@@ -139,14 +139,15 @@ const OverlayNavBtn = styled(NavBtn)`
 const LogoBox = styled.div`
   width: 49.48px;
   height: 44px;
-  @media (max-width: 640px) {
-    width: 32px;
-    height: 28px;
-  }
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1300;
+  @media (max-width: 640px) {
+    width: 32px;
+    height: 28px;
+  }
 `;
 
 const LogoOuter = styled.div`

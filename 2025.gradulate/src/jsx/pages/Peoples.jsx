@@ -68,7 +68,11 @@ const PageOuter = styled.div`
   position: relative; background: #fff;
 `;
 const PageInner = styled.div`
-  padding-left: ${PAGE_SIDE}px; padding-right: ${PAGE_SIDE}px; display: flex; flex-direction: column; min-height: 100vh;
+  padding-left: ${PAGE_SIDE}px; padding-right: ${PAGE_SIDE}px; display: flex; flex-direction: column;
+  @media (max-width: 640px) {
+    padding-left: 16px;
+    padding-right: 16px;  
+ }
 `;
 function PageContainer({ children }) {
   return (

@@ -16,6 +16,10 @@ const Card = styled.div`
   width: auto;
   height: 387px;
   gap: 40px;
+  @media (max-width: 640px) {
+    height: 231px;
+    gap: 16px;
+}
 `;
 
 const ImageContainer = styled.div`
@@ -23,6 +27,11 @@ const ImageContainer = styled.div`
   width: 290px;
   height: 387px;
   border-radius: 4px;
+  @media (max-width: 640px) {
+    width: 173px;
+    height: 231px;
+    border-radius: 4px;
+}
 `;
 
 const Img = styled.img`
@@ -39,6 +48,9 @@ const ContentWrapper = styled.div`
   justify-content: space-between;
   height: calc(100% - 8px);
   width: auto;
+  @media (max-width: 640px) {
+    height: 100%;
+}
 `;
 
 const NameWrapper = styled.div`
@@ -58,6 +70,9 @@ const NameKor = styled.h1`
   color: #202020;
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    font-size: 20px;
+}
 `;
 
 const NameEng = styled.h2`
@@ -68,6 +83,9 @@ const NameEng = styled.h2`
   color: #202020;
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    font-size: 8px;
+}
 `;
 
 const InfoWrapper = styled.div`
@@ -77,6 +95,9 @@ const InfoWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 84px;
+  @media (max-width: 640px) {
+    height: 38px;
+}
 `;
 
 const InfoTitleWrapper = styled.div`
@@ -87,6 +108,10 @@ const InfoTitleWrapper = styled.div`
   height: 84px;
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    width: 38px;
+    height: 38px;
+}
 `;
 
 const InfoTitle = styled.h3`
@@ -99,6 +124,10 @@ const InfoTitle = styled.h3`
   color: #404040;
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    font-size: 8px;
+    line-height: 7.68px;
+}
 `;
 
 const InfoTextWrapper = styled.div`
@@ -110,6 +139,9 @@ const InfoTextWrapper = styled.div`
   line-height: 19.2px;
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    height: 38px;
+}
 `;
 
 const InfoText = styled.p`
@@ -121,6 +153,10 @@ const InfoText = styled.p`
   color: #202020;
   margin: 0;
   padding: 0;
+  @media (max-width: 640px) {
+    font-size: 8px;
+    line-height: 7.68px;
+}
 `;
 
 export default function DesignerCard({
