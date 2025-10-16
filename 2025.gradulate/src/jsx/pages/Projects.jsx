@@ -42,6 +42,7 @@ function PageContainer({ children }) {
 
 const Relative = styled.div`
   position: relative;
+  min-height: calc(100vh - 200px);
 `;
 
 const Grid = styled.div`
