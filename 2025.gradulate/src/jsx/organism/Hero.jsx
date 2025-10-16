@@ -5,9 +5,13 @@ import { G } from '../atom/gradients';
 const base = import.meta.env.BASE_URL || '/';
 
 const Wrap = styled.section`
-  position: relative; height: 974px; min-height: 620px; overflow: hidden; background: #121212; z-index: 1;
+  position: relative;
+  height: calc(100vh);
+  min-height: 620px;
+  overflow: hidden;
+  background: #121212;
+  z-index: 1;
   @media (max-width: 640px) {
-    height: 320px;
     min-height: 220px;
   }
 `;
@@ -61,23 +65,23 @@ const CopyWrap = styled.div`
   pointer-events: ${(p) => (p.$visible ? 'auto' : 'none')};
   @media (max-width: 640px) {
     left: 16px;
-    bottom: 32px;
+    bottom: 128px;
     max-width: 90vw;
-    gap: 4px;
+    gap: 8px;
   }
 `;
 const P = styled.p`
-  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-size: 16px; line-height: 19.2px;
+  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-size: 16px; line-height: 19.2px; font-weight: 400;
   @media (max-width: 640px) {
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 120%;
   }
 `;
 const Title = styled.p`
-  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-weight: 600; font-size: 24px; line-height: 27.6px;
+  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-weight: 500; font-size: 24px; line-height: 27.6px;
   @media (max-width: 640px) {
-    font-size: 17px;
-    line-height: 1.3;
+    font-size: 16px;
+    line-height: 115%;
   }
 `;
 const Cta = styled.button`
@@ -99,6 +103,9 @@ const Cta = styled.button`
     height: 36px;
     font-size: 14px;
     bottom: 16px;
+    bottom: 74px;
+    left: 16px;
+    transform: none;
   }
 `;
 
