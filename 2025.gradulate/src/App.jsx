@@ -35,11 +35,11 @@ function Layout({ headerMode, setHeaderMode }) {
   // 네비 항목
   const NAV_ITEMS = useMemo(
     () => [
-      { key: 'projects', label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects/` },
-      { key: 'peoples', label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples/` },
-      { key: 'showroom', label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom/` },
-      { key: 'guestbook', label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook/` },
-      { key: 'credits', label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits/` },
+      { key: 'projects', label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects` },
+      { key: 'peoples', label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples` },
+      { key: 'showroom', label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom` },
+      { key: 'guestbook', label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook` },
+      { key: 'credits', label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits` },
     ],
     []
   );
@@ -83,11 +83,11 @@ function Layout({ headerMode, setHeaderMode }) {
       <Footer
         title="잔향 : 기억의 향기"
         nav={[
-          { label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects/` },
-          { label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples/` },
-          { label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom/` },
-          { label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook/` },
-          { label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits/` },
+          { label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects` },
+          { label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples` },
+          { label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom` },
+          { label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook` },
+          { label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits` },
         ]}
         copyright={[
           'ⓒ 2025 TECH UNIV KOREA. ALL RIGHTS RESERVED.',
@@ -168,14 +168,14 @@ export default function App() {
           {/* 개별 페이지 — 필요 시 라우트 진입 시 헤더 모드를 고정하고 싶다면, 각 컴포넌트에서 setHeaderMode 호출 */}
           <Route index element={<MainWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
-          <Route path="projects/" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
-          <Route path="peoples/" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
-          <Route path="guestbook/" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="projects" element={<ProjectsWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="peoples" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="guestbook" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="work/:pid" element={<WorkWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
           {/* 크레딧 페이지: 스크롤 상단에서는 그라데이션 유지 */}
           <Route
-            path="credits/"
+            path="credits"
             element={
               <CreditsWithHeaderMode
                 setHeaderMode={setHeaderMode}
