@@ -2,9 +2,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import { db } from '../../lib/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import React from 'react';
 
 const CardWrap = styled.div`
   position: relative;
@@ -239,31 +237,9 @@ function formatCount(n) {
   return typeof n === 'number' && n > 999 ? '999+' : n;
 }
 
-export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, href, src, profileImgs, docId, collection = 'works' }) {
-  const [likeCount, setLikeCount] = useState(typeof like === 'number' ? like : 0);
-  const [viewCount, setViewCount] = useState(typeof view === 'number' ? view : 0);
-
-  // Firestore에서 like/view 초기값 로드
-  useEffect(() => {
-    let alive = true;
-    (async () => {
-      if (docId === undefined || docId === null) return;
-      try {
-        const ref = doc(db, collection, String(docId));
-        const snap = await getDoc(ref);
-        if (!alive) return;
-        if (snap.exists()) {
-          const data = snap.data();
-          setLikeCount(typeof data.like === 'number' ? data.like : 0);
-          setViewCount(typeof data.view === 'number' ? data.view : 0);
-        }
-      } catch (e) {
-        // ignore; keep defaults
-        console.error('ProjectCard Firestore read error:', e);
-      }
-    })();
-    return () => { alive = false; };
-  }, [docId, collection]);
+export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, href, src, profileImgs, docId }) {
+  const likeCount = typeof like === 'number' ? like : 0;
+  const viewCount = typeof view === 'number' ? view : 0;
   const handleMouseEnter = (e) => {
     const hoverDiv = e.currentTarget.querySelector('.card-hover');
     if (hoverDiv) hoverDiv.style.opacity = 1;
