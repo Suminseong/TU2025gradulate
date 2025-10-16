@@ -9,6 +9,8 @@ import CategoryNav from '../molecule/CategoryNav';
 import ProjectCard from '../atom/ProjectCard';
 import projectsData from '../../data/projects.json';
 import studentsData from '../../data/students.json';
+import { db } from '../../lib/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 const PAGE_SIDE = 40;
 
@@ -129,6 +131,7 @@ function ProjectsList({ list }) {
         const num3 = String(project.projectNum + 1).padStart(3, '0');
         const catLetter = CAT_CODE_TO_LETTER[project.category] || 'A';
         const slug = `${catLetter}${num3}`; // ex: A001, E023
+        const resolvedProjectId = project.projectNum ?? project.num;
 
         return (
           <ProjectCard
@@ -138,8 +141,7 @@ function ProjectsList({ list }) {
             src={publicUrl(`/projects/${project.projectNum}/thumb.jpg`)} // BASE_URL 대응
             nameKor={designerName}
             profileImgs={desingerImgUrls}
-            view={"0"} // 나중에 데이터 베이스 연결
-            like={"0"} // 나중에 데이터 베이스 연결
+            docId={resolvedProjectId}
             href={`/work/${slug}`}
           />
         );
@@ -151,6 +153,30 @@ function ProjectsList({ list }) {
 export default function Projects() {
   const [selectedCategoryLabel, setSelectedCategoryLabel] = React.useState('All Projects');
   const [sortLabel, setSortLabel] = React.useState('이름순');
+  const [statsById, setStatsById] = React.useState({}); // { '0': { like, view }, ... }
+
+  // Load like/view counts once
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const snap = await getDocs(collection(db, 'works'));
+        if (!alive) return;
+        const map = {};
+        snap.forEach((docSnap) => {
+          const data = docSnap.data() || {};
+          map[String(docSnap.id)] = {
+            like: typeof data.like === 'number' ? data.like : 0,
+            view: typeof data.view === 'number' ? data.view : 0,
+          };
+        });
+        setStatsById(map);
+      } catch (e) {
+        console.error('Failed to load works stats:', e);
+      }
+    })();
+    return () => { alive = false; };
+  }, []);
 
   // 라벨을 코드로 변환하여 필터링
   const filteredProjects = React.useMemo(() => {
@@ -167,10 +193,22 @@ export default function Projects() {
         list.sort((a, b) => getMemebersNameText(a).localeCompare(getMemebersNameText(b), 'ko'));
         break;
       case '좋아요순':
-        list.sort((a, b) => (b.like || 0) - (a.like || 0));
+        list.sort((a, b) => {
+          const aId = String(a.projectNum ?? a.num);
+          const bId = String(b.projectNum ?? b.num);
+          const aLike = statsById[aId]?.like ?? 0;
+          const bLike = statsById[bId]?.like ?? 0;
+          return bLike - aLike;
+        });
         break;
       case '조회수순':
-        list.sort((a, b) => (b.view || 0) - (a.view || 0));
+        list.sort((a, b) => {
+          const aId = String(a.projectNum ?? a.num);
+          const bId = String(b.projectNum ?? b.num);
+          const aView = statsById[aId]?.view ?? 0;
+          const bView = statsById[bId]?.view ?? 0;
+          return bView - aView;
+        });
         break;
       case '팀작우선':
         list.sort((a, b) => (b.members.length > 1) - (a.members.length > 1));
@@ -182,7 +220,7 @@ export default function Projects() {
         break;
     }
     return list;
-  }, [filteredProjects, sortLabel]);
+  }, [filteredProjects, sortLabel, statsById]);
 
   return (
     <Relative>

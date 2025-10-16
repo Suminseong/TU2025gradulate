@@ -2,6 +2,9 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { db } from '../../lib/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 const CardWrap = styled.div`
   position: relative;
@@ -232,7 +235,31 @@ const IconText = styled.p`
  }
 `;
 
-export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, href, src, profileImgs }) {
+export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, href, src, profileImgs, docId, collection = 'works' }) {
+  const [likeCount, setLikeCount] = useState(typeof like === 'number' ? like : 0);
+  const [viewCount, setViewCount] = useState(typeof view === 'number' ? view : 0);
+
+  // Firestore에서 like/view 초기값 로드
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      if (docId === undefined || docId === null) return;
+      try {
+        const ref = doc(db, collection, String(docId));
+        const snap = await getDoc(ref);
+        if (!alive) return;
+        if (snap.exists()) {
+          const data = snap.data();
+          setLikeCount(typeof data.like === 'number' ? data.like : 0);
+          setViewCount(typeof data.view === 'number' ? data.view : 0);
+        }
+      } catch (e) {
+        // ignore; keep defaults
+        console.error('ProjectCard Firestore read error:', e);
+      }
+    })();
+    return () => { alive = false; };
+  }, [docId, collection]);
   const handleMouseEnter = (e) => {
     const hoverDiv = e.currentTarget.querySelector('.card-hover');
     if (hoverDiv) hoverDiv.style.opacity = 1;
@@ -272,11 +299,11 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, h
         <IconRow>
           <IconBox>
             <Icon src={`${base}icons/likeIcon.svg`} />
-            <IconText>{like}</IconText>
+            <IconText>{likeCount}</IconText>
           </IconBox>
           <IconBox>
             <Icon src={`${base}icons/viewIcon.svg`} />
-            <IconText>{view}</IconText>
+            <IconText>{viewCount}</IconText>
           </IconBox>
         </IconRow>
       </BottomRow>
@@ -298,11 +325,13 @@ ProjectCard.propTypes = {
   titleKor: PropTypes.string.isRequired,
   titleEng: PropTypes.string.isRequired,
   nameKor: PropTypes.string.isRequired,
-  view: PropTypes.number.isRequired,
-  like: PropTypes.number.isRequired,
+  view: PropTypes.number,
+  like: PropTypes.number,
   src: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   profileImgs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  docId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  collection: PropTypes.string,
 };
 
 ProjectCard.defaultProps = {
@@ -311,4 +340,5 @@ ProjectCard.defaultProps = {
   nameKor: 'Author Name',
   view: 0,
   like: 0,
+  collection: 'works',
 };
