@@ -37,6 +37,10 @@ const HeaderWrap = styled.div`
 `;
 const HeaderTitle = styled.div`
   font-family: ${FONT}; font-size: 20px; font-weight: 700; line-height: 22.4px; color: #FFFFFF;
+
+  @media (max-width: 640px) {
+    font-size: 16px;
+}
 `;
 function SectionHeader({ title }) {
   return (
@@ -75,6 +79,9 @@ const KeyCol = styled.div`
 `;
 const KeyLabel = styled.div`
   font-family: ${FONT}; font-size: 16px; font-weight: 700; line-height: 22.4px; color: #FFFFFF;
+  @media (max-width: 640px) {
+    font-size: 14px;
+}
 `;
 const ValCol = styled.div`
   width: 700px; display: flex; flex-direction: column; gap: 10px;
@@ -121,10 +128,16 @@ const TitleLine = styled.div`
 `;
 const TitleLineText = styled.div`
   font-family: ${FONT}; font-size: 16px; font-weight: 700; color: #FFFFFF;
+  @media (max-width: 640px) {
+    font-size: 14px;
+}
 `;
 
 const BodyText = styled.div`
   font-family: ${FONT}; font-size: 16px; font-weight: 300; color: #CCCCCC; letter-spacing: 0px;
+  @media (max-width: 640px) {
+    font-size: 13px;
+}
 `;
 const BodyTextMedium = styled(BodyText)`
   font-weight: 500;
@@ -138,6 +151,9 @@ const BodyTextMT24 = styled(BodyText)`
 `;
 const LinkText = styled.a`
   font-family: ${FONT}; font-size: 16px; font-weight: 300; color: #CCCCCC; text-decoration: underline;
+  @media (max-width: 640px) {
+    font-size: 13px;
+}
 `;
 
 export default function VenueAccess() {

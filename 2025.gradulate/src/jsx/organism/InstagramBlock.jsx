@@ -61,7 +61,7 @@ const TileWrap = styled.div`
 }
 `;
 const Tile = styled.div`
-  width: 272px; height: 272px; background: #121212; border-radius: 14.5px; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  width: 272px; height: 272px; background: #121212; overflow: hidden; display: flex; align-items: center; justify-content: center;
   @media (max-width: 640px) {
     width: 160px; height: 160px;
 }
