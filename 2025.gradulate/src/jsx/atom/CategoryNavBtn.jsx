@@ -28,6 +28,7 @@ const Base = styled.a`
 
 export default function NavBtn({
     label,
+    href = null,
     active = false,
     onClick,
     style,
