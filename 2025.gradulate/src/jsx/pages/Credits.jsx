@@ -15,7 +15,11 @@ const PageOuter = styled.div`
   position: relative; background: #fff;
 `;
 const PageInner = styled.div`
-  padding-left: ${PAGE_SIDE_VW}; padding-right: ${PAGE_SIDE_VW};
+  /* padding-left: ${PAGE_SIDE_VW}; padding-right: ${PAGE_SIDE_VW}; */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 `;
 function PageContainer({ children }) {
   return (
@@ -31,10 +35,14 @@ function PageContainer({ children }) {
 
 const HeaderBig = styled.div`
   position: relative; height: 120px; display: flex; align-items: flex-end; justify-content: center;
-  font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 80px;
+  font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 98px;
 `;
 const SubTitle = styled.div`
-  font-family: ${FONT}; font-size: 32px; font-weight: 600; line-height: 56px; color: #000; margin-top: 18px;
+  font-family: ${FONT}; font-size: 32px; font-weight: 600; line-height: 56px; color: #000; margin-top: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 1220px;
 `;
 function HeroHeader() {
   return (
@@ -47,20 +55,27 @@ function HeroHeader() {
   );
 }
 
-const IntroNoteBox = styled.div`
-  max-width: 374px; font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 25.6px; color: #000; text-align: justify; margin-top: 5px;
+const IntroNoteBox = styled.p`
+  max-width: 374px; font-family: ${FONT}; font-size: 16px; font-weight: 300; line-height: 140%; color: #000; text-align: justify; top: 0; margin: 0;
 `;
 function IntroNote({ text }) {
   return (
-    <IntroNoteBox>{text}</IntroNoteBox>
+    <IntroNoteBox dangerouslySetInnerHTML={{ __html: text }} />
   );
 }
 
+const IntroWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 46px;
+`
+
 const HeroCardWrap = styled.div`
-  width: 806px; height: 375px; background: #FFF4ED; margin-top: 24px; margin-left: ${PAGE_SIDE_VW_IMG}; position: absolute;
+  width: 800px; height: 450px; background: #FFF4ED; position: relative;
 `;
 const HeroCardText = styled.div`
-  position: absolute; left: 136px; top: 140px; font-family: ${FONT}; font-size: 82.64px; font-weight: 500; line-height: 92.55px; color: #000;
+  position: absolute; left: 136px; top: 140px; font-family: ${FONT}; font-size: 82.64px; font-weight: 400; line-height: 92.55px; color: #000;
 `;
 function HeroCard({ children }) {
   return (
@@ -71,16 +86,16 @@ function HeroCard({ children }) {
 }
 
 const ThreeWrap = styled.div`
-  display: flex; gap: 40px; margin-top: 420px; width: 1220px;
+  display: flex; gap: 40px; margin-top: 44px; width: 1220px;
 `;
 const SpeechCol = styled.div`
-  width: 374px; display: flex; flex-direction: column; gap: 20px;
+  width: 374px; display: flex; flex-direction: column; gap: 40px;
 `;
 const SpeechTitle = styled.div`
-  font-family: ${FONT}; font-size: 28px; font-weight: 600; line-height: 49px; color: #000;
+  font-family: ${FONT}; font-size: 28px; font-weight: 600; line-height: 20px; color: #000; margin: 0;
 `;
-const SpeechBody = styled.div`
-  font-family: ${FONT}; font-size: 16px; font-weight: 400; line-height: 21.6px; color: #000; text-align: justify;
+const SpeechBody = styled.p`
+  font-family: ${FONT}; font-size: 16px; font-weight: 400; line-height: 150%; color: #404040; text-align: justify; margin: 0;
 `;
 function ThreeSpeeches({ blocks }) {
   return (
@@ -88,7 +103,7 @@ function ThreeSpeeches({ blocks }) {
       {blocks.map((b) => (
         <SpeechCol key={b.title}>
           <SpeechTitle>{b.title}</SpeechTitle>
-          <SpeechBody>{b.body}</SpeechBody>
+          <SpeechBody dangerouslySetInnerHTML={{ __html: b.body }} />
         </SpeechCol>
       ))}
     </ThreeWrap>
@@ -164,11 +179,12 @@ const TitleBlockText = styled.div`
 
 export default function Credit() {
   const introText =
-    '안녕하세요. 제 20대 졸업준비위원회입니다. 그리고 이후에는 적당히 졸준위의 생각과 고생에 대한 감상을 종합해…';
+    '안녕하세요, 제20회 졸업전시준비위원회입니다. <br/><br/>한국공학대학교 디자인공학부 제20회 졸업전시 <잔향>은 지난 시간 동안의 도전과 성장을 작품으로 담아내는 자리입니다. 이번 전시는 단순히 결과물을 나열하는 데 그치지 않고, 각자의 창작 과정 속에서 남겨진 고민과 흔적을 함께 나누고자 기획되었습니다. <br/><br/><잔향>이라는 주제는 작품이 지닌 감각과 정서가 관람자의 마음에 은은히 스며들어, 시간이 지나도 다시 떠오르는 기억으로 남기를 바라는 마음을 담고 있습니다. 학생들이 걸어온 수많은 순간과 열정이 응축된 이번 전시가, 누군가의 영감으로 다시 피어나길 희망합니다. 100명의 학생들이 모여 만들어 낸 이 전시는 그 어느 때보다 크고 도전적인 시도였습니다. 서로의 열정이 모여 이루어진 결과물이기에, 그 의미 또한 더욱 특별합니다.<br/><br/> 이번 전시가 졸업생들에게는 새로운 출발을 알리는 이정표로, 관람객에게는 오래도록 마음속에 머무는 "기억의 향기"로 남기를 바랍니다.';
 
   const speeches = [
-    { title: '학부장의 말씀', body: '내용 작성' },
-    { title: '졸전담당교수 말씀', body: '내용 작성' },
+    { title: '학과 소개', body: '한국공학대학교 디자인공학부는 창의적인 디자인 발상법과 공학적 마인드의 통합적 접근법을 추구하는 시대로 바뀜에 따라 단순히 심미적 역할에만 머물렀던 디자인 개념에서 확장하여 4차 산업혁명 기술 분야를 선도하고자 하는 비전을 담고 있는 실무 중심의 융합형 학부입니다.<br/>디자인공학부는 디자인 기반의 창의적 아이디어와 HW/SW 융합 기술 개발 능력을 통해 기업을 혁신할 수 있는 인재 양성을 목표로 하고 있습니다.' },
+    { title: '학부장의 말씀', body: '스무 번째를 맞이하는 디자인공학부 졸업작품전시회를 진심으로 축하드립니다.<br/>이번 전시회에는 총 100명의 학생들이 개인 혹은 팀을 이루어, 산업디자인공학전공 47개 작품과 미디어디자인공학전공 30개 작품을 선보입니다. 이번 전시회는 단순히 결과물을 보여주는 자리를 넘어, 지난 4년간의 땀과 열정, 수많은 고민과 성장이 맺은 값진 결실이자, 새로운 출발을 알리는 뜻깊은 순간입니다.<br/>오늘날 우리는 인공지능, 스마트 기술, 친환경 소재 등 급속히 변화하는 기술 환경 속에서 전례 없는 전환의 시대를 맞이하고 있습니다.<br/>이러한 가운데에 디자이너는 우리의 생활에서 여러 불편한 요소를 찾아내고 이를 창의적이며 책임감 있게 해결할 수 있는 융합형 인재로서 그 역할이 더욱 중요해지고 있습니다.<br/>우리 디자인공학부 학생들은 이러한 변화에 능동적으로 대응하며, 사용자 중심의 사고, 미적 감각, 기술적 이해를 균형 있게 갖춘 디자이너로 성장해 왔습니다. 이번 전시의 모든 작품에는 치열한 탐구와 관찰, 반복된 시도와 실패, 그리고 그 너머의 성장이 고스란히 담겨 있습니다. 그 귀중한 과정을 진심으로 응원하며, 우리 학생들이 디자인을 통해 사회에 공헌하고 세상에 긍정적인 변화를 이끄는 창의적이고 따뜻한 디자이너로 거듭나기를 바랍니다.<br/>앞으로 변화와 도전의 흐름 속에서도 흔들림 없이 자신이 옳다고 믿는 방향으로 꿋꿋하게 나아가며, 사회 곳곳에서 중심적인 역할을 수행하는 당당한 디자이너로 성장하길 기대합니다. 그리고 언제 어디서든 한국공학대학교 디자인공학부의 이름을 빛내는 자랑스러운 동문으로 기억되길 바랍니다.<br/>마지막으로, 소중한 인재들의 성장을 위해 아낌없는 지도와 격려를 보내주신 교수님들께 깊은 감사의 말씀을 전합니다. 또한, 묵묵히 곁에서 자녀를 응원해주신 학부모님들께도 진심 어린 감사의 인사를 드립니다. 감사합니다.' },
+    // { title: '졸전담당교수 말씀', body: '내용 작성' }, 교수님 말씀이 없으시기 때문에 학과 소개 임시 변경, 추후 확정 될 수 있음
     { title: '웹사이트팀 제작 후기', body: '내용 작성' },
   ];
 
@@ -182,15 +198,15 @@ export default function Credit() {
     {
       title: '총무',
       rows: [
-        { ko: '진효민', en: 'Jin HYOMIN' },
-        { ko: '정민호', en: 'Jeong Minho' },
+        { ko: '진효민', en: 'Jin Hyomin' },
+        { ko: '정민호', en: 'Jung Minho' },
       ],
     },
     {
       title: '기획',
       rows: [
-        { ko: '차소이', en: 'Cha Soi' },
-        { ko: '문나라', en: 'Mun Nara' },
+        { ko: '차소이', en: 'Cha Soyi' },
+        { ko: '문나라', en: 'Moon Nara' },
         { ko: '한채원', en: 'Han Chaewon' },
       ],
     },
@@ -204,10 +220,10 @@ export default function Credit() {
     {
       title: '디자인',
       rows: [
-        { ko: '구인회', en: 'Gu Inhoe' },
+        { ko: '구인회', en: 'Koo Inhoe' },
         { ko: '김기윤', en: 'Kim Giyun' },
-        { ko: '박혜성', en: 'Bak Hyeseong' },
-        { ko: '석동현', en: 'Seok Donghyoen' },
+        { ko: '박혜성', en: 'Park Hyeseong' },
+        { ko: '석동현', en: 'Suk Donghyun' },
       ],
     },
     {
@@ -221,7 +237,7 @@ export default function Credit() {
       title: 'Special Thanks',
       rows: [
         { ko: '김한종 교수', en: 'Prof. Kim Hanjong' },
-        // { ko: '고명현', en: 'Go MyeongHyeon' },
+        // { ko: '고명현', en: 'Go Myeonghyeon' },
       ],
       last: true,
     },
@@ -233,10 +249,13 @@ export default function Credit() {
 
       <PageContainer>
         <HeroHeader />
-        <IntroNote text={introText} />
+        <IntroWrap>
+          <IntroNote text={introText} />
+          <HeroCard>단체사진 1장</HeroCard>
+        </IntroWrap>
       </PageContainer>
 
-      <HeroCard>단체사진 1장</HeroCard>
+      
 
       <PageContainer>
         <ThreeSpeeches blocks={speeches} />
