@@ -113,7 +113,7 @@ function getMemebersImgUrls(project) {
     .filter(Boolean);
 }
 
-function ProjectsList({ list }) {
+function ProjectsList({ list, statsById }) {
   const CAT_CODE_TO_LETTER = {
     'c0': 'A',
     'c1': 'E',
@@ -125,7 +125,7 @@ function ProjectsList({ list }) {
 
   return (
     <Grid>
-      {list.map((project, index) => {
+  {list.map((project, index) => {
         const designerName = getMemebersNameText(project);
         const desingerImgUrls = getMemebersImgUrls(project);
         const num3 = String(project.projectNum + 1).padStart(3, '0');
@@ -143,6 +143,8 @@ function ProjectsList({ list }) {
             profileImgs={desingerImgUrls}
             docId={resolvedProjectId}
             href={`/work/${slug}`}
+            like={statsById[String(resolvedProjectId)]?.like ?? 0}
+            view={statsById[String(resolvedProjectId)]?.view ?? 0}
           />
         );
       })}
@@ -233,7 +235,7 @@ export default function Projects() {
       />
 
       <PageContainer>
-        <ProjectsList list={sortedProjects} />
+        <ProjectsList list={sortedProjects} statsById={statsById} />
       </PageContainer>
     </Relative>
   );

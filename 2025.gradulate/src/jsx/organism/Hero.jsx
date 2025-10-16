@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GradientEdge from '../atom/GradientEdge';
 import { G } from '../atom/gradients';
+const base = import.meta.env.BASE_URL || '/';
 
 const Wrap = styled.section`
   position: relative; height: 974px; min-height: 620px; overflow: hidden; background: #121212; z-index: 1;
@@ -12,11 +13,41 @@ const Wrap = styled.section`
 `;
 const Bg = styled.div`
   position: absolute; inset: 0;
-  background: url("https://placehold.co/3169x1783") center/cover no-repeat;
-  @media (max-width: 640px) {
-    background-size: cover;
-    background-position: center;
-  }
+  /* Video container sits here */
+`;
+const BgBlurWrap = styled.div`
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+`;
+const BgBlurVideo = styled.video`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.2); /* slight scale so edges stay filled after blur */
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  filter: blur(28px) brightness(0.7) saturate(1.1);
+  will-change: transform, filter;
+`;
+const VideoBox = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  aspect-ratio: 1 / 1; /* width will follow height to form a square */
+  transform: translateX(-50%);
+  overflow: hidden;
+`;
+const VideoEl = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 `;
 const BgGrad = styled.div`
   content: ""; position: absolute; inset: 0;
@@ -67,6 +98,18 @@ export default function Hero() {
   return (
     <Wrap aria-label="Hero">
       <Bg>
+        {/* Blurred full-bleed background */}
+        <BgBlurWrap aria-hidden>
+          <BgBlurVideo autoPlay muted loop playsInline preload="metadata">
+            <source src={`${base}video/hero11.mp4`} type="video/mp4" />
+          </BgBlurVideo>
+        </BgBlurWrap>
+        <VideoBox aria-label="Hero background video">
+          <VideoEl autoPlay muted loop playsInline preload="metadata">
+            <source src={`${base}video/hero11.mp4`} type="video/mp4" />
+            Your browser does not support the video tag.
+          </VideoEl>
+        </VideoBox>
         <BgInner />
       </Bg>
       <CopyWrap>
