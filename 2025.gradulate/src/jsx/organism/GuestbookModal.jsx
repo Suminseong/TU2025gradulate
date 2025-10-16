@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+const base = import.meta.env.BASE_URL || '/';
+
 const Overlay = styled.div`
   position: fixed; inset: 0; z-index: 1000;
   display: grid; place-items: center;
@@ -37,7 +39,7 @@ const Row = styled.div`
 const Card = styled.div`
   width: 450px; height: 560px; position: relative; overflow: hidden;
   border-radius: 16px;
-  background: linear-gradient(225deg, #F2F0FF 0%, #FFFFFF 100%);
+  background: linear-gradient(246deg, #F2F0FF -0.07%, #FFF 99.93%);
   box-shadow: 0 20px 60px rgba(0,0,0,.25);
   @media (max-width: 640px) {
     width: 260px;
@@ -46,17 +48,22 @@ const Card = styled.div`
   }
 `;
 const DecoBig = styled.div`
-  position: absolute; left: 66.53px; top: 314.67px; width: 248.47px; height: 245.33px; border-radius: 9999px; background: #EDECF2;
+  position: absolute;
+  left: 12px;
+  top: 314.67px;
+  width: 302px;
+  height: 246px;
+  background-image: url(${base}/gestbook-card.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
   @media (max-width: 640px) {
-    left: 40px; top: 210px; width: 160px; height: 158px;
+    left: 4px;
+    top: 210px;
+    width: 158px;
+    height: 130px;
   }
 `;
-const DecoDot = styled.div`
-  position: absolute; left: 13.33px; top: 504.92px; width: 42.14px; height: 41.05px; border-radius: 9999px; background: #EDECF2;
-  @media (max-width: 640px) {
-    left: 8px; top: 300px; width: 28px; height: 28px;
-  }
-`;
+
 const TitleRow = styled.div`
   position: absolute; left: 32px; top: 50px; display: inline-flex; align-items: center; gap: 8px;
   @media (max-width: 640px) {
@@ -216,7 +223,6 @@ export default function GuestbookModal({
           <Row>
             <Card>
               <DecoBig />
-              <DecoDot />
               <TitleRow>
                 <LabelTo>To.</LabelTo>
                 <ToInput

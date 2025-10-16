@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { CARD_W, CARD_H } from '../organism/GuestbookGrid';
 
+const base = import.meta.env.BASE_URL || '/';
+
 const font = 'Pretendard, system-ui';
 
 const Card = styled.div`
@@ -10,7 +12,7 @@ const Card = styled.div`
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  background: linear-gradient(225deg, #F2F0FF 0%, #FFFFFF 100%);
+  background: linear-gradient(246deg, #F2F0FF -0.07%, #FFF 99.93%);
   @media (max-width: 640px) {
     width: 100%;
     height: 216px;
@@ -19,18 +21,19 @@ const Card = styled.div`
 `;
 
 const Deco1 = styled.div`
-  width: 149px;
+  width: 181px;
   height: 147px;
   position: absolute;
-  left: 40px;
+  left: 6px;
   top: 190px;
-  background: #EDECF2;
-  border-radius: 8px;
+  background-image: url(${base}/gestbook-card.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
   transform: translateZ(0);
   @media (max-width: 640px) {
-    width: 96px;
-    height: 94px;
-    left: 26px;
+    width: 117px;
+    height: 95px;
+    left: 4px;
     top: 118px;
     border-radius: 6px;
   }
@@ -106,7 +109,6 @@ export default function GuestbookCard({ to, from, message }) {
   return (
     <Card $w={CARD_W} $h={CARD_H}>
       <Deco1 />
-      <Deco2 />
       <To>{`To. ${to}`}</To>
       <Message>{message}</Message>
       <From>{`From. ${from}`}</From>
