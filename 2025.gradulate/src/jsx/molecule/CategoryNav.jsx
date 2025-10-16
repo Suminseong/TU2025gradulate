@@ -102,7 +102,6 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
             <CategoryNavBtn
               key={label}
               label={label}
-              href={`#${label.replace(/\s+/g, '-').toLowerCase()}`} // 공백을 하이픈으로 바꾸고 소문자로 변환
               active={activeProjectCategory === label}
               onClick={() => {
                 setActiveProjectCategory(label);
@@ -132,7 +131,6 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
             <CategoryNavBtn
               key={label}
               label={label}
-              href={`#${label.replace(/\s+/g, '-').toLowerCase()}`} // 공백을 하이픈으로 바꾸고 소문자로 변환
               active={activeCategory === label}
               onClick={() => {
                 setActiveCategory(label);
@@ -161,7 +159,6 @@ export default function CategoryNav({ onCategoryChange, onToggleChange, type, on
           <CategoryNavBtn
             key={label}
             label={label}
-            href={`#${label.replace(/\s+/g, '-').toLowerCase()}`} // 공백을 하이픈으로 바꾸고 소문자로 변환
             active={activeCategory === label}
             onClick={() => {
               setActiveCategory(label);
