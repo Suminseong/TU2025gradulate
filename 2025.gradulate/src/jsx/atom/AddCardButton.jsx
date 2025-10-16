@@ -13,6 +13,11 @@ const Button = styled.button`
   place-items: center;
   cursor: pointer;
   border: none;
+  @media (max-width: 640px) {
+    width: 100%;
+    height: 216px;
+    border-radius: 10px;
+  }
 `;
 
 const Inner = styled.div`
@@ -22,12 +27,20 @@ const Inner = styled.div`
   background: rgba(0,0,0,.35);
   display: grid;
   place-items: center;
+  @media (max-width: 640px) {
+    width: 26px;
+    height: 26px;
+  }
 `;
 
 const PlusBox = styled.div`
   width: 14px;
   height: 14px;
   position: relative;
+  @media (max-width: 640px) {
+    width: 12px;
+    height: 12px;
+  }
 `;
 
 const VBar = styled.span`
@@ -38,6 +51,10 @@ const VBar = styled.span`
   height: 14px;
   background: #fff;
   border-radius: 1px;
+  @media (max-width: 640px) {
+    left: 5px;
+    height: 12px;
+  }
 `;
 
 const HBar = styled.span`
@@ -48,6 +65,10 @@ const HBar = styled.span`
   height: 2px;
   background: #fff;
   border-radius: 1px;
+  @media (max-width: 640px) {
+    top: 5px;
+    width: 12px;
+  }
 `;
 
 export default function AddCardButton({ onClick }) {

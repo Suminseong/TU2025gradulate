@@ -11,6 +11,11 @@ const Card = styled.div`
   border-radius: 8px;
   overflow: hidden;
   background: linear-gradient(225deg, #F2F0FF 0%, #FFFFFF 100%);
+  @media (max-width: 640px) {
+    width: 100%;
+    height: 216px;
+    border-radius: 10px;
+  }
 `;
 
 const Deco1 = styled.div`
@@ -22,6 +27,13 @@ const Deco1 = styled.div`
   background: #EDECF2;
   border-radius: 8px;
   transform: translateZ(0);
+  @media (max-width: 640px) {
+    width: 96px;
+    height: 94px;
+    left: 26px;
+    top: 118px;
+    border-radius: 6px;
+  }
 `;
 
 const Deco2 = styled.div`
@@ -33,6 +45,12 @@ const Deco2 = styled.div`
   background: #EDECF2;
   border-radius: 4px;
   transform: translateZ(0);
+  @media (max-width: 640px) {
+    width: 18px;
+    height: 18px;
+    left: 6px;
+    top: 188px;
+  }
 `;
 
 const To = styled.div`
@@ -43,6 +61,11 @@ const To = styled.div`
   font-weight: 600;
   font-size: 20px;
   color: #555;
+  @media (max-width: 640px) {
+    left: 14px;
+    top: 16px;
+    font-size: 16px;
+  }
 `;
 
 const Message = styled.div`
@@ -55,6 +78,13 @@ const Message = styled.div`
   font-size: 18px;
   line-height: 27px;
   color: #333;
+  @media (max-width: 640px) {
+    left: 14px;
+    top: 44px;
+    width: 136px;
+    font-size: 14px;
+    line-height: 21px;
+  }
 `;
 
 const From = styled.div`
@@ -65,6 +95,11 @@ const From = styled.div`
   font-weight: 600;
   font-size: 14px;
   color: #555;
+  @media (max-width: 640px) {
+    right: 8px;
+    bottom: 8px;
+    font-size: 12px;
+  }
 `;
 
 export default function GuestbookCard({ to, from, message }) {

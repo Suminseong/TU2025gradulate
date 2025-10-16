@@ -10,9 +10,18 @@ const RAIL_GAP = 30;
 const ROW_GAP  = 20;
 const PAD_L = 210;
 const PAD_R = 60;
+// Mobile target sizes (approx 0.61x)
+const M_CARD_W = 173;
+const M_CARD_H = 216;
+const M_RAIL_GAP = 16;
+const M_ROW_GAP  = 16;
+const M_GAP = 16;
 
 const ProgressOuter = styled.div`
   padding: 0 0 12px 0;
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 const ProgressTrack = styled.div`
   position: relative;
@@ -44,6 +53,12 @@ const Rail = styled.div`
   scrollbar-width: none; 
   -ms-overflow-style: none;
   &::-webkit-scrollbar { display: none; }
+
+  @media (max-width: 640px) {
+    overflow: visible;
+    padding: 0px;
+    cursor: default;
+  }
 `;
 
 const RailInner = styled.div`
@@ -51,17 +66,52 @@ const RailInner = styled.div`
   gap: ${RAIL_GAP}px;
   align-items: flex-start;
   min-height: ${CARD_H * 2 + ROW_GAP}px;
+
+  @media (max-width: 640px) {
+    gap: ${M_RAIL_GAP}px;
+    min-height: initial;
+  }
+`;
+
+const MobileGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: ${M_GAP}px;
+  padding: 0 16px; /* 좌우 16px 고정 마진 */
+`;
+
+const MobileItem = styled.div`
+  width: calc((100% - ${M_GAP}px) / 2);
+  height: ${M_CARD_H}px;
+  flex: 0 0 calc((100% - ${M_GAP}px) / 2);
+`;
+
+const DesktopOnly = styled.div`
+  @media (max-width: 640px) { display: none; }
+`;
+const MobileOnly = styled.div`
+  display: none;
+  @media (max-width: 640px) { display: block; }
 `;
 
 const Col = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${ROW_GAP}px;
+  @media (max-width: 640px) {
+    width: ${M_CARD_W}px;
+    gap: ${M_ROW_GAP}px;
+  }
 `;
 
 const Placeholder = styled.div`
   width: ${CARD_W}px;
   height: ${CARD_H}px;
+  @media (max-width: 640px) {
+    width: ${M_CARD_W}px;
+    height: ${M_CARD_H}px;
+  }
 `;
 
 const toFlatWithPhoto = (items) => {
@@ -98,13 +148,26 @@ export default function GuestbookGrid({ onOpenModal, items }) {
   const railRef = useRef(null);
   const [prog, setProg] = useState({ width: 0, trackW: 0 });
   const [flat, setFlat] = useState(() => toFlatWithPhoto(items));
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia && window.matchMedia('(max-width: 640px)').matches);
   useEffect(() => {
     setFlat(toFlatWithPhoto(items));
   }, [items]);
   const columns = toColumns(flat);
 
+  // watch viewport to toggle mobile layout
+  useEffect(() => {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia('(max-width: 640px)');
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener ? mq.addEventListener('change', handler) : mq.addListener(handler);
+    return () => {
+      mq.removeEventListener ? mq.removeEventListener('change', handler) : mq.removeListener(handler);
+    };
+  }, []);
+
   // vertical wheel → horizontal scroll
   useEffect(() => {
+    if (isMobile) return; // 모바일에선 가로 스크롤 UX 비활성화
     const el = railRef.current;
     if (!el) return;
     const onWheel = (e) => {
@@ -115,13 +178,14 @@ export default function GuestbookGrid({ onOpenModal, items }) {
     };
     el.addEventListener('wheel', onWheel, { passive: false });
     return () => el.removeEventListener('wheel', onWheel);
-  }, []);
+  }, [isMobile]);
 
   // drag to scroll
   const dragRef = useRef({ on: false, moved: false, startX: 0, startScroll: 0 });
   const isInteractive = (el) =>
     !!el?.closest?.('button, a, input, textarea, select, label, [role="button"], [data-nodrag]');
   useEffect(() => {
+    if (isMobile) return; // 모바일에선 드래그 스크롤 비활성화
     const el = railRef.current;
     if (!el) return;
 
@@ -164,7 +228,7 @@ export default function GuestbookGrid({ onOpenModal, items }) {
       window.removeEventListener('pointerup', onPointerUp);
       el.removeEventListener('pointercancel', onPointerUp);
     };
-  }, []);
+  }, [isMobile]);
 
   // progress update
   const updateProgress = useCallback(() => {
@@ -182,6 +246,7 @@ export default function GuestbookGrid({ onOpenModal, items }) {
   }, []);
 
   useEffect(() => {
+    if (isMobile) return; // 모바일에선 진행바/가로스크롤 비활성
     updateProgress();
     const el = railRef.current;
     if (!el) return;
@@ -193,26 +258,37 @@ export default function GuestbookGrid({ onOpenModal, items }) {
       el.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
     };
-  }, [updateProgress]);
+  }, [updateProgress, isMobile]);
 
   return (
     <>
-      <ProgressOuter>
-        <ProgressTrack>
-          <ProgressFill $w={prog.width} />
-        </ProgressTrack>
-      </ProgressOuter>
+      <DesktopOnly>
+        <ProgressOuter>
+          <ProgressTrack>
+            <ProgressFill $w={prog.width} />
+          </ProgressTrack>
+        </ProgressOuter>
+        <Rail ref={railRef}>
+          <RailInner>
+            {columns.map((pair, i) => (
+              <Col key={`col-${i}`}>
+                <CardSwitch data={pair[0]} onOpenModal={onOpenModal} />
+                {pair[1] ? <CardSwitch data={pair[1]} onOpenModal={onOpenModal} /> : <Placeholder />}
+              </Col>
+            ))}
+          </RailInner>
+        </Rail>
+      </DesktopOnly>
 
-      <Rail ref={railRef}>
-        <RailInner>
-          {columns.map((pair, i) => (
-            <Col key={`col-${i}`}>
-              <CardSwitch data={pair[0]} onOpenModal={onOpenModal} />
-              {pair[1] ? <CardSwitch data={pair[1]} onOpenModal={onOpenModal} /> : <Placeholder />}
-            </Col>
+      <MobileOnly>
+        <MobileGrid>
+          {flat.map((item) => (
+            <MobileItem key={item.id}>
+              <CardSwitch data={item} onOpenModal={onOpenModal} />
+            </MobileItem>
           ))}
-        </RailInner>
-      </Rail>
+        </MobileGrid>
+      </MobileOnly>
     </>
   );
 }
