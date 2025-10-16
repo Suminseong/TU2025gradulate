@@ -230,8 +230,8 @@ export default function NavHeader({
     switch (mode) {
       case NAV_HEADER_MODES.LIGHT:
         return {
-          baseColor: 'rgba(255,255,255,1)',
-          gradient: 'linear-gradient(180deg, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
+          baseColor: 'linear-gradient(180deg, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
+          gradient: 'rgba(255,255,255,1)',
           textColor: '#000',
           showGradient: true,
         };
@@ -251,10 +251,10 @@ export default function NavHeader({
         };
       default:
         return {
-          baseColor: 'rgba(255,255,255,1)',
+          baseColor: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
           gradient: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
           textColor: '#000',
-          showGradient: true,
+          showGradient: false,
         };
     }
   }, [mode]);
