@@ -59,7 +59,7 @@ function Layout({ headerMode, setHeaderMode }) {
         items={NAV_ITEMS}
         activeKey={activeKey}
         mode={headerMode}         // 외부 제어 모드
-        autoOnScroll={headerMode === NAV_HEADER_MODES.GRADIENT} // gradient일 때만 스크롤 전환
+        autoOnScroll={headerMode === NAV_HEADER_MODES.GRADIENT_DARK || headerMode === NAV_HEADER_MODES.DARK} // gradient일 때만 스크롤 전환
         scrollThreshold={8}
         sticky
         maxWidth={1280}
@@ -132,7 +132,7 @@ function ProjectsWithHeaderMode({ setHeaderMode }) {
 
 function MainWithHeaderMode({ setHeaderMode }) {
   React.useEffect(() => {
-    setHeaderMode(NAV_HEADER_MODES.DARK);
+    setHeaderMode(NAV_HEADER_MODES.GRADIENT_DARK);
   }, [setHeaderMode]);
 
   return <MainPage />;

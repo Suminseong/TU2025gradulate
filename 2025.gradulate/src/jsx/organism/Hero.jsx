@@ -22,6 +22,11 @@ const BgGrad = styled.div`
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, #121212 0%, rgba(18,18,18,0) 55%);
 `;
+const BgInner = styled.div`
+  position: absolute;
+  inset: 0;
+  background-color: rgba(18, 18, 18, 0.2);
+`
 const CopyWrap = styled.div`
   position: absolute; left: 40px; bottom: 80px; max-width: 1029px; display: flex; flex-direction: column; gap: 8px;
   @media (max-width: 640px) {
@@ -62,7 +67,7 @@ export default function Hero() {
   return (
     <Wrap aria-label="Hero">
       <Bg>
-        <BgGrad />
+        <BgInner />
       </Bg>
       <CopyWrap>
         <P>25. 10. 24. FRI~26. SUN<br />Hongdae Art Center B2</P>

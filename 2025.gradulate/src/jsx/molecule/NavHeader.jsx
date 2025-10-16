@@ -1,5 +1,5 @@
 // NavHeader.jsx
-import { use, useEffect, useMemo, useState } from 'react';
+import { use, useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import NavBtn from '../atom/NavBtn';
@@ -17,6 +17,7 @@ export const NAV_HEADER_MODES = Object.freeze({
   GRADIENT: 'gradient',
   LIGHT: 'light',
   DARK: 'dark',
+  GRADIENT_DARK: 'gradient_dark',
 });
 
 const Wrapper = styled.header`
@@ -175,37 +176,25 @@ export default function NavHeader({
   const [uncontrolledMode, setUncontrolledMode] = useState(NAV_HEADER_MODES.GRADIENT);
   const isControlled = typeof controlledMode === 'string';
   const mode = isControlled ? controlledMode : uncontrolledMode;
+  const initialModeRef = useRef(isControlled ? controlledMode : uncontrolledMode)
 
-  // 배경/글자색 계산
-  const { background, textColor, boxShadow } = useMemo(() => {
-    switch (mode) {
-      case NAV_HEADER_MODES.LIGHT:
-        return {
-          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
-          textColor: '#000000',
-        };
-      case NAV_HEADER_MODES.DARK:
-        return {
-          background: '#121212',
-          textColor: '#FFFFFF',
-        };
-      case NAV_HEADER_MODES.GRADIENT:
-      default:
-        return {
-          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
-          textColor: '#000000',
-          boxShadow: 'none',
-        };
+  useEffect(() => {
+    if (!isControlled) return;
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    if (y <= scrollThreshold) {
+      initialModeRef.current = controlledMode;
     }
-  }, [mode]);
+  }, [controlledMode, isControlled, scrollThreshold]);
 
-  // 스크롤 자동 전환(선택)
+    // 스크롤 자동 전환(선택)
   useEffect(() => {
     if (!autoOnScroll) return;
 
     const handler = () => {
       const y = window.scrollY || document.documentElement.scrollTop || 0;
-      const nextMode = y > scrollThreshold ? NAV_HEADER_MODES.LIGHT : NAV_HEADER_MODES.GRADIENT;
+      // const nextMode = y > scrollThreshold ? NAV_HEADER_MODES.DARK : NAV_HEADER_MODES.GRADIENT_DARK;
+      const topMode = initialModeRef.current || NAV_HEADER_MODES.GRADIENT_DARK;
+      const nextMode = y > scrollThreshold ? NAV_HEADER_MODES.DARK : topMode;
 
       if (!isControlled) {
         setUncontrolledMode(nextMode);
@@ -220,7 +209,37 @@ export default function NavHeader({
     return () => window.removeEventListener('scroll', handler);
   }, [autoOnScroll, isControlled, onModeChange, scrollThreshold]);
 
-  const isDarkMode = mode === NAV_HEADER_MODES.DARK;
+  // 배경/글자색 계산
+  const { background, textColor, boxShadow } = useMemo(() => {
+    switch (mode) {
+      case NAV_HEADER_MODES.LIGHT:
+        return {
+          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
+          textColor: '#000000',
+        };
+      case NAV_HEADER_MODES.DARK:
+        return {
+          background: '#121212',
+          textColor: '#FFFFFF',
+        };
+      case NAV_HEADER_MODES.GRADIENT_DARK:
+        return {
+          background: 'linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0) 100%)',
+          textColor: '#FFFFFF',
+        };
+      case NAV_HEADER_MODES.GRADIENT:
+      default:
+        return {
+          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
+          textColor: '#000000',
+          boxShadow: 'none',
+        };
+    }
+  }, [mode]);
+
+
+
+  const isDarkMode = mode === NAV_HEADER_MODES.DARK || mode === NAV_HEADER_MODES.GRADIENT_DARK;
   const forceDarkAssets = mobileNavOpen
   const useDarkAssets = isDarkMode || forceDarkAssets;
 
@@ -309,6 +328,7 @@ NavHeader.propTypes = {
     NAV_HEADER_MODES.GRADIENT,
     NAV_HEADER_MODES.LIGHT,
     NAV_HEADER_MODES.DARK,
+    NAV_HEADER_MODES.GRADIENT_DARK,
   ]),
   onModeChange: PropTypes.func,
   autoOnScroll: PropTypes.bool,

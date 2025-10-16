@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+const base = import.meta.env.BASE_URL || '/';
+
 const Container = styled.div`
     display: ${props => (props.$visible ? 'flex' : 'none')};
     position: fixed;
@@ -62,7 +64,7 @@ export default function WorkInfoOpen({
                 }}
             >
                 <OpenIcon>
-                    <img src="/icons/infoOpenIcon.svg" alt="작품 정보 열기" />
+                    <img src={`${base}icons/infoOpenIcon.svg`} alt="작품 정보 열기" />
                 </OpenIcon>
             </Container>
         );

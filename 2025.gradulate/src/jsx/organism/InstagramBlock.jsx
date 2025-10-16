@@ -11,9 +11,9 @@ const Wrap = styled.div`
   justify-content: flex-start;
   height: 100%;
   width: 100%;
-  padding-top: 320px;
+  padding-top: 160px;
   @media (max-width: 640px) {
-    padding-top: 160px;
+    padding-top: 12px;
 }
 `;
 const Inner = styled.div`
@@ -25,7 +25,7 @@ const Head = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 0px;
   @media (max-width: 640px) {
     gap: 16px;
 }
@@ -54,7 +54,7 @@ const Handle = styled.div`
 }
 `;
 const TileWrap = styled.div`
-  display: flex; flex-direction: column; align-items: center; gap: 80px; margin-top: 154px;
+  display: flex; flex-direction: column; align-items: center; gap: 60px; margin-top: 20px;
   @media (max-width: 640px) {
     margin-top: 60px;
     gap: 40px;
