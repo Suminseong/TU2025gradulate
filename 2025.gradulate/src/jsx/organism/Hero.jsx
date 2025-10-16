@@ -49,10 +49,6 @@ const VideoEl = styled.video`
   object-fit: cover;
   display: block;
 `;
-const BgGrad = styled.div`
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, #121212 0%, rgba(18,18,18,0) 55%);
-`;
 const BgInner = styled.div`
   position: absolute;
   inset: 0;
@@ -86,9 +82,18 @@ const Title = styled.p`
 `;
 const Cta = styled.button`
   position: absolute; left: 50%; transform: translateX(-50%); bottom: 72px;
-  width: 240px; height: 52px; display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.05); border: 1px solid #FFFFFF; color: #FFFFFF;
+  width: 240px; height: 52px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: rgba(0,0,0,0.05); 
+  border: 1px solid #FFFFFF; 
+  color: #FFFFFF;
   font-family: Pretendard, system-ui; font-weight: 700; cursor: pointer;
+  //hover시 배경 불투명도 증가
+  &:hover { background: rgba(0,0,0,0.3);}
+  transition: all 200ms ease-in-out;
+
   @media (max-width: 640px) {
     width: 140px;
     height: 36px;
