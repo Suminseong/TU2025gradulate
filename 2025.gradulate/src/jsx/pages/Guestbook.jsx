@@ -6,7 +6,16 @@ import NavHeader from '../molecule/NavHeader';
 import Footer from '../molecule/Footer';
 import GuestbookGrid from '../organism/GuestbookGrid';
 import GuestbookModal from '../organism/GuestbookModal';
-import { GUESTBOOK_DATA } from '../../data/guestbook';
+// Firestore 연동
+import { db } from '../../../firebase';
+import {
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  setDoc,
+  doc,
+} from 'firebase/firestore';
 
 const font = 'Pretendard, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif';
 
@@ -16,30 +25,70 @@ const Page = styled.div`
 `;
 const Main = styled.main`
   padding: 80px 40px 120px 40px;
+  @media (max-width: 640px) {
+    padding: 40px 0 80px 0;
+  }
 `;
 const Title = styled.h1`
   font-family: ${font}; font-weight: 700; font-size: 32px; color: #FFFFFF; text-align: center; margin: 20px 0 40px;
+  @media (max-width: 640px) {
+    font-size: 20px; margin: 0 0 16px;
+  }
 `;
 const Section = styled.section`
   display: flex; justify-content: center;
+  @media (max-width: 640px) {
+    justify-content: stretch;
+  }
 `;
 const Wrap = styled.div`
   width: 100%;
+  @media (max-width: 640px) {
+    width: 100%;
+  }
 `;
 
 export default function Guestbook() {
   const [open, setOpen] = React.useState(false);
-  const [items, setItems] = React.useState(GUESTBOOK_DATA);
+  const [items, setItems] = React.useState([]);
 
-  const handleSubmit = ({ to, from, message }) => {
-    const newItem = {
-      id: `g-${Date.now()}`,
-      to, from, message,
-      type: 'text',
-    };
-    // “+” 뒤에 바로 끼워 넣기: 리스트 최상단에 보이게
-    setItems((prev) => [newItem, ...prev]);
-    setOpen(false);
+  // Firestore에서 게스트북 데이터 구독
+  React.useEffect(() => {
+    const q = query(collection(db, 'guest'), orderBy('time', 'desc'));
+    const unsub = onSnapshot(q, (snap) => {
+      const next = [];
+      snap.forEach((d) => {
+        const data = d.data();
+        // 스키마: { to, from, message, time(id와 동일, string) }
+        next.push({
+          id: d.id,
+          to: data.to || '',
+          from: data.from || '',
+          message: data.message || '',
+          type: 'text',
+        });
+      });
+      setItems(next);
+    });
+    return () => unsub();
+  }, []);
+
+  const handleSubmit = async ({ to, from, message }) => {
+    try {
+      // 문서 id는 ms 단위 unix 시간 문자열
+      const id = String(Date.now());
+      await setDoc(doc(collection(db, 'guest'), id), {
+        to: to || '',
+        from: from || '',
+        message: message || '',
+        time: id,
+      });
+      // onSnapshot을 통해 자동 갱신되므로 로컬 state 조작 불필요
+      setOpen(false);
+    } catch (e) {
+      console.error('Failed to submit guest message:', e);
+      // 낙관적 UI가 필요하면 여기서 setItems로 임시 추가 가능
+    }
   };
 
   const css = `

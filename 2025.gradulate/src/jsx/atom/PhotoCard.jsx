@@ -8,6 +8,11 @@ const Wrap = styled.div`
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
+  @media (max-width: 640px) {
+    width: 100%;
+    height: 216px;
+    border-radius: 10px;
+  }
 `;
 
 const Img = styled.img`
