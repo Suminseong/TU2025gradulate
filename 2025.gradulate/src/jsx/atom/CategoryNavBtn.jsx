@@ -28,7 +28,7 @@ const Base = styled.a`
 
 export default function NavBtn({
     label,
-    href = '#',
+    href,
     active = false,
     onClick,
     style,
