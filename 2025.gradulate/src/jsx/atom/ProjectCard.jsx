@@ -235,6 +235,10 @@ const IconText = styled.p`
  }
 `;
 
+function formatCount(n) {
+  return typeof n === 'number' && n > 999 ? '999+' : n;
+}
+
 export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, href, src, profileImgs, docId, collection = 'works' }) {
   const [likeCount, setLikeCount] = useState(typeof like === 'number' ? like : 0);
   const [viewCount, setViewCount] = useState(typeof view === 'number' ? view : 0);
@@ -299,11 +303,11 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, h
         <IconRow>
           <IconBox>
             <Icon src={`${base}icons/likeIcon.svg`} />
-            <IconText>{likeCount}</IconText>
+            <IconText>{formatCount(likeCount)}</IconText>
           </IconBox>
           <IconBox>
             <Icon src={`${base}icons/viewIcon.svg`} />
-            <IconText>{viewCount}</IconText>
+            <IconText>{formatCount(viewCount)}</IconText>
           </IconBox>
         </IconRow>
       </BottomRow>
