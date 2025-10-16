@@ -127,7 +127,7 @@ export default function Hero() {
             onLoadedData={() => {
               // show copy after 15s from load
               if (timerRef.current) clearTimeout(timerRef.current);
-              timerRef.current = setTimeout(() => setCopyVisible(true), 15000);
+              timerRef.current = setTimeout(() => setCopyVisible(true), 15500);
             }}
           >
             <source src={`${base}video/hero11.mp4`} type="video/mp4" />
