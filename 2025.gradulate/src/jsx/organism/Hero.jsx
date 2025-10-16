@@ -37,10 +37,10 @@ const BgBlurVideo = styled.video`
 const VideoBox = styled.div`
   position: absolute;
   left: 50%;
-  top: 0;
-  height: 100%;
-  aspect-ratio: 1 / 1; /* width will follow height to form a square */
-  transform: translateX(-50%);
+  top: 50%;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* width defines the square size now */
+  transform: translate(-50%, -50%);
   overflow: hidden;
 `;
 const VideoEl = styled.video`
