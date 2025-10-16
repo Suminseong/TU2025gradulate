@@ -16,14 +16,34 @@ const Base = styled.a`
   font-weight: ${(p) => (p.$active ? 700 : 400)};
   color: inherit;
   text-decoration: none;
-  display: flex;
+  display: inline-grid;
+  text-align: center;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   padding: 0;
+  /* width: 100px; */
   cursor: pointer;
   outline: none;
-  transition: opacity 120ms ease;
+  transition: all 120ms ease;
+  position: relative;
+  z-index: 0;
+  &::after {
+    content: attr(data-label);
+    height: 0;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.24px;
+    line-height: 19.2px;
+    white-space: nowrap;
+    visibility: hidden;
+    pointer-events: none;
+    display: block;
+  }
+  & > .navbtn-text { grid-area: 1 / 1; }
+  &:hover, &:focus {
+    font-weight: 700;
+  }
 `
 
 export default function NavBtn({
@@ -56,6 +76,7 @@ export default function NavBtn({
     }
   }
 
+
   const handleKeyDown = (e) => {
     if (onClick && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
@@ -66,6 +87,7 @@ export default function NavBtn({
   const commonProps = {
     'aria-current': active ? 'page' : undefined,
     'data-active': active ? 'true' : 'false',
+    'data-label': label,
     onKeyDown: handleKeyDown,
     onClick,
     style,
@@ -74,15 +96,15 @@ export default function NavBtn({
 
   return isInternal ? (
     <Base as={Link} to={to} {...commonProps}>
-      {label}
+      <span className="navbtn-text">{label}</span>
     </Base>
   ) : href ? (
     <Base href={href} target={target} rel={rel} {...commonProps}>
-      {label}
+      <span className="navbtn-text">{label}</span>
     </Base>
   ) : (
     <Base as="button" type="button" {...commonProps} style={{ background: 'none', border: 0, ...style }}>
-      {label}
+      <span className="navbtn-text">{label}</span>
     </Base>
   );
 }

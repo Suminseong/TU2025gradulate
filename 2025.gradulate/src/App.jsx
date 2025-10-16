@@ -62,6 +62,7 @@ function Layout({ headerMode, setHeaderMode }) {
         autoOnScroll={headerMode === NAV_HEADER_MODES.GRADIENT_DARK || headerMode === NAV_HEADER_MODES.DARK} // gradient일 때만 스크롤 전환
         scrollThreshold={8}
         sticky
+        overlay={headerMode === NAV_HEADER_MODES.GRADIENT_DARK || headerMode === NAV_HEADER_MODES.DARK}
         maxWidth={1280}
         onModeChange={setHeaderMode}
       />

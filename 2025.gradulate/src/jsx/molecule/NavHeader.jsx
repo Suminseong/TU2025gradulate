@@ -21,14 +21,25 @@ export const NAV_HEADER_MODES = Object.freeze({
 });
 
 const Wrapper = styled.header`
-  position: ${(p) => (p.$sticky ? 'sticky' : 'relative')};
+  position: ${(p) => (p.$overlay ? 'fixed' : (p.$sticky ? 'sticky' : 'relative'))};
   top: 0;
+  left: 0;
+  right: 0;
   width: 100vw;
   z-index: 1000;
-  transition: background 180ms ease, box-shadow 180ms ease, color 180ms ease;
-  background: ${(p) => p.$background};
+  transition: color 0.75s ease;
+  background: ${(p) => p.$baseColor};
   color: ${(p) => p.$textColor};
   box-shadow: ${(p) => p.$boxShadow || 'none'};
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: ${(p) => p.$gradient || 'none'};
+    opacity: ${(p) => (p.$showGradient ? 1 : 0)};
+    transition: opacity 0.75s ease;
+    pointer-events: none;
+  }
   @media (max-width: 640px) {
     width: 100vw;
     min-width: 0;
@@ -78,9 +89,7 @@ const LeftGroup = styled.div`
 const NavRow = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  /* gap: 24px; */
-  width: 510px;
+  gap: 24px;
   @media (max-width: 640px) {
     display: none;
   }
@@ -104,7 +113,10 @@ const HamburgerBtn = styled.button`
 const Overlay = styled.div`
   display: none;
   @media (max-width: 640px) {
-    display: ${(p) => (p.$open ? 'flex' : 'none')};
+    opacity: ${(p) => (p.$open ? 1 : 0)};
+    pointer-events: ${(p) => (p.$open ? 'auto' : 'none')};
+    transition: opacity 0.2s ease; 
+    display: flex;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1200;
@@ -114,7 +126,7 @@ const Overlay = styled.div`
     align-items: center;
     justify-content: flex-start;
     padding-top: 48px;
-    animation: fadeIn 0.2s;
+    animation: fadeIn 0.2s ease;
   }
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -155,6 +167,9 @@ const LogoOuter = styled.div`
   width: 38.33px;
   height: 32px;
   position: relative;
+  &:hover {
+    opacity: 1;
+  }
   @media (max-width: 640px) {
     width: 28px;
     height: 24px;  
@@ -170,6 +185,7 @@ export default function NavHeader({
   scrollThreshold = 8,         // 몇 px부터 전환할지
   sticky = true,               // sticky 헤더
   maxWidth,                    // 내부 컨테이너 최대폭(선택)
+  overlay = false,            // 최상단 고정 오버레이 모드
 }) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   // 내부 상태(비제어) — 외부에서 mode 넘기면 그 값을 우선 사용
@@ -210,29 +226,35 @@ export default function NavHeader({
   }, [autoOnScroll, isControlled, onModeChange, scrollThreshold]);
 
   // 배경/글자색 계산
-  const { background, textColor, boxShadow } = useMemo(() => {
+  const { baseColor, gradient, textColor, boxShadow, showGradient } = useMemo(() => {
     switch (mode) {
       case NAV_HEADER_MODES.LIGHT:
         return {
-          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
-          textColor: '#000000',
+          baseColor: 'rgba(255,255,255,1)',
+          gradient: 'linear-gradient(180deg, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0) 100%)',
+          textColor: '#000',
+          showGradient: true,
         };
       case NAV_HEADER_MODES.DARK:
         return {
-          background: '#121212',
-          textColor: '#FFFFFF',
+          baseColor: 'linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0) 100%)',
+          gradient: 'linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(18,18,18,1) 100%)',
+          textColor: '#fff',
+          showGradient: true,
         };
       case NAV_HEADER_MODES.GRADIENT_DARK:
         return {
-          background: 'linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0) 100%)',
-          textColor: '#FFFFFF',
+          baseColor: 'linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0) 100%)',
+          gradient: 'linear-gradient(180deg, rgba(18,18,18,1) 0%, rgba(18,18,18,1) 100%)',
+          textColor: '#fff',
+          showGradient: false,
         };
-      case NAV_HEADER_MODES.GRADIENT:
       default:
         return {
-          background: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
-          textColor: '#000000',
-          boxShadow: 'none',
+          baseColor: 'rgba(255,255,255,1)',
+          gradient: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)',
+          textColor: '#000',
+          showGradient: true,
         };
     }
   }, [mode]);
@@ -262,7 +284,16 @@ export default function NavHeader({
   }, [mobileNavOpen]);
 
   return (
-    <Wrapper role="banner" $sticky={sticky} $background={background} $textColor={textColor} $boxShadow={boxShadow}>
+    <Wrapper
+      role="banner"
+      $sticky={sticky}
+      $overlay={overlay}
+      $baseColor={baseColor}
+      $gradient={gradient}
+      $showGradient={showGradient}
+      $textColor={textColor}
+      $boxShadow={boxShadow}
+    >
       <Inner $maxWidth={maxWidth}>
         <Row>
           <LeftGroup>
@@ -334,5 +365,6 @@ NavHeader.propTypes = {
   autoOnScroll: PropTypes.bool,
   scrollThreshold: PropTypes.number,
   sticky: PropTypes.bool,
+  overlay: PropTypes.bool,
   maxWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
