@@ -56,10 +56,19 @@ const Grid = styled.div`
   row-gap: 32px; 
   column-gap: 14px; 
   width: 100%;
+  flex-basis: 50%;
+  /* display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-columns: repeat(2, auto);
+  row-gap: 32px;
+  column-gap: 14px; */
+  
   @media (max-width: 640px) {
     margin-top: 20px;
     margin-bottom: 60px;
     row-gap: 18px;  
+    width: 393px;
  }
 `;
 

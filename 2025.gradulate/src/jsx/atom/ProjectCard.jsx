@@ -4,6 +4,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
+
+const ScaleWrap = styled.div`
+  @media (max-width: 393px) {
+    --s: clamp(0.82, calc(100vw / 393), 1);
+
+    transform: scale(var(--s));
+    transform-origin: top left;
+
+    width: calc(173px * var(--s));
+    height: calc(151px * var(--s));
+  }
+`;
+
 const CardWrap = styled.div`
   position: relative;
   width: 445px;
@@ -291,13 +304,17 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, h
   );
 
   return isExternal ? (
-    <Wrap as="a" href={href} style={{ textDecoration: 'none' }}>
-      {CardInner}
-    </Wrap>
+    <ScaleWrap>
+      <Wrap as="a" href={href} style={{ textDecoration: 'none' }}>
+        {CardInner}
+      </Wrap>
+    </ScaleWrap>
   ) : (
-    <Wrap as={Link} to={href.startsWith('/') ? href : `/${href}`} style={{ textDecoration: 'none' }}>
-      {CardInner}
-    </Wrap>
+    <ScaleWrap>
+      <Wrap as={Link} to={href.startsWith('/') ? href : `/${href}`} style={{ textDecoration: 'none' }}>
+        {CardInner}
+      </Wrap>
+    </ScaleWrap>
   );
 }
 
