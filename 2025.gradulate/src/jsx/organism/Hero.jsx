@@ -56,7 +56,7 @@ const VideoEl = styled.video`
 const BgInner = styled.div`
   position: absolute;
   inset: 0;
-  background-color: rgba(18, 18, 18, 0.2);
+  background-color: rgba(18, 18, 18, 0.0);
 `
 const CopyWrap = styled.div`
   position: absolute; left: 40px; bottom: 80px; max-width: 1029px; display: flex; flex-direction: column; gap: 8px;
@@ -71,14 +71,17 @@ const CopyWrap = styled.div`
   }
 `;
 const P = styled.p`
-  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-size: 16px; line-height: 19.2px; font-weight: 400;
+  margin: 0; color: rgba(0,0,0,0.4); font-family: Pretendard, system-ui; font-size: 16px; line-height: 19.2px; font-weight: 400;
+  //css로 텍스트 오버레이 효과 부여 해야됨
+  mix-blend-mode: darken;
   @media (max-width: 640px) {
     font-size: 13px;
     line-height: 120%;
   }
 `;
 const Title = styled.p`
-  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-weight: 500; font-size: 24px; line-height: 27.6px;
+  margin: 0; color: rgba(255,255,255,0.4); font-family: Pretendard, system-ui; font-weight: 500; font-size: 24px; line-height: 27.6px;
+  mix-blend-mode: difference;
   @media (max-width: 640px) {
     font-size: 16px;
     line-height: 115%;
