@@ -147,7 +147,7 @@ function ProjectsList({ list, statsById }) {
             key={index}
             titleKor={project.titleKor}
             titleEng={project.titleEng}
-            src={publicUrl(`/projects/${project.projectNum}/thumb.jpg`)} // BASE_URL 대응
+            src={publicUrl(`/projects/${project.projectNum}/thumb.jpg` || `/projects/${project.projectNum}/thumb.png`)} // BASE_URL 대응
             nameKor={designerName}
             profileImgs={desingerImgUrls}
             docId={resolvedProjectId}

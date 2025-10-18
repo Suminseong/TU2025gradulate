@@ -109,7 +109,7 @@ export default function Work() {
   const { pid } = useParams();
   const match = (pid || '').toUpperCase().match(/^([A-Z])(\d{3})$/);
   const [isInfoOpen, setIsInfoOpen] = useState(true);
-  const [isInfoVisible, setIsInfoVisible] = useState(true); // 추후 필요시 사용
+  const [isInfoVisible, setIsInfoVisible] = useState(true); // 추후 필요시 사용\
 
   const handleClose = () => {
     setIsInfoOpen(false);
@@ -188,13 +188,59 @@ export default function Work() {
   const num3 = String(resolvedProjectId).padStart(3, '0');
 
   const basePath = `/projects/${resolvedProjectId}`; // 추후 절대 경로 바뀔 시 수정
-  const galleryCount = Number(project.galleryCount || 0);
-  const galleryImages = Array.from(
-    { length: galleryCount },
-    (_, idx) => publicUrl(`${basePath}/gallery/${idx}.jpg`)
-  );
+  const [galleryImages, setGalleryImages] = useState([]);
+  useEffect(() => {
+    let cancelled = false;
 
-  // Increment view count on page load
+    const exts = ['jpg', 'jpeg', 'png'];
+    const MAX_PROBE = 30;               // 최대 시도 개수(상한)
+    const MAX_CONSECUTIVE_MISS = 2;     // 연속 미스 2회면 종료(중간 구멍 허용)
+
+    const isImageResponse = (res) => {
+      if (!res || !res.ok) return false;
+      const ct = res.headers.get('content-type') || '';
+      return ct.startsWith('image/');
+    };
+
+    const checkImage = async (url) => {
+      try {
+        const res = await fetch(url, { method: 'GET', cache: 'no-store' });
+        return isImageResponse(res);
+      } catch {
+        return false;
+      }
+    };
+
+    (async () => {
+      const urls = [];
+      let consecutiveMiss = 0;
+
+      for (let i = 0; i < MAX_PROBE; i++) {
+        let found = false;
+        for (const ext of exts) {
+          const url = publicUrl(`${basePath}/gallery/${i}.${ext}`);
+          /* eslint-disable no-await-in-loop */
+          if (await checkImage(url)) {
+            urls.push(url);
+            found = true;
+            consecutiveMiss = 0;
+            break;
+          }
+        }
+        if (!found) {
+          if (urls.length === 0) break; // 한 장도 없을 때 첫 미스면 종료
+          consecutiveMiss += 1;
+          if (consecutiveMiss >= MAX_CONSECUTIVE_MISS) break; // 몇 장 찾은 후엔 연속 미스 임계치에서 종료
+        }
+      }
+
+      if (!cancelled) setGalleryImages(urls);
+    })();
+
+    return () => { cancelled = true; };
+  }, [basePath]);
+
+
   useEffect(() => {
     const id = project?.projectNum ?? project?.num;
     if (id === undefined || id === null) return;
