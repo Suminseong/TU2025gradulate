@@ -20,7 +20,7 @@ const Card = styled.div`
     height: 231px;
     gap: 16px;
 }
-  @media (max-width: 393px) {
+  @media (max-width: 364px) {
     height: 220px;
     gap: 12px;
   }
@@ -36,7 +36,7 @@ const ImageContainer = styled.div`
     height: 231px;
     border-radius: 4px;
 }
-  @media (max-width: 393px) {
+  @media (max-width: 364px) {
     width: 164px;
     height: 220px;
   }
@@ -81,7 +81,7 @@ const NameKor = styled.h1`
   @media (max-width: 640px) {
     font-size: 20px;
 }
-  @media (max-width: 393px) {
+  @media (max-width: 364px) {
     font-size: 18px;
   }
 `;
@@ -123,6 +123,10 @@ const InfoTitleWrapper = styled.div`
     width: 38px;
     height: 38px;
 }
+  @media (max-width: 364px) {
+      width: 30px;
+      height: 38px;
+  }
 `;
 
 const InfoTitle = styled.h3`
@@ -138,7 +142,11 @@ const InfoTitle = styled.h3`
   @media (max-width: 640px) {
     font-size: 8px;
     line-height: 7.68px;
-}
+  }
+  @media (max-width: 364px) {
+    font-size: 7px;
+    line-height: 6.72px;
+  }
 `;
 
 const InfoTextWrapper = styled.div`
@@ -167,7 +175,11 @@ const InfoText = styled.p`
   @media (max-width: 640px) {
     font-size: 8px;
     line-height: 7.68px;
-}
+} 
+  @media (max-width: 364px) {
+    font-size: 7px;
+    line-height: 6.72px;
+  }
 `;
 
 export default function DesignerCard({

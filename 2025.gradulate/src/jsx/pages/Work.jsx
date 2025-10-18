@@ -32,6 +32,9 @@ function publicUrl(path) {
 // styled-components: 값 그대로 재현
 const ImgSC = styled.img`
   width: 100%;
+  /* max-width: 1800px; */
+  /* padding: 0px 100px; */
+  /* padding-right: 100px; */
   height: auto;
   object-fit: cover;
   display: block;
@@ -53,13 +56,14 @@ const PageOuter = styled.div`
 }
 `;
 const PageInner = styled.div`
-  padding-right: ${PAGE_SIDE}px;
-  padding-left: ${props => (props.$isInfoOpen ? 0 : PAGE_SIDE)}px;
+  padding-right: 140px;
+  padding-left: ${props => (props.$isInfoOpen ? 0 : 140)}px;
   flex: 1 1 auto;
   width: auto;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  align-items: center;
   /* transition: all 500ms ease; */
   @media (max-width: 640px) {
     padding: 0
@@ -90,6 +94,13 @@ const Relative = styled.div`
   position: relative;
   width: 100%;
 `;
+
+const DesignerWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: auto;
+  /* max-width: 1800px; */
+`;  
 
 const LETTER_TO_CAT = {
   'A': 'c0', // AI & Robot
@@ -300,9 +311,11 @@ export default function Work() {
             />
           )}
 
-          <WorkVideo videoId={project.videoId} />
+          <WorkVideo videoId={project.videoId} isInfoOpen={isInfoOpen}/>
+          <DesignerWrapper>
+            <DesignerInfo designers={designers} />
+          </DesignerWrapper>
 
-          <DesignerInfo designers={designers} />
         </PageInner>
       </PageOuter>
     </Relative>

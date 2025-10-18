@@ -8,6 +8,7 @@ import styled from 'styled-components';
 const VideoWrapper = styled.div`
     width: 100%; // 임시값
     margin-top: 50px;
+    max-width: ${props => (props.$isInfoOpen ? '100%' : '1800px')};
 @media (max-width: 640px) {
     margin-top: 20px;
 }
@@ -31,7 +32,7 @@ const Iframe = styled.iframe`
     overflow: hidden;
 `
 
-export default function WorkVideo({ videoId }) {
+export default function WorkVideo({ videoId, isInfoOpen }) {
   // videoId가 숫자든 문자열이든 문자열로 변환
   const id = String(videoId || '').trim();
 
@@ -39,7 +40,7 @@ export default function WorkVideo({ videoId }) {
   const src = `https://player.vimeo.com/video/${id}?badge=0&autopause=0&title=0&byline=0&portrait=0&app_id=58479`;
 
   return (
-    <VideoWrapper>
+    <VideoWrapper $isInfoOpen={isInfoOpen}>
       <RatioBox>
         <Iframe
           src={src}

@@ -10,12 +10,14 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 775px;
-  height: 945px;
+  height: auto;
+  min-height: 700px;
   gap: 20px;
   margin: 140px 0 120px 77px;
   @media (max-width: 640px) {
     width: calc(100vw - 32px);
     height: auto;
+    min-height: 400px;
     margin: 100px 0px 100px 16px;
 }
 `;
