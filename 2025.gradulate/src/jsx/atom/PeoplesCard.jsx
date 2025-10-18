@@ -24,7 +24,7 @@ const Card = styled.div`
     width: 164px;
     height: 130px;
   }
-   @media (max-width: 375px) {
+   @media (max-width: 374px) {
     width: 136px;
     height: 112px;
   }
@@ -75,7 +75,7 @@ const Content = styled.div`
   right: 0;
   padding: 50px 0 50px 15px;
   @media (max-width: 640px) {
-    padding: 16px 0 16px 18px;   
+    padding: 16px 0 16px 8px;   
     font-size: 8px;
  }
    @media (max-width: 393px) {
@@ -103,7 +103,7 @@ const H1Text = styled.h1`
    @media (max-width: 393px) {
     font-size: 14px;
   }
-     @media (max-width: 375px) {
+     @media (max-width: 374px) {
     font-size: 12px;
   }
 `;

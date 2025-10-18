@@ -32,7 +32,7 @@ const CardWrap = styled.div`
     width: 164px;
     height: 130px;
   }
-  @media (max-width: 380px) {
+  @media (max-width: 374px) {
     width: 136px;
     height: 108px;
   }
@@ -54,7 +54,7 @@ const Wrap = styled.div`
     width: 164px;
     height: 145px;
   }
-    @media (max-width: 380px) {
+    @media (max-width: 374px) {
     width: 136px;
     height: 122px;
   }
@@ -74,7 +74,7 @@ const ImageWrap = styled.div`
     width: 164px;
     height: 130px;
   }
-    @media (max-width: 380px) {
+    @media (max-width: 374px) {
     width: 136px;
     height: 108px;
   }
@@ -95,7 +95,7 @@ const Img = styled.img`
     width: 164px;
     height: 130px;
   }
-    @media (max-width: 380px) {
+    @media (max-width: 374px) {
     width: 136px;
     height: 108px;
   }
@@ -117,14 +117,14 @@ const HoverLayer = styled.div`
     height: 137px;
     opacity: 1;
     backdrop-filter: none;
-    background: linear-gradient(180deg, rgba(102, 102, 102, 0) 60%, rgba(0, 0, 0, 0.6) 100%);
+    background: linear-gradient(180deg, rgba(102, 102, 102, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
       border-radius: 8px;
   }
   @media (max-width: 393px) {
     width: 164px;
     height: 130px;
   }
-    @media (max-width: 380px) {
+    @media (max-width: 374px) {
     width: 136px;
     height: 108px;
   }
@@ -143,6 +143,7 @@ const TitleBox = styled.div`
   @media (max-width: 640px) {
    bottom: 4px;
    left: 12px;
+   gap: 2px;
  }
 `;
 
@@ -157,7 +158,7 @@ const TitleMain = styled.p`
   @media (max-width: 640px) {
     font-size: 12px;
   }
-    @media (max-width: 380px) {
+    @media (max-width: 374px) {
     font-size: 10px;
   }
 `;
@@ -172,6 +173,9 @@ const TitleSub = styled.p`
   color: #FFFFFF;
   @media (max-width: 640px) {
     font-size: 6px;
+    letter-spacing: -0.1px;
+    width: 52%;
+    min-width: 110px;
   }
 `;
 
@@ -190,7 +194,7 @@ const BottomRow = styled.div`
  @media (max-width: 393px) {
     width: 164px;
   }
-    @media (max-width: 380px) {
+    @media (max-width: 374px) {
     width: 136px;
   }
 `;
@@ -207,7 +211,7 @@ const ProfileRow = styled.div`
     width: auto;
     height: 12px;  
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     height: 10px;
   }
 `;
@@ -221,7 +225,7 @@ const Name = styled.p`
   @media (max-width: 640px) {
     font-size: 10px;  
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     font-size: 8px;
   }
 `;
@@ -235,7 +239,7 @@ const ProfileImgs = styled.div`
   @media (max-width: 640px) {
     height: 12px;  
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     height: 10px;
   }
 `;
@@ -254,7 +258,7 @@ const ProfileImg = styled.img`
     height: 12px;
     margin-left: ${(p) => (p.$ml ? '-8px' : '0')};  
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     width: 10px;
     height: 10px;
     margin-left: ${(p) => (p.$ml ? '-6px' : '0')};  
@@ -274,7 +278,7 @@ const IconRow = styled.div`
     height: 12px;
     gap: 4px;  
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     width: 26px;
     height: 10px;
     gap: 2px;
@@ -293,7 +297,7 @@ const IconBox = styled.div`
   @media (max-width: 640px) {
     height: 12px;
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     height: 10px;
   }
 `;
@@ -309,7 +313,7 @@ const Icon = styled.div`
     width: 8px;
     height: 8px;  
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     width: 6px;
     height: 6px;
   }
@@ -324,7 +328,7 @@ const IconText = styled.p`
   @media (max-width: 640px) {
     font-size: 8px;
  }
-   @media (max-width: 380px) {
+   @media (max-width: 374px) {
     font-size: 6px;
   }
 `;

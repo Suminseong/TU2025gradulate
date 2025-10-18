@@ -29,7 +29,7 @@ const Container = styled.div`
     position: relative;
     top: 0;
     left: 0;
-    padding: 40px 16px;
+    padding: 20px 16px 40px 16px;
 }
 `;
 
@@ -76,6 +76,7 @@ const Content = styled.div`
   width: 100%;
   height: auto;
   flex-direction: column;
+  /* align-items: center; */
   gap: 16px;
   @media (max-width: 640px) {
     width: 100%;
@@ -116,8 +117,8 @@ const Context = styled.p`
 
 const Thumbnail = styled.div`
   display: none;
-  width: calc(100vw - 40px);
-  height: calc((100vw - 40px) * 0.75);
+  width: calc(100vw - 32px);
+  height: calc((100vw - 32px) * 0.75);
   background-image: ${({ $src }) => `url("${$src}")`};
   background-size: cover;
   background-position: center;
