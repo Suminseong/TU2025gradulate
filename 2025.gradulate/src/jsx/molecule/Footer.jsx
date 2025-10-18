@@ -50,6 +50,9 @@ const TitleBox = styled.div`
     font-size: 14px;
     margin-bottom: 16px;
   }
+    @media (max-width: 393px) {
+    font-size: 12px;
+  }
 `;
 
 const NavRow = styled.nav`
@@ -69,6 +72,9 @@ const NavRow = styled.nav`
     flex-wrap: wrap;
     justify-content: flex-start;
     flex-direction: column;
+  }
+  @media (max-width: 393px) {
+    font-size: 10px;
   }
 `;
 
@@ -92,6 +98,9 @@ const CopyWrap = styled.div`
     max-width: 100vw;
     gap: 4px;
     align-items: center;
+  }
+  @media (max-width: 393px) {
+    font-size: 8px;
   }
 `;
 
@@ -123,6 +132,10 @@ const IconBtn = styled.a`
   @media (max-width: 640px) {
     width: 32px;
     height: 32px;
+  }
+  @media (max-width: 393px) {
+    width: 24px;
+    height: 24px;
   }
 `;
 

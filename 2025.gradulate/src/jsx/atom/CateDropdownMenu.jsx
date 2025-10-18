@@ -63,6 +63,9 @@ const CateItem = styled.div`
     @media (max-width: 640px) {
         font-size: 14px;
     }
+    @media (max-width: 393px) {
+        font-size: 12px;
+  }
 `
 
 

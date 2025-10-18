@@ -19,7 +19,15 @@ const Card = styled.div`
     width: 173px;
     height: 137px;
     border-radius: 4px;
- }
+ }  
+  @media (max-width: 393px) {
+    width: 164px;
+    height: 130px;
+  }
+   @media (max-width: 375px) {
+    width: 136px;
+    height: 112px;
+  }
 `;
 
 const ImgBox = styled.div`
@@ -70,6 +78,9 @@ const Content = styled.div`
     padding: 16px 0 16px 18px;   
     font-size: 8px;
  }
+   @media (max-width: 393px) {
+    padding: 12px 0 12px 14px;
+  }
 `;
 
 const TextCol = styled.div`
@@ -89,6 +100,12 @@ const H1Text = styled.h1`
  @media (max-width: 640px) {
     font-size: 16px;
  }
+   @media (max-width: 393px) {
+    font-size: 14px;
+  }
+     @media (max-width: 375px) {
+    font-size: 12px;
+  }
 `;
 
 const PText = styled.p`
@@ -96,6 +113,9 @@ const PText = styled.p`
 @media (max-width: 640px) {
     font-size: 6px;
  }
+   @media (max-width: 393px) {
+    font-size: 5px;
+  }
 `;
 
 const EmailText = styled(PText)`

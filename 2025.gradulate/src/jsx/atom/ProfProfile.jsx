@@ -40,6 +40,14 @@ const ProfileImg = styled.img`
   height: 332px;
   border: 1px solid #d0d0d0;
   object-fit: cover;
+  @media (max-width: 1600px) {
+    width: 200px;
+    height: 276px;
+  }
+  @media (max-width: 1200px) {
+    width: 180px;
+    height: 252px;
+  }
   @media (max-width: 640px) {
     width: 78px;
     height: 108px;
@@ -54,8 +62,14 @@ const TextWrap = styled.div`
   margin: 0 20px;
   width: 983px;
   height: auto;
+  @media (max-width: 1600px) {
+    width: 680px;
+  }
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
   @media (max-width: 640px) {
-    width: 267px;  
+    width: 100%;  
     margin: 0 16px;
  }
 `;
@@ -71,9 +85,15 @@ const NameKor = styled.p`
   height: 32px;
   color: #212121;
   margin: 0 0 12px 0;
+  @media (max-width: 1600px) {
+    font-size: 24px;
+  }
   @media (max-width: 640px) {
     font-size: 18px;
  }
+   @media (max-width: 393px) {
+    font-size: 16px;
+  }
 `;
 
 const Row = styled.div`
@@ -89,6 +109,9 @@ const Row = styled.div`
   @media (max-width: 640px) {
     padding: 6px 0 12px 0;
  }
+  @media (max-width: 393px) {
+    padding: 4px 0 8px 0;
+  }
 `;
 
 const Label = styled.p`
@@ -98,10 +121,18 @@ const Label = styled.p`
   line-height: 22.4px;
   color: #606060;
   width: 135px;
+  @media (max-width: 1600px) {
+    font-size: 16px;
+    width: 110px;
+  }
   @media (max-width: 640px) {
     font-size: 10px;
     width: 75px;
  }
+  @media (max-width: 393px) {
+    font-size: 8px;
+    width: 60px;
+  }
 `;
 
 const ValueCol = styled.div`
@@ -117,9 +148,18 @@ const Value = styled.p`
   font-size: 16px;
   line-height: 22.4px;
   color: #000000;
+  @media (max-width: 1600px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
   @media (max-width: 640px) {
     font-size: 10px;
+    line-height: 18px;
  }
+   @media (max-width: 393px) {
+    font-size: 8px;
+    line-height: 14px;
+  }
 `;
 
 export default function ProfProfile({ nameKor, rank, eMail, education, field, imgSrc, imgAlt }) {

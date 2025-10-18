@@ -65,7 +65,7 @@ const CopyWrap = styled.div`
   pointer-events: ${(p) => (p.$visible ? 'auto' : 'none')};
   @media (max-width: 640px) {
     left: 16px;
-    bottom: 128px;
+    bottom: 241px;
     max-width: 90vw;
     gap: 8px;
   }
@@ -105,8 +105,7 @@ const Cta = styled.button`
     width: 140px;
     height: 36px;
     font-size: 14px;
-    bottom: 16px;
-    bottom: 74px;
+    bottom: 165px;
     left: 16px;
     transform: none;
   }

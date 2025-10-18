@@ -54,6 +54,9 @@ const CateLabel = styled(Label)`
   @media (max-width: 640px) {
    font-size: 13px;  
   }
+  @media (max-width: 375px) {
+    font-size: 12px;
+  }
 `
 
 

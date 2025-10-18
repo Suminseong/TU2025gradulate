@@ -52,7 +52,7 @@ const ContentCol = styled.div`
   height: auto;
   gap: 48px;
   @media (max-width: 640px) {
-    flex-direction: row;
+    /* flex-direction: row; */
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
@@ -78,7 +78,7 @@ const Content = styled.div`
   flex-direction: column;
   gap: 16px;
   @media (max-width: 640px) {
-    width: calc(50% - 16px);
+    width: 100%;
 }
 `;
 
@@ -93,6 +93,9 @@ const Title = styled.h1`
   @media (max-width: 640px) {
     font-size: 20px;
 }
+   @media (max-width: 393px) {
+    font-size: 18px;
+  }
 `;
 
 const Context = styled.p`
@@ -106,12 +109,15 @@ const Context = styled.p`
   @media (max-width: 640px) {
     font-size: 13px;
 }
+   @media (max-width: 393px) {
+    font-size: 12px;
+  }
 `;
 
 const Thumbnail = styled.div`
   display: none;
-  width: 50%;
-  height: 240px;
+  width: calc(100vw - 40px);
+  height: calc((100vw - 40px) * 0.75);
   background-image: ${({ $src }) => `url("${$src}")`};
   background-size: cover;
   background-position: center;
@@ -308,10 +314,10 @@ export default function WorkInfo({
             <img src={`${base}icons/closeIcon.svg`} alt="Close Icon" />
           </CloseBox>
           <Content>
+            <Thumbnail $src={src} />
             <Title>{titleKor}</Title>
             <Context>{context}</Context>
           </Content>
-          <Thumbnail $src={src} />
         </ContentCol>
 
         <IconRow>

@@ -20,6 +20,10 @@ const Card = styled.div`
     height: 231px;
     gap: 16px;
 }
+  @media (max-width: 393px) {
+    height: 220px;
+    gap: 12px;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -32,6 +36,10 @@ const ImageContainer = styled.div`
     height: 231px;
     border-radius: 4px;
 }
+  @media (max-width: 393px) {
+    width: 164px;
+    height: 220px;
+  }
 `;
 
 const Img = styled.img`
@@ -73,6 +81,9 @@ const NameKor = styled.h1`
   @media (max-width: 640px) {
     font-size: 20px;
 }
+  @media (max-width: 393px) {
+    font-size: 18px;
+  }
 `;
 
 const NameEng = styled.h2`

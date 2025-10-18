@@ -56,7 +56,7 @@ export default function DesignerInfo({ designers }) {
           <DesignerCard
             key={index}
             nameKor={designer.nameKor}
-            nameEn={designer.nameEn}
+            nameEng={designer.nameEng}
             part={designer.role}
             sns={designer.sns}
             eMail={designer.eMail}

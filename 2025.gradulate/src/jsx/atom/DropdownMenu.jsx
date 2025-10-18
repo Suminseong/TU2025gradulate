@@ -54,13 +54,16 @@ const Item = styled.div`
 const ItemText = styled.p`
   font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
   font-size: 16px;
-  font-weight: ${(p) => (p.$selected ? 500 : 400)};
-  color: ${(p) => (p.$selected ? '#191919' : '#bababa')};
+  font-weight: ${(p) => (p.$selected ? 500 : 300)};
+  color: ${(p) => (p.$selected ? '#191919' : '#5e5e5e')};
   margin: 0;
   padding: 0;
   @media (max-width: 640px) {
     font-size: 12px;  
  }
+  @media (max-width: 375px) {
+    font-size: 10px;
+  }
 `;
 
 export default function DropdownMenu({

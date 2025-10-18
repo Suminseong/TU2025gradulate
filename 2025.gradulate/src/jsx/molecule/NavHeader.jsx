@@ -90,14 +90,14 @@ const NavRow = styled.nav`
   display: flex;
   align-items: center;
   gap: 24px;
-  @media (max-width: 640px) {
+  @media (max-width: 1450px) {
     display: none;
   }
 `;
 
 const HamburgerBtn = styled.button`
   display: none;
-  @media (max-width: 640px) {
+  @media (max-width: 1450px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,7 +112,7 @@ const HamburgerBtn = styled.button`
 
 const Overlay = styled.div`
   display: none;
-  @media (max-width: 640px) {
+  @media (max-width: 1450px) {
     opacity: ${(p) => (p.$open ? 1 : 0)};
     pointer-events: ${(p) => (p.$open ? 'auto' : 'none')};
     transition: opacity 0.2s ease; 

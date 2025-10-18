@@ -77,15 +77,18 @@ const PageInfo = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 21px;
   font-family: 'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 21.6px;
   color: #000000;
   margin-top: 4px;
-  @media (max-width: 640px) {
+  @media (max-width: 1450px) {
     display: flex;
+    font-size: 24px;
+  }
+  @media (max-width: 640px) {
+    font-size: 21px;
   }
 `;
 // 프로젝트 데이터
