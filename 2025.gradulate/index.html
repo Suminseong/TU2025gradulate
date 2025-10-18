@@ -1,14 +1,5 @@
 <!doctype html>
 <html lang="kr">
-
-<script>
-  (function () {
-    var params = new URLSearchParams(window.location.search);
-    var redirect = params.get('redirect');
-    if (redirect) window.history.replaceState({}, '', redirect);
-  })();
-</script>
-
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="../public/icons/logoDark.svg" media="(prefers-color-scheme: light)" />
@@ -16,6 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>잔향 : 기억의 향기</title>
 </head>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var redirect = params.get('redirect');
+    if (redirect) window.history.replaceState({}, '', redirect);
+  })();
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 
