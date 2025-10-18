@@ -125,22 +125,17 @@ export default function PeoplesCard({
                 </TextCol>
                 <TextCol>
                     <PText>{role}</PText>
-                    {Array.isArray(sns) && sns.length > 0 ? (
+                    {typeof sns === 'string' && sns.trim() && sns !== '-' ? (
+                        <PText>{sns}</PText>
+                      ) : Array.isArray(sns) && sns.length > 0 ? (
                         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '4px 0 0 0' }}>
-                            {sns.map((item, idx) => (
-                                <a
-                                    key={`${item.platform}-${idx}`}
-                                    href={item.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{ textDecoration: 'none', color: 'inherit', wordBreak: 'break-all' }}
-                                    aria-label={`${nameKor} ${item.platform}`}
-                                >
-                                    {item.url}
-                                </a>
-                            ))}
+                          {sns.map((item, idx) => (
+                            <span key={`${item.platform}-${idx}`} style={{ wordBreak: 'break-all' }}>
+                              {item.handle || item.url}
+                            </span>
+                          ))}
                         </div>
-                    ) : null}
+                      ) : "-"}
                     <EmailText>{eMail ? (<a style={{ textDecoration: 'none', color: 'inherit' }} href={`mailto:${eMail}`}>{eMail}</a>) : null}</EmailText>
                 </TextCol>
             </Content>

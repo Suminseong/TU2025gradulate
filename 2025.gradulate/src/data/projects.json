@@ -5,10 +5,9 @@
     ],
     "category": "c0",
     "projectNum": 0,
-    "titleKor": "한국어 타이틀 1",
-    "titleEng": "EngTitle 1",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "체계적인 아이디어 발전을 위한 AI기반 디자인 실험 워크스페이스",
+    "titleEng": "IDEA UNION LAB",
+    "description": "IDEA UNION LAB은 아이디어 발전 과정에서 어려움을 겪는 디자이너를 위한 AI 기반 디자인 실험실 서비스입니다. 단순히 AI에게 디자인 결과물을 요청하는 방식이 아니라 디자인 프로세스처럼 방법론의 프로세스에 따라 인사이트를 도출하며, 발전된 아이디어 및 생성 과정을 제공합니다. 이를 통해 보다 체계적으로 아이디어를 발전시킬 수 있으며 방법론을 학습할 수 있습니다."
   },
   {
     "members": [
@@ -16,10 +15,9 @@
     ],
     "category": "c0",
     "projectNum": 1,
-    "titleKor": "한국어 타이틀 2",
-    "titleEng": "EngTitle 2",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "맵시",
+    "titleEng": "MAPSEE",
+    "description": "MAPSEE는 사용자의 취향을 분석해 생성한 퍼소나와 실제 착장을 비교함으로써, 두 스타일 간의 차이를 시각적으로 보여주는 서비스입니다. 색상·핏·무드의 유사도와 차이를 ‘패션 지도’처럼 표현하여, 사용자가 자신의 옷맵시가 어떤 방향으로 나아가고 있는지 한눈에 확인할 수 있도록 돕습니다."
   },
   {
     "members": [
@@ -27,10 +25,9 @@
     ],
     "category": "c0",
     "projectNum": 2,
-    "titleKor": "한국어 타이틀 3",
-    "titleEng": "EngTitle 3",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "건물화재내부정찰로봇",
+    "titleEng": "RESQ",
+    "description": "화재 발생 후 골든타임을 지키기 위해서 현재 소방관인력으로만 힘든  경우가 많습니다. 고온·연기·어두운 환경에서도 자유롭게 이동하며 \n내부를 탐색할 수 있으며, 실시간 영상 데이터를 제공해 소방관의 안전한 구조 활동을 지원합니다. ResQ는 화재 현장에서 인명 피해를 \n최소화할 수 있습니다.   \n있는 든든한 파트너입니다."
   },
   {
     "members": [
@@ -39,10 +36,9 @@
     ],
     "category": "c0",
     "projectNum": 3,
-    "titleKor": "한국어 타이틀 4",
-    "titleEng": "EngTitle 4",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "스카이 가드 듀오",
+    "titleEng": "SKY GUARD DUO",
+    "description": "매년 증가하는 버드스트라이크 위협에 맞서는 'SKY GUARD DUO'. 이 시스템은 지상을 담당하는 자율주행 로봇과 상공을 책임지는 드론 편대로 구성된 이중 방어 솔루션입니다. AI가 위협을 탐지하면 에어캐논이 먼저 대응하고, 필요시 드론 편대가 출격하여 입체 작전을 펼칩니다. 공항 안전의 새로운 기준을 제시합니다."
   },
   {
     "members": [
@@ -50,10 +46,9 @@
     ],
     "category": "c0",
     "projectNum": 4,
-    "titleKor": "한국어 타이틀 5",
-    "titleEng": "EngTitle 5",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "마이다꾸",
+    "titleEng": "MYDAKU",
+    "description": "MYDAKU 는 작성한 일기의 내용과 키워드를 통해 그날의 기분과 일상을 표현한 AI 스티커 제작 서비스입니다. 업로드 한 일기 사진을 바탕으로 키워드를 선택하여 감정이나 주제를 시각적으로 표현할 수 있는 AI 스티커를 제공받습니다. 또한 자동 생성된 AI 스티커를 저장하며 제작한 스티커와 키워드를 바탕으로 타 사용자와 스티커를 공유할 수 있습니다."
   },
   {
     "members": [
@@ -61,10 +56,9 @@
     ],
     "category": "c0",
     "projectNum": 5,
-    "titleKor": "한국어 타이틀 6",
-    "titleEng": "EngTitle 6",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "레디큐",
+    "titleEng": "READYQ",
+    "description": "READYQ는 필기 자료를 인식하여 퀴즈를 생성하는 AI 기반 학습 관리 서비스입니다. 암기 학습에 어려움을 겪는 사용자를 위해 맞춤형 퀴즈를 제공하고 체계적인 기억 인출 연습을 돕습니다. 나아가 생성된 퀴즈를 통해 자연스러운 복습 기회와 효율적인 학습 관리를 지원합니다."
   },
   {
     "members": [
@@ -72,10 +66,9 @@
     ],
     "category": "c0",
     "projectNum": 6,
-    "titleKor": "한국어 타이틀 7",
-    "titleEng": "EngTitle 7",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "조각조각",
+    "titleEng": "JOGAKJOGAK",
+    "description": "조각조각은 사용자가 키워드를 바탕으로 스토리를 작성하고, 해당 스토리에 맞춰 사진을 촬영하면 AI가 일러스트를 완성시켜 주는 게임형 서비스입니다. 캐릭터 애니메이션 요소를 통해 사용자에게 흥미를 제공하여 사진 속에 담긴 순간의 이야기와 감정을 풍부하게 표현하도록 돕습니다."
   },
   {
     "members": [
@@ -84,10 +77,9 @@
     ],
     "category": "c0",
     "projectNum": 7,
-    "titleKor": "한국어 타이틀 8",
-    "titleEng": "EngTitle 8",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "위플",
+    "titleEng": "WEEPLE",
+    "description": "Weeple은 가족, 친구, 동호회 등 우리 그룹이 함께 찍은 사진과 짧은 설명을 입력하면,\nAI가 그룹의  분위기와 특성을 분석하여 우리만의 보드게임 테마를 만들어주는 서비스입니다.\n같이 찍은 사진이 게임으로 바뀌고, 우리만의 추억과 개성이 담긴 미션에 도전해볼 수 있습니다.\n함께 웃고 도전하면서, 우리 그룹만의 스토리를 즐길 수 있는 보드게임 테마를 만들어보세요!"
   },
   {
     "members": [
@@ -95,10 +87,9 @@
     ],
     "category": "c0",
     "projectNum": 8,
-    "titleKor": "한국어 타이틀 9",
-    "titleEng": "EngTitle 9",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "에이아이스마트모니터암",
+    "titleEng": "AI SMART MONITORARM",
+    "description": "AI 스마트 모니터암은 사용자의 자세를 인식해 올바르게 교정해주는 스마트 디바이스입니다. 내장된 카메라와 인공지능이 목과 어깨의 움직임을 실시간으로 감지하여 피로를 줄이고 건강한 자세 습관을 형성하도록 돕습니다."
   },
   {
     "members": [
@@ -107,10 +98,9 @@
     ],
     "category": "c0",
     "projectNum": 9,
-    "titleKor": "한국어 타이틀 10",
-    "titleEng": "EngTitle 10",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "문화유산 복원 시스템 로봇",
+    "titleEng": "BIND",
+    "description": "국내 문화유산 복원 현장은 인력난과 수작업 한계로 복원율이 1%에 불과합니다. BIND는 유물 복원 작업의 효율성과 정확성을 높여 이 문제를 해결하기 위해 개발되었습니다. 레이저 세척, 3D 스캐닝, AI 모델링, 세라믹 프린팅, CNC 가공을 통합해 원본의 질감까지 재현하며, 이를 통해 소중한 문화유산을 안전하게 보존하여 미래 세대에 온전히 전달합니다."
   },
   {
     "members": [
@@ -119,10 +109,9 @@
     ],
     "category": "c0",
     "projectNum": 10,
-    "titleKor": "한국어 타이틀 11",
-    "titleEng": "EngTitle 11",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "자기주도학습 강화를 위한 학습 독려 로봇",
+    "titleEng": "ENDY",
+    "description": "공부 도중 휴대전화 사용, 졸음 상황 등 사용자의 학습 상태를 고려하여 바른 학습 태도를 유지하도록 로봇이 재촉하고 시간에 따른 공부 진도를 확인하며 학습 텐션을 유지할 수 있도록 피드백을 한다. 로봇을 통한 사용자의 학습 관찰과 실시간 피드백을 가능케 하여 AI 학습 컴페니언 로봇 개발을 도모하고자 하였다."
   },
   {
     "members": [
@@ -130,10 +119,9 @@
     ],
     "category": "c0",
     "projectNum": 11,
-    "titleKor": "한국어 타이틀 12",
-    "titleEng": "EngTitle 12",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "툰챗",
+    "titleEng": "TOONCHAT",
+    "description": "툰-챗'은 인간관계가 지속될수록 표현이 단조로워지고 단어가 생략되어 가는 온라인 채팅 환경을 만화 같은 그래픽으로 표현하여 풍부하고 즐거운 소통 경험으로 유도하는 서비스입니다. 사용자가 입력한 채팅은 각자 선택한 화풍의 그래픽으로 출력되고, 출력된 서로의 그래픽을 공유하며 새로운 소통 경험을 만듭니다."
   },
   {
     "members": [
@@ -141,10 +129,9 @@
     ],
     "category": "c0",
     "projectNum": 12,
-    "titleKor": "한국어 타이틀 13",
-    "titleEng": "EngTitle 13",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "미래형 방범 솔루션 귀갓길 동행 드론",
+    "titleEng": "RING GUARDIAN",
+    "description": "RING GUARDIAN은 야간 귀가 중 사용자의 머리 위를 따라 이동하며 길을 비추고 주변을 기록하는 방범 드론입니다. 어둠 속에서도 안전한 동행을 제공하며, 엔젤링 형태의 조명으로 심리적 안정감을, 경찰 시스템과 연동되어 신속한 대응과 실질적 보호를 지원합니다."
   },
   {
     "members": [
@@ -152,10 +139,9 @@
     ],
     "category": "c0",
     "projectNum": 13,
-    "titleKor": "한국어 타이틀 14",
-    "titleEng": "EngTitle 14",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "마스크 이모지",
+    "titleEng": "MASK EMOJI",
+    "description": "MASK - EMOJI는 청소년과 20~30대가 SNS 소통 속에서 ‘가면’을 쓰고 진짜 감정을 숨기는 현상에서 착안한 프로젝트입니다. 사용자는 자신만의 ‘가면’을 직접 꾸미며, AI 로봇과 친구처럼 대화하면서 감정을 자연스럽게 표현할 수 있습니다. 또한 방대한 수집 요소를 결합해 감정 표현의 새로운 방식을 제시하는 차별화된 경험을 선사합니다."
   },
   {
     "members": [
@@ -164,10 +150,9 @@
     ],
     "category": "c0",
     "projectNum": 14,
-    "titleKor": "한국어 타이틀 15",
-    "titleEng": "EngTitle 15",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "팔로잉 충전 스테이션 드론",
+    "titleEng": "FOLLOWING CHARGING STATION DRONE",
+    "description": "Following Charging Station Drone은 공중급유기 기술에서 착안한 제품으로 드론을 충전해주는 이동식 충전소 역할을 수행한다.  이 충전 드론은 배터리 한계로 비행 시간이 짧았던 드론들을 충전하므로써 효율성을 극대화하고 편한 충전 방식을 제공한다."
   },
   {
     "members": [
@@ -176,10 +161,9 @@
     ],
     "category": "c0",
     "projectNum": 15,
-    "titleKor": "한국어 타이틀 16",
-    "titleEng": "EngTitle 16",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "수중 속 골프공 수거로봇",
+    "titleEng": "AQUATRIEVE",
+    "description": "매년 전 세계 골프장에서 유실되는 1억 개 이상의 골프공은 해양 오염과 미세플라스틱 문제를 야기합니다. 현재는 다이버가 직접 수중에 들어가 회수하지만, 어두운 환경과 공에 맞을 위험이 있습니다. 본 로봇은 자율주행으로 공을 수거하고 스테이션으로 운반해 로스트볼로 재활용하고, 이니셜·특징이 있는 공은 앱을 통해 주인에게 반환합니다."
   },
   {
     "members": [
@@ -187,10 +171,9 @@
     ],
     "category": "c0",
     "projectNum": 16,
-    "titleKor": "한국어 타이틀 17",
-    "titleEng": "EngTitle 17",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "뮤즈",
+    "titleEng": "MUSE",
+    "description": "MUSE는 디자이너가 논문을 이해하고 실무에 바로 활용하도록 돕는 AI 기반 웹서비스입니다. AI가 논문을 분석하여 디자인 브리프, 퍼소나 스토리, 디자인 가이드라인, 관련 자료 추천, 아이디어 생성 도우미의 5가지 실무에 특화된 형태(텍스트 및 시각 자료 결합)로 재구성해 제공합니다. 도출된 인사이트는 프로젝트 폴더에 체계적으로 저장 및 관리할 수 있으며, 직관적인 UI로 효율적인 디자인 작업을 지원합니다."
   },
   {
     "members": [
@@ -199,10 +182,9 @@
     ],
     "category": "c0",
     "projectNum": 17,
-    "titleKor": "한국어 타이틀 18",
-    "titleEng": "EngTitle 18",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "공항 위험물질 및 마약 탐지 로봇",
+    "titleEng": "CO-BOT",
+    "description": "마약, 폭발물, 바이러스 등 눈에 보이지 않는 위험을 빠르고 정확하게 탐지해 사고를 예방합니다.다중 센서와 AI 전자코를 이용해 공기 중 분자 변화를 분석하고, 자율주행으로 넓은 공간을 순찰합니다.탐지 정보는 실시간으로 전달되며, 검역, 마약 탐지, 폭발물 탐지 모드를 상황에 맞게 전환할 수 있습니다.이 로봇은 공항 같은 시설을 안전하게 지키는 스마트한 감시 파트너입니다."
   },
   {
     "members": [
@@ -210,10 +192,9 @@
     ],
     "category": "c0",
     "projectNum": 18,
-    "titleKor": "한국어 타이틀 19",
-    "titleEng": "EngTitle 19",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "전기차 화재 진압 로봇",
+    "titleEng": "E-FIBOT",
+    "description": "최근 전기차 시장의 확대와 함께 전기차 화재 또한 사회적 문제로 떠오르고 있다.\n전기차 화재 진압에서 가장 중요한 것은 신속한 소화이다.\n\n하지만 기존 간접 소화 방식은 완전 소화까지 약 3~4시간이 소요되어 피해 확산을 \n막기 어렵다. 또다른 방식인 직접 소화 방식은 속도는 빠르지만 \n폭발, 감전과 같은 위험성 때문에 쉽게 쓰기 어렵다.\n\n이러한 전기차 화재를 신속하고 안전하게 진압하기 위해 E-FIBOT을 개발하였다."
   },
   {
     "members": [
@@ -221,10 +202,9 @@
     ],
     "category": "c0",
     "projectNum": 19,
-    "titleKor": "한국어 타이틀 20",
-    "titleEng": "EngTitle 20",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "해저 미세플라스틱 수거 로봇",
+    "titleEng": "Aqua Breeze",
+    "description": "Aqua Breeze는 마찰대전 발전소자를 활용한 자가발전 로봇으로 외부 전력 없이도 자율적으로 작동하며 정전기 흡착 원리를 통해 해저에 침적된 미세플라스틱을 친환경적으로 수거하여 기존의 방식으로는 처리하기 어려웠던 문제를 해결하고 이를 통해 해양 생태계와 퇴적 환경을 보호하는 지속가능한 솔루션을 제공합니다."
   },
   {
     "members": [
@@ -232,10 +212,9 @@
     ],
     "category": "c0",
     "projectNum": 20,
-    "titleKor": "한국어 타이틀 21",
-    "titleEng": "EngTitle 21",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "노블",
+    "titleEng": "NOBLE",
+    "description": "Noble은 웹소설 집필을 원하는 사용자를 위한 메모 기반 스토리 생성 서비스입니다. 아이디어 메모를 관리하고 선택한 메모를 토대로 다양한 플롯 생성을 제공합니다. 또한 AI 편집 기능을 통해 문장을 다듬고 완성도 있는 웹소설로 발전시킬 수 있습니다. 사용자는 창작 과정의 부담을 줄이고 보다 쉽고 즐겁게 글쓰기를 이어갈 수 있습니다."
   },
   {
     "members": [
@@ -243,10 +222,9 @@
     ],
     "category": "c0",
     "projectNum": 21,
-    "titleKor": "한국어 타이틀 22",
-    "titleEng": "EngTitle 22",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "스노모",
+    "titleEng": "SNOMO",
+    "description": "SNOMO는 겨울철 빈번히 발생하는 비닐하우스 피해를 예방하기 위해서 적설량을 자동 감지해 눈을 제거하는 비닐하우스 전용 제설 로봇입니다. 이를 통해 고령화된 농촌의 인력 소모를 줄이고, 농작물 피해와 복구 비용을 줄일 수 있습니다. 더 나아가 현재뿐만 아니라 미래에 이상 기후로 인하여 더욱 잦고 심각해질 피해에 대응하기 위해서도 필요한 제품입니다."
   },
   {
     "members": [
@@ -254,10 +232,9 @@
     ],
     "category": "c0",
     "projectNum": 22,
-    "titleKor": "한국어 타이틀 23",
-    "titleEng": "EngTitle 23",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "초보디자이너들을 위한 실전형 학습 UX/UI 챌린지",
+    "titleEng": "RE:CHAL",
+    "description": "AI를 활용해 실제 사용자 리뷰를 분석하고, 초보 UX/UI 디자이너가 실무 감각을 기를 수 있는 과제를 자동 생성하는 학습 도구입니다. 데이터 기반의 UX 과제를 통해 사용자는 문제 해결 중심의 사고를 훈련하고, 사용자 경험을 분석하는 능력을 자연스럽게 향상시킬 수 있습니다."
   },
   {
     "members": [
@@ -265,10 +242,9 @@
     ],
     "category": "c0",
     "projectNum": 23,
-    "titleKor": "한국어 타이틀 24",
-    "titleEng": "EngTitle 24",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "파미",
+    "titleEng": "FARMIE",
+    "description": "FARMIE는 농업 인구 감소와 고령화에 대응하여 개발된 스마트 작물보호제 살포 로봇입니다. FARMIE 실시간으로 작물 상태와 병해충을 모니터링하여 최적의 작업 경로를 자동으로 계획/실행합니다. 수집된 데이터 분석을 통해 효과적인 방제 전략을 수립하여 농작업의 효율성, 정밀도 및 효과를 크게 향상시키고 작업자의 부담을 줄이는 것을 목표로 합니다"
   },
   {
     "members": [
@@ -276,10 +252,9 @@
     ],
     "category": "c1",
     "projectNum": 24,
-    "titleKor": "한국어 타이틀 25",
-    "titleEng": "EngTitle 25",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "심부름 탐험",
+    "titleEng": "ERRAND ADVENTURE",
+    "description": "어린이의 건강한 성장과정을 위해서는 책임감과 자립심을 기르는 것이 매우 중요합니다. 이때, 심부름이 좋은 효과를 가져다주지만 아이들은 심부름 과정을 귀찮고 지루하게 여기는 경향이 있습니다. 이러한 문제를 해결하기 위해 아이들이 캐릭터와 함께 상호작용하며 놀이처럼 즐길 수 있는 탐험 컨셉의 어린이용 심부름 서비스 제작하였습니다."
   },
   {
     "members": [
@@ -288,10 +263,9 @@
     ],
     "category": "c1",
     "projectNum": 25,
-    "titleKor": "한국어 타이틀 26",
-    "titleEng": "EngTitle 26",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "모티",
+    "titleEng": "MOTI",
+    "description": "MOTI는 앞날의 불확실성에 불안을 느끼는 청소년들을 위해 버킷리스트라는 목표를 세우며 보다 현실적으로 꿈에 다가갈 수 있도록 유도하는 청소년 자아실현 가이드 플랫폼입니다. 우리는 사용자의 흥미와 관심사를 바탕으로 새로운 도전과제를 제시하고, 그에 어울리는 리워드를 제시함으로써 청소년들의 끊임없는 탐구심을 이끌어냅니다."
   },
   {
     "members": [
@@ -300,10 +274,9 @@
     ],
     "category": "c2",
     "projectNum": 26,
-    "titleKor": "한국어 타이틀 27",
-    "titleEng": "EngTitle 27",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "해빗",
+    "titleEng": "HAVIT",
+    "description": "HAVIT은 건강과 만족 사이에서 자신만의 균형을 찾고자 하는 이들을 위한 스마트 도시락 및 식단 관리 서비스입니다. 급격한 생활 양식의 변화와 기술 발전으로 젊은 세대의 가속 노화가 두드러진 현시점, HAVIT은 즐거움을 더한 지속 가능한 건강 관리, 즉 헬시 플레저를 추구하는 이들에게 개인화된 루틴을 통한 새로운 경험을 제안합니다."
   },
   {
     "members": [
@@ -312,22 +285,20 @@
     ],
     "category": "c2",
     "projectNum": 27,
-    "titleKor": "한국어 타이틀 28",
-    "titleEng": "EngTitle 28",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "3D 필드 성장형 러닝서비스",
+    "titleEng": "COAK",
+    "description": "COAK은 러닝 기록을 특별한 경험으로 바꾸어 동기부여하는 서비스입니다. \n사용자가 달린 러닝 루트를 시각화 하고 3D 필드로 생성합니다.\n같은 루트를 반복해 달릴수록 필드의 자연 요소가 점차 성장합니다. \n크루와 함께한 기록은 모여 하나의 숲을 이루며, 새로운 방식의 러닝 경험을 통해 지속적인 동기를 제공합니다."
   },
   {
     "members": [
-      45,
+      54,
       19
     ],
     "category": "c2",
     "projectNum": 28,
-    "titleKor": "한국어 타이틀 29",
-    "titleEng": "EngTitle 29",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "감정을 머물러 바라볼 수 있는 감정 기록 앱",
+    "titleEng": "Feeltr",
+    "description": "Feeltr는 감각 자극(온도, 밝기, 촉각, 청각)을 기반으로 감정을 비유하고 세부 감정을 선택해 모호한 감정을 인식하도록 돕습니다. 이후 감정이 발생한 상황과 반응을 일기로 정리하고, 개인 맞춤형 케어를 제안합니다. 감정 기록은 감정 카드로 생성되어 달력에 저장되며,  감정 변화 흐름을 직관적으로 확인하고 자기 이해와 정서 회복력을 높일 수 있습니다."
   },
   {
     "members": [
@@ -335,10 +306,9 @@
     ],
     "category": "c2",
     "projectNum": 29,
-    "titleKor": "한국어 타이틀 30",
-    "titleEng": "EngTitle 30",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "애니키트",
+    "titleEng": "ANIKIT",
+    "description": "ANIKIT은 ‘animal’의 ‘ani’와 ‘kit’의 합성어로, 동물처럼 친근하면서 언제 어디서나 사용할 수 있는 의료 키트입니다. 차가운 의료기기의 이미지를 벗어나 아이들에게 따뜻함과 안정감을 전하며, 동물을 모티브로 한 디자인으로 자연스럽게 다가갑니다. 학교나 집 등 어디서든 아이가 스스로 건강을 관리할 수 있도록 돕는 동반자 같은 키트입니다."
   },
   {
     "members": [
@@ -346,10 +316,9 @@
     ],
     "category": "c2",
     "projectNum": 30,
-    "titleKor": "한국어 타이틀 31",
-    "titleEng": "EngTitle 31",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "액토",
+    "titleEng": "ACTO",
+    "description": "ACTO는 식단 제안형 냉장고와 이동형 모듈 냉장고, 두 본체로 구성됩니다.\n이동형 모듈 냉장고는 부재 중 신선식품을 대신 수령·보관하며,\n식단 제안형 냉장고는 스마트 워치 태그 기반으로 맞춤형 식단을 제공합니다.\n두 냉장고의 연동을 통해 ACTO는 사용자의 식습관을 분석하고,\n건강한 생활 패턴을 관리하는 냉장고입니다."
   },
   {
     "members": [
@@ -358,10 +327,9 @@
     ],
     "category": "c2",
     "projectNum": 31,
-    "titleKor": "한국어 타이틀 32",
-    "titleEng": "EngTitle 32",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "스마트 비대면 외래진료 의료기",
+    "titleEng": "VITALL^NK",
+    "description": "VitalL^nk는 의료 사각지대에 놓인 노인 환자들을 대상으로, 병원 방문 없이도 주요 건강 검진을 스스로 수행할 수 있도록 돕는 의료기기입니다. 단순한 검사 기능과 원격 진료 연결을 제공합니다. 기본적인 체온 검사는 물론, 혈당과 혈압, 심전도 측정, 손목 골밀도 검사, 초음파 검사를 통해 노인성 질환의 주요 지표도 빠르게 확인할 수 있습니다."
   },
   {
     "members": [
@@ -369,10 +337,9 @@
     ],
     "category": "c2",
     "projectNum": 32,
-    "titleKor": "한국어 타이틀 33",
-    "titleEng": "EngTitle 33",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "소형 반려견 전용 AED 내장 산책 리드줄",
+    "titleEng": "DOG AED LEASH",
+    "description": "반려견과 함께 걷는 시간은 언제나 즐겁지만 갑작스러운 위험이 찾아올\n수도 있습니다. 특히 소형견은 심정지 시 몇 분 안에 대응하지 못하면 큰\n위험에 놓일 수 있습니다. 이 리드줄은 그런 순간을 대비하여 반려견 전\n용 AED 기능을 함께 담았습니다. 평소에는 가볍게 사용할 수 있는 리드\n줄이지만, 필요할 때는 구조 도구가 됩니다."
   },
   {
     "members": [
@@ -380,10 +347,9 @@
     ],
     "category": "c2",
     "projectNum": 33,
-    "titleKor": "한국어 타이틀 34",
-    "titleEng": "EngTitle 34",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "메디메이트",
+    "titleEng": "MEDIMATE",
+    "description": "고령화와 의학 발전으로 현대인들은 의약품을 손쉽게 접하게 되었지만, 그만큼 방치되거나 잘못 폐기되는 의약품 또한 증가하고 있으며, 이들은 수질 오염 및 생태계 교란을 유발하게 됩니다. 따라서 사용자가 약을 안전하게 관리하고 폐기까지 책임질 수 있도록 돕는 서비스, 메디메이트를 제작했습니다. 이는 건강한 생활 습관과 지속 가능한 환경 보호에 기여할 것입니다."
   },
   {
     "members": [
@@ -391,10 +357,9 @@
     ],
     "category": "c3",
     "projectNum": 34,
-    "titleKor": "한국어 타이틀 35",
-    "titleEng": "EngTitle 35",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "마리스",
+    "titleEng": "MARIS",
+    "description": "Maris는 선박 하부에 부착되는 따개비를 효과적으로 제거하기 위해 설계된 자율 주행 수중 로봇입니다. 라틴어로 ‘바다의, 바다를’이라는 뜻을 담은 이름처럼, 해양 환경에서 최적의 성능을 발휘하도록 제작되었습니다. 8개의 고성능 프로펠러가 탑재되어 수중에서도 안정적이고 자유로운 기동이 가능하며, 정밀한 제어를 통해 선박 하부 구역을 빈틈없이 관리할 수 있습니다. 또한 따개비 제거 장치에는 스크래퍼와 브러시가 각각 모듈화되어 있어, 스크래퍼의 날이 무뎌지거나 브러시가 손상될 경우 손쉽게 교체할 수 있습니다. 이를 통해 유지보수가 간단하고, 장기간 안정적인 성능을 보장하며, 효율적인 선체 관리로 연료 절감과 친환경 운항을 돕는 혁신적인 솔루션입니다."
   },
   {
     "members": [
@@ -403,10 +368,9 @@
     ],
     "category": "c3",
     "projectNum": 35,
-    "titleKor": "한국어 타이틀 36",
-    "titleEng": "EngTitle 36",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "ESG 부산 - 스테이션",
+    "titleEng": "ESG BUSAN - STATION",
+    "description": "ESG 부산'은 부산 주요 관광지에 설치된 ESG 체험 플랫폼으로, 투명 OLED 패널, 업사이클링 키링 자판기, 플로깅 도구 대여 부스로 구성됩니다. 관광객들은 도시를 탐험하는 동안 쓰레기를 줍기 위한 집게를 대여하고, 상징적인 업사이클링 키링을 받을 수 있습니다. 이는 관광과 지속가능성의 접점을 제시하는 새로운 유형의 체험형 공공시설물입니다."
   },
   {
     "members": [
@@ -414,10 +378,9 @@
     ],
     "category": "c3",
     "projectNum": 36,
-    "titleKor": "한국어 타이틀 37",
-    "titleEng": "EngTitle 37",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "씬킷",
+    "titleEng": "SYN:KET",
+    "description": "SYN:KET은 신디사이저, 샘플러, 비트메이커를 하나로 담은 휴대용 그루브 박스입니다.\n사용자는 8개의 터치패드와 원형 인터페이스를 통해 리듬을 손끝으로 느끼고 조형하며,\n음악을 ‘만드는 행위’ 에서 ‘소리를 다루는 경험’ 으로 확장된 새로운 창작의 감각을 얻게 됩니다."
   },
   {
     "members": [
@@ -425,10 +388,9 @@
     ],
     "category": "c3",
     "projectNum": 37,
-    "titleKor": "한국어 타이틀 38",
-    "titleEng": "EngTitle 38",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "페이스:디",
+    "titleEng": "FACE:D",
+    "description": "FACE:D는 iPhone의 Face ID와 ARKit52 기술을 활용하여 사용자의 표정을 실시간으로 인식하고, 52개의 BlendShape 데이터를 기반으로 감정을 분석한다. 분석된 감정은 Unity로 제작된 상담 시뮬레이션 콘텐츠에 반영되어, 사용자의 표정에 따라 내담자의 감정 수치가 변화한다. 감정 데이터 기반의 새로운 인터랙티브 경험을 제공한다."
   },
   {
     "members": [
@@ -436,22 +398,20 @@
     ],
     "category": "c3",
     "projectNum": 38,
-    "titleKor": "한국어 타이틀 39",
-    "titleEng": "EngTitle 39",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "모온",
+    "titleEng": "MO-ON",
+    "description": "‘모으다’와 ‘ON’의 MO-ON(모온)은 멀티모달 AI의 강력한 생성 능력을 하나의 웨어러블에 담아 현실과 가상을 넘나들며 자유롭고 직관적인 창작 경험을 제공합니다. 이로써 개개인의 창의성과 개성을 존중하는 창작자 중심의 궁극적인 AI 글래스로 완성됩니다."
   },
   {
     "members": [
-      48,
+      28,
       51
     ],
     "category": "c3",
     "projectNum": 39,
-    "titleKor": "한국어 타이틀 40",
-    "titleEng": "EngTitle 40",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "AI 기반 모의 인터뷰 서비스",
+    "titleEng": "PRETALK",
+    "description": "PRETALK은 인터뷰 진행자가 더 나은 사용자 경험(UX)과 깊이 있는 인사이트를 도출할 수 있도록 돕는 인터뷰 연습 서비스입니다.\n가상의 퍼소나와 실전처럼 인터뷰를 연습하면서 질문 설계, 흐름 관리, 응답 분석까지 체계적으로 준비할 수 있으며, 실제 상황에 가까운 시뮬레이션을 통해 인터뷰 역량을 강화할 수 있습니다."
   },
   {
     "members": [
@@ -459,10 +419,9 @@
     ],
     "category": "c3",
     "projectNum": 40,
-    "titleKor": "한국어 타이틀 41",
-    "titleEng": "EngTitle 41",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "투미",
+    "titleEng": "TO.ME",
+    "description": "to.me는 사용자의 감정과 목소리를 기반으로 스스로에게 피드백을 제공하는 일정 관리 서비스입니다.\nAI가 사용자의 음성과 대화 스타일을 학습해, 일정 전 나의 목소리로 맞춤형 알림을 전달함으로써\n정서적 몰입과 자기동기화를 돕는 새로운 자기조절 경험을 제공합니다."
   },
   {
     "members": [
@@ -470,10 +429,9 @@
     ],
     "category": "c3",
     "projectNum": 41,
-    "titleKor": "한국어 타이틀 42",
-    "titleEng": "EngTitle 42",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "스트릭스",
+    "titleEng": "STRIX",
+    "description": "야간에 발생하는 조난사고는 제한된 장비와 시야 때문에 구조 시간이 지연되고, 구조대원과 조난당한 등산객 모두에게 큰 위험으로 이어집니다. 이러한 문제를 해결하기 위해 개발된 스마트 AR 헬멧 STRIX는 실시간 정보를 제공함으로써 구조대원의 판단을 지원하고, 구조 효율성과 안정성을 동시에 향상시켜 야간 구조 활동의 새로운 가능성을 제시합니다."
   },
   {
     "members": [
@@ -481,10 +439,9 @@
     ],
     "category": "c3",
     "projectNum": 42,
-    "titleKor": "한국어 타이틀 43",
-    "titleEng": "EngTitle 43",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "ESG 부산 - 앱",
+    "titleEng": "ESG BUSAN - APP",
+    "description": "ESG 앱은 관광객이 부산 명소를 즐기며 자연스럽게 환경 활동에 참여할 수 있는 서비스입니다. ESG 스테이션에서 플로깅 도구를 대여해 미션을 수행하고, 완료 시 관광지 키링을 리워드로 받을 수 있습니다. 전 과정은 앱과 연동되어 관광, 환경 활동, 보상까지 간편하게 체험할 수 있으며, 부산의 지속가능한 가치를 전합니다."
   },
   {
     "members": [
@@ -492,10 +449,9 @@
     ],
     "category": "c3",
     "projectNum": 43,
-    "titleKor": "한국어 타이틀 44",
-    "titleEng": "EngTitle 44",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "소프티 엔 하디",
+    "titleEng": "SOFTY & HARDY",
+    "description": "현재 존재하는 VR  콘서트는 시각과 청각에만 의존하여, 관객은 무대와 깊이 교류하지 못하고 단순한 관람에 머무르게 됩니다. 이 문제를 해결하기 위해 촉각을 더한 새로운 인터랙션을 제안합니다. 본 제품인 HARDY & SOFTY 는 무대와 관객을 이어주는 감각적인 다리 역할을 하며, 이를 통해 관객은 단순한 관람자가 아닌 참여자가 됩니다."
   },
   {
     "members": [
@@ -503,10 +459,9 @@
     ],
     "category": "c3",
     "projectNum": 44,
-    "titleKor": "한국어 타이틀 45",
-    "titleEng": "EngTitle 45",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "포잉!",
+    "titleEng": "POING!",
+    "description": "POING!은 반려동물의 생체 신호와 행동 데이터를 기반으로, 홈캠 공간 속에서 살아 있는 듯한 디지털 반려동물을 구현합니다. 반려동물의 실제 데이터를 바탕으로 특정 상황의 행동을 재현합니다. 사용자는 반려동물의 고유한 특성과 행동 데이터를 '디지털 유산'으로 보존하여, 고유한 행동들을 생생하게 다시 경험할 수 있습니다."
   },
   {
     "members": [
@@ -515,10 +470,9 @@
     ],
     "category": "c4",
     "projectNum": 45,
-    "titleKor": "한국어 타이틀 46",
-    "titleEng": "EngTitle 46",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "소-다방",
+    "titleEng": "SO-DABANG",
+    "description": "내 손 안의 작은 다방, 소-다방. 어플리케이션 속 DJ와 소통하며 음악을 감상해보세요. 그 시절 다방처럼 DJ에게 원하는 노래를 신청할 수 있습니다. 블루투스 스피커와 함께 사용하여 더 특별한 경험을 만끽하세요."
   },
   {
     "members": [
@@ -526,10 +480,9 @@
     ],
     "category": "c4",
     "projectNum": 46,
-    "titleKor": "한국어 타이틀 47",
-    "titleEng": "EngTitle 47",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "집쿡타임",
+    "titleEng": "JipCook Time",
+    "description": "‘집쿡타임’은 집에 있는 식재료를 기반으로 맞춤형 레시피를 추천하는 서비스입니다. 사용자는 카메라 인식이나 직접 입력으로 식재료를 등록하고, 유통기한 관리도 가능합니다. 이후 조리 시간·맛·요리 종류 등 필터를 통해 원하는 조건의 레시피를 탐색할 수 있으며, GPT API를 활용한 AI가 재료에 맞춘 레시피를 자동 추천합니다. 추천된 레시피는 수정·공유가 가능해 사용자만의 커스텀 레시피로 확장됩니다."
   },
   {
     "members": [
@@ -537,10 +490,9 @@
     ],
     "category": "c4",
     "projectNum": 47,
-    "titleKor": "한국어 타이틀 48",
-    "titleEng": "EngTitle 48",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "아쿠아링크",
+    "titleEng": "AQUALINK",
+    "description": "기존의 제습기는 실내 습도를 조절해 쾌적한 환경을 조성하지만, 이 과정에서 수집된 물은 대부분 활용하지 못한 채 버려집니다. Aqualink는 물을 버리지 않고, 재사용 가능한 자원으로 전환하여 식물 재배에 활용하는 순환형 시스템을 제안합니다. 이를 통해 자원의 활용도를 높이며 환경적 가치와 실용성을 동시에 구현합니다."
   },
   {
     "members": [
@@ -548,10 +500,9 @@
     ],
     "category": "c4",
     "projectNum": 48,
-    "titleKor": "한국어 타이틀 49",
-    "titleEng": "EngTitle 49",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "센소",
+    "titleEng": "SENSO",
+    "description": "SEnSO는 확장현실(XR) 콘텐츠를 체험할 수 있도록 설계된 몰입형 다감각 스피커입니다. XR 환경 속 공연 콘텐츠와 연동되어 단순한 사운드 출력이 아닌, 자동 리프트, 조명 연출, 실제 바람 분사 등 다양한 감각 자극을 통합 제공합니다. 사용자는 콘텐츠 속 위치와 관계없이, 조명과 바람을 통해 몰입의 중심에 있는 듯한 경험을 할 수 있습니다."
   },
   {
     "members": [
@@ -559,10 +510,9 @@
     ],
     "category": "c4",
     "projectNum": 49,
-    "titleKor": "한국어 타이틀 50",
-    "titleEng": "EngTitle 50",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "재료 교체로 레시피를 바꾸는 요리 플랫폼",
+    "titleEng": "REMIK",
+    "description": "레믹은 레시피를 바꿀 수 있는 요리 동영상 플랫폼입니다. 알레르기• 종교• 채식주의 • 개인 선호 등 다양한 이유로 특정 식재료를 먹지 못하는 인구가 증가하고 있습니다. 이를 바탕으로, 레믹은 재료를 변경하여 레시피를 새롭게 재생성합니다. 이 과정에서 사용자는 요리를 더욱 다양하고 창의적으로 접근 할 수 있습니다."
   },
   {
     "members": [
@@ -570,10 +520,9 @@
     ],
     "category": "c4",
     "projectNum": 50,
-    "titleKor": "한국어 타이틀 51",
-    "titleEng": "EngTitle 51",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "감성 기반 소비 기록 서비스",
+    "titleEng": "LEAF NOTE",
+    "description": "Leaf Note는 소비를 단순한 수치가 아닌 나뭇잎과 캐릭터라는 감성적 요소로 표현하는 새로운 형태의 가계부입니다. 매일의 소비가 입력될 때마다 하나의 나뭇잎으로 시각화되어 차곡차곡 쌓이고, 항목별 소비는 개성 있는 캐릭터로 나타나 사용자가 친근하게 자신의 소비 패턴을 이해하도록 돕습니다. 숫자 중심의 기록이 아닌 시각적 변화를 통해, 소비에 담긴 감정과 태도를 자연스럽게 인식하게 합니다."
   },
   {
     "members": [
@@ -581,10 +530,9 @@
     ],
     "category": "c4",
     "projectNum": 51,
-    "titleKor": "한국어 타이틀 52",
-    "titleEng": "EngTitle 52",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "테트링",
+    "titleEng": "TETLINK",
+    "description": "테트링은 쌓지 않는 정보 아카이브 서비스입니다. 기존 서비스가 정보를 보관하는 데 목적을 두었다면, 테트링은 이후 정보를 소비하는 것에 초점을 맞춥니다. 사용자가 저장한 정보를 블록형 게임의 블록처럼 시각화해 효과적인 소비를 유도하고, 그 과정에서 사용자는 아카이브를 비워내는 새로운 경험을 즐길 수 있습니다."
   },
   {
     "members": [
@@ -592,10 +540,9 @@
     ],
     "category": "c4",
     "projectNum": 52,
-    "titleKor": "한국어 타이틀 53",
-    "titleEng": "EngTitle 53",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "클러버스",
+    "titleEng": "CLUB EARTH",
+    "description": "클러버스는 패션 업사이클링 스타터를 위해 소장 중인 의류로 새활용을 할 수 있도록 돕는 Up It Yourself! KIT와 온라인 서비스를 제공합니다. 실패에 대한 부담 없이 초보자도 쉽게 제작할 수 있는 도구와 도안, 튜토리얼 영상, 온라인 매뉴얼 등 다양한 가이드를 통해 업사이클링의 장벽을 낮추고, 지속 가능한 패션 문화를 함께 만들어가고자 합니다."
   },
   {
     "members": [
@@ -604,10 +551,9 @@
     ],
     "category": "c4",
     "projectNum": 53,
-    "titleKor": "한국어 타이틀 54",
-    "titleEng": "EngTitle 54",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "공동체 생활에서의 물 절약 시스템",
+    "titleEng": "AQUA-SAVE",
+    "description": "AQUA-SAVE'는 일상 속 과도한 물 소비 문제를 해결하기 위해 개발된 스마트 절수 시스템입니다. 수전 디스플레이를 통해 실시간 물 사용량, 온도, 사용시간을 확인할 수 있으며, 애플리케이션을 통해 개인 및 공동체별 데이터를 분석하고 절수 미션을 제공합니다. 미션 달성 시 리워드가 제공되며, 이는 공동체의 효율적인 물 사용 습관 형성에 기여합니다."
   },
   {
     "members": [
@@ -615,10 +561,9 @@
     ],
     "category": "c4",
     "projectNum": 54,
-    "titleKor": "한국어 타이틀 55",
-    "titleEng": "EngTitle 55",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "한번쯤 망해봐도 괜찮은 인생 게임",
+    "titleEng": "내가 뭘 잘못했는데요?",
+    "description": "사람은 자신이 하고 싶은 것을 할 때 가장 빛난다.\n그러나 현실은 빠른 속도와 정해진 답을 끊임없이 요구합니다. 많은 사람들이 중요한 진로와 직업의 갈림길 앞에서 깊은 혼란을 겪습니다. 본 프로젝트는 그러한 상황에서 다양한 선택을 시뮬레이션할 수 있게 하여 각자의 리듬과 가능성을 온전히 존중하고자 하는 의도에서 만들어졌습니다."
   },
   {
     "members": [
@@ -626,10 +571,9 @@
     ],
     "category": "c4",
     "projectNum": 55,
-    "titleKor": "한국어 타이틀 56",
-    "titleEng": "EngTitle 56",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "사용자 경험 기반 디지털 아카이브",
+    "titleEng": "Ever Archive",
+    "description": "현대인의 디지털 라이프 속에서 기억은 쉽게 저장되지만, 그 안에 담긴 감정은 점차 흐려집니다. \nEver Archive는 이런 감정의 흔적을 몰입감 있는 경험으로 보존할 수 있도록 설계되었습니다. \n기억은 사라지는 것이 아니라, 형태를 바꿔 마음에 남는 것, 디자인을 통해 그 형태를 만들어주고 싶었습니다.\n사람의 마음과 감정을 다루는 디자인을 지향합니다."
   },
   {
     "members": [
@@ -637,10 +581,9 @@
     ],
     "category": "c4",
     "projectNum": 56,
-    "titleKor": "한국어 타이틀 57",
-    "titleEng": "EngTitle 57",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "모듈형 침구 UV 살균 로봇 청소기",
+    "titleEng": "NOVIX",
+    "description": "NOVIX는 침구 UV 살균 로봇 청소기로 모듈형 로봇기기와 본체 로봇청소기 2개로 이루어져있습니다. 본체는 가정집의 먼지청소를 먼저 이행하고 사용자가 침구위에서 모듈형 로봇을 작동시키면 상단의 360°센서 기반으로 자율 주행하며 침구 위를 이동하면서 보이지 않는 진드기와 유해 입자를 효과적으로 제거하는 UV 살균이 가능합니다."
   },
   {
     "members": [
@@ -649,10 +592,9 @@
     ],
     "category": "c4",
     "projectNum": 57,
-    "titleKor": "한국어 타이틀 58",
-    "titleEng": "EngTitle 58",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "모담이",
+    "titleEng": "MODAMI",
+    "description": "시니어를 위한 AI 자서전 서비스 '모담이'는 AI 아바타 '담이'와의 대화를 통해 당신의 삶을 기록합니다. \n키보드 없이 터치와 음성으로 세상에 단 하나뿐인 나만의 특별한 자서전이 완성됩니다."
   },
   {
     "members": [
@@ -660,10 +602,9 @@
     ],
     "category": "c4",
     "projectNum": 58,
-    "titleKor": "한국어 타이틀 59",
-    "titleEng": "EngTitle 59",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "소설 창작을 위한 협업 커뮤니티 플랫폼",
+    "titleEng": "CREWE",
+    "description": "Crewe는 하나의 아이디어에서 여러 사람이 의견을 더해 이야기를 완성하는 협업형 창작 플랫폼입니다. 하나의 소재에서 다양한 전개가 만들어지며, 함께 이야기를 확장해가는 집단 창작의 즐거움을 제공합니다."
   },
   {
     "members": [
@@ -671,10 +612,9 @@
     ],
     "category": "c4",
     "projectNum": 59,
-    "titleKor": "한국어 타이틀 60",
-    "titleEng": "EngTitle 60",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "유아 정서 발달 자연 친화 자동화 화분",
+    "titleEng": "REONA",
+    "description": "REONA는 자연의 흐름을 형상화한 클라우드 형태의 스마트 화분으로 디지털 디스플레이와 직관적인 형태 변화를 통해 날씨와 급수 필요성을 전달합니다. 하단부의 물을 워터펌프를 통해 끌어올려 상단 구름 부분에서 빗방울처럼 떨어뜨림으로써 식물이 자라는 자연의 환경을 실내에서 경험할 수 있도록 재현한 제품입니다."
   },
   {
     "members": [
@@ -682,10 +622,9 @@
     ],
     "category": "c4",
     "projectNum": 60,
-    "titleKor": "한국어 타이틀 61",
-    "titleEng": "EngTitle 61",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "노트모",
+    "titleEng": "NOTEMO",
+    "description": "notemo'는 사용자가 겪고 있는 정신적인 어려움을 완화할 수 있는 감정 습관 어플입니다. 하루에 한 번 짧고 직관적인 질문에 대답하며 감정에 솔직해지는 법을 배우고, '마음 기록장'과 '마음 정원' 을 통해 이를 쉽고 재미있게 확인할 수 있습니다. 또한, '마음 살펴보기' 를 통해 특정 심리 영역을 탐색할 수 있습니다."
   },
   {
     "members": [
@@ -693,10 +632,9 @@
     ],
     "category": "c4",
     "projectNum": 61,
-    "titleKor": "한국어 타이틀 62",
-    "titleEng": "EngTitle 62",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "리:미스트",
+    "titleEng": "RE:MIST",
+    "description": "RE:MIST는 사용자가 향을 원하는 대로 조합해 사용하는 모듈형 충전식 스프레이다. 재사용 가능한 구조와 진공 시스템으로 플라스틱과 유해 가스 사용을 줄이며, 분사량·향·기능을 세밀하게 조절할 수 있어 개인 맞춤형 경험을 제공한다. 환경 보호, 경제성, 창의적 사용성을 모두 갖춘 지속 가능한 라이프스타일 제품이다."
   },
   {
     "members": [
@@ -704,10 +642,9 @@
     ],
     "category": "c4",
     "projectNum": 62,
-    "titleKor": "한국어 타이틀 63",
-    "titleEng": "EngTitle 63",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "경험소비 기반 햄버거 커스터마이징 어플",
+    "titleEng": "BURGIT",
+    "description": "Z세대는 전세계 인구의 25%를 차지하며 역대 최대 규모의 소비력을 갖춘 세대가 될 것으로 예측됩니다. 이들에게 중요한 것은 직접 개입한 생산형 경험과 자기표현을 할 수 있는 콘텐츠입니다. 해당 어플은 사용자가 인터랙티브 요소를 통해 햄버거 재료를 직접 선택하고 제조할 수 있도록 하는 경험 소비 기반 햄버거 커스터마이징 어플리케이션입니다."
   },
   {
     "members": [
@@ -715,10 +652,9 @@
     ],
     "category": "c4",
     "projectNum": 63,
-    "titleKor": "한국어 타이틀 64",
-    "titleEng": "EngTitle 64",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "엔코",
+    "titleEng": "ENCO",
+    "description": "밀키트의 복잡한 조리 과정을 디제잉의 감각적인 퍼포먼스로 재해석합니다. DJ 컨트롤러에서 영감을 받은 다이얼과 레버, 행동을 유도하는 LED 인디케이터는 요리의 순서와 흐름을 직관적으로 안내합니다. 이를 통해 요리 과정을 하나의 퍼포먼스처럼 완성하는 새로운 경험을 제공하며 라이프스타일을 제안합니다."
   },
   {
     "members": [
@@ -726,10 +662,9 @@
     ],
     "category": "c4",
     "projectNum": 64,
-    "titleKor": "한국어 타이틀 65",
-    "titleEng": "EngTitle 65",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "*",
+    "titleEng": "*",
+    "description": "*"
   },
   {
     "members": [
@@ -737,10 +672,9 @@
     ],
     "category": "c4",
     "projectNum": 65,
-    "titleKor": "한국어 타이틀 66",
-    "titleEng": "EngTitle 66",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "*",
+    "titleEng": "*",
+    "description": "*"
   },
   {
     "members": [
@@ -749,10 +683,9 @@
     ],
     "category": "c5",
     "projectNum": 66,
-    "titleKor": "한국어 타이틀 67",
-    "titleEng": "EngTitle 67",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "폴라리스",
+    "titleEng": "POLARIS",
+    "description": "극한 환경에서도 자유롭게 이동하며 탐사 목적에 따라 모듈을 교체할 수 있는 극지 탐사 모빌리티로, 드론과 연동해 지형과 위험 요소를 실시간으로 스캔하고 다양한 임무를 효율적이고 안전하게 수행하며, 기후 변화 분석, 자원 탐사, 생태 조사, 야간 관측과 긴급 구조까지 동시에 수행하며 극한 환경 탐사의 새로운 기준과 가능성을 보여준다."
   },
   {
     "members": [
@@ -761,10 +694,9 @@
     ],
     "category": "c5",
     "projectNum": 67,
-    "titleKor": "한국어 타이틀 68",
-    "titleEng": "EngTitle 68",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "파빅스",
+    "titleEng": "PAVIX",
+    "description": "드론이 포트홀을 스캔하면 무인 모빌리티가 자동으로 이동해 보수를 수행하는 시스템입니다. TBM 공법을 적용해 절삭·청소·접착을 일체화했으며, 프리캐스트 임플란트 공법을 통해 경화 시간을 단축해 신속한 도로 개방이 가능합니다. 다관절 다리로 정밀한 작업이 가능하며, 드론이 프리캐스트를 카트리지 형태로 전달합니다."
   },
   {
     "members": [
@@ -773,10 +705,9 @@
     ],
     "category": "c5",
     "projectNum": 68,
-    "titleKor": "한국어 타이틀 69",
-    "titleEng": "EngTitle 69",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "감정기반 맞춤형 활동 추천 모빌리티 서비스",
+    "titleEng": "FLOV",
+    "description": "FLOV는 인공지능이 개인의 성향과 상황을 분석해 맞춤형 정보를 제공하는 시대에 주목합니다. 기술의 고도화로 사회적 유대가 약화되고 감정적 교류가 줄어든 미래 환경에서 해소되지 못한 감정을 지닌 개인에게 감정에 적합한 활동과 장소를 추천하고, 그 목적에 최적화된 모듈형 모빌리티를 통해 새로운 감정 해소 경험을 제공합니다."
   },
   {
     "members": [
@@ -784,10 +715,9 @@
     ],
     "category": "c5",
     "projectNum": 69,
-    "titleKor": "한국어 타이틀 70",
-    "titleEng": "EngTitle 70",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "지구와 우주를 연결하는 차세대 모빌리티 시스템",
+    "titleEng": "KAIROS",
+    "description": "KAIROS'는 지구와 우주 간 연속된 이동 경험을 제공하는 차세대 모빌리티 시스템입니다. 출발지부터 목적지까지 단일 공간에서 이동하며 새로운 라이프스타일을 누릴 수 있습니다. 직선과 평면 중심의 클래식카 감성과 미래지향적 조형성의 조화를 이루며 기능성과 감성을 동시에 아우르는 차세대 모빌리티입니다."
   },
   {
     "members": [
@@ -796,10 +726,9 @@
     ],
     "category": "c5",
     "projectNum": 70,
-    "titleKor": "한국어 타이틀 71",
-    "titleEng": "EngTitle 71",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "리프텐",
+    "titleEng": "RIFETEN",
+    "description": "도로 지면의 손상을 사전에 탐지하고, 발생될 포트홀을 예방하기 위해 개발된 자율주행 모빌리티입니다. 지면의 하부 약화를 감지하면 정지하여 드릴을 이용해 지면을 천공하고, 우레탄 폼과 레진을 주입하여 내부를 메우고 표면을 마감합니다. 드릴, 우레탄 및 레진 노즐은 하부에 배치되어 x축 트랙을 따라 정밀하게 이동하여 보수 대상 지점을 정교하게 작업합니다."
   },
   {
     "members": [
@@ -808,10 +737,9 @@
     ],
     "category": "c5",
     "projectNum": 71,
-    "titleKor": "한국어 타이틀 72",
-    "titleEng": "EngTitle 72",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "레이온",
+    "titleEng": "RAYON",
+    "description": "RAYON은 복잡한 지하철 역사 환경에서 역무원이 신속하게 이동해 응급 상황에 1차적인 처치를 수행할 수 있도록 설계된 1인용 응급 구조 모빌리티입니다. 구급대가 도착하기 전까지의 결정적인 시간을 단축하기 위해 좁은 통로와 다층 구조에서도 안정적인 주행이 가능하며, 응급 장비 수납 모듈과 직관적인 조작 시스템을 갖추고 있습니다."
   },
   {
     "members": [
@@ -819,10 +747,9 @@
     ],
     "category": "c5",
     "projectNum": 72,
-    "titleKor": "한국어 타이틀 73",
-    "titleEng": "EngTitle 73",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "휠로콥터",
+    "titleEng": "WHEELOCPCOTER",
+    "description": "WHEELCOPTER는 육상 주행과 비행이 모두 가능한 하이브리드 모빌리티로, 접근이 어려운 지역에서도 구조와 탐색을 수행할 수 있습니다. 바퀴를 프로펠러로 전환하는 구조로 효율성과 경제성을 높였으며, 재난 대응·군사 작전·보급 등 다양한 임무에 활용 가능합니다."
   },
   {
     "members": [
@@ -830,10 +757,9 @@
     ],
     "category": "c5",
     "projectNum": 73,
-    "titleKor": "한국어 타이틀 74",
-    "titleEng": "EngTitle 74",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "포레스트",
+    "titleEng": "FOR:EST",
+    "description": "PBV 플랫폼을 기반으로 시니어의 이동과 휴식을 고려한 맞춤형 인테리어 솔루션을 제안한다. 라운지 체어형 무중력 카시트와 모듈 교체 구조를 통해 반려견용·테이블용 옵션을 제공하며, 회전 플레이트로 이동·정차·산책 시나리오에 맞춰 공간을 전환해 액티브 시니어의 안전하고 편안한 아웃도어 라이프를 지원한다."
   },
   {
     "members": [
@@ -841,10 +767,9 @@
     ],
     "category": "c5",
     "projectNum": 74,
-    "titleKor": "한국어 타이틀 75",
-    "titleEng": "EngTitle 75",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "하우릭스",
+    "titleEng": "HAULIX",
+    "description": "HAULIX는 도시와 농촌 모두를 아우르는 차세대 모듈형 전동 바이크입니다. 이동성과 적재 능력을 동시에 갖춘 이 제품은, 후방에 다양한 모듈을 탈부착하여 사용자 맞춤형 구성이 가능합니다. 또한 GPS 기록, 직관적인 디스플레이, 접이식 안장 등 고령자를 배려한 세심한 기능도 탑재되어 있어 일상 이동의 부담을 줄여줍니다."
   },
   {
     "members": [
@@ -853,10 +778,9 @@
     ],
     "category": "c5",
     "projectNum": 75,
-    "titleKor": "한국어 타이틀 76",
-    "titleEng": "EngTitle 76",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "퀀타엑스",
+    "titleEng": "QUANTA-X",
+    "description": "연기 감지 센서가 화재를 탐지하면 드론이 자동으로 출동해 화재 지점에 소화볼을 투하하고 초기 진화를 수행합니다. 조기 감지와 신속한 대응을 통해 산불 확산을 방지하며 산림 자원과 생태계를 보호하고, 공공기관과 민간 분야로의 활용 가능성이 높습니다."
   },
   {
     "members": [
@@ -864,9 +788,8 @@
     ],
     "category": "c5",
     "projectNum": 76,
-    "titleKor": "한국어 타이틀 77",
-    "titleEng": "EngTitle 77",
-    "galleryCount": 1,
-    "description": "작품 설명 내용"
+    "titleKor": "투위",
+    "titleEng": "TOWEE",
+    "description": "TOWEE는 트랜스윙 시스템을 탑재한 eVTOL 차량 견인 모빌리티입니다."
   }
 ]
