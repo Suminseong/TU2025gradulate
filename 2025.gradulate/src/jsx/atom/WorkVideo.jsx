@@ -32,18 +32,23 @@ const Iframe = styled.iframe`
 `
 
 export default function WorkVideo({ videoId }) {
-    return (
-        <VideoWrapper>
-            <RatioBox>
-                <Iframe
-                    src={`https://player.vimeo.com/video/1126266309?h=1f3e4f1f6e&title=0&byline=0&portrait=0`}
-                    frameBorder="0"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                    title="Embedded Vimeo"
-                ></Iframe>
-            </RatioBox>
-        </VideoWrapper>
-    );
-}
+  // videoId가 숫자든 문자열이든 문자열로 변환
+  const id = String(videoId || '').trim();
 
+  // Vimeo 플레이어 URL 생성
+  const src = `https://player.vimeo.com/video/${id}?badge=0&autopause=0&title=0&byline=0&portrait=0&app_id=58479`;
+
+  return (
+    <VideoWrapper>
+      <RatioBox>
+        <Iframe
+          src={src}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title="Embedded Vimeo"
+        ></Iframe>
+      </RatioBox>
+    </VideoWrapper>
+  );
+}
