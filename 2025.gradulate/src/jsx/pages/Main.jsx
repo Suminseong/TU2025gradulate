@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Hero from '../organism/Hero';
 import BrandConcept from '../organism/BrandConcept';
 import Gallery from '../organism/Gallery';
@@ -7,13 +8,19 @@ import ExpoWorksList from '../organism/ExpoWorksList';
 import InstagramBlock from '../organism/InstagramBlock';
 import VenueAccess from '../organism/VenueAccess.jsx';
 
+const HideOnMobile = styled.div`
+  @media (max-width: 640px) {
+    display: none !important;
+  }
+`;
+
 export default function Main() {
   // 순서만 조절하면 위치 옮기기 가능. 옮길 때 그라데이션 옵션만 체크
   const sections = [
     <Hero key="hero" />,
     <BrandConcept key="brand" />,
     <Gallery key="gallery" />,
-    <OnlineExhibition key="online" />,
+    <HideOnMobile key="online"><OnlineExhibition /></HideOnMobile>,
     <ExpoWorksList key="works" />,
     <InstagramBlock key="insta" />,
     <VenueAccess key="venue" />,

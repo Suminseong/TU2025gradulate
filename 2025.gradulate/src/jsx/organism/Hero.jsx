@@ -5,13 +5,9 @@ import { G } from '../atom/gradients';
 const base = import.meta.env.BASE_URL || '/';
 
 const Wrap = styled.section`
-  position: relative;
-  height: calc(100vh);
-  min-height: 620px;
-  overflow: hidden;
-  background: #121212;
-  z-index: 1;
+  position: relative; height: 974px; min-height: 620px; overflow: hidden; background: #121212; z-index: 1;
   @media (max-width: 640px) {
+    height: 320px;
     min-height: 220px;
   }
 `;
@@ -50,13 +46,12 @@ const VideoBox = styled.div`
 const VideoEl = styled.video`
   width: 100%;
   height: 100%;
-  object-fit: cover;
   display: block;
 `;
 const BgInner = styled.div`
   position: absolute;
   inset: 0;
-  background-color: rgba(18, 18, 18, 0.0);
+  background-color: rgba(18, 18, 18, 0.2);
 `
 const CopyWrap = styled.div`
   position: absolute; left: 40px; bottom: 80px; max-width: 1029px; display: flex; flex-direction: column; gap: 8px;
@@ -65,26 +60,23 @@ const CopyWrap = styled.div`
   pointer-events: ${(p) => (p.$visible ? 'auto' : 'none')};
   @media (max-width: 640px) {
     left: 16px;
-    bottom: 241px;
+    bottom: 32px;
     max-width: 90vw;
-    gap: 8px;
+    gap: 4px;
   }
 `;
 const P = styled.p`
-  margin: 0; color: rgba(0,0,0,0.4); font-family: Pretendard, system-ui; font-size: 16px; line-height: 19.2px; font-weight: 400;
-  //css로 텍스트 오버레이 효과 부여 해야됨
-  mix-blend-mode: darken;
+  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-size: 16px; line-height: 19.2px;
   @media (max-width: 640px) {
     font-size: 13px;
-    line-height: 120%;
+    line-height: 1.4;
   }
 `;
 const Title = styled.p`
-  margin: 0; color: rgba(255,255,255,0.4); font-family: Pretendard, system-ui; font-weight: 500; font-size: 24px; line-height: 27.6px;
-  mix-blend-mode: difference;
+  margin: 0; color: #FFFFFF; font-family: Pretendard, system-ui; font-weight: 600; font-size: 24px; line-height: 27.6px;
   @media (max-width: 640px) {
-    font-size: 16px;
-    line-height: 115%;
+    font-size: 17px;
+    line-height: 1.3;
   }
 `;
 const Cta = styled.button`
@@ -105,9 +97,7 @@ const Cta = styled.button`
     width: 140px;
     height: 36px;
     font-size: 14px;
-    bottom: 165px;
-    left: 16px;
-    transform: none;
+    bottom: 16px;
   }
 `;
 
@@ -141,7 +131,7 @@ export default function Hero() {
             onLoadedData={() => {
               // show copy after 15s from load
               if (timerRef.current) clearTimeout(timerRef.current);
-              timerRef.current = setTimeout(() => setCopyVisible(true), 15500);
+              timerRef.current = setTimeout(() => setCopyVisible(true), 13900);
             }}
           >
             <source src={`${base}video/hero11.mp4`} type="video/mp4" />

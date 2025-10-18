@@ -59,6 +59,7 @@ const Grid = styled.div`
   @media (max-width: 640px) {
     gap: 10px;
     margin-top: 12px;
+    display: none; /* hide desktop grid on small screens */
   }
 `;
 
@@ -103,18 +104,53 @@ const Cap = styled.div`
   transition: opacity .2s;
 `;
 
+// Mobile-specific layout components
+const MobileWrapper = styled.div`
+  display: none;
+  @media (max-width: 640px) {
+    display: block;
+    padding: 20px; /* edge-to-edge on mobile */
+    box-sizing: border-box;
+  }
+`;
+const MobileGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+const MobileFull = styled.div`
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #151515;
+  aspect-ratio: 2 / 1;
+  max-height: 300px;
+`;
+const MobilePair = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+const MobileSquare = styled.div`
+  flex: 1; /* share available width evenly */
+  border-radius: 4px;
+  overflow: hidden;
+  background: #151515;
+  aspect-ratio: 1 / 1;
+  max-height: 200px;
+`;
+
 export default function Gallery() {
   // 모바일 카드 데이터 (임시, 실제 데이터 구조에 맞게 조정)
   const mobileCards = [
     { src: 'https://placehold.co/910x512', cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '뭐' },
-    { src: 'https://placehold.co/727x445', cap: '뭐' },
-    { src: 'https://placehold.co/727x445', cap: '뭐' },
-    { src: 'https://placehold.co/727x445', cap: '뭐' },
+    { src: 'https://placehold.co/727x445', cap: '' },
+    { src: 'https://placehold.co/727x445', cap: '' },
+    { src: 'https://placehold.co/727x445', cap: '' },
+    { src: 'https://placehold.co/727x445', cap: '' },
     { src: 'https://placehold.co/910x517', cap: '' },
     { src: 'https://placehold.co/987x555', cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '뭐' },
-    { src: 'https://placehold.co/727x445', cap: '뭐' },
+    { src: 'https://placehold.co/727x445', cap: '' },
+    { src: 'https://placehold.co/727x445', cap: '' },
   ];
   return (
     <Section aria-label="Gallery">
@@ -132,24 +168,93 @@ export default function Gallery() {
         </Hero>
 
         {/* 데스크탑: 기존 그리드 */}
-        <Grid className="gallery-desktop">
-          {/* ...기존 데스크탑 Row/Card 구조... */}
+  <Grid className="gallery-desktop">
+          <Row>
+            <Card $w={910} $h={445}>
+              <Img src="https://placehold.co/910x512" alt="" /></Card>
+            <Card $w={445} $h={445}>
+              <Img src="https://placehold.co/727x445" alt="" />
+            </Card>
+            <Card $w={445} $h={445}>
+              <Img src="https://placehold.co/727x445" alt="" />
+            </Card>
+          </Row>
+
+          <Row>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
+            <Card $w={910} $h={445}><Img src="https://placehold.co/910x517" alt="" /></Card>
+          </Row>
+
+          <Row>
+            <Card $w={910} $h={445}><Img src="https://placehold.co/987x555" alt="" /></Card>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
+          </Row>
         </Grid>
 
-        {/* 모바일: 2열 정사각형 카드 그리드 */}
-        <div className="gallery-mobile" style={{ display: 'none' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 12 }}>
-            {mobileCards.map((c, i) => (
-              <div key={i} style={{
-                width: '46vw', height: '46vw', minWidth: 140, minHeight: 140, maxWidth: '100vw', maxHeight: '100vw',
-                borderRadius: 4, overflow: 'hidden', background: '#151515', position: 'relative', marginBottom: 8
-              }}>
-                <img src={c.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                {c.cap && <Cap>{c.cap}</Cap>}
-              </div>
-            ))}
+        {/* <Grid> -> 예전 데스크탑 그리드
+          <Row>
+            <Card $w={910} $h={445}><Img src="https://placehold.co/910x512" alt="" /></Card>
+            <Card $w={445} $h={445}>
+              <Img src="https://placehold.co/727x445" alt="" />
+              <Cap></Cap>
+            </Card>
+            <Card $w={445} $h={445}>
+              <Img src="https://placehold.co/727x445" alt="" />
+              <Cap></Cap>
+            </Card>
+          </Row>
+
+          <Row>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
+            <Card $w={910} $h={445}><Img src="https://placehold.co/910x517" alt="" /></Card>
+          </Row>
+
+          <Row>
+            <Card $w={910} $h={445}><Img src="https://placehold.co/987x555" alt="" /></Card>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
+            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
+          </Row> */}
+
+        {/* 모바일: 1~2열 정사각형 카드 그리드 */}
+        {/* Mobile grid: hidden on desktop via styled-components */}
+        <MobileWrapper>
+          <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {/* 모바일 우선: 그룹 단위로 (1) full-width 2:1 이미지 (2) 두 개의 정사각 이미지 */}
+            {Array.from({ length: 3 }).map((_, gi) => {
+              const baseIdx = gi * 3;
+              const a = mobileCards[baseIdx];
+              const b = mobileCards[baseIdx + 1];
+              const c = mobileCards[baseIdx + 2];
+              return (
+                <MobileGroup key={gi}>
+                  {a && (
+                    <MobileFull>
+                      <img src={a.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      {a.cap && <Cap style={{ opacity: 1 }}>{a.cap}</Cap>}
+                    </MobileFull>
+                  )}
+                  <MobilePair>
+                    {b && (
+                      <MobileSquare>
+                        <img src={b.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        {b.cap && <Cap style={{ opacity: 1 }}>{b.cap}</Cap>}
+                      </MobileSquare>
+                    )}
+                    {c && (
+                      <MobileSquare>
+                        <img src={c.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        {c.cap && <Cap style={{ opacity: 1 }}>{c.cap}</Cap>}
+                      </MobileSquare>
+                    )}
+                  </MobilePair>
+                </MobileGroup>
+              );
+            })}
           </div>
-        </div>
+        </MobileWrapper>
 
         <div style={{ paddingTop: 40, display: 'flex', justifyContent: 'center' }}>
           <OutlineButton label="View More" />

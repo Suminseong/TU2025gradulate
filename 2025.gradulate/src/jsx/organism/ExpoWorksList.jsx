@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PinSection from './PinSection';
 import { EXPO_WORKS } from '../../data/expoWorks';
 
 const Wrap = styled.div`
@@ -84,7 +85,6 @@ const Frame = styled.div`
   border-radius: 3.55px;
   background: #606060;
   overflow: hidden;
-  transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
   @media (max-width: 640px) {
     position: static;
     width: 90vw;
@@ -112,8 +112,7 @@ const LeftName = styled.div`
   color: #FAFAFA;
   font-family: Pretendard, system-ui;
   font-size: 112px; font-weight: 600;
-  transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
-  opacity: ${(p)=>p.$opacity??1};
+  /* transform and opacity are applied inline for performance */
   ${SlotMask}
   @media (max-width: 640px) {
     position: static;
@@ -130,8 +129,7 @@ const LeftMeta = styled.div`
   color: #D9D9D9;
   font-family: Pretendard, system-ui;
   font-size: 24px; font-weight: 400;
-  transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
-  opacity: ${(p)=>p.$opacity??1};
+  /* transform and opacity are applied inline for performance */
   ${SlotMask}
   @media (max-width: 640px) {
     position: static;
@@ -148,8 +146,7 @@ const RightMeta1 = styled.div`
   width: 690.67px; color: #D9D9D9;
   font-family: Pretendard, system-ui; font-size: 24px; font-weight: 300;
   text-align: right;
-  transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
-  opacity: ${(p)=>p.$opacity??1};
+  /* transform and opacity are applied inline for performance */
   ${SlotMask}
   @media (max-width: 640px) {
     position: static;
@@ -168,8 +165,7 @@ const RightMeta2 = styled.div`
   width: 690.67px; color: #FAFAFA;
   font-family: Pretendard, system-ui; font-weight: 500; font-size: 32px;
   text-align: right;
-  transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
-  opacity: ${(p)=>p.$opacity??1};
+  /* transform and opacity are applied inline for performance */
   ${SlotMask}
   @media (max-width: 640px) {
     position: static;
@@ -185,8 +181,7 @@ const RightMeta2 = styled.div`
 `;
 const WorkBlock = styled.div`
   position: absolute; left: 195px; top: 679px; width: 690.67px;
-  transform: translate3d(0, ${(p)=>p.$y||0}px, 0);
-  opacity: ${(p)=>p.$opacity??1};
+  /* transform and opacity are applied inline for performance */
   ${SlotMask}
   @media (max-width: 640px) {
     position: static;
@@ -213,33 +208,38 @@ const WorkStrong = styled.strong`
   }
 `;
 
-const clamp = (n, a=0, b=1)=>Math.max(a, Math.min(b, n));
-const lerp = (a,b,t)=>a+(b-a)*t;
-const ease = (t)=> (t<0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2);
+const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
+const lerp = (a, b, t) => a + (b - a) * t;
+const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
 function ExpoItem({ work, progress }) {
   const p = ease(clamp(progress, 0, 1));
-  const imgY       = lerp(0, -120, p);
-  const leftNameY  = lerp(0, -360, p);
-  const leftMetaY  = lerp(0, -280, p);
-  const right1Y    = lerp(0, -220, p);
-  const right2Y    = lerp(0, -260, p);
+  const imgY = lerp(0, -120, p);
+  const leftNameY = lerp(0, -360, p);
+  const leftMetaY = lerp(0, -280, p);
+  const right1Y = lerp(0, -220, p);
+  const right2Y = lerp(0, -260, p);
   const workBlockY = lerp(0, -180, p);
-  const fadeStart=0.55, fadeEnd=0.9;
-  const fade = p < fadeStart ? 1 : 1 - Math.max(0, Math.min(1, (p - fadeStart)/(fadeEnd - fadeStart)));
+  const fadeStart = 0.55, fadeEnd = 0.9;
+  const fade = p < fadeStart ? 1 : 1 - Math.max(0, Math.min(1, (p - fadeStart) / (fadeEnd - fadeStart)));
+
+  const frameStyle = { transform: `translate3d(0, ${imgY}px, 0)`, willChange: 'transform' };
+  const textStyle = (y) => ({ transform: `translate3d(0, ${y}px, 0)`, opacity: fade, willChange: 'transform, opacity' });
+  const workBlockStyle = { transform: `translate3d(0, ${workBlockY}px, 0)`, opacity: fade, willChange: 'transform, opacity' };
 
   return (
+
     <Wrap>
+      <Title>TU-EXPO Works</Title>
       <Stage>
-        <Title>TU-EXPO Works</Title>
-        <Frame $y={imgY}>
+        <Frame style={frameStyle}>
           <Img src={work.image} alt="작품 이미지" />
         </Frame>
-        <LeftName $y={leftNameY} $opacity={fade}>{work.artistKr}</LeftName>
-        <LeftMeta $y={leftMetaY} $opacity={fade}>{work.dept}</LeftMeta>
-        <RightMeta1 $y={right1Y} $opacity={fade}>{work.rightMeta1}</RightMeta1>
-        <RightMeta2 $y={right2Y} $opacity={fade}>{work.rightMeta2}</RightMeta2>
-        <WorkBlock $y={workBlockY} $opacity={fade}>
+        <LeftName style={textStyle(leftNameY)}>{work.artistKr}</LeftName>
+        <LeftMeta style={textStyle(leftMetaY)}>{work.dept}</LeftMeta>
+        <RightMeta1 style={textStyle(right1Y)}>{work.rightMeta1}</RightMeta1>
+        <RightMeta2 style={textStyle(right2Y)}>{work.rightMeta2}</RightMeta2>
+        <WorkBlock style={workBlockStyle}>
           <WorkSmall>{work.titleSmall}</WorkSmall>
           <WorkStrong>{work.titleStrong}</WorkStrong>
         </WorkBlock>
@@ -251,12 +251,32 @@ function ExpoItem({ work, progress }) {
 export default function ExpoWorksList() {
   return (
     <>
-      {/* 데스크탑: 기존 동적 방식 유지 */}
-      <Wrap className="expo-works-desktop">
-        {/* ...기존 데스크탑 동적 구현... */}
-      </Wrap>
+      {/* CSS helper to hide/show mobile/desktop blocks */}
+      <style>{`
+        @media (max-width: 640px) {
+          .expo-works-desktop { display: none !important; }
+        }
+        @media (min-width: 641px) {
+          .expo-works-mobile { display: none !important; }
+        }
+      `}</style>
+
+      {/* 데스크탑: 각 작품을 PinSection으로 감싸 스크롤 기반 progress를 전달합니다 */}
+      <div className="expo-works-desktop">
+        {EXPO_WORKS.slice(0, 3).map((work) => (
+          <PinSection
+            key={work.id}
+            durationVh={320}
+            center
+            centerOffsetPx={-40}
+          >
+            {(pRaw) => <ExpoItem work={work} progress={pRaw} />}
+          </PinSection>
+        ))}
+      </div>
+
       {/* 모바일: 정적 카드 그리드 */}
-      <MobileGrid>
+      <MobileGrid className="expo-works-mobile">
         {EXPO_WORKS.map((work) => (
           <MobileCard key={work.id}>
             <MobileImg src={work.image} alt={work.titleStrong} />
