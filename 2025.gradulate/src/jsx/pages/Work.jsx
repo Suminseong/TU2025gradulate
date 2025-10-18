@@ -192,7 +192,7 @@ export default function Work() {
   useEffect(() => {
     let cancelled = false;
 
-    const exts = ['jpg', 'jpeg', 'png'];
+    const exts = ['jpg'];
     const MAX_PROBE = 30;               // 최대 시도 개수(상한)
     const MAX_CONSECUTIVE_MISS = 2;     // 연속 미스 2회면 종료(중간 구멍 허용)
 
