@@ -205,16 +205,14 @@ export default function VenueAccess() {
         {/* Access */}
         <Block title="Access">
           <KVRow k="Address">
-            <BodyText>Hongik Art Center B2 Gallery</BodyText>
-            <BodyText>57, Daehak-ro, Jongno-gu, Seoul</BodyText>
-
-            <BodyTextMT24>Address in local language</BodyTextMT24>
             <BodyText>
-              홍대 아트센터 지하 2층 전시관<br />서울시 종로구 대학로 57
+              홍대 아트센터 지하 2층 전시관 3<br />서울시 종로구 대학로 57
             </BodyText>
 
+            <BodyText>Hongik Art Center B2 Gallery 3<br />57, Daehak-ro, Jongno-gu, Seoul</BodyText>
+
             <div style={{ marginTop: 24 }}>
-              <OutlineButton as="a" href="https://maps.app.goo.gl/qc99M9bDqyBTcmx79"  label="Map" size="sm" showArrow/>
+              <OutlineButton as="a" href="https://maps.app.goo.gl/qc99M9bDqyBTcmx79" label="Map" size="sm" showArrow />
             </div>
           </KVRow>
 

@@ -53,6 +53,7 @@ const SubTitle = styled.div`
     line-height: 11px;
     margin-top: 24px;
     width: calc(100vw - 32px);
+    margin-bottom: 8px;
   }
 `;
 function HeroHeader() {
@@ -79,12 +80,85 @@ const IntroNoteBox = styled.p`
   @media (max-width: 640px) {
     font-size: 10px;
     max-width: calc(100vw - 32px);
-    margin-top: 16px;
+    margin-top: 8px;
   }
 `;
+
+const IntroWrapBox = styled.div`
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  overflow: visible;
+  padding-top: 20px;
+    @media (max-width: 640px) {
+    padding-top: 0px;
+  }
+`;
+
+const IntroWrapBoxTopLine = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0px;
+  width: 100vw;
+  height: 1px;
+  background-color: #E0E0E0;
+  margin-bottom: 12px;
+  z-index: 20;
+    @media (max-width: 640px) {
+      top: 0px;
+  }
+`;
+
+const IntroWrapBoxTopLineVW = styled.div`
+  position: absolute;
+  right: 0;
+  top: 89px;
+  width: 100vw;
+  height: 1px;
+  background-color: #E0E0E0;
+  margin-bottom: 12px;
+  z-index: 20;
+    @media (max-width: 640px) {
+      top: 44px;
+  }
+`;
+
+const IntroWrapBoxLeftLine = styled.div`
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #E0E0E0;
+  margin-right: 12px;
+  z-index: 20;
+    @media (max-width: 640px) {
+      left: -8px;
+  }
+`;
+
+const IntroWrapBoxLeftLineVH = styled.div`
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 1px;
+  height: 100vh;
+  background-color: #E0E0E0;
+  margin-right: 12px;
+  z-index: 20;
+  @media (max-width: 640px) {
+    left: -8px;
+    height: 200vh;
+  }
+`;
+
 function IntroNote({ text }) {
   return (
-    <IntroNoteBox dangerouslySetInnerHTML={{ __html: text }} />
+    <IntroWrapBox>
+      <IntroWrapBoxLeftLineVH />
+      <IntroWrapBoxTopLine />
+      <IntroNoteBox dangerouslySetInnerHTML={{ __html: text }} />
+    </IntroWrapBox>
   );
 }
 
@@ -93,6 +167,7 @@ const IntroWrap = styled.div`
   flex-direction: row;
   align-items: flex-start;
   gap: 46px;
+  overflow: visible;
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: center;
@@ -101,7 +176,7 @@ const IntroWrap = styled.div`
 `
 
 const HeroCardWrap = styled.div`
-  width: 800px; height: 450px; background: #FFF4ED; position: relative;
+  width: 800px; height: 450px; background: #FFF4ED; position: relative; z-index: 30;
   @media (max-width: 640px) {
     width: 100vw;
     height: calc(100vw * 0.5625); /* 16:9 비율 유지 */
@@ -130,7 +205,7 @@ function HeroCard({ children }) {
 }
 
 const ThreeWrap = styled.div`
-  display: flex; gap: 40px; margin-top: 44px; width: 1220px;
+  display: flex; gap: 40px; margin-top: 44px; width: 1220px; position: relative;
   @media (max-width: 640px) {
     // flex 위쪽에 2개, 아래에 1개 배치되게 해주고, 아래 배치된거는 위쪽 2개의 길이만큼 맞춰주게 해주세요
     width: 100%;
@@ -163,6 +238,7 @@ const SpeechBody = styled.p`
 function ThreeSpeeches({ blocks }) {
   return (
     <ThreeWrap>
+      <IntroWrapBoxLeftLineVH />
       {blocks.map((b) => (
         <SpeechCol key={b.title}>
           <SpeechTitle>{b.title}</SpeechTitle>
@@ -294,26 +370,34 @@ function CommitteeRow({ ko, en, divider = false }) {
 }
 
 const TitleBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
   margin-top: 60px;
   margin-bottom: 100px;
+  min-width: 1220px;
   @media (max-width: 640px) {
     margin-top: 80px;
     margin-bottom: 40px;
     width: calc(100vw - 32px);
     display: flex;
     flex-direction: column;
+    min-width: unset;
   }
 `;
 const TitleBlockText = styled.div`
+  display: flex;
+  position: relative;
   font-family: ${FONT};
   font-size: 28px;
   font-weight: 600;
   color: #101010;
-  margin-bottom: 24px;
+  margin-bottom: 45px;
   @media (max-width: 640px) {
     font-size: 16px;
     line-height: 18px;
     text-overflow: ellipsis;
+    margin-bottom: 20px;
   }
 `;
 
@@ -322,8 +406,8 @@ export default function Credit() {
     '안녕하세요, 제20회 졸업전시준비위원회입니다. <br/><br/>한국공학대학교 디자인공학부 제20회 졸업전시 <잔향>은 지난 시간 동안의 도전과 성장을 작품으로 담아내는 자리입니다. 이번 전시는 단순히 결과물을 나열하는 데 그치지 않고, 각자의 창작 과정 속에서 남겨진 고민과 흔적을 함께 나누고자 기획되었습니다. <br/><br/><잔향>이라는 주제는 작품이 지닌 감각과 정서가 관람자의 마음에 은은히 스며들어, 시간이 지나도 다시 떠오르는 기억으로 남기를 바라는 마음을 담고 있습니다. 학생들이 걸어온 수많은 순간과 열정이 응축된 이번 전시가, 누군가의 영감으로 다시 피어나길 희망합니다. 100명의 학생들이 모여 만들어 낸 이 전시는 그 어느 때보다 크고 도전적인 시도였습니다. 서로의 열정이 모여 이루어진 결과물이기에, 그 의미 또한 더욱 특별합니다.<br/><br/> 이번 전시가 졸업생들에게는 새로운 출발을 알리는 이정표로, 관람객에게는 오래도록 마음속에 머무는 "기억의 향기"로 남기를 바랍니다.';
 
   const speeches = [
-    { title: '학과 소개', body: '한국공학대학교 디자인공학부는 창의적인 디자인 발상법과 공학적 마인드의 통합적 접근법을 추구하는 시대로 바뀜에 따라 단순히 심미적 역할에만 머물렀던 디자인 개념에서 확장하여 4차 산업혁명 기술 분야를 선도하고자 하는 비전을 담고 있는 실무 중심의 융합형 학부입니다.<br/>디자인공학부는 디자인 기반의 창의적 아이디어와 HW/SW 융합 기술 개발 능력을 통해 기업을 혁신할 수 있는 인재 양성을 목표로 하고 있습니다.' },
     { title: '학부장의 말씀', body: '스무 번째를 맞이하는 디자인공학부 졸업작품전시회를 진심으로 축하드립니다.<br/>이번 전시회에는 총 100명의 학생들이 개인 혹은 팀을 이루어, 산업디자인공학전공 47개 작품과 미디어디자인공학전공 30개 작품을 선보입니다. 이번 전시회는 단순히 결과물을 보여주는 자리를 넘어, 지난 4년간의 땀과 열정, 수많은 고민과 성장이 맺은 값진 결실이자, 새로운 출발을 알리는 뜻깊은 순간입니다.<br/>오늘날 우리는 인공지능, 스마트 기술, 친환경 소재 등 급속히 변화하는 기술 환경 속에서 전례 없는 전환의 시대를 맞이하고 있습니다.<br/>이러한 가운데에 디자이너는 우리의 생활에서 여러 불편한 요소를 찾아내고 이를 창의적이며 책임감 있게 해결할 수 있는 융합형 인재로서 그 역할이 더욱 중요해지고 있습니다.<br/>우리 디자인공학부 학생들은 이러한 변화에 능동적으로 대응하며, 사용자 중심의 사고, 미적 감각, 기술적 이해를 균형 있게 갖춘 디자이너로 성장해 왔습니다. 이번 전시의 모든 작품에는 치열한 탐구와 관찰, 반복된 시도와 실패, 그리고 그 너머의 성장이 고스란히 담겨 있습니다. 그 귀중한 과정을 진심으로 응원하며, 우리 학생들이 디자인을 통해 사회에 공헌하고 세상에 긍정적인 변화를 이끄는 창의적이고 따뜻한 디자이너로 거듭나기를 바랍니다.<br/>앞으로 변화와 도전의 흐름 속에서도 흔들림 없이 자신이 옳다고 믿는 방향으로 꿋꿋하게 나아가며, 사회 곳곳에서 중심적인 역할을 수행하는 당당한 디자이너로 성장하길 기대합니다. 그리고 언제 어디서든 한국공학대학교 디자인공학부의 이름을 빛내는 자랑스러운 동문으로 기억되길 바랍니다.<br/>마지막으로, 소중한 인재들의 성장을 위해 아낌없는 지도와 격려를 보내주신 교수님들께 깊은 감사의 말씀을 전합니다. 또한, 묵묵히 곁에서 자녀를 응원해주신 학부모님들께도 진심 어린 감사의 인사를 드립니다. 감사합니다.' },
+    { title: '학과 소개', body: '한국공학대학교 디자인공학부는 창의적인 디자인 발상법과 공학적 마인드의 통합적 접근법을 추구하는 시대로 바뀜에 따라 단순히 심미적 역할에만 머물렀던 디자인 개념에서 확장하여 4차 산업혁명 기술 분야를 선도하고자 하는 비전을 담고 있는 실무 중심의 융합형 학부입니다.<br/>디자인공학부는 디자인 기반의 창의적 아이디어와 HW/SW 융합 기술 개발 능력을 통해 기업을 혁신할 수 있는 인재 양성을 목표로 하고 있습니다.' },
     // { title: '졸전담당교수 말씀', body: '내용 작성' }, 교수님 말씀이 없으시기 때문에 학과 소개 임시 변경, 추후 확정 될 수 있음
     { title: '웹사이트팀 제작 후기', body: '내용 작성' },
   ];
@@ -395,14 +479,16 @@ export default function Credit() {
         </IntroWrap>
       </PageContainer>
 
-      
+
 
       <PageContainer>
         <ThreeSpeeches blocks={speeches} />
 
         {/* 위원회 표 */}
         <TitleBlock>
+          <IntroWrapBoxLeftLine />
           <TitleBlockText>
+            <IntroWrapBoxTopLineVW />
             2025 잔향<br />제 20대 졸업전시위원회
           </TitleBlockText>
 

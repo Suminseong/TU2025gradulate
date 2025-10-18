@@ -6,13 +6,29 @@ const Button = styled.button`
   width: ${(p) => p.$w}px;
   height: ${(p) => p.$h}px;
   border-radius: 8px;
-  background: linear-gradient(137deg, #AEAEAE 0%, #848484 100%);
+  /* background: linear-gradient(157deg, #AEAEAE 0%, #848484 100%); */
   outline: 1px rgba(255,255,255,.5) solid;
   outline-offset: -1px;
   display: grid;
   place-items: center;
+  position: relative; 
   cursor: pointer;
   border: none;
+  @media (max-width: 640px) {
+    width: 100%;
+    height: 216px;
+    border-radius: 10px;
+  }
+`;
+
+const Background = styled.div`
+  position: absolute;
+  width: ${(p) => p.$w}px;
+  height: ${(p) => p.$h}px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(157deg, #AEAEAE 0%, #848484 100%);
+  border-radius: 8px;
   @media (max-width: 640px) {
     width: 100%;
     height: 216px;
@@ -24,7 +40,6 @@ const Inner = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 6px;
-  background: rgba(0,0,0,.35);
   display: grid;
   place-items: center;
   @media (max-width: 640px) {
@@ -34,46 +49,49 @@ const Inner = styled.div`
 `;
 
 const PlusBox = styled.div`
-  width: 14px;
-  height: 14px;
+  width: 32px;
+  height: 32px;
   position: relative;
   @media (max-width: 640px) {
-    width: 12px;
-    height: 12px;
+    width: 26px;
+    height: 26px;
   }
 `;
 
 const VBar = styled.span`
   position: absolute;
-  left: 6px;
-  top: 0;
-  width: 2px;
-  height: 14px;
+  left: 14px;
+  top: 1px;
+  width: 4px;
+  height: 30px;
   background: #fff;
-  border-radius: 1px;
+  border-radius: 4px;
   @media (max-width: 640px) {
-    left: 5px;
-    height: 12px;
+    left: 11px;
+    height: 24px;
+    width: 3px;
   }
 `;
 
 const HBar = styled.span`
   position: absolute;
-  left: 0;
-  top: 6px;
-  width: 14px;
-  height: 2px;
+  left: 1px;
+  top: 14px;
+  width: 30px;
+  height: 4px;
   background: #fff;
-  border-radius: 1px;
+  border-radius: 4px;
   @media (max-width: 640px) {
-    top: 5px;
-    width: 12px;
+    top: 11px;
+    width: 24px;
+    height: 3px;
   }
 `;
 
 export default function AddCardButton({ onClick }) {
   return (
     <Button onClick={onClick} aria-label="방명록 작성" $w={CARD_W} $h={CARD_H}>
+      <Background $w={CARD_W} $h={CARD_H} />
       <Inner>
         <PlusBox>
           <VBar />

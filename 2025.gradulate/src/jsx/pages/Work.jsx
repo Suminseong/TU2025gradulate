@@ -65,6 +65,11 @@ const PageInner = styled.div`
   min-height: 100vh;
   align-items: center;
   /* transition: all 500ms ease; */
+  @media (max-width: 1450px) {
+    width: calc(100% - 350px);
+    padding-right: 80px;
+    padding-left: ${props => (props.$isInfoOpen ? 0 : 80)}px;
+  }
   @media (max-width: 640px) {
     padding: 20px 0px 0px 0px;
 }

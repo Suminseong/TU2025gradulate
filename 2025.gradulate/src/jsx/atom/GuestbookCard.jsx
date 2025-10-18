@@ -15,8 +15,9 @@ const Card = styled.div`
   background: linear-gradient(246deg, #F2F0FF -0.07%, #FFF 99.93%);
   @media (max-width: 640px) {
     width: 100%;
-    height: 216px;
-    border-radius: 10px;
+    height: auto;
+    min-height: 216px;
+    border-radius: 4px;
   }
 `;
 
@@ -39,68 +40,64 @@ const Deco1 = styled.div`
   }
 `;
 
-const Deco2 = styled.div`
-  width: 25px;
-  height: 25px;
+const ContentWrap = styled.div` 
+  display: flex;
   position: absolute;
-  left: 8px;
-  top: 304px;
-  background: #EDECF2;
-  border-radius: 4px;
-  transform: translateZ(0);
+  flex-direction: column;
+  gap: 8px;
+  width: calc(${(p) => p.$w}px - 40px);
+  height: calc(${(p) => p.$h}px - 60px);
+  left: 20px;
+  top: 30px;
   @media (max-width: 640px) {
-    width: 18px;
-    height: 18px;
-    left: 6px;
-    top: 188px;
+    width: calc(100% - 28px);
+    height: calc(216px - 40px);
+    left: 14px;
+    top: 16px;
   }
 `;
 
 const To = styled.div`
-  position: absolute;
-  left: 20px;
-  top: 30px;
+  /* position: absolute; */
   font-family: ${font};
   font-weight: 600;
   font-size: 20px;
   color: #555;
   @media (max-width: 640px) {
-    left: 14px;
-    top: 16px;
     font-size: 16px;
   }
 `;
 
 const Message = styled.div`
-  position: absolute;
-  left: 21px;
+  /* position: absolute; */
   top: 63px;
   width: 229px;
+  height: 190px;
   font-family: ${font};
   font-weight: 300;
   font-size: 18px;
-  line-height: 27px;
+  line-height: 125%;
+  overflow: hidden; 
   color: #333;
   @media (max-width: 640px) {
-    left: 14px;
-    top: 44px;
-    width: 136px;
+    width: 100%;
     font-size: 14px;
     line-height: 21px;
+    max-height: 108px;
   }
 `;
 
 const From = styled.div`
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 0px;
+  bottom: 0px;
   font-family: ${font};
   font-weight: 600;
   font-size: 14px;
   color: #555;
   @media (max-width: 640px) {
-    right: 8px;
-    bottom: 8px;
+    right: 0px;
+    bottom: 0px;
     font-size: 12px;
   }
 `;
@@ -109,9 +106,11 @@ export default function GuestbookCard({ to, from, message }) {
   return (
     <Card $w={CARD_W} $h={CARD_H}>
       <Deco1 />
-      <To>{`To. ${to}`}</To>
-      <Message>{message}</Message>
-      <From>{`From. ${from}`}</From>
+      <ContentWrap $w={CARD_W} $h={CARD_H}>
+        <To>{`To. ${to}`}</To>
+        <Message>{message}</Message>
+        <From>{`From. ${from}`}</From>
+      </ContentWrap>
     </Card>
   );
 }
