@@ -14,6 +14,10 @@ const Container = styled.div`
   cursor: pointer;
   padding: 2px;
   position: relative;
+  @media (max-width: 1600px) {
+    width: 100px;
+    height: 34px;
+  }
   @media (max-width: 640px) {
     width: 56px;
     height: auto;  
@@ -33,6 +37,11 @@ const ActiveBtn = styled.div`
   background-color: #0e0e0e;
   z-index: 1;
   left: ${(p) => (p.$active ? '4px' : '64px')};
+  @media (max-width: 1600px) {
+    width: 48px;
+    height: 30px;
+    left: ${(p) => (p.$active ? '4px' : '52px')};  
+  }
   @media (max-width: 640px) {
     width: 28px;
     height: 18px;
@@ -56,9 +65,12 @@ const TextProf = styled.p`
   margin-left: 16px;
   color: ${(p) => (p.$active ? '#Fafafa' : '#909090')};
   font-weight: ${(p) => (p.$active ? '700' : '400')};
+  @media (max-width: 1600px) {
+    font-size: 14px;
+  }
   @media (max-width: 640px) {
     font-size: 8px;
-    margin-left: 6px;
+    margin-left: 8px;
   }
 `;
 
@@ -66,6 +78,10 @@ const TextStudent = styled(TextProf)`
   margin-left: 32px;
   color: ${(p) => (p.$active ? '#909090' : '#Fafafa')};
   font-weight: ${(p) => (p.$active ? '400' : '700')};
+  @media (max-width: 1600px) {
+    font-size: 14px;
+    margin-left: 22px;
+  }
   @media (max-width: 640px) {
     font-size: 8px;
     margin-left: 16px;

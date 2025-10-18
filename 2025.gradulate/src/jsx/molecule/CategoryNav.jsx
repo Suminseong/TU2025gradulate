@@ -31,7 +31,7 @@ const Container = styled.div`
 const Spacer = styled.div`
   width: 120px;
   height: 100%;
-  @media (max-width: 640px) {
+  @media (max-width: 1450px) {
     display: none;
   }
 `;
@@ -40,14 +40,14 @@ const NavRow = styled.div`
   display: flex;
   justify-content: center;
   gap: 60px;
-  @media (max-width: 640px) {
+  @media (max-width: 1450px) {
     display: none;
   }
 `;
 
 const NavRowMobile = styled.div`
   display: none;
-  @media (max-width: 640px) {
+  @media (max-width: 1450px) {
     display: flex;
     justify-content: center;
     width: auto;

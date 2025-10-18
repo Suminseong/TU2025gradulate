@@ -19,7 +19,7 @@ const Container = styled.div`
   background-color: #121212;
   padding: 60px 40px;
   box-sizing: border-box;
-  z-index: 1000;
+  z-index: 100;
   transform: translateX(${props => (props.$open ? '0' : '-350px')});
   transition: transform 500ms ease-out;
   pointer-events: ${props => (props.$open ? 'auto' : 'none')};
@@ -41,6 +41,7 @@ const GapCol = styled.div`
   height: auto;
   @media (max-width: 640px) {
     gap: 40px;
+    /* width: calc(100% - 32px); */
 }
 `;
 
@@ -52,8 +53,7 @@ const ContentCol = styled.div`
   gap: 48px;
   @media (max-width: 640px) {
     flex-direction: row;
-    width: auto;
-    gap: 16px;
+    width: 100%;
     align-items: flex-start;
     justify-content: space-between;
 }
@@ -78,7 +78,7 @@ const Content = styled.div`
   flex-direction: column;
   gap: 16px;
   @media (max-width: 640px) {
-    width: auto;
+    width: calc(50% - 16px);
 }
 `;
 
@@ -110,7 +110,7 @@ const Context = styled.p`
 
 const Thumbnail = styled.div`
   display: none;
-  width: 172px;
+  width: 50%;
   height: 240px;
   background-image: ${({ $src }) => `url("${$src}")`};
   background-size: cover;
@@ -129,7 +129,7 @@ const IconRow = styled.div`
   width: 100%;
   height: 75px;
   @media (max-width: 640px) {
-    width: auto;
+    width: 100%;
     height: 38px;
 }
 `;

@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Menu = styled.div`
-  display: ${(p) => (p.$open ? 'flex' : 'none')};
+  /* display: ${(p) => (p.$open ? 'flex' : 'none')}; */
+  display: flex;
   flex-direction: column;
   position: absolute;
   top: calc(100% + 8px);
@@ -18,6 +19,21 @@ const Menu = styled.div`
   border-radius: 16px;
   gap: 10px;
   z-index: 10;
+
+  // 애니메이션
+  opacity: ${(p) => (p.$open ? 1 : 0)};
+  transform: ${(p) => (p.$open ? 'translateY(0)' : 'translateY(-10px)')};
+  visibility: ${(p) => (p.$open ? 'visible' : 'hidden')};
+  pointer-events: ${(p) => (p.$open ? 'auto' : 'none')};
+  max-height: ${(p) => (p.$open ? '600px' : '0')};
+  overflow: hidden;
+  transition:
+  opacity 220ms ease,
+  transform 220ms ease,
+  max-height 240ms ease,
+  visibility 0ms linear ${(p) => (p.$open ? '0ms' : '220ms')};
+  will-change: opacity, transform;
+  transform-origin: top right;
   @media (max-width: 640px) {
      padding: 10px 16px;
  }

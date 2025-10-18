@@ -15,7 +15,8 @@ const Base = styled.a`
   font-weight: ${(p) => (p.$active ? 700 : 400)};
   color: ${(p) => (p.$active ? '#000' : '#bababa')};
   text-decoration: none;
-  display: flex;
+  display: inline-grid;
+  position: relative;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
@@ -23,8 +24,46 @@ const Base = styled.a`
   margin: 0;
   cursor: pointer;
   outline: none;
-  transition: opacity 120ms ease;
+  transition: all 200ms ease;
+
+  &:hover {
+  font-weight: 700;
+  color: #000;
+  }
+    &::after {
+    content: attr(data-label);
+    top: 0;
+    height: 0;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.24px;
+    /* line-height: 28.8px; */
+    white-space: nowrap;
+    visibility: hidden;
+    pointer-events: none;
+    display: block;
+    }
+    & > .navbtn-text { grid-area: 1 / 1; }
+    &:hover, &:focus {
+        font-weight: 700;
+    }
+
+  @media (max-width: 1600px) {
+    font-size: 20px;
+    line-height: 24px;
+    &::after {
+        font-size: 20px;
+        line-height: 24px;
+    }
+  }
 `;
+
+const LabelSpan = styled.span`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+`
 
 export default function NavBtn({
     label,
@@ -46,6 +85,7 @@ export default function NavBtn({
         'aria-current': active ? 'page' : undefined,
         'data-active': active ? 'true' : 'false',
         onKeyDown: handleKeyDown,
+        'data-label': label,
         onClick,
         style,          // 외부 style override 유지
         $active: active // DOM 누수 방지용 transient prop
@@ -54,11 +94,11 @@ export default function NavBtn({
     // a 태그 기본, href 없으면 button으로 렌더링
     return href ? (
         <Base href={href} target={target} rel={rel} {...commonProps}>
-            {label}
+            <LabelSpan className="navbtn-text">{label}</LabelSpan>
         </Base>
     ) : (
         <Base as="button" type="button" {...commonProps} style={{ background: 'none', border: 0, ...style }}>
-            {label}
+            <LabelSpan className="navbtn-text">{label}</LabelSpan>
         </Base>
     );
 }

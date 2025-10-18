@@ -46,7 +46,6 @@ export default function Dropdown({
       <div onClick={handleButtonClick}>
         <DropdownBtn label={label} options={options} onSelect={onSelect} style={{}} filter={filter} mode={mode} />
       </div>
-      {isOpen && (
         <DropdownMenu
           options={options}
           onSelect={handleSelect}
@@ -55,7 +54,6 @@ export default function Dropdown({
           position={position}
           selected={label}
         />
-      )}
     </Root>
   );
 }

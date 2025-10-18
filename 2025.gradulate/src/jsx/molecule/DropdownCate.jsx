@@ -7,7 +7,12 @@ import DropdownBtn from '../atom/DropdownBtn';
 
 const Root = styled.div`
     position: relative;
+    // 안에 들어가는 요소들 왼쪽 정렬
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 `;
+
 
 export default function DropdownCate({
     label,
@@ -35,14 +40,12 @@ export default function DropdownCate({
             <div onClick={handleButtonClick}>
                 <DropdownBtn label={label} mode={mode} />
             </div>
-            {isOpen && (
                 <CateDropdownMenu
                     options={options}
                     onSelect={handleSelect}
                     isOpen={isOpen}
                     selected={label}
                 />
-            )}
         </Root>
     );
 }

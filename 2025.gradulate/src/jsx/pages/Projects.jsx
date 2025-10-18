@@ -68,7 +68,7 @@ const Grid = styled.div`
     margin-top: 20px;
     margin-bottom: 60px;
     row-gap: 18px;  
-    width: 393px;
+    /* width: 393px; */
  }
 `;
 

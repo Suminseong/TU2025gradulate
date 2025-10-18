@@ -16,6 +16,10 @@ const Wrapper = styled.div`
   }
 `;
 
+const CateWrapper = styled(Wrapper)`
+  justify-content: flex-start;
+`;
+
 const IconBox = styled.div`
   display: flex;
   width: 24px;
@@ -36,14 +40,20 @@ const Label = styled.p`
   font-weight: 400;
   color: #191919;
   margin: 0;
+  @media (max-width: 1500px) {
+   font-size: 16px;  
+  }
   @media (max-width: 640px) {
    font-size: 13px;  
  }
 `;
 
 const CateLabel = styled(Label)`
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
+  @media (max-width: 640px) {
+   font-size: 13px;  
+  }
 `
 
 
@@ -60,12 +70,12 @@ export default function DropdownBtn({
 
     if ( mode === 'category' ) {
       return (
-        <Wrapper style={style}>
+        <CateWrapper style={style}>
           <CateLabel>{label}</CateLabel>
           <IconBox>
             <img src={`${base}icons/arrowDropdownIcon.svg`} alt="dropdownIcon" />
           </IconBox>
-        </Wrapper>
+        </CateWrapper>
       );
     }
     else {
