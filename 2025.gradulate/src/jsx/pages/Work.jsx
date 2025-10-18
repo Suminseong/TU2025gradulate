@@ -66,7 +66,7 @@ const PageInner = styled.div`
   align-items: center;
   /* transition: all 500ms ease; */
   @media (max-width: 640px) {
-    padding: 0
+    padding: 20px 0px 0px 0px;
 }
 `;
 

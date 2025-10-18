@@ -26,13 +26,13 @@ const Page = styled.div`
 const Main = styled.main`
   padding: 80px 40px 120px 40px;
   @media (max-width: 640px) {
-    padding: 40px 0 80px 0;
+    padding: 52px 0 80px 0;
   }
 `;
 const Title = styled.h1`
   font-family: ${font}; font-weight: 700; font-size: 32px; color: #FFFFFF; text-align: center; margin: 20px 0 40px;
   @media (max-width: 640px) {
-    font-size: 20px; margin: 0 0 16px;
+    font-size: 20px; margin: 4px 0 24px ;
   }
 `;
 const Section = styled.section`
