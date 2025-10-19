@@ -251,7 +251,6 @@ function ExpoItem({ work, progress }) {
 export default function ExpoWorksList() {
   return (
     <>
-      {/* CSS helper to hide/show mobile/desktop blocks */}
       <style>{`
         @media (max-width: 640px) {
           .expo-works-desktop { display: none !important; }
