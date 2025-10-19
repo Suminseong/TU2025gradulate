@@ -193,33 +193,6 @@ export default function Gallery() {
           </Row>
         </Grid>
 
-        {/* <Grid> -> 예전 데스크탑 그리드
-          <Row>
-            <Card $w={910} $h={445}><Img src="https://placehold.co/910x512" alt="" /></Card>
-            <Card $w={445} $h={445}>
-              <Img src="https://placehold.co/727x445" alt="" />
-              <Cap></Cap>
-            </Card>
-            <Card $w={445} $h={445}>
-              <Img src="https://placehold.co/727x445" alt="" />
-              <Cap></Cap>
-            </Card>
-          </Row>
-
-          <Row>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
-            <Card $w={910} $h={445}><Img src="https://placehold.co/910x517" alt="" /></Card>
-          </Row>
-
-          <Row>
-            <Card $w={910} $h={445}><Img src="https://placehold.co/987x555" alt="" /></Card>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /><Cap></Cap></Card>
-          </Row> */}
-
-        {/* 모바일: 1~2열 정사각형 카드 그리드 */}
-        {/* Mobile grid: hidden on desktop via styled-components */}
         <MobileWrapper>
           <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 12 }}>
             {/* 모바일 우선: 그룹 단위로 (1) full-width 2:1 이미지 (2) 두 개의 정사각 이미지 */}
