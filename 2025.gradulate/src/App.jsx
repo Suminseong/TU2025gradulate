@@ -13,6 +13,7 @@ import Projects from './jsx/pages/Projects';
 import MainPage from './jsx/pages/Main';
 import Guestbook from './jsx/pages/Guestbook';
 import Work from './jsx/pages/Work';
+import Showroom from './jsx/pages/Showroom';
 
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
@@ -53,6 +54,8 @@ function Layout({ headerMode, setHeaderMode }) {
     return ['projects', 'peoples', 'showroom', 'guestbook', 'credits'].includes(head) ? head : undefined;
   }, [location.pathname]);
 
+  const hideFooter = activeKey === 'showroom';
+
   return (
     <>
       <NavHeader
@@ -80,27 +83,28 @@ function Layout({ headerMode, setHeaderMode }) {
       >
         <Outlet />
       </main>
-
-      <Footer
-        title="잔향 : 기억의 향기"
-        nav={[
-          { label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects/` },
-          { label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples/` },
-          { label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom/` },
-          { label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook/` },
-          { label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits/` },
-        ]}
-        copyright={[
-          'ⓒ 2025 TECH UNIV KOREA. ALL RIGHTS RESERVED.',
-          'TUKOREA DESIGN ENGINEERING 20TH GRADUATION EXHIBITION',
-        ]}
-        social={{
-          youtube: { href: 'https://youtube.com/', label: 'YouTube' },
-          instagram: { href: 'https://instagram.com/', label: 'Instagram' },
-        }}
-        sidePadding={350}
-        maxWidth={1220}
-      />
+      {!hideFooter && (
+        <Footer
+          title="잔향 : 기억의 향기"
+          nav={[
+            { label: 'PROJECTS', href: `${import.meta.env.BASE_URL}projects/` },
+            { label: 'PEOPLES', href: `${import.meta.env.BASE_URL}peoples/` },
+            { label: 'SHOWROOM', href: `${import.meta.env.BASE_URL}showroom/` },
+            { label: 'GUESTBOOK', href: `${import.meta.env.BASE_URL}guestbook/` },
+            { label: 'CREDITS', href: `${import.meta.env.BASE_URL}credits/` },
+          ]}
+          copyright={[
+            'ⓒ 2025 TECH UNIV KOREA. ALL RIGHTS RESERVED.',
+            'TUKOREA DESIGN ENGINEERING 20TH GRADUATION EXHIBITION',
+          ]}
+          social={{
+            youtube: { href: 'https://youtube.com/', label: 'YouTube' },
+            instagram: { href: 'https://instagram.com/', label: 'Instagram' },
+          }}
+          sidePadding={350}
+          maxWidth={1220}
+        />
+      )}
     </>
   );
 }
@@ -155,6 +159,14 @@ function WorkWithHeaderMode({ setHeaderMode }) {
   return <Work />;
 }
 
+function ShowroomWithHeaderMode({ setHeaderMode }) {
+  React.useEffect(() => {
+    setHeaderMode(NAV_HEADER_MODES.DARK);
+  }, [setHeaderMode]);
+
+  return <Showroom />;
+}
+
 // -------- 루트(App) --------
 export default function App() {
   // 헤더 배경 모드 전역 상태
@@ -173,16 +185,8 @@ export default function App() {
           <Route path="peoples/" element={<PeoplesWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="guestbook/" element={<GuestbookWithHeaderMode setHeaderMode={setHeaderMode} />} />
           <Route path="work/:pid" element={<WorkWithHeaderMode setHeaderMode={setHeaderMode} />} />
-
-          {/* 크레딧 페이지: 스크롤 상단에서는 그라데이션 유지 */}
-          <Route
-            path="credits/"
-            element={
-              <CreditsWithHeaderMode
-                setHeaderMode={setHeaderMode}
-              />
-            }
-          />
+          <Route path="credits/" element={<CreditsWithHeaderMode setHeaderMode={setHeaderMode} />} />
+          <Route path="showroom/" element={<ShowroomWithHeaderMode setHeaderMode={setHeaderMode} />} />
 
           {/* 404: 알 수 없는 경로는 홈으로 리다이렉트 */}
           <Route path="*" element={<Navigate to="/" replace />} />

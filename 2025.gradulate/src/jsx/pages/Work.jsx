@@ -71,6 +71,7 @@ const PageInner = styled.div`
     padding-left: ${props => (props.$isInfoOpen ? 0 : 80)}px;
   }
   @media (max-width: 640px) {
+    width: 100%;
     padding: 20px 0px 0px 0px;
 }
 `;

@@ -5,9 +5,9 @@ import { G } from '../atom/gradients';
 const base = import.meta.env.BASE_URL || '/';
 
 const Wrap = styled.section`
-  position: relative; height: 974px; min-height: 620px; overflow: hidden; background: #121212; z-index: 1;
+  position: relative; height: 100vh; min-height: 620px; overflow: hidden; background: #121212; z-index: 1;
   @media (max-width: 640px) {
-    height: 320px;
+    height: 100vh;
     min-height: 220px;
   }
 `;
@@ -38,10 +38,14 @@ const VideoBox = styled.div`
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 100%;
+  width: 100vw;
   aspect-ratio: 1 / 1; /* width defines the square size now */
   transform: translate(-50%, -50%);
   overflow: hidden;
+  @media (max-width: 640px) {
+    width: 177vh; // 모바일에서 세로 모드 꽉 채우기
+    min-height: 220px;
+  }
 `;
 const VideoEl = styled.video`
   width: 100%;
@@ -60,7 +64,7 @@ const CopyWrap = styled.div`
   pointer-events: ${(p) => (p.$visible ? 'auto' : 'none')};
   @media (max-width: 640px) {
     left: 16px;
-    bottom: 32px;
+    bottom: 241px;
     max-width: 90vw;
     gap: 4px;
   }
@@ -97,7 +101,9 @@ const Cta = styled.button`
     width: 140px;
     height: 36px;
     font-size: 14px;
-    bottom: 16px;
+    bottom: 165px;
+    left: 16px;
+    transform: none;
   }
 `;
 
@@ -131,7 +137,7 @@ export default function Hero() {
             onLoadedData={() => {
               // show copy after 15s from load
               if (timerRef.current) clearTimeout(timerRef.current);
-              timerRef.current = setTimeout(() => setCopyVisible(true), 13900);
+              timerRef.current = setTimeout(() => setCopyVisible(true), 15500);
             }}
           >
             <source src={`${base}video/hero11.mp4`} type="video/mp4" />
