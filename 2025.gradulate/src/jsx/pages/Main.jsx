@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Hero from '../organism/Hero';
 import BrandConcept from '../organism/BrandConcept';
 import Gallery from '../organism/Gallery';
-import OnlineExhibition from '../organism/OnlineExhibition.jsx';
 import ExpoWorksList from '../organism/ExpoWorksList';
 import InstagramBlock from '../organism/InstagramBlock';
 import VenueAccess from '../organism/VenueAccess.jsx';
@@ -36,8 +35,8 @@ export default function Main() {
     <Hero key="hero" />,
     <BrandConcept key="brand" />,
     <Gallery key="gallery" />,
-  // <HideOnMobile key="online"><OnlineExhibition /></HideOnMobile>,
-  <Title key="works-title">TU-EXPO Works</Title>,
+    // <HideOnMobile key="online"><OnlineExhibition /></HideOnMobile>,
+    <Title key="works-title">TU-EXPO Works</Title>,
     <ExpoWorksList key="works" />,
     <InstagramBlock key="insta" />,
     <VenueAccess key="venue" />,
