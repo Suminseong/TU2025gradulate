@@ -64,8 +64,7 @@ const Stage = styled.div`
   }
 `;
 const Title = styled.div`
-  position: absolute;
-  left: 0; right: 0; top: 4px;
+  margin: 400px auto 0 auto;
   text-align: center;
   color: #fff;
   font-family: Pretendard, system-ui;

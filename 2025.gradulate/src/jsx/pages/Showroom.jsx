@@ -162,7 +162,7 @@ export default function Showroom() {
                 animatingRef.current = false;
                 setSnapSettled(true);
                 setActiveSection(next);
-            }, 600);
+            }, 3300);
 
             e.preventDefault();
         };

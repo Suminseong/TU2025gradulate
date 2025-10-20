@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import GradientEdge from '../atom/GradientEdge';
+import { Link } from 'react-router-dom';
 import { G } from '../atom/gradients';
 const base = import.meta.env.BASE_URL || '/';
 
@@ -83,7 +84,7 @@ const Title = styled.p`
     line-height: 1.3;
   }
 `;
-const Cta = styled.button`
+const Cta = styled(Link)`
   position: absolute; left: 50%; transform: translateX(-50%); bottom: 72px;
   width: 240px; height: 52px; 
   display: flex; 
@@ -91,7 +92,7 @@ const Cta = styled.button`
   justify-content: center;
   background: rgba(0,0,0,0.05); 
   border: 1px solid #FFFFFF; 
-  color: #FFFFFF;
+  color: #FFFFFF; text-decoration: none;
   font-family: Pretendard, system-ui; font-weight: 700; cursor: pointer;
   //hover시 배경 불투명도 증가
   &:hover { background: rgba(0,0,0,0.3);}
@@ -110,6 +111,7 @@ const Cta = styled.button`
 export default function Hero() {
   const [copyVisible, setCopyVisible] = React.useState(false);
   const timerRef = React.useRef(null);
+  const base = import.meta.env.BASE_URL || '/';
 
   React.useEffect(() => {
     return () => {
@@ -151,7 +153,10 @@ export default function Hero() {
         <P>Department of Design Engineering</P>
         <Title>Tech University of Korea<br />20th Grad Exhibition</Title>
       </CopyWrap>
-      <Cta type="button" aria-label="View More">View More</Cta>
+      {/* <Cta type="button" aria-label="View More">View More</Cta>
+      Cta 컴포넌트 누르면 showroom 라우트 되게, base 활용 */}
+
+  <Cta to={`showroom`} aria-label="View More">View More</Cta>
       <GradientEdge
         position="bottom"
         from={G.heroToWhite.from}
