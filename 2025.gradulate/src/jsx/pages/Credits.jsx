@@ -176,7 +176,7 @@ const IntroWrap = styled.div`
 `
 
 const HeroCardWrap = styled.div`
-  width: 800px; height: 450px; background: #FFF4ED; position: relative; z-index: 30;
+  width: 800px; height: 450px; background: url('interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
   @media (max-width: 640px) {
     width: 100vw;
     height: calc(100vw * 0.5625); /* 16:9 비율 유지 */
@@ -475,7 +475,7 @@ export default function Credit() {
         <HeroHeader />
         <IntroWrap>
           <IntroNote text={introText} />
-          <HeroCard>단체사진 1장</HeroCard>
+          <HeroCard></HeroCard>
         </IntroWrap>
       </PageContainer>
 

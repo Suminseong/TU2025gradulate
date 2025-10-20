@@ -21,13 +21,15 @@ const Card = styled.div`
   }
 `;
 
+const guestUrl = `${base}guestbook-card.svg`;
+
 const Deco1 = styled.div`
   width: 181px;
   height: 147px;
   position: absolute;
   left: 6px;
   top: 190px;
-  background-image: url(${base}/gestbook-card.svg);
+  background-image: url(${guestUrl});
   background-size: cover;
   background-repeat: no-repeat;
   transform: translateZ(0);

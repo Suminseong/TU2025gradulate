@@ -172,7 +172,7 @@ export default function Gallery() {
   <Grid className="gallery-desktop">
           <Row>
             <Card $w={910} $h={445}>
-              <Img src="https://placehold.co/910x512" alt="" /></Card>
+              <Img src={`${base}video/sub1.mp4`} alt="" /></Card>
             <Card $w={445} $h={445}>
               <Img src={`${base}sq5.png`} alt="" />
             </Card>
@@ -184,11 +184,11 @@ export default function Gallery() {
           <Row>
             <Card $w={445} $h={445}><Img src={`${base}sq4.png`} alt="" /></Card>
             <Card $w={445} $h={445}><Img src={`${base}sq2.png`} alt="" /></Card>
-            <Card $w={910} $h={445}><Img src="https://placehold.co/910x517" alt="" /></Card>
+            <Card $w={910} $h={445}><Img src={`${base}video/sub1.mp4`} alt="" /></Card>
           </Row>
 
           <Row>
-            <Card $w={910} $h={445}><Img src="https://placehold.co/987x555" alt="" /></Card>
+            <Card $w={910} $h={445}><Img src={`${base}video/category.mp4`} alt="" /></Card>
             <Card $w={445} $h={445}><Img src={`${base}sq3.png`} alt="" /></Card>
             <Card $w={445} $h={445}><Img src={`${base}sq1.png`} alt="" /></Card>
           </Row>
