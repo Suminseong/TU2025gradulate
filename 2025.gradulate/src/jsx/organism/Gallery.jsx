@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import OutlineButton from '../atom/OutlineButton';
 import GradientEdge from '../atom/GradientEdge';
 import { G } from '../atom/gradients';
+const base = import.meta.env.BASE_URL || '/';
 
 const Section = styled.section`
   position: relative;
@@ -143,14 +144,14 @@ export default function Gallery() {
   // 모바일 카드 데이터 (임시, 실제 데이터 구조에 맞게 조정)
   const mobileCards = [
     { src: 'https://placehold.co/910x512', cap: '' },
+    { src: `${base}sq5.png`, cap: '' },
+    { src: `${base}sq2.png`, cap: '' },
     { src: 'https://placehold.co/727x445', cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '' },
-    { src: 'https://placehold.co/910x517', cap: '' },
+    { src: `${base}sq6.png`, cap: '' },
+    { src: `${base}sq4.png`, cap: '' },
     { src: 'https://placehold.co/987x555', cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '' },
+    { src: `${base}sq3.png`, cap: '' },
+    { src: `${base}sq1.png`, cap: '' },
   ];
   return (
     <Section aria-label="Gallery">
@@ -173,23 +174,23 @@ export default function Gallery() {
             <Card $w={910} $h={445}>
               <Img src="https://placehold.co/910x512" alt="" /></Card>
             <Card $w={445} $h={445}>
-              <Img src="https://placehold.co/727x445" alt="" />
+              <Img src={`${base}sq5.png`} alt="" />
             </Card>
             <Card $w={445} $h={445}>
-              <Img src="https://placehold.co/727x445" alt="" />
+              <Img src={`${base}sq6.png`} alt="" />
             </Card>
           </Row>
 
           <Row>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
+            <Card $w={445} $h={445}><Img src={`${base}sq4.png`} alt="" /></Card>
+            <Card $w={445} $h={445}><Img src={`${base}sq2.png`} alt="" /></Card>
             <Card $w={910} $h={445}><Img src="https://placehold.co/910x517" alt="" /></Card>
           </Row>
 
           <Row>
             <Card $w={910} $h={445}><Img src="https://placehold.co/987x555" alt="" /></Card>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
-            <Card $w={445} $h={445}><Img src="https://placehold.co/727x445" alt="" /></Card>
+            <Card $w={445} $h={445}><Img src={`${base}sq3.png`} alt="" /></Card>
+            <Card $w={445} $h={445}><Img src={`${base}sq1.png`} alt="" /></Card>
           </Row>
         </Grid>
 
