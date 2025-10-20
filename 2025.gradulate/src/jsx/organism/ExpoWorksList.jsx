@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PinSection from './PinSection';
 import { EXPO_WORKS } from '../../data/expoWorks';
+const base = import.meta.env.BASE_URL || '/';
 
 const Wrap = styled.div`
   position: relative;
@@ -79,11 +80,10 @@ const Title = styled.div`
   }
 `;
 const Frame = styled.div`
-  position: absolute;
-  left: 351px; top: 140px;
-  width: 1219px; height: 686px;
+  /* position: absolute; */
+  margin-top: 140px;
+  margin: 0 auto;
   border-radius: 3.55px;
-  background: #606060;
   overflow: hidden;
   @media (max-width: 640px) {
     position: static;
@@ -93,14 +93,6 @@ const Frame = styled.div`
     margin: 0 auto 12px auto;
     border-radius: 10px;
     transform: none;
-  }
-`;
-const Img = styled.img`
-  width: 1265px; height: 712px; display: block;
-  @media (max-width: 640px) {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
   }
 `;
 const SlotMask = `
@@ -208,11 +200,31 @@ const WorkStrong = styled.strong`
   }
 `;
 
+const ExpoVideo = styled.iframe`
+  width: 1280px;
+  height: 720px;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.75;
+`;
+
+const MobileVideo = styled.iframe`
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  border: none;
+  display: block;
+`;
+
 const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
 const lerp = (a, b, t) => a + (b - a) * t;
 const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
-function ExpoItem({ work, progress }) {
+function ExpoItem({ work, progress, videoId }) {
+  const id = String(videoId || '').trim();
+  const vidsrc = `https://player.vimeo.com/video/${work.image}?muted=1&autoplay=1&loop=1&badge=0&controls=0&autopause=0&title=0&byline=0&portrait=0&app_id=58479`;
+
   const p = ease(clamp(progress, 0, 1));
   const imgY = lerp(0, -120, p);
   const leftNameY = lerp(0, -360, p);
@@ -233,7 +245,11 @@ function ExpoItem({ work, progress }) {
       <Title>TU-EXPO Works</Title>
       <Stage>
         <Frame style={frameStyle}>
-          <Img src={work.image} alt="작품 이미지" />
+          {/* <Img src={`${base}projects/${work.image}/thumb.jpg`} alt="작품 이미지" /> */}
+          <ExpoVideo
+            src={vidsrc}
+            frameBorder="0">
+          </ExpoVideo>
         </Frame>
         <LeftName style={textStyle(leftNameY)}>{work.artistKr}</LeftName>
         <LeftMeta style={textStyle(leftMetaY)}>{work.dept}</LeftMeta>
@@ -249,6 +265,7 @@ function ExpoItem({ work, progress }) {
 }
 
 export default function ExpoWorksList() {
+  
   return (
     <>
       <style>{`
@@ -278,7 +295,9 @@ export default function ExpoWorksList() {
       <MobileGrid className="expo-works-mobile">
         {EXPO_WORKS.map((work) => (
           <MobileCard key={work.id}>
-            <MobileImg src={work.image} alt={work.titleStrong} />
+            <MobileVideo src={`https://player.vimeo.com/video/${work.image}?badge=0&controls=0&autopause=0&title=0&byline=0&portrait=0&app_id=58479`}>
+              
+            </MobileVideo>
             <MobileInfo>
               <div style={{ fontWeight: 700, fontSize: 16 }}>{work.titleStrong}</div>
               <div style={{ fontSize: 13, color: '#D9D9D9' }}>{work.artistKr} | {work.dept}</div>
