@@ -122,16 +122,21 @@ const toFlatWithPhoto = (items) => {
     { min: 26, max: 30 },
   ];
   let offset = 0;
+  const base = import.meta.env.BASE_URL || '/';
   ranges.forEach((range, i) => {
     if (flat.length > range.min + offset) {
       const idx = Math.min(
         Math.floor(Math.random() * (range.max - range.min + 1)) + range.min,
         flat.length
       ) + offset;
+      let random;
+      do {
+        random = Math.floor(Math.random() * 7) + 1;
+      } while (flat[flat.length - 1]?.id === `ph-${Date.now()}-${flat.length - 1}` && random === flat[flat.length - 1]?.id);
       flat.splice(idx, 0, {
         type: 'photo',
         id: `ph-${Date.now()}-${i}`,
-        src: 'https://placehold.co/662x405',
+        src: `${base}sq${random}.png`,
       });
       offset++;
     }

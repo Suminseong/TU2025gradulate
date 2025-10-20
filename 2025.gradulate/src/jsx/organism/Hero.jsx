@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import GradientEdge from '../atom/GradientEdge';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { G } from '../atom/gradients';
 const base = import.meta.env.BASE_URL || '/';
 
@@ -84,7 +84,7 @@ const Title = styled.p`
     line-height: 1.3;
   }
 `;
-const Cta = styled(Link)`
+const Cta = styled.button`
   position: absolute; left: 50%; transform: translateX(-50%); bottom: 72px;
   width: 240px; height: 52px; 
   display: flex; 
@@ -98,6 +98,9 @@ const Cta = styled(Link)`
   &:hover { background: rgba(0,0,0,0.3);}
   transition: all 200ms ease-in-out;
 
+  .desktop { display: inline; }
+  .mobile { display: none; }
+
   @media (max-width: 640px) {
     width: 140px;
     height: 36px;
@@ -105,6 +108,8 @@ const Cta = styled(Link)`
     bottom: 165px;
     left: 16px;
     transform: none;
+    .desktop { display: none; }
+    .mobile { display: inline; }
   }
 `;
 
@@ -112,6 +117,7 @@ export default function Hero() {
   const [copyVisible, setCopyVisible] = React.useState(false);
   const timerRef = React.useRef(null);
   const base = import.meta.env.BASE_URL || '/';
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     return () => {
@@ -120,6 +126,12 @@ export default function Hero() {
       }
     };
   }, []);
+  const handleCta = () => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+    const dest = `${isMobile ? 'projects' : 'showroom'}`;
+    navigate(dest);
+  };
+
   return (
     <Wrap aria-label="Hero">
       <Bg>
@@ -139,7 +151,7 @@ export default function Hero() {
             onLoadedData={() => {
               // show copy after 15s from load
               if (timerRef.current) clearTimeout(timerRef.current);
-              timerRef.current = setTimeout(() => setCopyVisible(true), 15500);
+              timerRef.current = setTimeout(() => setCopyVisible(true), 13900);
             }}
           >
             <source src={`${base}video/hero11.mp4`} type="video/mp4" />
@@ -156,7 +168,10 @@ export default function Hero() {
       {/* <Cta type="button" aria-label="View More">View More</Cta>
       Cta 컴포넌트 누르면 showroom 라우트 되게, base 활용 */}
 
-  <Cta to={`showroom`} aria-label="View More">View More</Cta>
+  <Cta type="button" onClick={handleCta} aria-label="View More">
+    <span className="desktop">View More</span>
+    <span className="mobile">View Work</span>
+  </Cta>
       <GradientEdge
         position="bottom"
         from={G.heroToWhite.from}

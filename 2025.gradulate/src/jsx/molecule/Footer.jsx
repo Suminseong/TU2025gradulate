@@ -1,5 +1,6 @@
 // Footer.jsx
 // 수정 금지. fix 된 형태
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -159,6 +160,16 @@ export default function Footer({
   maxWidth = 1220,
   sidePadding = 350,
 }) {
+  const [isMobile, setIsMobile] = React.useState(typeof window !== 'undefined' ? window.innerWidth < 640 : false);
+
+  React.useEffect(() => {
+    function onResize() {
+      setIsMobile(window.innerWidth < 640);
+    }
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
   return (
     <FooterWrap role="contentinfo">
       <Container $sidePadding={sidePadding} $maxWidth={maxWidth}>
@@ -167,7 +178,9 @@ export default function Footer({
 
         {/* 네비게이션 링크 */}
         <NavRow aria-label="푸터 메뉴">
-          {nav.map((it) => {
+          {nav
+            .filter((it) => !(isMobile && it.label === 'SHOWROOM'))
+            .map((it) => {
             const href = it.href || '#';
             const isExternal = /^https?:\/\//i.test(href);
             const base = import.meta.env.BASE_URL || '/';

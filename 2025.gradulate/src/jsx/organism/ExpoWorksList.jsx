@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PinSection from './PinSection';
+import { Link } from 'react-router-dom';
 import { EXPO_WORKS } from '../../data/expoWorks';
 const base = import.meta.env.BASE_URL || '/';
 
@@ -25,12 +26,12 @@ const MobileGrid = styled.div`
   }
 `;
 
-const MobileCard = styled.div`
+const MobileCard = styled(Link)`
   background: #222;
   border-radius: 10px;
   overflow: hidden;
   width: 92vw;
-  margin: 0 auto;
+  margin: 12px auto;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -95,8 +96,8 @@ const Frame = styled.div`
   }
 `;
 const SlotMask = `
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
-          mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: rgba(0,0,0,0);
+          mask-image: rgba(0,0,0,0);
 `;
 const LeftName = styled.div`
   position: absolute; left: 195px; top: 240px;
@@ -214,6 +215,7 @@ const MobileVideo = styled.iframe`
   min-height: 200px;
   border: none;
   display: block;
+  margin-top: 16px;
 `;
 
 const clamp = (n, a = 0, b = 1) => Math.max(a, Math.min(b, n));
@@ -239,32 +241,32 @@ function ExpoItem({ work, progress, videoId }) {
   const workBlockStyle = { transform: `translate3d(0, ${workBlockY}px, 0)`, opacity: fade, willChange: 'transform, opacity' };
 
   return (
-
-    <Wrap>
-      <Title>TU-EXPO Works</Title>
-      <Stage>
-        <Frame style={frameStyle}>
-          {/* <Img src={`${base}projects/${work.image}/thumb.jpg`} alt="작품 이미지" /> */}
-          <ExpoVideo
-            src={vidsrc}
-            frameBorder="0">
-          </ExpoVideo>
-        </Frame>
-        <LeftName style={textStyle(leftNameY)}>{work.artistKr}</LeftName>
-        <LeftMeta style={textStyle(leftMetaY)}>{work.dept}</LeftMeta>
-        <RightMeta1 style={textStyle(right1Y)}>{work.rightMeta1}</RightMeta1>
-        <RightMeta2 style={textStyle(right2Y)}>{work.rightMeta2}</RightMeta2>
-        <WorkBlock style={workBlockStyle}>
-          <WorkSmall>{work.titleSmall}</WorkSmall>
-          <WorkStrong>{work.titleStrong}</WorkStrong>
-        </WorkBlock>
-      </Stage>
-    </Wrap>
+    <>
+      <Wrap>
+        <Stage>
+          <Frame style={frameStyle}>
+            {/* <Img src={`${base}projects/${work.image}/thumb.jpg`} alt="작품 이미지" /> */}
+            <ExpoVideo
+              src={vidsrc}
+              frameBorder="0">
+            </ExpoVideo>
+          </Frame>
+          <LeftName style={textStyle(leftNameY)}>{work.artistKr}</LeftName>
+          <LeftMeta style={textStyle(leftMetaY)}>{work.dept}</LeftMeta>
+          <RightMeta1 style={textStyle(right1Y)}>{work.rightMeta1}</RightMeta1>
+          <RightMeta2 style={textStyle(right2Y)}>{work.rightMeta2}</RightMeta2>
+          <WorkBlock style={workBlockStyle}>
+            <WorkSmall>{work.titleSmall}</WorkSmall>
+            <WorkStrong>{work.titleStrong}</WorkStrong>
+          </WorkBlock>
+        </Stage>
+      </Wrap>
+    </>
   );
 }
 
 export default function ExpoWorksList() {
-  
+
   return (
     <>
       <style>{`
@@ -293,9 +295,10 @@ export default function ExpoWorksList() {
       {/* 모바일: 정적 카드 그리드 */}
       <MobileGrid className="expo-works-mobile">
         {EXPO_WORKS.map((work) => (
-          <MobileCard key={work.id}>
+          <MobileCard key={work.id} to={`work/${work.index}`}>
+            
             <MobileVideo src={`https://player.vimeo.com/video/${work.image}?badge=0&controls=0&autopause=0&title=0&byline=0&portrait=0&app_id=58479`}>
-              
+
             </MobileVideo>
             <MobileInfo>
               <div style={{ fontWeight: 700, fontSize: 16 }}>{work.titleStrong}</div>

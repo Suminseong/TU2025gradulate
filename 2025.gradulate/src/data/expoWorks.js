@@ -1,6 +1,7 @@
 export const EXPO_WORKS = [
   {
     id: 'w1',
+    index: "A010",
     artistKr: '송지원, 허지유',
     dept: 'Industrial Design Engineering',
     titleSmall: '한국산업기술진흥원장상 수상',
@@ -11,6 +12,7 @@ export const EXPO_WORKS = [
   },
   {
     id: 'w2',
+    index: "A017",
     artistKr: '이채연',
     dept: 'Media Design Engineering',
     titleSmall: '총동문회장상 수상',
@@ -21,6 +23,7 @@ export const EXPO_WORKS = [
   },
   {
     id: 'w3',
+    index: "A011",
     artistKr: '정혜원, 신주혜',
     dept: 'Industrial Design Engineering',
     titleSmall: '한국공학대학교총장상 수상',
