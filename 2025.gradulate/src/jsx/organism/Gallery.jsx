@@ -150,15 +150,15 @@ const MobileSquare = styled.div`
 export default function Gallery() {
   // 모바일 카드 데이터 (임시, 실제 데이터 구조에 맞게 조정)
   const mobileCards = [
-    { src: `${base}video/sub1.mp4`},
-    { src: `${base}sq5.png`},
-    { src: `${base}sq2.png`},
-    { src: `${base}video/category.mp4`},
-    { src: `${base}sq6.png`},
-    { src: `${base}sq4.png`},
-    { src: 'https://placehold.co/987x555'},
-    { src: `${base}sq3.png`},
-    { src: `${base}sq1.png`},
+    { src: `${base}video/sub1.mp4`, cap: '' },
+    { src: `${base}sq5.png`, cap: '' },
+    { src: `${base}sq2.png`, cap: '' },
+    { src: `${base}video/category.mp4`, cap: '' },
+    { src: `${base}sq6.png`, cap: '' },
+    { src: `${base}sq4.png`, cap: '' },
+    { src: 'https://placehold.co/987x555', cap: '' },
+    { src: `${base}sq3.png`, cap: '' },
+    { src: `${base}sq1.png`, cap: '' },
   ];
   return (
     <Section aria-label="Gallery">
@@ -213,17 +213,20 @@ export default function Gallery() {
                   {a && (
                     <MobileFull>
                       <img src={a.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      {a.cap && <Cap style={{ opacity: 1 }}>{a.cap}</Cap>}
                     </MobileFull>
                   )}
                   <MobilePair>
                     {b && (
                       <MobileSquare>
                         <img src={b.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        {b.cap && <Cap style={{ opacity: 1 }}>{b.cap}</Cap>}
                       </MobileSquare>
                     )}
                     {c && (
                       <MobileSquare>
                         <img src={c.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        {c.cap && <Cap style={{ opacity: 1 }}>{c.cap}</Cap>}
                       </MobileSquare>
                     )}
                   </MobilePair>
