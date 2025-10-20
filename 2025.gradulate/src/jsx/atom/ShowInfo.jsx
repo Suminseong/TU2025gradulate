@@ -124,11 +124,7 @@ export default function ShowInfo({
     isActive,
     section,
     currentSection,
-    anim = {
-        circle: { duration: 250, delay: 120, easing: 'cubic-bezier(0.22,1,0.36,1)' },
-        line: { duration: 500, delay: 120, easing: 'cubic-bezier(0.22,1,0.36,1)' },
-        text: { duration: 280, delay: 80, easing: 'cubic-bezier(0.22,1,0.36,1)' },
-    },
+    anim,
 }) {
     const [played, setPlayed] = useState(false);
     const ease = anim?.circle?.easing || anim?.line?.easing || anim?.text?.easing || 'cubic-bezier(0.22,1,0.36,1)';
