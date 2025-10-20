@@ -63,6 +63,10 @@ export default function Showroom() {
     const currentSectionRef = useRef(0);
     const animatingRef = useRef(false);
     const snapTimerRef = useRef(null);
+    // Throttle rapid wheel events during snap transitions
+    const lastSnapTimeRef = useRef(0);
+    const SNAP_THROTTLE_MS = 1200; // base throttle (ms)
+    const EXTRA_THROTTLE_MS = 1500; // additional fixed throttle requested
 
     const [activeSection, setActiveSection] = useState(0);
     const [snapSettled, setSnapSettled] = useState(false);
@@ -137,6 +141,14 @@ export default function Showroom() {
                 e.preventDefault();
                 return;
             }
+3   
+            // Throttle: if a recent snap started, ignore additional wheel events
+            // effective throttle = SNAP_THROTTLE_MS + EXTRA_THROTTLE_MS    
+            const now = Date.now();
+            if (now - lastSnapTimeRef.current < (SNAP_THROTTLE_MS + EXTRA_THROTTLE_MS)) {
+                e.preventDefault();
+                return;
+            }
 
             const delta = e.deltaY;
             const direction = Math.sign(delta);
@@ -151,6 +163,8 @@ export default function Showroom() {
             }
 
             animatingRef.current = true;
+            // record snap start time to enforce throttle
+            lastSnapTimeRef.current = Date.now();
             currentSectionRef.current = next;
 
             const targetY = containerTop + next * window.innerHeight;
@@ -162,7 +176,7 @@ export default function Showroom() {
                 animatingRef.current = false;
                 setSnapSettled(true);
                 setActiveSection(next);
-            }, 3300);
+            }, 1000);
 
             e.preventDefault();
         };
