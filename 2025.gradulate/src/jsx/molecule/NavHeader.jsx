@@ -195,8 +195,12 @@ export default function NavHeader({
   const initialModeRef = useRef(isControlled ? controlledMode : uncontrolledMode)
 
   useEffect(() => {
-    initialModeRef.current = isControlled ? controlledMode : uncontrolledMode;
-  }, [controlledMode, uncontrolledMode, isControlled]);
+    if (!isControlled) return;
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    if (y <= scrollThreshold) {
+      initialModeRef.current = controlledMode;
+    }
+  }, [controlledMode, isControlled, scrollThreshold]);
 
     // 스크롤 자동 전환(선택)
   useEffect(() => {
@@ -204,9 +208,8 @@ export default function NavHeader({
 
     const handler = () => {
       const y = window.scrollY || document.documentElement.scrollTop || 0;
-      const topMode = isControlled
-        ? controlledMode
-        : (initialModeRef.current || NAV_HEADER_MODES.GRADIENT_DARK);
+      // const nextMode = y > scrollThreshold ? NAV_HEADER_MODES.DARK : NAV_HEADER_MODES.GRADIENT_DARK;
+      const topMode = initialModeRef.current || NAV_HEADER_MODES.GRADIENT_DARK;
       const nextMode = y > scrollThreshold ? NAV_HEADER_MODES.DARK : topMode;
 
       if (!isControlled) {
@@ -220,7 +223,7 @@ export default function NavHeader({
     handler(); // 초기 1회
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
-  }, [autoOnScroll, isControlled, onModeChange, scrollThreshold, controlledMode]);
+  }, [autoOnScroll, isControlled, onModeChange, scrollThreshold]);
 
   // 배경/글자색 계산
   const { baseColor, gradient, textColor, boxShadow, showGradient } = useMemo(() => {
