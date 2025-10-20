@@ -18,16 +18,12 @@ import Showroom from './jsx/pages/Showroom';
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
   const location = useLocation();
-  const navType = useNavigationType(); // POP, PUSH, REPLACE
-
-  React.useEffect(() => {
-    // 뒤로가기(POP)는 브라우저 기본 동작을 존중하고, 그 외는 상단으로
-    if (navType !== 'POP') window.scrollTo({ top: 0, behavior: 'instant' });
-    // 메인 영역으로 포커스 이동(접근성)
+  // GPT: route change -> scroll to top before first paint (prevents header from reading old Y)
+  React.useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
     const el = document.getElementById('main');
     if (el) el.focus({ preventScroll: true });
-  }, [location, navType]);
-
+  }, [location]);
   return null;
 }
 
@@ -112,58 +108,51 @@ function Layout({ headerMode, setHeaderMode }) {
 
 // -------- 라우트 진입/이탈 시 헤더 모드 제어 래퍼 --------
 function CreditsWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.GRADIENT);
   }, [setHeaderMode]);
-
   return <Credit />;
 }
 
 function PeoplesWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.GRADIENT);
   }, [setHeaderMode]);
-
   return <Peoples />;
 }
 
 function ProjectsWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.GRADIENT);
   }, [setHeaderMode]);
-
   return <Projects />;
 }
 
 function MainWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.GRADIENT_DARK);
   }, [setHeaderMode]);
-
   return <MainPage />;
 }
 
 function GuestbookWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.DARK);
   }, [setHeaderMode]);
-
   return <Guestbook />;
 }
 
 function WorkWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.LIGHT);
   }, [setHeaderMode]);
-
   return <Work />;
 }
 
 function ShowroomWithHeaderMode({ setHeaderMode }) {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     setHeaderMode(NAV_HEADER_MODES.DARK);
   }, [setHeaderMode]);
-
   return <Showroom />;
 }
 
