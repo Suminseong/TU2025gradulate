@@ -178,7 +178,7 @@ export default function Gallery() {
   <Grid className="gallery-desktop">
           <Row>
             <Card $w={910} $h={445}>
-              <Vid src={`${base}video/sub1.mp4`} alt="" /></Card>
+              <Vid src={`${base}video/sub1.mp4`} alt="" muted autoPlay playsInline loop/></Card>
             <Card $w={445} $h={445}>
               <Img src={`${base}sq5.png`} alt="" />
             </Card>
