@@ -34,6 +34,13 @@ const Img = styled.img`
   display: block;
 `;
 
+const Vid = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`;
+
 const Play = styled.div`
   position: absolute;
   left: 50%; top: 50%;
@@ -143,15 +150,15 @@ const MobileSquare = styled.div`
 export default function Gallery() {
   // 모바일 카드 데이터 (임시, 실제 데이터 구조에 맞게 조정)
   const mobileCards = [
-    { src: 'https://placehold.co/910x512', cap: '' },
-    { src: `${base}sq5.png`, cap: '' },
-    { src: `${base}sq2.png`, cap: '' },
-    { src: 'https://placehold.co/727x445', cap: '' },
-    { src: `${base}sq6.png`, cap: '' },
-    { src: `${base}sq4.png`, cap: '' },
-    { src: 'https://placehold.co/987x555', cap: '' },
-    { src: `${base}sq3.png`, cap: '' },
-    { src: `${base}sq1.png`, cap: '' },
+    { src: `${base}video/sub1.mp4`},
+    { src: `${base}sq5.png`},
+    { src: `${base}sq2.png`},
+    { src: `${base}video/category.mp4`},
+    { src: `${base}sq6.png`},
+    { src: `${base}sq4.png`},
+    { src: 'https://placehold.co/987x555'},
+    { src: `${base}sq3.png`},
+    { src: `${base}sq1.png`},
   ];
   return (
     <Section aria-label="Gallery">
@@ -164,15 +171,14 @@ export default function Gallery() {
       />
       <Container>
         <Hero>
-          <Img src="https://placehold.co/1840x1000" alt="featured" />
-          <Play aria-hidden><PlayTri /></Play>
+          <Vid src={`${base}video/main.mp4`} alt="featured" muted autoPlay playsInline loop/>
         </Hero>
 
         {/* 데스크탑: 기존 그리드 */}
   <Grid className="gallery-desktop">
           <Row>
             <Card $w={910} $h={445}>
-              <Img src={`${base}video/sub1.mp4`} alt="" /></Card>
+              <Vid src={`${base}video/sub1.mp4`} alt="" /></Card>
             <Card $w={445} $h={445}>
               <Img src={`${base}sq5.png`} alt="" />
             </Card>
@@ -184,11 +190,11 @@ export default function Gallery() {
           <Row>
             <Card $w={445} $h={445}><Img src={`${base}sq4.png`} alt="" /></Card>
             <Card $w={445} $h={445}><Img src={`${base}sq2.png`} alt="" /></Card>
-            <Card $w={910} $h={445}><Img src={`${base}video/sub1.mp4`} alt="" /></Card>
+            <Card $w={910} $h={445}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
           </Row>
 
           <Row>
-            <Card $w={910} $h={445}><Img src={`${base}video/category.mp4`} alt="" /></Card>
+            <Card $w={910} $h={445}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
             <Card $w={445} $h={445}><Img src={`${base}sq3.png`} alt="" /></Card>
             <Card $w={445} $h={445}><Img src={`${base}sq1.png`} alt="" /></Card>
           </Row>
@@ -207,20 +213,17 @@ export default function Gallery() {
                   {a && (
                     <MobileFull>
                       <img src={a.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                      {a.cap && <Cap style={{ opacity: 1 }}>{a.cap}</Cap>}
                     </MobileFull>
                   )}
                   <MobilePair>
                     {b && (
                       <MobileSquare>
                         <img src={b.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                        {b.cap && <Cap style={{ opacity: 1 }}>{b.cap}</Cap>}
                       </MobileSquare>
                     )}
                     {c && (
                       <MobileSquare>
                         <img src={c.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                        {c.cap && <Cap style={{ opacity: 1 }}>{c.cap}</Cap>}
                       </MobileSquare>
                     )}
                   </MobilePair>
