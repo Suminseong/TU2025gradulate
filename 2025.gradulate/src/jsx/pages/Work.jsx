@@ -312,7 +312,7 @@ export default function Work() {
             ))
           ) : (
             <Img
-              src={publicUrl('/thumbnailExample.png')}
+              src={publicUrl('/thumbnailExample.gif')}
               alt={`project-${catLetter}${num3}-placeholder`}
             />
           )}
