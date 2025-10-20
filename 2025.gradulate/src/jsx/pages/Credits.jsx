@@ -429,8 +429,8 @@ export default function Credit() {
     {
       title: '기획',
       rows: [
+        { ko: '문나라', en: 'Moon Nara' },  
         { ko: '차소이', en: 'Cha Soyi' },
-        { ko: '문나라', en: 'Moon Nara' },
         { ko: '한채원', en: 'Han Chaewon' },
       ],
     },
