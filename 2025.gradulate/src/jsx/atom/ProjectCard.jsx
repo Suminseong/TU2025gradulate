@@ -379,11 +379,11 @@ export default function ProjectCard({ titleKor, titleEng, nameKor, view, like, h
         <IconRow>
           <IconBox>
             <Icon src={`${base}icons/likeIcon.svg`} />
-            <IconText>{formatCount(likeCount)}</IconText>
+            <IconText>{formatCount(likeCount) || 0}</IconText>
           </IconBox>
           <IconBox>
             <Icon src={`${base}icons/viewIcon.svg`} />
-            <IconText>{formatCount(viewCount)}</IconText>
+            <IconText>{formatCount(viewCount) || 0}</IconText>
           </IconBox>
         </IconRow>
       </BottomRow>

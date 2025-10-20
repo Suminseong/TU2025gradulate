@@ -99,7 +99,7 @@ function Layout({ headerMode, setHeaderMode }) {
           ]}
           social={{
             youtube: { href: 'https://youtube.com/', label: 'YouTube' },
-            instagram: { href: 'https://instagram.com/', label: 'Instagram' },
+            instagram: { href: 'https://www.instagram.com/tukd_grad?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
           }}
           sidePadding={350}
           maxWidth={1220}

@@ -325,7 +325,7 @@ export default function WorkInfo({
           <LikeBtn onClick={handleLike} aria-disabled={pending} title={pending ? '처리 중' : '좋아요'}>
             <LikeAlign>
               <LikeIcon $src={`${base}icons/likeIcon(white).svg`} aria-label="Like icon" />
-              <LikeCount>{likeCount}</LikeCount>
+              <LikeCount>{{likeCount} || 0}</LikeCount>
             </LikeAlign>
           </LikeBtn>
           <PageDown
