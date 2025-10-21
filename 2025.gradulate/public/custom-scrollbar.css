@@ -1,0 +1,77 @@
+/* Custom global scrollbar styles (independent CSS file) */
+:root{
+  --scrollbar-width: 10px;
+  --scrollbar-track-color: rgba(0,0,0,0.08);
+  --scrollbar-thumb-color: rgba(0,0,0,0.5);
+  --scrollbar-thumb-hover: rgba(0,0,0,0.65);
+  --scrollbar-radius: 6px;
+}
+
+
+.custom-scrollbar-track{
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--scrollbar-width);
+  height: 80%;
+  /* slightly stronger track so it's visible on light/dark */
+  background-color: rgba(0,0,0,0.12);
+  border-radius: var(--scrollbar-radius);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.18s ease-in-out, transform 0.12s ease;
+  pointer-events: auto;
+  backdrop-filter: blur(2px);
+
+}
+
+.custom-scrollbar-track.visible{
+  opacity: 1;
+}
+
+.custom-scrollbar-thumb{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: var(--scrollbar-thumb-color, rgba(0,0,0,0.7));
+  border-radius: var(--scrollbar-radius);
+  cursor: pointer;
+  touch-action: none;
+  transition: background-color 0.12s ease, transform 0.08s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.custom-scrollbar-thumb:hover,
+.custom-scrollbar-thumb.dragging{
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* When the user hovers the track, make it more visible and slightly wider */
+.custom-scrollbar-track:hover{
+  transform: translateY(-50%) translateX(-2px);
+}
+.custom-scrollbar-track:hover .custom-scrollbar-thumb{
+  transform: scaleX(1.1);
+  transition: transform 0.08s ease, background-color 0.08s ease;
+}
+
+.custom-scrollbar-track.active{
+  opacity: 1;
+}
+
+/* Hide native scrollbar for most browsers while preserving functionality */
+html::-webkit-scrollbar{
+  width: 0 !important;
+  height: 0 !important;
+}
+html{
+  scrollbar-width: none; /* Firefox */
+}
+
+/* If the page author wants to visually hide the custom scrollbar on small screens */
+
+@media (max-width: 600px){
+  .custom-scrollbar-track{ display: none; }
+}

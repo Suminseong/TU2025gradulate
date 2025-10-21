@@ -72,7 +72,7 @@ const TextCol = styled.div`
     flex-direction: column;
     width: 300px;
     height: auto;
-    background-color: rgba(242, 245, 245, 0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 4px;
     padding: 4px;
     backdrop-filter: blur(8px);
