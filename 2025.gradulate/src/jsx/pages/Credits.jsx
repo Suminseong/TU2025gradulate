@@ -6,10 +6,6 @@ import styled from 'styled-components';
 
 // 공통 타이포/레이아웃 수치
 const FONT = `'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif`;
-const PAGE_SIDE = 350;
-// vw 단위 변경 계산
-const PAGE_SIDE_VW = `${(PAGE_SIDE / 1920) * 100}vw`;
-const PAGE_SIDE_VW_IMG = `${((PAGE_SIDE + 414) / 1920) * 100}vw`; // 이미지 포함 시
 
 const PageOuter = styled.div`
   position: relative; background: #fff;
@@ -33,8 +29,8 @@ function PageContainer({ children }) {
 // (사실상 이 페이지 전용 컴포넌트들)
 
 const HeaderBig = styled.div`
-  position: relative; height: 120px; display: flex; align-items: flex-end; justify-content: center;
-  font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 98px;
+  position: relative; height: 52px; display: flex; align-items: flex-end; justify-content: center; line-height: 52px;
+  font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 88px;
   @media (max-width: 640px) {
     height: 21px;
     line-height: 21px;

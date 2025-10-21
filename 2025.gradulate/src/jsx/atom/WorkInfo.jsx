@@ -50,7 +50,7 @@ const ContentCol = styled.div`
   flex-direction: column;
   width: 270px;
   height: auto;
-  gap: 48px;
+  gap: 40px;
   @media (max-width: 640px) {
     /* flex-direction: row; */
     width: 100%;
@@ -77,7 +77,7 @@ const Content = styled.div`
   height: auto;
   flex-direction: column;
   /* align-items: center; */
-  gap: 16px;
+  gap: 20px;
   @media (max-width: 640px) {
     width: 100%;
 }
@@ -98,6 +98,31 @@ const Title = styled.h1`
     font-size: 18px;
   }
 `;
+
+const TitleKor = styled.h2`
+  font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  max-width: 260px;
+    @media (max-width: 640px) {
+    font-size: 12px;
+    max-width: none;
+}
+   @media (max-width: 393px) {
+    font-size: 10px;
+  }
+`;
+
+const TitleWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
 
 const Context = styled.p`
   font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
@@ -273,39 +298,39 @@ export default function WorkInfo({
     }
   };
 
-   const handleLike = async () => {
-     if (pending) return; 
-     if (docId === undefined || docId === null) {
-       console.warn('handleLike called without a valid docId');
-       return;
-     }
-     setPending(true);
-     const ref = doc(db, collection, String(docId));
-     try {
+  const handleLike = async () => {
+    if (pending) return;
+    if (docId === undefined || docId === null) {
+      console.warn('handleLike called without a valid docId');
+      return;
+    }
+    setPending(true);
+    const ref = doc(db, collection, String(docId));
+    try {
       await updateDoc(ref, { like: increment(1) });
       setLikeCount((n) => n + 1);
       await refreshLike();
-     } catch (e) {
-       // 문서가 없을 가능성 등 예외 처리(최초 1회 생성 허용 시)
-       if (e.code === 'not-found' || /No document/i.test(String(e))) {
-         try {
-           const snap = await getDoc(ref);
-           if (!snap.exists()) {
-             await setDoc(ref, { like: 1 }, { merge: true });
-           } else {
-             await updateDoc(ref, { like: increment(1) });
-           }
-           await refreshLike();
-         } catch (e2) {
-           console.error('Firestore like fallback error:', e2);
-         }
-       } else {
-         console.error('Firestore like error:', e);
-       }
-     } finally {
-       setPending(false);
-     }
-   };
+    } catch (e) {
+      // 문서가 없을 가능성 등 예외 처리(최초 1회 생성 허용 시)
+      if (e.code === 'not-found' || /No document/i.test(String(e))) {
+        try {
+          const snap = await getDoc(ref);
+          if (!snap.exists()) {
+            await setDoc(ref, { like: 1 }, { merge: true });
+          } else {
+            await updateDoc(ref, { like: increment(1) });
+          }
+          await refreshLike();
+        } catch (e2) {
+          console.error('Firestore like fallback error:', e2);
+        }
+      } else {
+        console.error('Firestore like error:', e);
+      }
+    } finally {
+      setPending(false);
+    }
+  };
 
   return (
     <Container $open={!!isOpen}>
@@ -316,7 +341,10 @@ export default function WorkInfo({
           </CloseBox>
           <Content>
             <Thumbnail $src={src} />
-            <Title>{titleKor}</Title>
+            <TitleWrap>
+              <TitleKor>{titleKor}</TitleKor>
+              <Title>{titleEng}</Title>
+            </TitleWrap>
             <Context>{context}</Context>
           </Content>
         </ContentCol>

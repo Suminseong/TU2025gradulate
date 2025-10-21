@@ -17,10 +17,10 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    width: 80px;
-    height: 110px;
+    width: auto;
+    height: auto;
     padding: 20px 20px 10px 20px;
-    background-color: rgba(160, 160, 160, 0.6);
+    background-color: rgba(0,0,0, 1);
     border-radius: 8px;
     pointer-events: none;
     z-index: 4;
@@ -60,7 +60,7 @@ export default function ShowIndicator({
 } = {}) {
     return (
         <Container $visible={visible} $fadeMs={fadeMs} aria-hidden={!visible}>
-            <IconBox src={`${base}icons/showIndicatorMouse.svg`} />
+            <IconBox src={`${base}icons/showIndicatorMouse.svg`} style={{color: '#FFF'}}/>
             <Inner $visible={visible} $floatDur={floatDur} style={{ '--amp': `${amp}px` }}>
                 <IconBox src={`${base}icons/showIndicatorDown.svg`} />
             </Inner>

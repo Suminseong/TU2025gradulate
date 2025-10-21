@@ -214,7 +214,7 @@ export default function Showroom() {
             indicatorTimerRef.current = setTimeout(() => {
                 setShowIndicator(false);
                 indicatorDismissedRef.current = true;
-            }, 5000);
+            }, 10000);
         }
         return () => clearTimeout(indicatorTimerRef.current);
     }, []);
@@ -238,8 +238,8 @@ export default function Showroom() {
             <ShowIndicator
                 visible={showIndicator}
                 fadeMs={700}
-                floatDur={1900}
-                amp={8}
+                floatDur={900}
+                amp={6}
             />
             <ShowroomImgContainer ref={containerRef}>
                 {showInfos.map((item, index) => (

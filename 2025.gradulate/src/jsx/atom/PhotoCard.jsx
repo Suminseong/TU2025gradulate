@@ -11,7 +11,7 @@ const Wrap = styled.div`
   @media (max-width: 640px) {
     width: 100%;
     height: 216px;
-    border-radius: 10px;
+    border-radius: 4px;
   }
 `;
 

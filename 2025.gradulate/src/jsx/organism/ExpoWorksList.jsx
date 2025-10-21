@@ -104,7 +104,7 @@ const LeftName = styled.div`
   top: 20%;
   color: #FAFAFA;
   font-family: Pretendard, system-ui;
-  font-size: 112px; font-weight: 600;
+  font-size: 82px; font-weight: 600;
   /* transform and opacity are applied inline for performance */
   ${SlotMask}
   @media (max-width: 1800px) {
@@ -123,7 +123,7 @@ const LeftName = styled.div`
 const LeftMeta = styled.div`
   position: absolute; left: 10%; 
   /* top: 374px; */
-  top: calc(20% + 134px);
+  top: calc(20% + 98px);
   color: #D9D9D9;
   font-family: Pretendard, system-ui;
   font-size: 24px; font-weight: 400;
