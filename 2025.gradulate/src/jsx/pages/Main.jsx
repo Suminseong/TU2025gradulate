@@ -6,6 +6,7 @@ import Gallery from '../organism/Gallery';
 import ExpoWorksList from '../organism/ExpoWorksList';
 import InstagramBlock from '../organism/InstagramBlock';
 import VenueAccess from '../organism/VenueAccess.jsx';
+import NewBrandConcept from '../organism/NewBrandConcept.jsx';
 
 const HideOnMobile = styled.div`
   @media (max-width: 640px) {
@@ -33,7 +34,8 @@ export default function Main() {
   // 순서만 조절하면 위치 옮기기 가능. 옮길 때 그라데이션 옵션만 체크
   const sections = [
     <Hero key="hero" />,
-    <BrandConcept key="brand" />,
+    // <BrandConcept key="brand" />,
+    <NewBrandConcept key="new-brand" />,
     <Gallery key="gallery" />,
     // <HideOnMobile key="online"><OnlineExhibition /></HideOnMobile>,
     <Title key="works-title">TU-EXPO Works</Title>,
