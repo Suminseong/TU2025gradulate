@@ -155,7 +155,7 @@ export default function Gallery() {
     { src: `${base}video/category.mp4`, cap: '' },
     { src: `${base}sq6.png`, cap: '' },
     { src: `${base}sq4.png`, cap: '' },
-    { src: 'https://placehold.co/987x555', cap: '' },
+    { src: `${base}video/category.mp4`, cap: '' },
     { src: `${base}sq3.png`, cap: '' },
     { src: `${base}sq1.png`, cap: '' },
   ];
@@ -215,7 +215,7 @@ export default function Gallery() {
                 <MobileGroup key={gi}>
                   {a && (
                     <MobileFull>
-                      <img src={a.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      <Vid src={a.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                       {a.cap && <Cap style={{ opacity: 1 }}>{a.cap}</Cap>}
                     </MobileFull>
                   )}
