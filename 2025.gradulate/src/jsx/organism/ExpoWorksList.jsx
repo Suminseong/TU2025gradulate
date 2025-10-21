@@ -201,12 +201,29 @@ const WorkStrong = styled.strong`
 `;
 
 const ExpoVideo = styled.iframe`
-  width: 1280px;
-  height: 720px;
+  width: 1920px;
+  height: 1080px;
+  /* width: calc(100vw - 700px);
+  height: calc((100vw - 700px) * 0.5625); */
   border: none;
   display: block;
   margin: 0 auto;
   opacity: 0.75;
+
+  @media (max-width: 2200px) {
+    width: 1280px;
+    height: 720px;
+  }
+
+  @media (max-width: 1500px) {
+    width: 960px;
+    height: 540px;
+  }
+
+  @media (max-width: 1000px) {
+    width: 680px;
+    height: 382.5px;
+  }
 `;
 
 const MobileVideo = styled.iframe`
