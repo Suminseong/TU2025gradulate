@@ -1,19 +1,25 @@
 // 브랜드 컨셉 리뉴얼
 import React from 'react';
 import styled from 'styled-components';
+import GradientEdge from '../atom/GradientEdge';
+import { G } from '../atom/gradients';
+import { useState } from 'react';
+
 
 const base = import.meta.env.BASE_URL || '/';
 
 const Container = styled.div`
+    position: relative;
     width: 100vw;
-    height: auto;
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     margin: 0;
     background-color: #FFF;
-    padding: 150px 0;
+    padding: 200px 0;
+    overflow: hidden;
 `;
 
 const ConceptContainer = styled.div`
@@ -22,7 +28,7 @@ const ConceptContainer = styled.div`
     align-items: center;
     width: 100%;
     max-width: 1440px;
-    gap: 200px;
+    gap: 100px;
 `
 
 const ConceptCol = styled.div`
@@ -40,8 +46,14 @@ const TitleCol = styled.div`
     font-size: 32px;
     font-weight: 600;
     color: #000;
-
 `
+
+const TitleWrap = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+`;
 
 const ContextCol = styled.div`
     display: flex;
@@ -79,9 +91,30 @@ const ColumnCol = styled.div`
     width: 100%;
 `;
 
+const ToggleBtn = styled.div`
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: #FFF;
+`;
+
+const BtnSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+`;
+
 export default function NewBrandConcept({
 
 }) {
+    const [isOpen, setIsOpen] = useState(false);
+
     const concepts = [
         {
             title: `잔향 : 기억의 향기`,
@@ -112,14 +145,18 @@ export default function NewBrandConcept({
         <Container>
             <ConceptContainer>
                 <ConceptCol>
-                    <TitleCol>{concepts[0].title}</TitleCol>
+                    <TitleWrap>
+                        <TitleCol><span>{concepts[0].title}</span></TitleCol>
+                    </TitleWrap>
                     <RowCol>
                         <ContextCol>{concepts[0].context}</ContextCol>
                         <ImageCol src={`${base}brand-concept-logo.png`}></ImageCol>
                     </RowCol>
                 </ConceptCol>
                 <ConceptCol>
-                    <TitleCol>{concepts[1].title}</TitleCol>
+                    <TitleWrap>
+                        <TitleCol>{concepts[1].title}</TitleCol>
+                    </TitleWrap>
                     <RowCol>
                         <ContextCol>{concepts[1].context}</ContextCol>
                         <ImageCol src={`${base}brand-category.png`}></ImageCol>
@@ -133,6 +170,16 @@ export default function NewBrandConcept({
                     <ImageCol src={`${base}brand-variation.png`}></ImageCol>
                 </ConceptCol>
             </ConceptContainer>
+            <GradientEdge
+                    position="bottom"
+                    from={G.whiteToBlack.from}
+                    to={G.whiteToBlack.to}
+                    height={G.whiteToBlack.h}
+                    z={0}
+                  />
+                  <BtnSection>
+                    <ToggleBtn />
+                  </BtnSection>
         </Container>
     )
 }
