@@ -7,15 +7,14 @@ const base = import.meta.env.BASE_URL || '/';
 
 const Section = styled.section`
   position: relative;
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding: 120px 40px;
   background: #121212;
   z-index: 1;
 `;
 
 const Container = styled.div`
   width: 100%;
-  max-width: 1840px;
+  /* max-width: 1840px; */
   margin: 0 auto;
 `;
 
@@ -87,8 +86,8 @@ const Card = styled.div`
   border-radius: 4px;
   overflow: hidden;
   background: #151515;
-  width: ${(p)=>p.$w}px;
-  height: ${(p)=>p.$h}px;
+  width: ${(p)=>p.$w};
+  height: ${(p)=>p.$h};
   @media (max-width: 640px) {
     width: 46vw;
     height: 46vw;
@@ -160,15 +159,19 @@ export default function Gallery() {
     { src: `${base}sq3.png`, cap: '' },
     { src: `${base}sq1.png`, cap: '' },
   ];
+  
+  const flexGrow1 = `calc((100vw - 140px) / 4)`;
+  const flexGrow2 = `calc((100vw - 100px) / 2)`;
+
   return (
     <Section aria-label="Gallery">
-      <GradientEdge
+      {/* <GradientEdge
         position="top"
         from={G.blackToBlackSoft.from}
         to={G.blackToBlackSoft.to}
         height={G.blackToBlackSoft.h}
         z={0}
-      />
+      /> */}
       <Container>
         <Hero>
           <Vid src={`${base}video/main.mp4`} alt="featured" muted autoPlay playsInline loop/>
@@ -177,26 +180,26 @@ export default function Gallery() {
         {/* 데스크탑: 기존 그리드 */}
   <Grid className="gallery-desktop">
           <Row>
-            <Card $w={910} $h={445}>
+            <Card $w={flexGrow2} $h={flexGrow1}>
               <Vid src={`${base}video/sub1.mp4`} alt="" muted autoPlay playsInline loop/></Card>
-            <Card $w={445} $h={445}>
+            <Card $w={flexGrow1} $h={flexGrow1}>
               <Img src={`${base}sq5.png`} alt="" />
             </Card>
-            <Card $w={445} $h={445}>
+            <Card $w={flexGrow1} $h={flexGrow1}>
               <Img src={`${base}sq6.png`} alt="" />
             </Card>
           </Row>
 
           <Row>
-            <Card $w={445} $h={445}><Img src={`${base}sq4.png`} alt="" /></Card>
-            <Card $w={445} $h={445}><Img src={`${base}sq2.png`} alt="" /></Card>
-            <Card $w={910} $h={445}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
+            <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq4.png`} alt="" /></Card>
+            <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq2.png`} alt="" /></Card>
+            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
           </Row>
 
           <Row>
-            <Card $w={910} $h={445}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
-            <Card $w={445} $h={445}><Img src={`${base}sq3.png`} alt="" /></Card>
-            <Card $w={445} $h={445}><Img src={`${base}sq1.png`} alt="" /></Card>
+            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
+            <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq3.png`} alt="" /></Card>
+            <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq1.png`} alt="" /></Card>
           </Row>
         </Grid>
 

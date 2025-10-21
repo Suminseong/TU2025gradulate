@@ -53,7 +53,7 @@ const MobileInfo = styled.div`
 `;
 const Stage = styled.div`
   position: relative;
-  height: 979px;
+  height: auto;
   background: #121212;
   @media (max-width: 640px) {
     height: auto;
@@ -80,8 +80,7 @@ const Title = styled.div`
   }
 `;
 const Frame = styled.div`
-  /* position: absolute; */
-  margin-top: 140px;
+  /* margin-top: 140px; */
   margin: 0 auto;
   border-radius: 3.55px;
   overflow: hidden;
@@ -100,12 +99,17 @@ const SlotMask = `
           mask-image: rgba(0,0,0,0);
 `;
 const LeftName = styled.div`
-  position: absolute; left: 195px; top: 240px;
+  position: absolute; left: 10%; 
+  /* top: 240px; */
+  top: 20%;
   color: #FAFAFA;
   font-family: Pretendard, system-ui;
   font-size: 112px; font-weight: 600;
   /* transform and opacity are applied inline for performance */
   ${SlotMask}
+  @media (max-width: 1800px) {
+    font-size: 64px;
+  }
   @media (max-width: 640px) {
     position: static;
     font-size: 28px;
@@ -117,12 +121,17 @@ const LeftName = styled.div`
   }
 `;
 const LeftMeta = styled.div`
-  position: absolute; left: 195px; top: 374px;
+  position: absolute; left: 10%; 
+  /* top: 374px; */
+  top: calc(20% + 134px);
   color: #D9D9D9;
   font-family: Pretendard, system-ui;
   font-size: 24px; font-weight: 400;
   /* transform and opacity are applied inline for performance */
   ${SlotMask}
+    @media (max-width: 1800px) {
+    top: calc(20% + 76px);
+  }
   @media (max-width: 640px) {
     position: static;
     font-size: 13px;
@@ -134,12 +143,17 @@ const LeftMeta = styled.div`
   }
 `;
 const RightMeta1 = styled.div`
-  position: absolute; right: 195px; top: 509px;
+  position: absolute; right: 10%; 
+  /* top: 509px; */
+  top: 40%;
   width: 690.67px; color: #D9D9D9;
   font-family: Pretendard, system-ui; font-size: 24px; font-weight: 300;
   text-align: right;
   /* transform and opacity are applied inline for performance */
   ${SlotMask}
+  @media (max-width: 1800px) {
+    font-size: 18px;
+  }
   @media (max-width: 640px) {
     position: static;
     width: 100%;
@@ -153,12 +167,18 @@ const RightMeta1 = styled.div`
   }
 `;
 const RightMeta2 = styled.div`
-  position: absolute; right: 195px; top: 547px;
+  position: absolute; right: 10%; 
+  /* top: 547px; */
+  top: calc(40% + 38px);
   width: 690.67px; color: #FAFAFA;
   font-family: Pretendard, system-ui; font-weight: 500; font-size: 32px;
   text-align: right;
   /* transform and opacity are applied inline for performance */
   ${SlotMask}
+  @media (max-width: 1800px) {
+    font-size: 28px;
+    top: calc(40% + 24px);
+  }
   @media (max-width: 640px) {
     position: static;
     width: 100%;
@@ -172,7 +192,9 @@ const RightMeta2 = styled.div`
   }
 `;
 const WorkBlock = styled.div`
-  position: absolute; left: 195px; top: 679px; width: 690.67px;
+  position: absolute; left: 10%; width: 690.67px;
+  /* top: 679px;  */
+  top: 70%;
   /* transform and opacity are applied inline for performance */
   ${SlotMask}
   @media (max-width: 640px) {
@@ -188,6 +210,9 @@ const WorkBlock = styled.div`
 const WorkSmall = styled.small`
   display: block; color: #D9D9D9;
   font-family: Pretendard, system-ui; font-size: 24px; font-weight: 400;
+  @media (max-width: 1800px) {
+    font-size: 18px;
+  }
   @media (max-width: 640px) {
     font-size: 12px;
   }
@@ -195,14 +220,17 @@ const WorkSmall = styled.small`
 const WorkStrong = styled.strong`
   display: block; color: #FAFAFA;
   font-family: Pretendard, system-ui; font-size: 42px; font-weight: 700;
+  @media (max-width: 1800px) {
+    font-size: 32px;
+  }
   @media (max-width: 640px) {
     font-size: 18px;
   }
 `;
 
 const ExpoVideo = styled.iframe`
-  width: 1920px;
-  height: 1080px;
+  width: 1600px;
+  height: 900px;
   /* width: calc(100vw - 700px);
   height: calc((100vw - 700px) * 0.5625); */
   border: none;
