@@ -21,6 +21,15 @@ const Container = styled.div`
     padding: 200px 0;
     overflow: hidden;
     transition: height 400ms ease;
+    @media (max-width: 1400px) {
+        padding: 100px 0;
+    }
+    @media (max-width: 1000px) {
+        padding: 50px 0;   
+    }
+    @media (max-width: 640px) {
+        padding: 20px 0;   
+    }
 `;
 
 const ConceptContainer = styled.div`
@@ -30,6 +39,18 @@ const ConceptContainer = styled.div`
     width: 100%;
     max-width: 1440px;
     gap: 100px;
+    @media (max-width: 1400px) {
+        max-width: 1000px;
+        gap: 80px;
+    }
+    @media (max-width: 1000px) {
+        max-width: 600px;
+        gap: 70px;    
+    }
+    @media (max-width: 640px) {
+        max-width: 350px;
+        gap: 60px;    
+    }
 `
 
 const ConceptCol = styled.div`
@@ -39,6 +60,21 @@ const ConceptCol = styled.div`
     gap: 36px;
     width: 1150px;
     margin: 0 145px;
+    @media (max-width: 1400px) {
+        width: 800px;
+        margin: 0 80px;
+        gap: 32px;
+    }
+    @media (max-width: 1000px) {
+        width: 600px;
+        margin: 0 40px;        
+        gap: 24px;
+    }
+    @media (max-width: 640px) {
+        width: 350px;
+        margin: 0 20px;
+        gap: 12px;
+    }
 `;
 
 const TitleCol = styled.div`
@@ -47,6 +83,15 @@ const TitleCol = styled.div`
     font-size: 32px;
     font-weight: 600;
     color: #000;
+    @media (max-width: 1400px) {
+        font-size: 24px;
+    }
+    @media (max-width: 1000px) {
+        font-size: 20px;
+    }
+    @media (max-width: 640px) {
+        font-size: 18px;    
+    }
 `
 
 const TitleWrap = styled.div`
@@ -64,16 +109,83 @@ const ContextCol = styled.div`
     line-height: 150%;
     width: 597px;
     color: #202020;
+    @media (max-width: 1400px) {
+        font-size: 16px;
+        width: 400px; // 변경 가능성 있음
+    }
+    @media (max-width: 1000px) {
+        font-size: 14px;
+        width: 350px;
+    }
+    @media (max-width: 640px) {
+        font-size: 12px;
+        width: 100%;
+    }
 `
 
 const ContextColColumn = styled(ContextCol)`
     flex-direction: column;
     width: 1150px;
+    @media (max-width: 1400px) {
+        width: 800px;
+    }
+    @media (max-width: 1000px) {
+        width: 600px;
+    }
+    @media (max-width: 640px) {
+        width: 350px;    
+    }
 `
 
-const ImageCol = styled.img`
+const BrandImage = styled.img`
     width: auto;
     height: auto;
+    @media (max-width: 1400px) {
+        width: 250px;
+        height: 250px;
+    }
+    @media (max-width: 1000px) {
+        width: 200px;
+        height: 200px;
+    }
+    @media (max-width: 640px) {
+        width: 100px;
+        height: 100px;    
+    }
+`
+
+const CateImage = styled.img`
+    width: auto;
+    height: auto;
+    @media (max-width: 1400px) {
+        width: 350px;
+        height: auto;
+    }
+    @media (max-width: 1000px) {
+        width: 200px;
+        height: auto;
+    }
+    @media (max-width: 640px) {
+        width: 100%;
+        height: auto;    
+    }
+`
+
+const VariationImage = styled.img`
+    width: auto;
+    height: auto;
+    @media (max-width: 1400px) {
+        width: 600px;
+        height: auto;
+    }
+    @media (max-width: 1000px) {
+        width: 400px;
+        height: auto;    
+    }
+    @media (max-width: 640px) {
+        width: 300px;
+        height: auto;
+    }
 `
 
 const RowCol = styled.div`
@@ -82,6 +194,11 @@ const RowCol = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
+    @media (max-width: 640px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;   
+    }
 `;
 
 const ColumnCol = styled.div`
@@ -90,6 +207,15 @@ const ColumnCol = styled.div`
     align-items: flex-start;
     gap: 36px;
     width: 100%;
+    @media (max-width: 1400px) {
+        gap: 24px;
+    }
+    @media (max-width: 1000px) {
+        gap: 20px;    
+    }
+    @media (max-width: 640px) {
+        gap: 16px;    
+    }
 `;
 
 // 위아래로 부드럽게 떠다니는 애니메이션
@@ -107,6 +233,10 @@ const ToggleBtn = styled.div`
     height: 60px;
     cursor: pointer;
     animation: ${floatY} 1.8s ease-in-out infinite;
+    @media (max-width: 640px) {
+        width: 40px;
+        height: 40px;
+    }
 `;
 
 const ToggleIcon = styled.div`
@@ -125,6 +255,9 @@ const ToggleText = styled.div`
     font-size: 20px;
     font-weight: 400;
     color: #FFF;
+    @media (max-width: 640px) {
+        font-size: 16px;
+    }
 `;
 
 const BtnSection = styled.div`
@@ -137,6 +270,9 @@ const BtnSection = styled.div`
     position: absolute;
     bottom: 0;
     z-index: 10;
+    @media (max-width: 1400px) {
+        height: 100px;
+    }
 `;
 
 export default function NewBrandConcept({
@@ -144,15 +280,15 @@ export default function NewBrandConcept({
 }) {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef(null);
-    const [height, setHeight] = useState(600);
+    const [height, setHeight] = useState(0);
 
     // 높이 초기 설정 및 토글 시 자연스러운 전환을 위한 높이 계산
     useEffect(() => {
         if (!containerRef.current) return;
-        const COLLAPSED = 600;
+        const COLLAPSED = containerRef.current.querySelectorAll('div')[0].scrollHeight / 2.7; // 접혔을 때의 높이 계산
         if (isOpen) {
             // 전체 콘텐츠 높이로 확장
-            const full = 1800;
+            const full = COLLAPSED * 3.5;
             setHeight(full);
         } else {
             // 접힘 높이로 축소
@@ -195,7 +331,7 @@ export default function NewBrandConcept({
                     </TitleWrap>
                     <RowCol>
                         <ContextCol>{concepts[0].context}</ContextCol>
-                        <ImageCol src={`${base}brand-concept-logo.png`}></ImageCol>
+                        <BrandImage src={`${base}brand-concept-logo.png`}></BrandImage>
                     </RowCol>
                 </ConceptCol>
                 <ConceptCol>
@@ -204,7 +340,7 @@ export default function NewBrandConcept({
                     </TitleWrap>
                     <RowCol>
                         <ContextCol>{concepts[1].context}</ContextCol>
-                        <ImageCol src={`${base}brand-category.png`}></ImageCol>
+                        <CateImage src={`${base}brand-category.png`}></CateImage>
                     </RowCol>
                 </ConceptCol>
                 <ConceptCol>
@@ -212,7 +348,7 @@ export default function NewBrandConcept({
                         <TitleCol>{concepts[2].title}</TitleCol>
                         <ContextColColumn>{concepts[2].context}</ContextColColumn>
                     </ColumnCol>
-                    <ImageCol src={`${base}brand-variation.png`}></ImageCol>
+                    <VariationImage src={`${base}brand-variation.png`}></VariationImage>
                 </ConceptCol>
             </ConceptContainer>
             <GradientEdge

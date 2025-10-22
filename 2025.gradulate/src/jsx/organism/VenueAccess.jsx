@@ -34,6 +34,9 @@ const PageContainerDark = ({ children }) => (
 
 const HeaderWrap = styled.div`
   width: 289px; height: 45px; display: flex; align-items: flex-end;
+    @media (max-width: 1250px) {
+        width: 200px;
+    }
 `;
 const HeaderTitle = styled.div`
   font-family: ${FONT}; font-size: 20px; font-weight: 700; line-height: 22.4px; color: #FFFFFF;
@@ -103,6 +106,12 @@ function KVRow({ k, children, divider = true }) {
 
 const BlockInner = styled.div`
   width: 900px; display: flex; flex-direction: column;
+    @media (max-width: 1250px) {
+        width: 600px;
+    }
+    @media (max-width: 1000px) {
+        width: 400px;
+    }
   @media (max-width: 640px) {
     width: 100%;
     padding: 0;
@@ -120,6 +129,9 @@ function Block({ title, children, last = false }) {
 
 const TitleLine = styled.div`
   width: 900px; padding-top: 22px; padding-bottom: 40px; border-bottom: 1px rgba(255,255,255,0.12) solid;
+    @media (max-width: 1250px) {
+        width: 100%;
+    }
   @media (max-width: 640px) {
     width: 100%;
     padding: 12px 0px 20px 0px;

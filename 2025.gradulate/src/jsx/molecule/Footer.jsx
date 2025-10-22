@@ -28,7 +28,7 @@ const Container = styled.div`
   max-width: ${(p) => `calc(${p.$maxWidth}px + ${p.$sidePadding * 2}px)`};
   position: relative;
   box-sizing: border-box;
-  @media (max-width: 640px) {
+  @media (max-width: 1000px) {
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 24px;
@@ -66,7 +66,7 @@ const NavRow = styled.nav`
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 36px;
-  @media (max-width: 640px) {
+  @media (max-width: 1000px) {
     gap: 16px;
     font-size: 12px;
     margin-bottom: 16px;
@@ -94,7 +94,7 @@ const CopyWrap = styled.div`
   font-size: 14px;
   font-weight: 300;
   max-width: 475px;
-  @media (max-width: 640px) {
+  @media (max-width: 1000px) {
     font-size: 10px;
     max-width: 100vw;
     gap: 4px;
@@ -111,7 +111,7 @@ const SocialWrap = styled.div`
   top: 164px; /* 52 + 112 */
   display: flex;
   gap: 20px;
-  @media (max-width: 640px) {
+  @media (max-width: 1000px) {
     position: static;
     right: 0;
     top: auto;
