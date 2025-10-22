@@ -77,6 +77,6 @@ html{
 
 /* If the page author wants to visually hide the custom scrollbar on small screens */
 
-@media (max-width: 600px){
+@media (max-width: 640px){
   .custom-scrollbar-track{ display: none; }
 }

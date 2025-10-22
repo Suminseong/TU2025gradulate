@@ -1,9 +1,9 @@
 // 브랜드 컨셉 리뉴얼
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import GradientEdge from '../atom/GradientEdge';
 import { G } from '../atom/gradients';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 
 const base = import.meta.env.BASE_URL || '/';
@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL || '/';
 const Container = styled.div`
     position: relative;
     width: 100vw;
-    height: 600px;
+    height: ${(p) => p.$height}px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +20,7 @@ const Container = styled.div`
     background-color: #FFF;
     padding: 200px 0;
     overflow: hidden;
+    transition: height 400ms ease;
 `;
 
 const ConceptContainer = styled.div`
@@ -91,11 +92,39 @@ const ColumnCol = styled.div`
     width: 100%;
 `;
 
+// 위아래로 부드럽게 떠다니는 애니메이션
+const floatY = keyframes`
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+`;
+
 const ToggleBtn = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 60px;
     height: 60px;
-    background-color: #FFF;
+    cursor: pointer;
+    animation: ${floatY} 1.8s ease-in-out infinite;
+`;
+
+const ToggleIcon = styled.div`
+    width: 100%;
+    height: 100%;
+    background-image: url('${base}icons/showIndicatorDown.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform: ${(p) => (p.$flipped ? 'scaleY(-1)' : 'none')};
+    transition: transform 400ms ease;
+`;
+
+const ToggleText = styled.div`
+    font-family: Pretendard, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #FFF;
 `;
 
 const BtnSection = styled.div`
@@ -104,7 +133,7 @@ const BtnSection = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 120px;
+    height: 140px;
     position: absolute;
     bottom: 0;
     z-index: 10;
@@ -114,6 +143,22 @@ export default function NewBrandConcept({
 
 }) {
     const [isOpen, setIsOpen] = useState(false);
+    const containerRef = useRef(null);
+    const [height, setHeight] = useState(600);
+
+    // 높이 초기 설정 및 토글 시 자연스러운 전환을 위한 높이 계산
+    useEffect(() => {
+        if (!containerRef.current) return;
+        const COLLAPSED = 600;
+        if (isOpen) {
+            // 전체 콘텐츠 높이로 확장
+            const full = 1800;
+            setHeight(full);
+        } else {
+            // 접힘 높이로 축소
+            setHeight(COLLAPSED);
+        }
+    }, [isOpen]);
 
     const concepts = [
         {
@@ -142,7 +187,7 @@ export default function NewBrandConcept({
     ]
 
     return (
-        <Container>
+        <Container ref={containerRef} $height={height}>
             <ConceptContainer>
                 <ConceptCol>
                     <TitleWrap>
@@ -177,9 +222,12 @@ export default function NewBrandConcept({
                     height={G.whiteToBlack.h}
                     z={0}
                   />
-                  <BtnSection>
-                    <ToggleBtn />
-                  </BtnSection>
+            <BtnSection>
+                <ToggleBtn onClick={() => setIsOpen((v) => !v)}>
+                    <ToggleIcon $flipped={isOpen} />
+                </ToggleBtn>
+                <ToggleText>{isOpen ? '접기' : '더보기'}</ToggleText>
+            </BtnSection>
         </Container>
     )
 }
