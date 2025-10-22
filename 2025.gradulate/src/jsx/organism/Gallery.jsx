@@ -155,7 +155,7 @@ export default function Gallery() {
     { src: `${base}video/category.mp4`, cap: '' },
     { src: `${base}sq6.png`, cap: '' },
     { src: `${base}sq4.png`, cap: '' },
-    { src: `${base}video/category.mp4`, cap: '' },
+    { src: `${base}video/vid22.mp4`, cap: '' },
     { src: `${base}sq3.png`, cap: '' },
     { src: `${base}sq1.png`, cap: '' },
   ];
@@ -197,7 +197,7 @@ export default function Gallery() {
           </Row>
 
           <Row>
-            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
+            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/vid22.mp4`} alt="" muted autoPlay playsInline loop/></Card>
             <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq3.png`} alt="" /></Card>
             <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq1.png`} alt="" /></Card>
           </Row>
