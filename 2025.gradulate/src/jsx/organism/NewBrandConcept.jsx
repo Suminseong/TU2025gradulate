@@ -30,6 +30,9 @@ const Container = styled.div`
     @media (max-width: 640px) {
         padding: 20px 0;   
     }
+    @media (max-width: 393px) {
+        padding: 16px 0;
+    }
 `;
 
 const ConceptContainer = styled.div`
@@ -50,6 +53,10 @@ const ConceptContainer = styled.div`
     @media (max-width: 640px) {
         max-width: 350px;
         gap: 60px;    
+    }
+    @media (max-width: 393px) {
+        max-width: 300px;
+        gap: 50px;
     }
 `
 
@@ -75,6 +82,11 @@ const ConceptCol = styled.div`
         margin: 0 20px;
         gap: 12px;
     }
+    @media (max-width: 393px) {
+        width: 300px;
+        margin: 0 10px;
+        gap: 10px;
+    }
 `;
 
 const TitleCol = styled.div`
@@ -91,6 +103,9 @@ const TitleCol = styled.div`
     }
     @media (max-width: 640px) {
         font-size: 18px;    
+    }
+    @media (max-width: 393px) {
+        font-size: 16px;    
     }
 `
 
@@ -121,6 +136,9 @@ const ContextCol = styled.div`
         font-size: 12px;
         width: 100%;
     }
+    @media (max-width: 393px) {
+        font-size: 10px;    
+    }
 `
 
 const ContextColColumn = styled(ContextCol)`
@@ -134,6 +152,9 @@ const ContextColColumn = styled(ContextCol)`
     }
     @media (max-width: 640px) {
         width: 350px;    
+    }
+    @media (max-width: 393px) {
+        width: 300px;    
     }
 `
 
