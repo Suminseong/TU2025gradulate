@@ -238,8 +238,8 @@ export default function Showroom() {
             <ShowIndicator
                 visible={showIndicator}
                 fadeMs={700}
-                floatDur={900}
-                amp={6}
+                activeIndex={activeSection}
+                total={5}
             />
             <ShowroomImgContainer ref={containerRef}>
                 {showInfos.map((item, index) => (

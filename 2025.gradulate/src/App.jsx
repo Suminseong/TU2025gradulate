@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Outlet, useLocation, useNavigationType, N
 // 전역 컴포넌트
 import NavHeader, { NAV_HEADER_MODES } from './jsx/molecule/NavHeader';
 import Footer from './jsx/molecule/Footer';
+import CustomScrollbar from './jsx/atom/CustomScrollbar';
 
 // 페이지
 import Credit from './jsx/pages/Credits';
@@ -101,6 +102,9 @@ function Layout({ headerMode, setHeaderMode }) {
           maxWidth={1220}
         />
       )}
+
+      {/* show custom scrollbar except on showroom */}
+      {activeKey !== 'showroom' && <CustomScrollbar />}
     </>
   );
 }
