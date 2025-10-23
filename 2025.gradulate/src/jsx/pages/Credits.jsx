@@ -174,7 +174,7 @@ const IntroWrap = styled.div`
 `
 
 const HeroCardWrap = styled.div`
-  width: 800px; height: 450px; background: url('${base}interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
+  width: 800px; height: 450px; background: url('${base}credits/interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
   cursor: not-allowed;
   @media (max-width: 640px) {
     width: 100vw;

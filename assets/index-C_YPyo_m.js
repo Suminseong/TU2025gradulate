@@ -461,7 +461,7 @@ Please change the parent <Route path="${q}"> to <Route path="${q==="/"?"*":`${q}
     gap: 24px;
   }
 `,kA=S.div`
-  width: 800px; height: 450px; background: url('${z2}interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
+  width: 800px; height: 450px; background: url('${z2}credits/interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
   cursor: not-allowed;
   @media (max-width: 640px) {
     width: 100vw;
