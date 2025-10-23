@@ -174,7 +174,8 @@ const IntroWrap = styled.div`
 `
 
 const HeroCardWrap = styled.div`
-  width: 800px; height: 450px; background: url('interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
+  width: 800px; height: 450px; background: url('${base}interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
+  cursor: not-allowed;
   @media (max-width: 640px) {
     width: 100vw;
     height: calc(100vw * 0.5625); /* 16:9 비율 유지 */

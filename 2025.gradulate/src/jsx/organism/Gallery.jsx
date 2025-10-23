@@ -215,20 +215,20 @@ export default function Gallery() {
                 <MobileGroup key={gi}>
                   {a && (
                     <MobileFull>
-                      <Vid src={a.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      <Vid src={a.src} muted autoPlay playsInline loop alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                       {a.cap && <Cap style={{ opacity: 1 }}>{a.cap}</Cap>}
                     </MobileFull>
                   )}
                   <MobilePair>
                     {b && (
                       <MobileSquare>
-                        <img src={b.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        <img src={b.src} muted autoPlay playsInline loop alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                         {b.cap && <Cap style={{ opacity: 1 }}>{b.cap}</Cap>}
                       </MobileSquare>
                     )}
                     {c && (
                       <MobileSquare>
-                        <img src={c.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        <img src={c.src} muted autoPlay playsInline loop alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                         {c.cap && <Cap style={{ opacity: 1 }}>{c.cap}</Cap>}
                       </MobileSquare>
                     )}
