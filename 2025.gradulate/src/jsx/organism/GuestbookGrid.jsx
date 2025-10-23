@@ -114,6 +114,12 @@ const Placeholder = styled.div`
   }
 `;
 
+// Wrapper to make cards clickable without nesting actual <button>
+const CardButton = styled.div`
+  display: block;
+  cursor: pointer;
+`;
+
 const toFlatWithPhoto = (items) => {
   const flat = [{ type: 'add', id: 'add' }, ...items];
   const ranges = [
@@ -300,7 +306,30 @@ export default function GuestbookGrid({ onOpenModal, items }) {
 
 function CardSwitch({ data, onOpenModal }) {
   if (!data) return <Placeholder />;
-  if (data.type === 'add') return <AddCardButton onClick={onOpenModal} style={{ pointerEvents: 'auto' }} />;
+  if (data.type === 'add') {
+    return (
+      <AddCardButton
+        onClick={() => onOpenModal?.({ type: 'add' })}
+        style={{ pointerEvents: 'auto' }}
+      />
+    );
+  }
   if (data.type === 'photo') return <PhotoCard src={data.src} />;
-  return <GuestbookCard to={data.to} from={data.from} message={data.message} />;
+  return (
+    <CardButton
+      role="button"
+      tabIndex={0}
+      aria-label={`open guestbook card ${data.from ? `from ${data.from}` : ''}`}
+      onClick={() => onOpenModal?.({ type: 'guestbook', item: data })}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onOpenModal?.({ type: 'guestbook', item: data });
+        }
+      }}
+      data-nodrag
+    >
+      <GuestbookCard to={data.to} from={data.from} message={data.message} />
+    </CardButton>
+  );
 }
