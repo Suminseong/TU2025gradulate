@@ -240,7 +240,7 @@ export default function Gallery() {
         </MobileWrapper>
 
         <div style={{ paddingTop: 40, display: 'flex', justifyContent: 'center' }}>
-          <OutlineButton as="a" href="https://www.youtube.com/@TUKD_GRADUATION" label="View More" />
+          <OutlineButton as="a" href="https://www.youtube.com/@tukgrad2025" label="View More" />
         </div>
       </Container>
     </Section>

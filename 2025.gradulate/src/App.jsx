@@ -95,7 +95,7 @@ function Layout({ headerMode, setHeaderMode }) {
             'TUKOREA DESIGN ENGINEERING 20TH GRADUATION EXHIBITION',
           ]}
           social={{
-            youtube: { href: 'https://www.youtube.com/@TUKD_GRADUATION', label: 'YouTube' },
+            youtube: { href: 'https://www.youtube.com/@tukgrad2025', label: 'YouTube' },
             instagram: { href: 'https://www.instagram.com/tukd_grad?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', label: 'Instagram' },
           }}
           sidePadding={350}
