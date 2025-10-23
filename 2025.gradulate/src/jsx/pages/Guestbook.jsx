@@ -2,8 +2,6 @@
 //방명록 페이지
 import React from 'react';
 import styled from 'styled-components';
-import NavHeader from '../molecule/NavHeader';
-import Footer from '../molecule/Footer';
 import GuestbookGrid from '../organism/GuestbookGrid';
 import GuestbookModal from '../organism/GuestbookModal';
 // Firestore 연동
@@ -50,6 +48,8 @@ const Wrap = styled.div`
 
 export default function Guestbook() {
   const [open, setOpen] = React.useState(false);
+  const [modalType, setModalType] = React.useState('add');
+  const [modalData, setModalData] = React.useState({ to: '', from: '', message: '' });
   const [items, setItems] = React.useState([]);
 
   // Firestore에서 게스트북 데이터 가져오기 (한 번만 읽음)
@@ -122,6 +122,25 @@ export default function Guestbook() {
     .gb-wrap article img { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
   `;
 
+  const handleOpenModal = React.useCallback((arg) => {
+    if (arg && typeof arg === 'object' && arg.type) {
+      setModalType(arg.type);
+      if (arg.type === 'guestbook' && arg.item) {
+        setModalData({
+          to: arg.item.to || '',
+          from: arg.item.from || '',
+          message: arg.item.message || '',
+        });
+      } else {
+        setModalData({ to: '', from: '', message: '' });
+      }
+    } else {
+      setModalType('add');
+      setModalData({ to: '', from: '', message: '' });
+    }
+    setOpen(true);
+  }, []);
+
   return (
     <Page>
       {/* 상단/하단 네비는 페이지 컴포넌트 외부에서 통합될 수 있어, 여기선 기존 구조 유지 */}
@@ -134,13 +153,17 @@ export default function Guestbook() {
               Wrap the grid so we can scope CSS to descendants. */}
           <Wrap className="gb-wrap">
             <style>{css}</style>
-            <GuestbookGrid onOpenModal={()=>setOpen(true)} items={items} />
+            <GuestbookGrid onOpenModal={handleOpenModal} items={items} />
           </Wrap>
         </Section>
       </Main>
 
       <GuestbookModal
         open={open}
+        type={modalType}
+        defaultTo={modalData.to}
+        defaultFrom={modalData.from}
+        defaultMessage={modalData.message}
         onClose={()=>setOpen(false)}
         onSubmit={handleSubmit}
       />
