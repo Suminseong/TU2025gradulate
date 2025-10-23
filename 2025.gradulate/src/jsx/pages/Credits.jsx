@@ -491,7 +491,7 @@ export default function Credit() {
       title: 'Special Thanks',
       rows: [
         { ko: '김한종 교수', en: 'Prof. Kim Hanjong' },
-        // { ko: '고명현', en: 'Go Myeonghyeon' },
+        { ko: '고명현', en: 'Go Myeonghyeon' },
       ],
       last: true,
     },
