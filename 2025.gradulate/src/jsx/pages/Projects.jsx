@@ -175,6 +175,9 @@ export default function Projects() {
     (async () => {
       try {
         const snap = await getDocs(collection(db, 'works'));
+        //컬렉션 console에서 출력
+        const worksJson = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        console.log(JSON.stringify(worksJson, null, 2));
         if (!alive) return;
         const map = {};
         snap.forEach((docSnap) => {
@@ -191,6 +194,7 @@ export default function Projects() {
     })();
     return () => { alive = false; };
   }, []);
+  
 
   // 라벨을 코드로 변환하여 필터링
   const filteredProjects = React.useMemo(() => {
