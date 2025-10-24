@@ -174,7 +174,7 @@ const IntroWrap = styled.div`
 `
 
 const HeroCardWrap = styled.div`
-  width: 800px; height: 450px; background: url('${base}credits/interviewThumb.png'); background-size:cover; position: relative; z-index: 30;
+  width: 800px; height: 450px; background: #000; background-size:cover; position: relative; z-index: 30;
   cursor: not-allowed;
   @media (max-width: 640px) {
     width: 100vw;
@@ -223,13 +223,33 @@ const PlayBtn = styled.div`
   }
 `;
 
+const VideoIframe = styled.iframe`
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        z-index: 40;
+      `;
+
 
 function HeroCard({ children }) {
   return (
     <HeroCardWrap>
-      <PlayBtn />
+      {/* <PlayBtn />
       <HeroCardEft />
-      <HeroCardText>{children}</HeroCardText>
+      <HeroCardText>{children}</HeroCardText> */}
+      
+
+      <VideoIframe
+        src="https://www.youtube.com/embed/wDleVXGRbTQ?si=15Ch01nOAvqL4rde"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      />
     </HeroCardWrap>
   );
 }
