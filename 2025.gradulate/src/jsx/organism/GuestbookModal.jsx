@@ -21,7 +21,7 @@ const Overlay = styled.div`
   animation: ${p => (p.$closing ? fadeOut : fadeIn)} 220ms ease-out forwards;
   @media (max-width: 640px) {
     align-items: end;
-    padding: 0 16px 84px 16px;
+    padding: 0 16px 200px 16px;
   }
 `;
 const Wrapper = styled.div`
@@ -39,12 +39,21 @@ const Glass = styled.div`
     padding: 18px;
     border-radius: 12px;
   }
-`;
+  @media (max-width: 376px)
+ {
+    padding: 12px;
+    border-radius: 10px;
+ }
+ `;
 const Row = styled.div`
   width: 520px; display: inline-flex; gap: 20px; align-items: center;
   @media (max-width: 640px) {
     width: 300px;
     gap: 12px;
+  }
+  @media (max-width: 376px) {
+    width: 260px;
+    gap: 10px;
   }
 `;
 const Card = styled.div`
@@ -56,6 +65,10 @@ const Card = styled.div`
     width: 260px;
     height: 340px;
     border-radius: 12px;
+  }
+  @media (max-width: 376px) {
+    width: 220px;
+    height: 300px;
   }
 `;
 const DecoBig = styled.div`
@@ -73,6 +86,12 @@ const DecoBig = styled.div`
     width: 158px;
     height: 130px;
   }
+  @media (max-width: 376px) {
+    left: 4px;
+    top: 180px;
+    width: 140px;
+    height: 115px;
+  }
 `;
 
 const TitleRow = styled.div`
@@ -85,6 +104,9 @@ const LabelTo = styled.div`
   font-family: Pretendard, system-ui; font-weight: 600; font-size: 32px; color: #555;
   @media (max-width: 640px) {
     font-size: 22px;
+  }
+  @media (max-width: 376px) {
+    font-size: 18px;
   }
 `;
 const ToInput = styled.input`
@@ -99,6 +121,10 @@ const ToInput = styled.input`
     font-size: 18px;
     min-width: 90px; max-width: 150px;
   }
+  @media (max-width: 376px) {
+    font-size: 14px;
+    min-width: 60px; max-width: 120px;
+  }
 `;
 
 const ToOutput = styled.div`
@@ -110,15 +136,16 @@ const ToOutput = styled.div`
   padding: 2px 4px 4px;
   min-width: 120px; max-width: 240px;
   @media (max-width: 640px) {
-    font-size: 18px;
+    font-size: 20px;
     min-width: 90px; max-width: 150px;
+    padding: 2px 4px;
   }
 `;
 
 const ContentWrap = styled.div`
   position: absolute; left: 32px; top: 104px; width: 381px;
   @media (max-width: 640px) {
-    left: 18px; top: 78px; width: 206px;
+    left: 18px; top: 60px; width: 206px;
   }
 `;
 const Textarea = styled.textarea`
@@ -130,7 +157,10 @@ const Textarea = styled.textarea`
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.5);
   @media (max-width: 640px) {
     min-height: 120px; border-radius: 10px; padding: 10px 12px;
-    font-size: 14px; line-height: 21px;
+    font-size: 14px; line-height: 21px; width: 182px; height: auto;
+  }
+  @media (max-width: 376px) {
+    width: 150px;
   }
 `;
 const TextOutput = styled.div`
@@ -142,6 +172,7 @@ const TextOutput = styled.div`
   @media (max-width: 640px) {
     min-height: 120px; border-radius: 10px; padding: 10px 12px;
     font-size: 14px; line-height: 21px;
+    padding: 0px; max-width: 230px;
   }
 `;
 
@@ -160,6 +191,9 @@ const LabelFrom = styled.div`
   @media (max-width: 640px) {
     font-size: 22px;
   }
+  @media (max-width: 376px) {
+    font-size: 18px;
+  }
 `;
 const FromInput = styled.input`
   border: none; outline: none;
@@ -170,12 +204,12 @@ const FromInput = styled.input`
   min-width: 120px; max-width: 180px;
   @media (max-width: 640px) {
     font-size: 16px;
-    min-width: 90px; max-width: 140px;
-  }
-  @media (max-width: 640px) {
-    font-size: 16px;
     min-width: 90px; max-width: 120px;
     text-align: right;
+  }
+  @media (max-width: 376px) {
+    min-width: 60px; max-width: 100px;
+    font-size: 14px;
   }
 `;
 
@@ -185,15 +219,11 @@ border: none; outline: none;
   background: transparent;
   font-family: Pretendard, system-ui; font-size: 32px; color: #555;
   font-weight: 600;
-  padding: 2px 4px 4px;
+  padding: 2px 4px;
   min-width: 120px; max-width: 180px;
   @media (max-width: 640px) {
-    font-size: 16px;
-    min-width: 90px; max-width: 140px;
-  }
-  @media (max-width: 640px) {
-    font-size: 16px;
-    min-width: 90px; max-width: 120px;
+    font-size: 18px;
+    min-width: 22px; max-width: 140px;
     text-align: right;
   }
 `;
@@ -202,6 +232,10 @@ const SideCol = styled.div`
   width: 50px; height: 560px; display: inline-flex; flex-direction: column; justify-content: flex-end;
   @media (max-width: 640px) {
     height: 340px;
+  }
+  @media (max-width: 376px) {
+    width: 40px;
+    height: 300px;
   }
 `;
 const SendBtn = styled.button`
@@ -240,7 +274,7 @@ const CloseBox = styled.button`
   background: transparent; border: none;
   border-radius: 30px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px);
   @media (max-width: 640px) {
-    position: fixed; left: 50%; bottom: 20px; top: auto; transform: translateX(-50%);
+    position: fixed; left: 50%; bottom: 120px; top: auto; transform: translateX(-50%);
     width: 56px; height: 56px; border-radius: 28px; background: #fff1;
     backdrop-filter: blur(2px);
   }
