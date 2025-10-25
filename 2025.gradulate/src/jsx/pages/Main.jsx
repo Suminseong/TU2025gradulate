@@ -1,18 +1,10 @@
-import React from 'react';
 import styled from 'styled-components';
 import Hero from '../organism/Hero';
-import BrandConcept from '../organism/BrandConcept';
 import Gallery from '../organism/Gallery';
 import ExpoWorksList from '../organism/ExpoWorksList';
 import InstagramBlock from '../organism/InstagramBlock';
 import VenueAccess from '../organism/VenueAccess.jsx';
 import NewBrandConcept from '../organism/NewBrandConcept.jsx';
-
-const HideOnMobile = styled.div`
-  @media (max-width: 640px) {
-    display: none !important;
-  }
-`;
 
 const Title = styled.div`
   margin: 400px auto 0 auto;

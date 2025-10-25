@@ -165,9 +165,10 @@ const Textarea = styled.textarea`
 `;
 const TextOutput = styled.div`
   width: 353px; min-height: 220px; resize: none;
+  max-height: 400px;
   border: none; outline: none;
   border-radius: 12px; padding: 14px 0px;
-  font-family: Pretendard, system-ui; font-size: 24px; line-height: 150%; color: #303030;
+  font-family: Pretendard, system-ui; font-size: 20px; line-height: 150%; color: #303030;
   font-weight: 400;
   @media (max-width: 640px) {
     min-height: 120px; border-radius: 10px; padding: 10px 12px;

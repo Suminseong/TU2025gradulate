@@ -53,6 +53,15 @@ function Layout({ headerMode, setHeaderMode }) {
 
   const hideFooter = activeKey === 'showroom';
 
+  // // Route-based page background: main(index) & guestbook => dark; showroom and others => white
+  // React.useEffect(() => {
+  //   const isIndex = location.pathname === '/';
+  //   const isDark = isIndex || activeKey === 'guestbook';
+  //   const color = isDark ? '#121212' : '#FFFFFF';
+  //   document.documentElement.style.background = color;
+  //   document.body.style.background = color;
+  // }, [location.pathname, activeKey]);
+
   return (
     <>
       <NavHeader

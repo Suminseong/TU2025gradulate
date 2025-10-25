@@ -5,12 +5,10 @@ import styled from 'styled-components';
 import { useRef, useEffect, useState } from 'react';
 
 import ShowIndicator from '../atom/ShowIndicator';
-// import ShowProgress from '../atom/ShowProgress';
+import ShowProgress from '../atom/ShowProgress';
 import ShowInfo from '../atom/ShowInfo';
 
 const base = import.meta.env.BASE_URL || '/';
-
-
 
 const Container = styled.div`
     display: flex;
@@ -35,7 +33,7 @@ const ShowroomImg = styled.img`
     width: 100%;
     height: calc(100vh - 120px);
     object-fit: cover;
-    opacity: ${({ $opacity }) => ($opacity !== undefined ? $opacity : 0.3)};
+    opacity: ${({ $opacity }) => ($opacity !== undefined ? $opacity : 0.2)};
     z-index: 1;
     top: 80px;
     left: 0;
@@ -54,8 +52,7 @@ const ShowroomBottom = styled.div`
     left: 0;
     background-color: #202020;
     z-index: 6;
-`
-
+`;
 
 export default function Showroom() {
     const containerRef = useRef(null);
@@ -235,11 +232,17 @@ export default function Showroom() {
 
     return (
         <Container>
-            <ShowIndicator
-                visible={showIndicator}
+            <ShowProgress
+                visible={true}
                 fadeMs={700}
                 activeIndex={activeSection}
                 total={5}
+            />
+            <ShowIndicator
+                visible={showIndicator}
+                fadeMs={700}
+                floatDur={1800}
+                amp={6}
             />
             <ShowroomImgContainer ref={containerRef}>
                 {showInfos.map((item, index) => (
