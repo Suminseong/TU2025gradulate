@@ -309,6 +309,9 @@ export default function GuestbookModal({
   const [fromName, setFromName] = useState(defaultFrom);
   const [message, setMessage] = useState('');
   const overlayRef = useRef(null);
+  const toRef = useRef(null);
+  const fromRef = useRef(null);
+  const msgRef = useRef(null);
 
   // Reset inputs and then close
   const handleClose = useCallback(() => {
@@ -357,7 +360,9 @@ export default function GuestbookModal({
 
   const submit = () => {
     const data = { to: (toName || '').trim(), from: (fromName || '').trim(), message: (message || '').trim() };
-    if (!data.message) return;
+    if (!data.message) { alert('메시지를 입력해주세요.'); msgRef.current?.focus(); return; }
+    if (!data.to) { alert('받는 사람을 입력해주세요.'); toRef.current?.focus(); return; }
+    if (!data.from) { alert('보내는 사람을 입력해주세요.'); fromRef.current?.focus(); return; }
     onSubmit?.(data);
   };
 
@@ -419,20 +424,20 @@ export default function GuestbookModal({
       <Overlay ref={overlayRef} onMouseDown={handleOverlayClick} $closing={isClosing}>
         <Wrapper onMouseDown={(e) => e.stopPropagation()}>
           <Glass>
-              <Card>
-                <DecoBig />
-                <TitleRow>
-                  <LabelTo>To.</LabelTo>
-                  <ToOutput>{defaultTo}</ToOutput>
-                </TitleRow>
-                <ContentWrap>
-                  <TextOutput>{defaultMessage}</TextOutput>
-                </ContentWrap>
-                <FromRow>
-                  <LabelFrom>From.</LabelFrom>
-                  <FromOutput>{defaultFrom}</FromOutput>
-                </FromRow>
-              </Card>
+            <Card>
+              <DecoBig />
+              <TitleRow>
+                <LabelTo>To.</LabelTo>
+                <ToOutput>{defaultTo}</ToOutput>
+              </TitleRow>
+              <ContentWrap>
+                <TextOutput>{defaultMessage}</TextOutput>
+              </ContentWrap>
+              <FromRow>
+                <LabelFrom>From.</LabelFrom>
+                <FromOutput>{defaultFrom}</FromOutput>
+              </FromRow>
+            </Card>
           </Glass>
           <CloseRail>
             <CloseBox type="button" onClick={handleClose} aria-label="close">
