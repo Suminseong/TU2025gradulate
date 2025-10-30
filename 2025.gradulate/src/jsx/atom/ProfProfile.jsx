@@ -236,7 +236,3 @@ ProfProfile.defaultProps = {
   imgSrc: `${import.meta.env.BASE_URL}thumbnailExample.png`,
   imgAlt: '홍길동 교수의 프로필 이미지',
 };
-
-// 교수님들한테 이메일 쏘는거 잊지 말기. 일단 학교 사이트 내용 가져왔다 명시하고 혹시 업데이트 필요한지 물어보는 형태 + 이메일 수집 동의까지.
-// 이미지 크기 조절은 망내가 하십쇼
-// 대 오 재 교수님은 내용 받아햐 함 개사고

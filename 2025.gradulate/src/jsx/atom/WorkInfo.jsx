@@ -1,6 +1,6 @@
 // WorkInfo.jsx
 // 작품 정보 컴포넌트
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { db } from '../../lib/firebase'; // 프로젝트 구조에 맞게 수정
@@ -41,7 +41,6 @@ const GapCol = styled.div`
   height: auto;
   @media (max-width: 640px) {
     gap: 40px;
-    /* width: calc(100% - 32px); */
 }
 `;
 
@@ -52,7 +51,6 @@ const ContentCol = styled.div`
   height: auto;
   gap: 40px;
   @media (max-width: 640px) {
-    /* flex-direction: row; */
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
@@ -76,7 +74,6 @@ const Content = styled.div`
   width: 100%;
   height: auto;
   flex-direction: column;
-  /* align-items: center; */
   gap: 20px;
   @media (max-width: 640px) {
     width: 100%;

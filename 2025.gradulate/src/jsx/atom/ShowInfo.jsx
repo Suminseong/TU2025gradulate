@@ -1,7 +1,6 @@
 // ShowInfo.jsx
 // 쇼룸 정보 컴포넌트
 
-import React from 'react';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 

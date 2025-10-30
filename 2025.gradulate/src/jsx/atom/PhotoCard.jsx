@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { CARD_W, CARD_H } from '../organism/GuestbookGrid';
 

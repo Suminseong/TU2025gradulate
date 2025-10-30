@@ -54,16 +54,6 @@ const normalizeDepartment = (dep) => {
 const students = studentsData;
 const professors = professorsData;
 
-// Professor
-// id: string
-// nameKor: string
-// nameEng: string
-// rank: 'PROFESSOR'
-// email: string
-// education?: string
-// field?: string
-// imgUrl: string
-
 const PageOuter = styled.div`
   position: relative; background: #fff;
 `;

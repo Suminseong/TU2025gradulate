@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { CARD_W, CARD_H } from '../organism/GuestbookGrid';
 
@@ -6,7 +5,6 @@ const Button = styled.button`
   width: ${(p) => p.$w}px;
   height: ${(p) => p.$h}px;
   border-radius: 8px;
-  /* background: linear-gradient(157deg, #AEAEAE 0%, #848484 100%); */
   outline: 1px rgba(255,255,255,.5) solid;
   outline-offset: -1px;
   display: grid;

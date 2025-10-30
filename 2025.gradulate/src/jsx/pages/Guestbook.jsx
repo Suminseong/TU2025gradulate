@@ -143,14 +143,10 @@ export default function Guestbook() {
 
   return (
     <Page>
-      {/* 상단/하단 네비는 페이지 컴포넌트 외부에서 통합될 수 있어, 여기선 기존 구조 유지 */}
-
       <Main>
         <Title>Guest Book</Title>
 
         <Section>
-          {/* Removed fixed-width container so the horizontal rail can span freely.
-              Wrap the grid so we can scope CSS to descendants. */}
           <Wrap className="gb-wrap">
             <style>{css}</style>
             <GuestbookGrid onOpenModal={handleOpenModal} items={items} />

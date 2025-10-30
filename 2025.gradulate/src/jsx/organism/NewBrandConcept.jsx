@@ -1,5 +1,4 @@
 // 브랜드 컨셉 리뉴얼
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import GradientEdge from '../atom/GradientEdge';
 import { G } from '../atom/gradients';

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import GradientEdge from '../atom/GradientEdge';
 import { G } from '../atom/gradients';

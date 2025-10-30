@@ -1,10 +1,8 @@
 // CateDropdownMenu.jsx
-import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Menu = styled.div`
-    /* display: ${(p) => (p.$open ? 'flex' : 'none')}; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

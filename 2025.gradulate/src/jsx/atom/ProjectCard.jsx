@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import React from 'react';
 
 
 const ScaleWrap = styled.div`

@@ -2,7 +2,6 @@
 // 작품 상세페이지 - 비디오 컴포넌트 (atom)
 // Vimeo 사용한 컴포넌트
 
-import React from 'react';
 import styled from 'styled-components';
 
 const VideoWrapper = styled.div`

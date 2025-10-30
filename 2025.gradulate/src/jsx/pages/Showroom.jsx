@@ -1,6 +1,5 @@
 //Showroom.jsx
 
-import React from 'react';
 import styled from 'styled-components';
 import { useRef, useEffect, useState } from 'react';
 

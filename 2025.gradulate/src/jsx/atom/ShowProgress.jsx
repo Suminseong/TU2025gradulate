@@ -1,7 +1,6 @@
 // ShowProgress.jsx
 // 쇼룸 진행 컴포넌트
 
-import React from 'react';
 import styled, { css } from 'styled-components';
 
 // Right-side fixed vertical session indicator

@@ -2,7 +2,6 @@
 // 작품 info 오픈 컴포넌트
 // WrokInfo.jsx가 닫혀있을 때 나타나고, 클릭시 WorkInfo.jsx가 열림
 
-import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';

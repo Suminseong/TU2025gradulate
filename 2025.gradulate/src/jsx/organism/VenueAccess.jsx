@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import OutlineButton from '../atom/OutlineButton'; // 앞서 만든 아톰
 
@@ -13,7 +12,6 @@ const PageOuter = styled.div`
   position: relative; background: #121212;
 `;
 const PageInner = styled.div`
-  /* padding-left: ${PAGE_SIDE}px; padding-right: ${PAGE_SIDE}px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,10 +154,6 @@ const BodyTextMedium = styled(BodyText)`
 `;
 const BodyTextSmall = styled(BodyText)`
   font-size: 13px;
-`;
-
-const BodyTextMT24 = styled(BodyText)`
-  margin-top: 24px;
 `;
 const LinkText = styled.a`
   font-family: ${FONT}; font-size: 16px; font-weight: 300; color: #CCCCCC; text-decoration: underline;

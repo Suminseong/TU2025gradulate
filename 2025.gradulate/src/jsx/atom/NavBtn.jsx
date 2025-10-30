@@ -22,7 +22,6 @@ const Base = styled.a`
   justify-content: center;
   white-space: nowrap;
   padding: 0;
-  /* width: 100px; */
   cursor: pointer;
   outline: none;
   transition: all 120ms ease;

@@ -1,5 +1,5 @@
 // src/jsx/organism/GuestbookModal.jsx
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const base = import.meta.env.BASE_URL || '/';
@@ -252,8 +252,6 @@ const SendBtn = styled.button`
 `;
 const SendInner = styled.div`
   width: auto; height: auto;
-  /* background: #fff;  */
-  /* clip-path: polygon(0 0,100% 50%,0 100%); */
   background-image: url(${base}icons/guestbook-send.svg);
   background-repeat: no-repeat;
   background-size: contain;

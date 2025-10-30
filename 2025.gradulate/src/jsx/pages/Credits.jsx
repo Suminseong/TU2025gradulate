@@ -27,10 +27,6 @@ function PageContainer({ children }) {
   );
 }
 
-// 마이 띵킹
-// 재사용할 일 없는 컴포넌트들이 너무 많은지라 그냥 파일 내에서 작성함
-// (사실상 이 페이지 전용 컴포넌트들)
-
 const HeaderBig = styled.div`
   position: relative; height: 52px; display: flex; align-items: flex-end; justify-content: center; line-height: 52px;
   font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 88px;
@@ -58,9 +54,7 @@ const SubTitle = styled.div`
 function HeroHeader() {
   return (
     <>
-      {/* 상단 큰 타이틀 */}
       <HeaderBig>CREDITS</HeaderBig>
-      {/* 좌측 서브타이틀 */}
       <SubTitle>잔향 : 기억의 향기</SubTitle>
     </>
   );
@@ -179,48 +173,7 @@ const HeroCardWrap = styled.div`
   cursor: not-allowed;
   @media (max-width: 640px) {
     width: 100vw;
-    height: calc(100vw * 0.5625); /* 16:9 비율 유지 */
-  }
-`;
-const HeroCardText = styled.div`
-  position: absolute;
-  left: 136px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: ${FONT};
-  font-size: 82.64px;
-  font-weight: 400;
-  line-height: 92.55px;
-  color: #000;
-  @media (max-width: 640px) {
-    font-size: 36px;
-  }
-`;
-
-const HeroCardEft = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.4);
-`;
-
-const PlayBtn = styled.div`
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-image: url('${base}icons/play_btn.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  z-index: 40;
-  @media (max-width: 640px) {
-    width: 40px;
-    height: 40px;
+    height: calc(100vw * 0.5625);
   }
 `;
 
@@ -238,11 +191,6 @@ const VideoIframe = styled.iframe`
 function HeroCard({ children }) {
   return (
     <HeroCardWrap>
-      {/* <PlayBtn />
-      <HeroCardEft />
-      <HeroCardText>{children}</HeroCardText> */}
-
-
       <VideoIframe
         src="https://www.youtube.com/embed/wDleVXGRbTQ?si=15Ch01nOAvqL4rde"
         title="YouTube video player"
@@ -258,7 +206,6 @@ function HeroCard({ children }) {
 const ThreeWrap = styled.div`
   display: flex; gap: 40px; margin-top: 44px; width: 1220px; position: relative;
   @media (max-width: 640px) {
-    // flex 위쪽에 2개, 아래에 1개 배치되게 해주고, 아래 배치된거는 위쪽 2개의 길이만큼 맞춰주게 해주세요
     width: 100%;
     flex-wrap: wrap;
     gap: 32px;
@@ -520,8 +467,6 @@ export default function Credit() {
 
   return (
     <div style={{ position: 'relative' }}>
-      {/* 상단 전역 네비가 있다면 여기 삽입 */}
-
       <PageContainer>
         <HeroHeader />
         <IntroWrap>
@@ -535,6 +480,8 @@ export default function Credit() {
 
         <PageContainer>
           <IntroWrapBoxLeftLineVH />
+          <SubTitle>잔향의 순간들</SubTitle>
+          {/* <IntroWrapBoxTopLineVW /> */}
           <CreditGallery />
         </PageContainer>
 

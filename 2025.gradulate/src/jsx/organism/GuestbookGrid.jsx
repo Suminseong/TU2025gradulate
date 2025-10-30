@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import styled from 'styled-components';
 import GuestbookCard from '../atom/GuestbookCard';
 import PhotoCard from '../atom/PhotoCard';
@@ -10,7 +10,6 @@ const RAIL_GAP = 30;
 const ROW_GAP  = 20;
 const PAD_L = 210;
 const PAD_R = 60;
-// Mobile target sizes (approx 0.61x)
 const M_CARD_W = 173;
 const M_CARD_H = 216;
 const M_RAIL_GAP = 16;

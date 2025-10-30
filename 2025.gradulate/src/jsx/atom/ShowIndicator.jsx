@@ -1,7 +1,6 @@
 // ShowIndicator.jsx
 // 쇼룸 안내 컴포넌트
 
-import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
 const base = import.meta.env.BASE_URL || '/';

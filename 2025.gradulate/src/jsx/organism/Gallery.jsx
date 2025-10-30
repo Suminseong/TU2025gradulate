@@ -1,8 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
 import OutlineButton from '../atom/OutlineButton';
-import GradientEdge from '../atom/GradientEdge';
-import { G } from '../atom/gradients';
 const base = import.meta.env.BASE_URL || '/';
 
 const Section = styled.section`
@@ -86,8 +83,8 @@ const Card = styled.div`
   border-radius: 4px;
   overflow: hidden;
   background: #151515;
-  width: ${(p)=>p.$w};
-  height: ${(p)=>p.$h};
+  width: ${(p) => p.$w};
+  height: ${(p) => p.$h};
   @media (max-width: 640px) {
     width: 46vw;
     height: 46vw;
@@ -116,7 +113,7 @@ const MobileWrapper = styled.div`
   display: none;
   @media (max-width: 640px) {
     display: block;
-    padding: 20px; /* edge-to-edge on mobile */
+    padding: 20px;
     box-sizing: border-box;
   }
 `;
@@ -138,7 +135,7 @@ const MobilePair = styled.div`
   gap: 8px;
 `;
 const MobileSquare = styled.div`
-  flex: 1; /* share available width evenly */
+  flex: 1;
   border-radius: 4px;
   overflow: hidden;
   background: #151515;
@@ -159,29 +156,22 @@ export default function Gallery() {
     { src: `${base}sq3.png`, cap: '' },
     { src: `${base}sq1.png`, cap: '' },
   ];
-  
+
   const flexGrow1 = `calc((100vw - 140px) / 4)`;
   const flexGrow2 = `calc((100vw - 100px) / 2)`;
 
   return (
     <Section aria-label="Gallery">
-      {/* <GradientEdge
-        position="top"
-        from={G.blackToBlackSoft.from}
-        to={G.blackToBlackSoft.to}
-        height={G.blackToBlackSoft.h}
-        z={0}
-      /> */}
       <Container>
         <Hero>
-          <Vid src={`${base}video/main.mp4`} alt="featured" muted autoPlay playsInline loop/>
+          <Vid src={`${base}video/main.mp4`} alt="featured" muted autoPlay playsInline loop />
         </Hero>
 
         {/* 데스크탑: 기존 그리드 */}
-  <Grid className="gallery-desktop">
+        <Grid className="gallery-desktop">
           <Row>
             <Card $w={flexGrow2} $h={flexGrow1}>
-              <Vid src={`${base}video/sub1.mp4`} alt="" muted autoPlay playsInline loop/></Card>
+              <Vid src={`${base}video/sub1.mp4`} alt="" muted autoPlay playsInline loop /></Card>
             <Card $w={flexGrow1} $h={flexGrow1}>
               <Img src={`${base}sq5.png`} alt="" />
             </Card>
@@ -193,11 +183,11 @@ export default function Gallery() {
           <Row>
             <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq4.png`} alt="" /></Card>
             <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq2.png`} alt="" /></Card>
-            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop/></Card>
+            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/category.mp4`} alt="" muted autoPlay playsInline loop /></Card>
           </Row>
 
           <Row>
-            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/vid22.mp4`} alt="" muted autoPlay playsInline loop/></Card>
+            <Card $w={flexGrow2} $h={flexGrow1}><Vid src={`${base}video/vid22.mp4`} alt="" muted autoPlay playsInline loop /></Card>
             <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq3.png`} alt="" /></Card>
             <Card $w={flexGrow1} $h={flexGrow1}><Img src={`${base}sq1.png`} alt="" /></Card>
           </Row>

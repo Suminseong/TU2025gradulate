@@ -1,9 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import PinSection from './PinSection';
 import { Link } from 'react-router-dom';
 import { EXPO_WORKS } from '../../data/expoWorks';
-const base = import.meta.env.BASE_URL || '/';
 
 const Wrap = styled.div`
   position: relative;
@@ -62,21 +60,6 @@ const Stage = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 0 0 24px 0;
-  }
-`;
-const Title = styled.div`
-  margin: 400px auto 0 auto;
-  text-align: center;
-  color: #fff;
-  font-family: Pretendard, system-ui;
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 64px;
-  @media (max-width: 640px) {
-    position: static;
-    font-size: 20px;
-    line-height: 1.3;
-    margin: 16px 0 8px 0;
   }
 `;
 const Frame = styled.div`

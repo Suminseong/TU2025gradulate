@@ -37,7 +37,6 @@ const Base = styled.a`
     font-weight: 700;
     font-family: inherit;
     letter-spacing: 0.24px;
-    /* line-height: 28.8px; */
     white-space: nowrap;
     visibility: hidden;
     pointer-events: none;

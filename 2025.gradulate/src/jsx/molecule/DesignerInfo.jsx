@@ -1,7 +1,6 @@
 // DesignerInfo.jsx
 // 디자이너 정보 컴포넌트 (molecule)
 
-import React from 'react';
 import styled from 'styled-components';
 import DesignerCard from '../atom/DesignerCard';
 

@@ -5,14 +5,13 @@ import styled, { keyframes } from 'styled-components';
 
 const Container = styled.div`
     display: flex;
-    /* position: absolute; */
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 1220px;
     height: auto;
     gap: 20px;
-    margin-top: 84px;
+    margin-top: 0px;
 `;
 
 const MainStage = styled.div`
@@ -53,7 +52,7 @@ const SubImg = styled.img`
     transition: filter 1000ms ease;
     &:hover,
     &:focus-visible {
-        filter: ${p => (p.$active ? 'none' : 'grayscale(65%)')}; /* hover: slightly reveal color */
+        filter: ${p => (p.$active ? 'none' : 'grayscale(65%)')};
     }
 `;
 
@@ -74,7 +73,6 @@ export default function CreditGallery({
 {
     const base = import.meta.env.BASE_URL || '/';
 
-    // Default thumbnails from public when subImages prop not provided
     const defaultSubs = useMemo(() => ([
         `${base}credits/credit-1.jpg`,
         `${base}credits/credit-2.jpg`,
@@ -87,20 +85,17 @@ export default function CreditGallery({
     const [currentMain, setCurrentMain] = useState('');
     const [nextMain, setNextMain] = useState(null);
     const [isSwitching, setIsSwitching] = useState(false);
-    const timerRef = useRef(null);        // 500ms crossfade timer
-    const autoTimerRef = useRef(null);    // slideshow timer
-    const lastManualRef = useRef(false);  // whether last trigger was manual (click)
-    const loadedRef = useRef(new Set());  // cache of decoded images
+    const timerRef = useRef(null);        
+    const autoTimerRef = useRef(null);   
+    const lastManualRef = useRef(false); 
+    const loadedRef = useRef(new Set()); 
 
-    // Sync when props change
     useEffect(() => {
         if (mainImage) setCurrentMain(mainImage);
         else if (effectiveSubs.length > 0) setCurrentMain(effectiveSubs[0]);
         else setCurrentMain('');
-        // Only re-run when mainImage or the source arrays change identity meaningfully
     }, [mainImage, subImages, defaultSubs]);
 
-    // Preload/decode all images to avoid jank on first transition
     useEffect(() => {
         effectiveSubs.forEach((src) => {
             if (!src || loadedRef.current.has(src)) return;
@@ -135,7 +130,6 @@ export default function CreditGallery({
 
     const onThumbClick = (imgSrc) => {
         if (!imgSrc) return;
-        // Mark manual action and reset slideshow timer with a longer delay
         lastManualRef.current = true;
         if (autoTimerRef.current) {
             clearTimeout(autoTimerRef.current);
@@ -144,25 +138,22 @@ export default function CreditGallery({
         startTransition(imgSrc);
     };
 
-    // Slideshow auto-advance
     useEffect(() => {
         if (autoTimerRef.current) {
             clearTimeout(autoTimerRef.current);
             autoTimerRef.current = null;
         }
-        if (isSwitching) return; // wait until current transition completes
+        if (isSwitching) return; 
         const list = effectiveSubs;
         if (!currentMain || list.length <= 1) return;
         const idx = Math.max(0, list.indexOf(currentMain));
-        const nextIdx = (idx + 1) % list.length; // loop back to first after last
+        const nextIdx = (idx + 1) % list.length; 
 
-        // Durations (tweakable):
-        const DEFAULT_DELAY = 6000; // ms — normal slideshow interval
-        const LONG_DELAY = 12000;   // ms — after manual click, next wait
+        const DEFAULT_DELAY = 6000;
+        const LONG_DELAY = 12000;  
         const delay = lastManualRef.current ? LONG_DELAY : DEFAULT_DELAY;
 
         autoTimerRef.current = setTimeout(() => {
-            // Next auto transition; after this, revert schedule to default
             lastManualRef.current = false;
             startTransition(list[nextIdx]);
         }, delay);

@@ -26,7 +26,7 @@ const BgBlurVideo = styled.video`
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(1.2); /* slight scale so edges stay filled after blur */
+  transform: translate(-50%, -50%) scale(1.2);
   min-width: 100%;
   min-height: 100%;
   width: auto;
@@ -40,11 +40,11 @@ const VideoBox = styled.div`
   left: 50%;
   top: 50%;
   width: 100vw;
-  aspect-ratio: 1 / 1; /* width defines the square size now */
+  aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
   overflow: hidden;
   @media (max-width: 640px) {
-    width: 177vh; // 모바일에서 세로 모드 꽉 채우기
+    width: 177vh;
     min-height: 220px;
   }
 `;
@@ -94,7 +94,6 @@ const Cta = styled.button`
   border: 1px solid #FFFFFF; 
   color: #FFFFFF; text-decoration: none;
   font-family: Pretendard, system-ui; font-weight: 700; cursor: pointer;
-  //hover시 배경 불투명도 증가
   &:hover { background: rgba(0,0,0,0.3);}
   transition: all 200ms ease-in-out;
 
@@ -135,7 +134,6 @@ export default function Hero() {
   return (
     <Wrap aria-label="Hero">
       <Bg>
-        {/* Blurred full-bleed background */}
         <BgBlurWrap aria-hidden>
           <BgBlurVideo autoPlay muted loop playsInline preload="metadata">
             <source src={`${base}video/hero11.mp4`} type="video/mp4" />
@@ -165,8 +163,6 @@ export default function Hero() {
         <P>Department of Design Engineering</P>
         <Title>Tech University of Korea<br />20th Grad Exhibition</Title>
       </CopyWrap>
-      {/* <Cta type="button" aria-label="View More">View More</Cta>
-      Cta 컴포넌트 누르면 showroom 라우트 되게, base 활용 */}
 
   <Cta type="button" onClick={handleCta} aria-label="View More">
     <span className="desktop">View More</span>
@@ -182,6 +178,3 @@ export default function Hero() {
     </Wrap>
   );
 }
-
-
-// 영상 일단 vimeo로 깔아보고 안되면 유튜브

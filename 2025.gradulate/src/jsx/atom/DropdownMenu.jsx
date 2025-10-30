@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Menu = styled.div`
-  /* display: ${(p) => (p.$open ? 'flex' : 'none')}; */
   display: flex;
   flex-direction: column;
   position: absolute;

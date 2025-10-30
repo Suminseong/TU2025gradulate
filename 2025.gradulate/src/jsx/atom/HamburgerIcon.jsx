@@ -1,5 +1,3 @@
-import React from 'react';
-
 const HamburgerIcon = ({ isOpen = false, size = 28, color = '#fff', ...props }) => {
   const strokeWidth = Math.max(2, Math.round(size / 14));
   const half = size / 2;

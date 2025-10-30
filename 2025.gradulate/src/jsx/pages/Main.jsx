@@ -23,13 +23,10 @@ const Title = styled.div`
 `;
 
 export default function Main() {
-  // 순서만 조절하면 위치 옮기기 가능. 옮길 때 그라데이션 옵션만 체크
   const sections = [
     <Hero key="hero" />,
-    // <BrandConcept key="brand" />,
     <NewBrandConcept key="new-brand" />,
     <Gallery key="gallery" />,
-    // <HideOnMobile key="online"><OnlineExhibition /></HideOnMobile>,
     <Title key="works-title">TU-EXPO Works</Title>,
     <ExpoWorksList key="works" />,
     <InstagramBlock key="insta" />,

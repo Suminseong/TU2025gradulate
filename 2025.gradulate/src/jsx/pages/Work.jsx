@@ -1,7 +1,6 @@
 //Works.jsx
 //작품 상세페이지
 
-import React from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
@@ -32,9 +31,6 @@ function publicUrl(path) {
 // styled-components: 값 그대로 재현
 const ImgSC = styled.img`
   width: 100%;
-  /* max-width: 1800px; */
-  /* padding: 0px 100px; */
-  /* padding-right: 100px; */
   height: auto;
   object-fit: cover;
   display: block;
@@ -43,7 +39,6 @@ const ImgSC = styled.img`
     min-width: 100vw;
 }
 `;
-// 기존 사용처(<Img style={{ minHeight:'100vh' }} ... />) 대응 위해 동일한 컴포넌트명 유지
 const Img = (props) => <ImgSC loading="lazy" {...props} />;
 
 const PageOuter = styled.div`
@@ -64,7 +59,6 @@ const PageInner = styled.div`
   flex-direction: column;
   min-height: 100vh;
   align-items: center;
-  /* transition: all 500ms ease; */
   @media (max-width: 1450px) {
     width: calc(100% - 350px);
     padding-right: 80px;
@@ -79,7 +73,6 @@ const PageInner = styled.div`
 const PageInfo = styled.div`
   display: ${props => (props.$visible ? 'flex' : 'none')};
   position: sticky;
-  /* transform: translateX(-350px); */
   top: 80px;
   left: 0;
   width: 350px;
@@ -105,7 +98,6 @@ const DesignerWrapper = styled.div`
   position: relative;
   width: 100%;
   height: auto;
-  /* max-width: 1800px; */
 `;  
 
 const LETTER_TO_CAT = {
@@ -117,12 +109,7 @@ const LETTER_TO_CAT = {
   'M': 'c5', // Mobility
 };
 
-// 1920에서는 괜찮은데 줄어들면 이미지가 너무 작아짐
-// 해당 문제 해결해야함
-
 export default function Work() {
-  // 워크 페이지 헤더가 그라데이션이 아닌 흰색 배경으로 고정되어야 함
-  // → NavHeaderMode를 변경해서 적용해야하는데 지금 적용이 안되는 상태임 나중에 Nav 손봐야함
   const { pid } = useParams();
   const match = (pid || '').toUpperCase().match(/^([A-Z])(\d{3})$/);
   const [isInfoOpen, setIsInfoOpen] = useState(true);

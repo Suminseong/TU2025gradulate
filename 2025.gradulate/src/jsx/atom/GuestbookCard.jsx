@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { CARD_W, CARD_H } from '../organism/GuestbookGrid';
 
@@ -60,7 +59,6 @@ const ContentWrap = styled.div`
 `;
 
 const To = styled.div`
-  /* position: absolute; */
   font-family: ${font};
   font-weight: 600;
   font-size: 20px;
@@ -71,7 +69,6 @@ const To = styled.div`
 `;
 
 const Message = styled.div`
-  /* position: absolute; */
   top: 63px;
   width: 229px;
   height: 190px;

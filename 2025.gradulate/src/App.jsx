@@ -19,7 +19,6 @@ import Showroom from './jsx/pages/Showroom';
 // -------- 유틸: 라우트 변경 시 스크롤/포커스 처리 --------
 function ScrollAndFocusRestore() {
   const location = useLocation();
-  // GPT: route change -> scroll to top before first paint (prevents header from reading old Y)
   React.useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     const el = document.getElementById('main');
@@ -52,15 +51,6 @@ function Layout({ headerMode, setHeaderMode }) {
   }, [location.pathname]);
 
   const hideFooter = activeKey === 'showroom';
-
-  // // Route-based page background: main(index) & guestbook => dark; showroom and others => white
-  // React.useEffect(() => {
-  //   const isIndex = location.pathname === '/';
-  //   const isDark = isIndex || activeKey === 'guestbook';
-  //   const color = isDark ? '#121212' : '#FFFFFF';
-  //   document.documentElement.style.background = color;
-  //   document.body.style.background = color;
-  // }, [location.pathname, activeKey]);
 
   return (
     <>
