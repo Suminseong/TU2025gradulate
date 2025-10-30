@@ -3,6 +3,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import CreditGallery from '../atom/CreditGallery';
 
 // 공통 타이포/레이아웃 수치
 const FONT = `'Pretendard', system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Arial, sans-serif`;
@@ -240,7 +241,7 @@ function HeroCard({ children }) {
       {/* <PlayBtn />
       <HeroCardEft />
       <HeroCardText>{children}</HeroCardText> */}
-      
+
 
       <VideoIframe
         src="https://www.youtube.com/embed/wDleVXGRbTQ?si=15Ch01nOAvqL4rde"
@@ -479,7 +480,7 @@ export default function Credit() {
     {
       title: '기획',
       rows: [
-        { ko: '문나라', en: 'Moon Nara' },  
+        { ko: '문나라', en: 'Moon Nara' },
         { ko: '차소이', en: 'Cha Soyi' },
         { ko: '한채원', en: 'Han Chaewon' },
       ],
@@ -529,10 +530,13 @@ export default function Credit() {
         </IntroWrap>
       </PageContainer>
 
-
-
       <PageContainer>
         <ThreeSpeeches blocks={speeches} />
+
+        <PageContainer>
+          <IntroWrapBoxLeftLineVH />
+          <CreditGallery />
+        </PageContainer>
 
         {/* 위원회 표 */}
         <TitleBlock>
