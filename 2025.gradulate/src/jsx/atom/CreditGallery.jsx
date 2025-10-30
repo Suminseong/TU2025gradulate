@@ -12,13 +12,22 @@ const Container = styled.div`
     height: auto;
     gap: 20px;
     margin-top: 0px;
+    z-index: 50;
+    @media (max-width: 640px) {
+        width: calc(100vw - 32px);
+        height: auto;
+        gap: 6px;
+    }
 `;
 
 const MainStage = styled.div`
-        position: relative;
-        width: 100%;
-        height: 800px;
-        overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    @media (max-width: 640px) {
+        height: 65vw;
+    }
 `;
 
 const fadeIn = keyframes`
@@ -31,16 +40,20 @@ const fadeOut = keyframes`
 `;
 
 const MainImgLayer = styled.img`
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
     will-change: opacity;
     backface-visibility: hidden;
     transform: translateZ(0);
-        animation: ${p => p.$fadeIn ? fadeIn : p.$fadeOut ? fadeOut : 'none'} 1000ms ease-in-out forwards;
+        animation: ${p => p.$fadeIn ? fadeIn : p.$fadeOut ? fadeOut : 'none'} 400ms ease-in-out forwards;
+    @media (max-width: 640px) {
+        width: 100%;
+        height: 65vw;
+    }
 `;
 
 const SubImg = styled.img`
@@ -49,10 +62,14 @@ const SubImg = styled.img`
     object-fit: cover;
     cursor: pointer;
     filter: ${p => (p.$active ? 'none' : 'grayscale(100%)')};
-    transition: filter 1000ms ease;
+    transition: filter 400ms ease;
     &:hover,
     &:focus-visible {
         filter: ${p => (p.$active ? 'none' : 'grayscale(65%)')};
+    }
+    @media (max-width: 640px) {
+        width: calc((100vw - 18px) / 4);
+        height: calc((100vw - 18px) / 4 * 0.655);
     }
 `;
 
@@ -62,6 +79,10 @@ const SubImgRow = styled.div`
     gap: 20px;
     width: 100%;
     height: 190px;
+    @media (max-width: 640px) {
+        gap: 6px;
+        height: auto;
+    }
 `;
 
 export default function CreditGallery({
@@ -125,7 +146,7 @@ export default function CreditGallery({
             setCurrentMain(imgSrc);
             setNextMain(null);
             setIsSwitching(false);
-        }, 1000);
+        }, 400);
     };
 
     const onThumbClick = (imgSrc) => {

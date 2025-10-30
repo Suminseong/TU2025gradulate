@@ -116,6 +116,13 @@ const IntroWrapBoxTopLineVW = styled.div`
   }
 `;
 
+const IntroWrapBoxTopLineVW2 = styled(IntroWrapBoxTopLineVW)`
+  top: 54px;
+      @media (max-width: 640px) {
+      top: 24px;
+  }
+`;
+
 const IntroWrapBoxLeftLine = styled.div`
   position: absolute;
   left: -20px;
@@ -135,13 +142,20 @@ const IntroWrapBoxLeftLineVH = styled.div`
   left: -20px;
   top: 0;
   width: 1px;
-  height: 100vh;
+  height: 200vh;
   background-color: #E0E0E0;
   margin-right: 12px;
   z-index: 20;
   @media (max-width: 640px) {
     left: -8px;
     height: 200vh;
+  }
+`;
+
+const IntroWrapBoxLeftLineVH2 = styled(IntroWrapBoxLeftLineVH)`
+  height: 150vh;
+  @media (max-width: 640px) {
+    height: 100vh;
   }
 `;
 
@@ -478,12 +492,15 @@ export default function Credit() {
       <PageContainer>
         <ThreeSpeeches blocks={speeches} />
 
-        <PageContainer>
-          <IntroWrapBoxLeftLineVH />
-          <SubTitle>잔향의 순간들</SubTitle>
-          {/* <IntroWrapBoxTopLineVW /> */}
+        <TitleBlock>
+          <TitleBlockText>
+            <IntroWrapBoxTopLineVW2 />
+            잔향의 순간들
+          </TitleBlockText>
+          <IntroWrapBoxLeftLineVH2 />
           <CreditGallery />
-        </PageContainer>
+        </TitleBlock>
+
 
         {/* 위원회 표 */}
         <TitleBlock>
