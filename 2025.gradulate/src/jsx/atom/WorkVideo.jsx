@@ -8,7 +8,7 @@ const VideoWrapper = styled.div`
     width: 100%; // 임시값
     margin-top: 50px;
     max-width: ${props => (props.$isInfoOpen ? '100%' : '1800px')};
-@media (max-width: 640px) {
+@media (max-width: 830px) {
     margin-top: 20px;
 }
 `;

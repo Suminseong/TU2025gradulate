@@ -13,6 +13,11 @@ const Container = styled.div`
     gap: 20px;
     margin-top: 0px;
     z-index: 50;
+    @media (max-width: 1300px) {
+        width: calc(100vw - 32px);
+        height: auto;
+        gap: 12px;
+    }
     @media (max-width: 640px) {
         width: calc(100vw - 32px);
         height: auto;
@@ -25,6 +30,9 @@ const MainStage = styled.div`
     width: 100%;
     height: 800px;
     overflow: hidden;
+    @media (max-width: 1300px) {
+        height: 50vw;
+    }
     @media (max-width: 640px) {
         height: 65vw;
     }
@@ -50,6 +58,10 @@ const MainImgLayer = styled.img`
     backface-visibility: hidden;
     transform: translateZ(0);
         animation: ${p => p.$fadeIn ? fadeIn : p.$fadeOut ? fadeOut : 'none'} 400ms ease-in-out forwards;
+    @media (max-width: 1300px) {
+        width: 100%;
+        height: 50vw;
+    }
     @media (max-width: 640px) {
         width: 100%;
         height: 65vw;
@@ -67,6 +79,10 @@ const SubImg = styled.img`
     &:focus-visible {
         filter: ${p => (p.$active ? 'none' : 'grayscale(65%)')};
     }
+    @media (max-width: 1300px) {
+        width: calc((100vw - 32px) / 4);
+        height: calc((100vw - 32px) / 4 * 0.655);
+    }
     @media (max-width: 640px) {
         width: calc((100vw - 18px) / 4);
         height: calc((100vw - 18px) / 4 * 0.655);
@@ -79,6 +95,10 @@ const SubImgRow = styled.div`
     gap: 20px;
     width: 100%;
     height: 190px;
+    @media (max-width: 1300px) {
+        gap: 12px;
+        height: auto;
+    }
     @media (max-width: 640px) {
         gap: 6px;
         height: auto;

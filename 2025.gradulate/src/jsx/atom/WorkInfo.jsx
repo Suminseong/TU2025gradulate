@@ -23,7 +23,7 @@ const Container = styled.div`
   transform: translateX(${props => (props.$open ? '0' : '-350px')});
   transition: transform 500ms ease-out;
   pointer-events: ${props => (props.$open ? 'auto' : 'none')};
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     width: 100vw;
     height: auto;
     position: relative;
@@ -39,7 +39,7 @@ const GapCol = styled.div`
   justify-content: space-between;
   width: 100%;
   height: auto;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     gap: 40px;
 }
 `;
@@ -50,7 +50,7 @@ const ContentCol = styled.div`
   width: 270px;
   height: auto;
   gap: 40px;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
@@ -64,7 +64,7 @@ const CloseBox = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     display: none;
 }
 `;
@@ -75,7 +75,7 @@ const Content = styled.div`
   height: auto;
   flex-direction: column;
   gap: 20px;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     width: 100%;
 }
 `;
@@ -88,7 +88,7 @@ const Title = styled.h1`
   margin: 0;
   padding: 0;
   line-height: 125%;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     font-size: 20px;
 }
    @media (max-width: 393px) {
@@ -105,7 +105,7 @@ const TitleKor = styled.h2`
   margin: 0;
   padding: 0;
   max-width: 260px;
-    @media (max-width: 640px) {
+    @media (max-width: 830px) {
     font-size: 12px;
     max-width: none;
 }
@@ -129,7 +129,7 @@ const Context = styled.p`
   margin: 0;
   padding: 0;
   line-height: 150%;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     font-size: 13px;
 }
    @media (max-width: 393px) {
@@ -145,7 +145,7 @@ const Thumbnail = styled.div`
   background-size: cover;
   background-position: center;
   border-radius: 4px;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     display: flex;
 }
 `
@@ -157,7 +157,7 @@ const IconRow = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 75px;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     width: 100%;
     height: 38px;
 }
@@ -171,7 +171,7 @@ const LikeBtn = styled.div`
   width: auto;
   height: 32px;
   cursor: pointer;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     height: 20px;
 }
 `;
@@ -190,7 +190,7 @@ const LikeIcon = styled.div`
   background-image: ${({ $src }) => `url("${$src}")`};
   background-size: contain;
   background-repeat: no-repeat;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     width: 16px;
     height: 16px;
 }
@@ -203,7 +203,7 @@ const LikeCount = styled.p`
   color: #e0e0e0;
   margin: 0;
   padding: 0;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     font-size: 16px;
 }
 `;
@@ -225,7 +225,7 @@ const PageDownText = styled.p`
   padding: 0;
   line-height: auto;
   margin-bottom: 12px;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     font-size: 12px;
     margin-bottom: 5px;
 }
@@ -240,7 +240,7 @@ const PageDownIconBox = styled.div`
   background-image: url('${base}icons/pageDownIcon.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     width: 10px;
     height: 38px;
 }

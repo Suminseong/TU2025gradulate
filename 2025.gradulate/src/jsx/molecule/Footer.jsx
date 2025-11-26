@@ -28,7 +28,7 @@ const Container = styled.div`
   max-width: ${(p) => `calc(${p.$maxWidth}px + ${p.$sidePadding * 2}px)`};
   position: relative;
   box-sizing: border-box;
-  @media (max-width: 1000px) {
+  @media (max-width: 1340px) {
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 24px;
@@ -47,6 +47,9 @@ const TitleBox = styled.div`
   font-weight: 700;
   color: #FAFAFA;
   margin-bottom: 36px;
+  @media (max-width: 1340px) {
+    font-size: 20px;
+  }
   @media (max-width: 640px) {
     font-size: 14px;
     margin-bottom: 16px;
@@ -66,13 +69,18 @@ const NavRow = styled.nav`
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 36px;
+  @media (max-width: 1340px) {
+    gap: 40px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
   @media (max-width: 1000px) {
     gap: 16px;
     font-size: 12px;
     margin-bottom: 16px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    flex-direction: column;
   }
   @media (max-width: 393px) {
     font-size: 10px;
@@ -94,11 +102,16 @@ const CopyWrap = styled.div`
   font-size: 14px;
   font-weight: 300;
   max-width: 475px;
+  @media (max-width: 1340px) {
+    font-size: 12px;
+    max-width: 100vw;
+    gap: 6px;
+    align-items: center;
+  }
   @media (max-width: 1000px) {
     font-size: 10px;
     max-width: 100vw;
     gap: 4px;
-    align-items: center;
   }
   @media (max-width: 393px) {
     font-size: 8px;
@@ -111,7 +124,7 @@ const SocialWrap = styled.div`
   top: 164px; /* 52 + 112 */
   display: flex;
   gap: 20px;
-  @media (max-width: 1000px) {
+  @media (max-width: 1340px) {
     position: static;
     right: 0;
     top: auto;
@@ -130,6 +143,10 @@ const IconBtn = styled.a`
   justify-content: center;
   text-decoration: none;
   outline: none;
+  @media (max-width: 1340px) {
+    width: 40px;
+    height: 40px;
+  }
   @media (max-width: 640px) {
     width: 32px;
     height: 32px;

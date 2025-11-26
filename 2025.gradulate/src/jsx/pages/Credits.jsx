@@ -1,7 +1,6 @@
 //credits.jsx
 //졸준 페이지// Credit.jsx
 
-import React from 'react';
 import styled from 'styled-components';
 import CreditGallery from '../atom/CreditGallery';
 
@@ -30,6 +29,12 @@ function PageContainer({ children }) {
 const HeaderBig = styled.div`
   position: relative; height: 52px; display: flex; align-items: flex-end; justify-content: center; line-height: 52px;
   font-family: ${FONT}; font-size: 40px; font-weight: 700; color: #101010; line-height: 64px; margin-top: 88px;
+  @media (max-width: 1300px) {
+    height: 40px;
+    line-height: 40px;
+    font-size: 32px;
+    margin-top: 32px;
+  }
   @media (max-width: 640px) {
     height: 21px;
     line-height: 21px;
@@ -43,12 +48,17 @@ const SubTitle = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 1220px;
+  @media (max-width: 1300px) {
+    font-size: 28px;
+    line-height: 40px;
+    margin-top: 48px;
+    width: calc(100vw - 32px);
+    margin-bottom: 8px;
+  }
   @media (max-width: 640px) {
     font-size: 16px;
     line-height: 11px;
     margin-top: 24px;
-    width: calc(100vw - 32px);
-    margin-bottom: 8px;
   }
 `;
 function HeroHeader() {
@@ -70,10 +80,12 @@ const IntroNoteBox = styled.p`
   text-align: justify;
   top: 0;
   margin: 0;
-  @media (max-width: 640px) {
-    font-size: 10px;
+  @media (max-width: 1300px) {
     max-width: calc(100vw - 32px);
     margin-top: 8px;
+  }
+  @media (max-width: 640px) {
+    font-size: 10px;
   }
 `;
 
@@ -83,7 +95,10 @@ const IntroWrapBox = styled.div`
   align-items: flex-start;
   overflow: visible;
   padding-top: 20px;
-    @media (max-width: 640px) {
+  @media (max-width: 1300px) {
+    padding-top: 12px;
+  }
+  @media (max-width: 640px) {
     padding-top: 0px;
   }
 `;
@@ -97,7 +112,10 @@ const IntroWrapBoxTopLine = styled.div`
   background-color: #E0E0E0;
   margin-bottom: 12px;
   z-index: 20;
-    @media (max-width: 640px) {
+  /* @media (max-width: 1300px) {
+    margin-bottom: 20px;
+  } */
+  @media (max-width: 640px) {
       top: 0px;
   }
 `;
@@ -111,14 +129,20 @@ const IntroWrapBoxTopLineVW = styled.div`
   background-color: #E0E0E0;
   margin-bottom: 12px;
   z-index: 20;
-    @media (max-width: 640px) {
+  @media (max-width: 1300px) {
+      top: 80px;
+  }
+  @media (max-width: 640px) {
       top: 44px;
   }
 `;
 
 const IntroWrapBoxTopLineVW2 = styled(IntroWrapBoxTopLineVW)`
   top: 54px;
-      @media (max-width: 640px) {
+  @media (max-width: 1300px) {
+    top: 34px;
+  }
+  @media (max-width: 640px) {
       top: 24px;
   }
 `;
@@ -132,7 +156,10 @@ const IntroWrapBoxLeftLine = styled.div`
   background-color: #E0E0E0;
   margin-right: 12px;
   z-index: 20;
-    @media (max-width: 640px) {
+  @media (max-width: 1300px) {
+      left: -12px;
+  }
+  @media (max-width: 640px) {
       left: -8px;
   }
 `;
@@ -146,6 +173,10 @@ const IntroWrapBoxLeftLineVH = styled.div`
   background-color: #E0E0E0;
   margin-right: 12px;
   z-index: 20;
+  @media (max-width: 1300px) {
+      left: -12px;
+      height: 250vh;
+  }
   @media (max-width: 640px) {
     left: -8px;
     height: 200vh;
@@ -154,6 +185,9 @@ const IntroWrapBoxLeftLineVH = styled.div`
 
 const IntroWrapBoxLeftLineVH2 = styled(IntroWrapBoxLeftLineVH)`
   height: 150vh;
+  @media (max-width: 1300px) {
+    height: 125vh;
+  }
   @media (max-width: 640px) {
     height: 100vh;
   }
@@ -175,6 +209,11 @@ const IntroWrap = styled.div`
   align-items: flex-start;
   gap: 46px;
   overflow: visible;
+  @media (max-width: 1300px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: center;
@@ -185,6 +224,10 @@ const IntroWrap = styled.div`
 const HeroCardWrap = styled.div`
   width: 800px; height: 450px; background: #000; background-size:cover; position: relative; z-index: 30;
   cursor: not-allowed;
+  @media (max-width: 1300px) {
+    width: calc(100vw - 32px);
+    height: calc((100vw - 32px) * 0.5625);
+  }
   @media (max-width: 640px) {
     width: 100vw;
     height: calc(100vw * 0.5625);
@@ -192,14 +235,14 @@ const HeroCardWrap = styled.div`
 `;
 
 const VideoIframe = styled.iframe`
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-        z-index: 40;
-      `;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 40;
+`;
 
 
 function HeroCard({ children }) {
@@ -219,16 +262,26 @@ function HeroCard({ children }) {
 
 const ThreeWrap = styled.div`
   display: flex; gap: 40px; margin-top: 44px; width: 1220px; position: relative;
-  @media (max-width: 640px) {
+  @media (max-width: 1300px) {
     width: 100%;
     flex-wrap: wrap;
+    gap: 36px;
+    margin-top: 44px;
+  }
+  @media (max-width: 640px) {
     gap: 32px;
     margin-top: 24px;
   }
 `;
 const SpeechCol = styled.div`
   width: 374px; display: flex; flex-direction: column; gap: 40px;
-    @media (max-width: 640px) {
+  @media (max-width: 1300px) {
+      width: 100%;
+      /* width: 28%; */
+      gap: 24px;
+      padding: 0px 16px;
+  }
+  @media (max-width: 640px) {
       width: 100%;
       gap: 16px;
       padding: 0px 16px;
@@ -268,9 +321,13 @@ const CommitteeSectionWrap = styled.div`
   padding-bottom: 10px;
   margin-top: 20px;
   align-items: flex-start;
+  @media (max-width: 1300px) {
+    margin-top: 12px;
+    gap: 18px;
+    padding-bottom: 8px;
+  }
   @media (max-width: 640px) {
     margin-top: 0px;
-    gap: 18px;
     padding-bottom: 0px;
   }
 `;
@@ -279,6 +336,11 @@ const CommitteeHeaderWrap = styled.div`
   height: 45px;
   display: flex;
   align-items: flex-end;
+  @media (max-width: 1300px) {
+    width: 200px;
+    height: auto;
+    margin-top: 8px;
+  }
   @media (max-width: 640px) {
     height: auto;
     width: 88px;
@@ -286,7 +348,8 @@ const CommitteeHeaderWrap = styled.div`
   }
 `;
 const CommitteeHeaderTitle = styled.div`
-  font-family: ${FONT}; font-size: 20px;
+  font-family: ${FONT}; 
+  font-size: 20px;
   font-weight: 500;
   line-height: 22.4px;
   color: #202020;
@@ -299,7 +362,7 @@ const CommitteeRowsWrap = styled.div`
   width: 900px;
   display: flex;
   flex-direction: column;
-  @media (max-width: 640px) {
+  @media (max-width: 1300px) {
     width: 100%;
   }
 `;
@@ -330,6 +393,11 @@ const CommitteeRowWrap = styled.div`
   display: flex;
   gap: 20px;
   align-items: flex-start;
+  @media (max-width: 1300px) {
+    padding-top: 16px;
+    padding-bottom: 24px;
+    gap: 12px;
+  }
   @media (max-width: 640px) {
     padding-top: 12px;
     padding-bottom: 18px;
@@ -338,6 +406,9 @@ const CommitteeRowWrap = styled.div`
 `;
 const KoCol = styled.div`
   width: 135px;
+  @media (max-width: 1300px) {
+    width: 100px;
+  }
   @media (max-width: 640px) {
     width: 66px;
   }
@@ -388,6 +459,12 @@ const TitleBlock = styled.div`
   margin-top: 60px;
   margin-bottom: 100px;
   min-width: 1220px;
+  @media (max-width: 1300px) {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    width: calc(100vw - 32px);
+    min-width: unset;
+  }
   @media (max-width: 640px) {
     margin-top: 80px;
     margin-bottom: 40px;
@@ -405,6 +482,9 @@ const TitleBlockText = styled.div`
   font-weight: 600;
   color: #101010;
   margin-bottom: 45px;
+  @media (max-width: 1300px) {
+    margin-bottom: 30px;
+  }
   @media (max-width: 640px) {
     font-size: 16px;
     line-height: 18px;

@@ -13,9 +13,16 @@ const Container = styled.div`
   min-height: 700px;
   gap: 20px;
   margin: 140px 0 120px 77px;
-  @media (max-width: 640px) {
-    width: calc(100vw - 32px);
+  @media (max-width: 1300px) {
+    width: auto;
     height: auto;
+    margin: 100px 0px 120px 16px;
+  }
+  @media (max-width: 1100px) {
+    min-height: 500px;
+  }
+  @media (max-width: 830px) {
+    width: calc(100vw - 32px);
     min-height: 400px;
     margin: 100px 0px 100px 16px;
 }
@@ -27,7 +34,10 @@ const ContentWrapper = styled.div`
   width: 810px;
   height: auto;
   gap: 76px;
-  @media (max-width: 640px) {
+  @media (max-width: 1300px) {
+    width: auto;
+  }
+  @media (max-width: 830px) {
     width: 100%;
     gap: 21px;
 }
@@ -42,7 +52,15 @@ const Title = styled.h1`
   padding: 0;
   height: 95px;
   width: auto;
-  @media (max-width: 640px) {
+  @media (max-width: 1300px) {
+    font-size: 48px;
+    height: 58px;
+  }
+  @media (max-width: 1100px) {
+    font-size: 40px;
+    height: 48px;
+  }
+  @media (max-width: 830px) {
     font-size: 32px;
     height: 38px;
 }

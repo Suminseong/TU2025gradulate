@@ -35,7 +35,7 @@ const ImgSC = styled.img`
   object-fit: cover;
   display: block;
   image-rendering: -webkit-optimize-contrast;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     min-width: 100vw;
 }
 `;
@@ -46,7 +46,7 @@ const PageOuter = styled.div`
   position: relative;
   background: #fff;
   width: 100%;
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     flex-direction: column;
 }
 `;
@@ -63,8 +63,13 @@ const PageInner = styled.div`
     width: calc(100% - 350px);
     padding-right: 80px;
     padding-left: ${props => (props.$isInfoOpen ? 0 : 80)}px;
+  } 
+  @media (max-width: 1100px) {
+    width: calc(100% - 350px);
+    padding-right: 40px;
+    padding-left: ${props => (props.$isInfoOpen ? 0 : 40)}px;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     width: 100%;
     padding: 20px 0px 0px 0px;
 }
@@ -77,7 +82,7 @@ const PageInfo = styled.div`
   left: 0;
   width: 350px;
   height: calc(100vh - 80px);
-  @media (max-width: 640px) {
+  @media (max-width: 830px) {
     display: flex;
     position: relative;
     width: 100vw;
@@ -314,3 +319,5 @@ export default function Work() {
     </Relative>
   );
 }
+
+// 1300 ~ 640 사이 반응형 비어있음

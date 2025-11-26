@@ -22,7 +22,7 @@ const Container = styled.div`
     cursor: pointer;
     transform: translateX(${props => (props.$active ? '0' : '-100px')});
     transition: transform 500ms ease;
-    @media (max-width: 640px) {
+    @media (max-width: 830px) {
         display: none;
 }
 `;

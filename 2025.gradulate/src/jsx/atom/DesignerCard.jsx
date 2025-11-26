@@ -30,15 +30,23 @@ const ImageContainer = styled.div`
   width: 290px;
   height: 387px;
   border-radius: 4px;
-  @media (max-width: 640px) {
+@media (max-width: 1300px) {
+    width: 220px;
+    height: 293px;
+}
+@media (max-width: 1100px) {
+    width: 180px;
+    height: 240px;
+}
+@media (max-width: 640px) {
     width: 173px;
     height: 231px;
     border-radius: 4px;
 }
-  @media (max-width: 364px) {
+@media (max-width: 364px) {
     width: 164px;
     height: 220px;
-  }
+}
 `;
 
 const Img = styled.img`
@@ -55,6 +63,12 @@ const ContentWrapper = styled.div`
   justify-content: space-between;
   height: calc(100% - 8px);
   width: auto;
+  @media (max-width: 1300px) {
+    height: 293px;
+}
+  @media (max-width: 1100px) {
+    height: 240px;
+}
   @media (max-width: 640px) {
     height: 100%;
 }
@@ -77,6 +91,12 @@ const NameKor = styled.h1`
   color: #202020;
   margin: 0;
   padding: 0;
+  @media (max-width: 1300px) {
+    font-size: 32px;
+}
+@media (max-width: 1100px) {
+    font-size: 28px;
+}
   @media (max-width: 640px) {
     font-size: 20px;
 }
@@ -93,6 +113,12 @@ const NameEng = styled.h2`
   color: #202020;
   margin: 0;
   padding: 0;
+  @media (max-width: 1300px) {
+    font-size: 16px;
+}
+@media (max-width: 1100px) {
+    font-size: 14px;
+}
   @media (max-width: 640px) {
     font-size: 8px;
 }
@@ -105,6 +131,12 @@ const InfoWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 84px;
+  @media (max-width: 1300px) {
+    height: 64px;
+}
+@media (max-width: 1100px) {
+    height: 50px;
+}
   @media (max-width: 640px) {
     height: 38px;
 }
@@ -118,6 +150,14 @@ const InfoTitleWrapper = styled.div`
   height: 84px;
   margin: 0;
   padding: 0;
+  @media (max-width: 1300px) {
+    width: 70px;
+    height: 64px;
+}
+@media (max-width: 1100px) {
+    width: 50px;
+    height: 50px;
+}
   @media (max-width: 640px) {
     width: 38px;
     height: 38px;
@@ -138,6 +178,14 @@ const InfoTitle = styled.h3`
   color: #404040;
   margin: 0;
   padding: 0;
+  @media (max-width: 1300px) {
+    font-size: 16px;
+    line-height: 15.36px;
+}
+@media (max-width: 1100px) {
+    font-size: 14px;
+    line-height: 13.44px;
+}
   @media (max-width: 640px) {
     font-size: 8px;
     line-height: 7.68px;
@@ -157,6 +205,12 @@ const InfoTextWrapper = styled.div`
   line-height: 19.2px;
   margin: 0;
   padding: 0;
+  @media (max-width: 1300px) {
+    height: 64px;
+}
+@media (max-width: 1100px) {
+    height: 50px;
+}
   @media (max-width: 640px) {
     height: 38px;
 }
@@ -171,6 +225,14 @@ const InfoText = styled.p`
   color: #202020;
   margin: 0;
   padding: 0;
+  @media (max-width: 1300px) {
+    font-size: 16px;
+    line-height: 15.36px;
+}
+@media (max-width: 1100px) {
+    font-size: 14px;
+    line-height: 13.44px;
+}
   @media (max-width: 640px) {
     font-size: 8px;
     line-height: 7.68px;
