@@ -1,5 +1,4 @@
-# 한국공학대학교 디자인공학부 제 20회 졸업전시 웹사이트 
-# Tech University of Korea Department of Design Engineering 20th Grad Exhibition
+# 한국공학대학교 디자인공학부 제 20회 졸업전시 웹사이트 (Tech University of Korea Department of Design Engineering 20th Grad Exhibition)
 
 ## 프로젝트 개요
 
