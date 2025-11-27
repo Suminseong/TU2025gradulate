@@ -20,8 +20,8 @@
 ## 제작
 
 - 웹사이트 기획/디자인 : 한국공학대학교 디자인공학부 제 20대 졸업전시위원회 웹사이트팀 (팀장 : 성수민, 팀원 : 김예준)
-- 프론트엔드 개발 : 성수민, 김예준
-- 백엔드 개발 : 성수민
+- 프론트엔드(React Vite) : 성수민, 김예준
+- DB : 성수민
 - 디자인 도구 : Figma
 
 
@@ -64,11 +64,12 @@
 - Frontend
     - React (Vite 기반)
     - JavaScript (ES6+)
-- Backend / Database
+- Database
     - Firebase Firestore
 - 개발환경
     - Node.js : 22.14.0
     - 패키지 매니저 : npm
+    - 빌드 : Vite
 - IDE
     - VSCode
 
